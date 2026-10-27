@@ -29,7 +29,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--workspace", required=True)
+    parser.add_argument("--workspace", default="lucj76861")
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--use-checkout-worker", action="store_true")
     parser.add_argument("--confirm-spend", default="non")

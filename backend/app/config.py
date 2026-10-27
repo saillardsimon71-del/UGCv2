@@ -46,7 +46,7 @@ class Settings:
 
     # --- Modal (GPU à la demande, 0 au repos) ------------------------------
     modal_enabled: bool = field(default_factory=lambda: _flag("MODAL_ENABLED", False))
-    modal_workspace: str = field(default_factory=lambda: _env("MODAL_WORKSPACE", ""))
+    modal_workspace: str = field(default_factory=lambda: _env("MODAL_WORKSPACE", "lucj76861"))
     # Applications déjà déployées et prouvées sur le workspace existant :
     app_video: str = field(default_factory=lambda: _env("MODAL_APP_VIDEO", "pvs-ltx"))
     app_avatar: str = field(default_factory=lambda: _env("MODAL_APP_AVATAR", "pvs-longcat-avatar"))

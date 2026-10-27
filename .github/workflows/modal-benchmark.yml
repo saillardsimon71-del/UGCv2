@@ -27,11 +27,23 @@ jobs:
     env:
       MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
       MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: ${{ vars.STUDIO_MODAL_WORKSPACE || 'lucj76861' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install modal
+      - name: Vérifier le compte Modal avant tout calcul
+        run: |
+          python - <<'PY'
+          import os
+          import modal
+          workspace = modal.Workspace.from_context().hydrate().name
+          expected = os.environ["STUDIO_MODAL_WORKSPACE"]
+          if workspace != expected:
+              raise SystemExit(f"Workspace Modal inattendu : {workspace} (attendu {expected})")
+          print(f"Workspace vérifié : {workspace}")
+          PY
       - name: S3 — valider le settings WanGP (dry-run, avant tout rendu long)
         if: ${{ inputs.scene == 'S3-perf-validate' }}
         run: |

@@ -33,6 +33,7 @@ jobs:
     env:
       MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
       MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: ${{ vars.STUDIO_MODAL_WORKSPACE || 'lucj76861' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -41,11 +42,13 @@ jobs:
       - name: "Identité du compte (lue sur le jeton)"
         run: |
           python - <<'PY'
-          import subprocess
-          result = subprocess.run(["modal", "token", "info"], capture_output=True, text=True)
-          if result.returncode:
-              raise SystemExit("Jeton invalide ou absent : vérifier les secrets MODAL_TOKEN_*")
-          print("\n".join(line for line in result.stdout.splitlines() if line.startswith(("Workspace:", "User:"))))
+          import os
+          import modal
+          workspace = modal.Workspace.from_context().hydrate().name
+          expected = os.environ["STUDIO_MODAL_WORKSPACE"]
+          if workspace != expected:
+              raise SystemExit(f"Workspace Modal inattendu : {workspace} (attendu {expected})")
+          print(f"Workspace vérifié : {workspace}")
           PY
           modal app list | head -n 40
           modal volume list | head -n 40
