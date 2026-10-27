@@ -1,0 +1,9 @@
+scene: S4
+capacite: E/F — voix & avatar parlant
+personnage: benchmarks/character_reference.png
+texte: "Enregistrement ~20 s FR naturel avec pauses (fournir aussi sa version jouée par l'utilisateur pour Seed-VC)"
+moteurs_voix: [modal_chatterbox, modal_seedvc]
+moteurs_avatar: [modal_longcat_avatar (prouvé, segments), modal_infinitetalk (challenger)]
+criteres: [respirations/timbre à l'écoute, naturel pendant les pauses, regard, gestuelle, identité aux raccords de segments]
+seuil: ">= 4/5 ; critère éliminatoire : 'photo dont la bouche bouge'"
+statut: LongCat prouvé en segment unique (ancien studio) ; enchaînement long à valider

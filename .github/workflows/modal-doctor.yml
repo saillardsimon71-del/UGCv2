@@ -1,0 +1,74 @@
+name: Modal - diagnostic (lecture seule par défaut)
+
+# Objectif : prouver l'identité du compte Modal et l'état des apps/modèles
+# AVANT toute dépense. doctor() et les builds CPU sont facturables et demandent
+# une confirmation distincte. Sans confirmation : lecture des métadonnées seulement.
+# Secrets requis (Settings > Secrets and variables > Actions) :
+#   MODAL_TOKEN_ID, MODAL_TOKEN_SECRET  (jamais dans le chat ni dans le code)
+
+on:
+  workflow_dispatch:
+    inputs:
+      worker:
+        description: Worker à diagnostiquer
+        type: choice
+        options: [tous, face, lipsync, voice, perf]
+        default: tous
+      deploy_first:
+        description: Déployer le(s) worker(s) avant doctor (build d'image, pas de GPU de rendu)
+        type: boolean
+        default: false
+      confirm_compute:
+        description: 'Taper "oui" pour autoriser les builds et diagnostics CPU facturables'
+        type: string
+        default: "non"
+
+permissions:
+  contents: read
+
+jobs:
+  doctor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: ${{ vars.STUDIO_MODAL_WORKSPACE || 'lucj76861' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install modal
+      - name: "Identité du compte (lue sur le jeton)"
+        run: |
+          python - <<'PY'
+          import os
+          import modal
+          workspace = modal.Workspace.from_context().hydrate().name
+          expected = os.environ["STUDIO_MODAL_WORKSPACE"]
+          if workspace != expected:
+              raise SystemExit(f"Workspace Modal inattendu : {workspace} (attendu {expected})")
+          print(f"Workspace vérifié : {workspace}")
+          PY
+          modal app list | head -n 40
+          modal volume list | head -n 40
+      - name: Doctor face (FaceFusion)
+        if: ${{ inputs.confirm_compute == 'oui' && (inputs.worker == 'tous' || inputs.worker == 'face') }}
+        run: |
+          if [ "${{ inputs.deploy_first }}" = true ]; then modal deploy deploy/modal_face_worker.py; fi
+          modal run deploy/modal_face_worker.py --mode doctor
+      - name: Doctor lipsync (LatentSync / MuseTalk)
+        if: ${{ inputs.confirm_compute == 'oui' && (inputs.worker == 'tous' || inputs.worker == 'lipsync') }}
+        run: |
+          if [ "${{ inputs.deploy_first }}" = true ]; then modal deploy deploy/modal_lipsync_worker.py; fi
+          modal run deploy/modal_lipsync_worker.py --mode doctor
+      - name: Doctor voice (Chatterbox / Seed-VC)
+        if: ${{ inputs.confirm_compute == 'oui' && (inputs.worker == 'tous' || inputs.worker == 'voice') }}
+        run: |
+          if [ "${{ inputs.deploy_first }}" = true ]; then modal deploy deploy/modal_voice_worker.py; fi
+          modal run deploy/modal_voice_worker.py --mode doctor
+      - name: Doctor perf (WanGP Animate2 / SCAIL-2)
+        if: ${{ inputs.confirm_compute == 'oui' && (inputs.worker == 'tous' || inputs.worker == 'perf') }}
+        run: |
+          if [ "${{ inputs.deploy_first }}" = true ]; then modal deploy deploy/modal_perf_worker.py; fi
+          modal run deploy/modal_perf_worker.py --mode doctor

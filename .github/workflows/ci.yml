@@ -1,0 +1,26 @@
+name: CI — tests studio (aucun GPU)
+
+on:
+  push:
+    branches: [main, "arena/**"]
+  pull_request:
+
+jobs:
+  backend-frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Installer le backend
+        run: pip install -r backend/requirements.txt
+      - name: Tests (pipeline, routeur, montage, QC, garde-fou dépense)
+        run: python -m pytest tests/ -q
+      - name: Vérifier la syntaxe des workers Modal (sans les exécuter)
+        run: python -m py_compile deploy/*.py
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: Build de l'interface (TypeScript strict)
+        working-directory: frontend
+        run: npm install --no-audit --no-fund && npm run build
