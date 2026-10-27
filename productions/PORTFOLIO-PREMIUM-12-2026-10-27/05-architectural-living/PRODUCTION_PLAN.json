@@ -21,13 +21,13 @@
     ],
     "upscaled_master": true
   },
-  "generation_status": "prepared_not_started",
+  "generation_status": "real_final_mp4_technical_checks_passed",
   "preparation_status": "prepared_sources_verified",
   "executable": true,
   "hold_reason": null,
   "pilot": true,
   "human_review_required": true,
-  "quality_grade": null,
+  "quality_grade": "B",
   "publish": false,
   "max_concurrent_gpu": 1,
   "attempts_per_shot": 1,
@@ -264,5 +264,7 @@
         "Vrai MP4 décodable, durée et conditionnement image documentés"
       ]
     }
-  ]
+  ],
+  "production_location": "Local persistent process calling existing Modal pvs-ltx",
+  "workflow_execution_note": "GitHub GPU stages skipped after CPU setup failure. Local receipts are the real production proof; GitHub used for archive only."
 }

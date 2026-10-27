@@ -13,7 +13,7 @@ from array import array
 from datetime import datetime, timezone
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 RATE = 0.00078888
@@ -108,6 +108,12 @@ def render(film, shot_id, confirm):
     receipt_path = folder / "REPORTS" / f"shot-{shot_id}-receipt.json"
     if receipt_path.exists() or (folder / shot["render_path"]).exists():
         raise ValueError("Tentative existante : aucune régénération automatique autorisée")
+    prior_attempts = list((folder / "REPORTS/ATTEMPTS").glob(f"shot-{shot_id}-*.json"))
+    attempt = 1 + len(prior_attempts)
+    if attempt > 1:
+        manual = json.loads((folder / "REPORTS/MANUAL_TECHNICAL_RETRY.json").read_text(encoding="utf-8"))
+        if attempt != 2 or manual["shot"] != shot_id or manual["max_total_attempts"] != 2:
+            raise ValueError("Nouvel essai technique hors limite explicite")
     import modal
 
     if modal.Workspace.from_context().hydrate().name != "lucj76861":
@@ -122,7 +128,7 @@ def render(film, shot_id, confirm):
     receipt = {"film": film, "shot": shot_id, "status": "starting", "started_at": now(), "workspace": "lucj76861",
                "app": "pvs-ltx", "function": "render_clip", "source_sha256": hashlib.sha256(png).hexdigest(),
                "submitted_parameters": {k:v for k,v in payload.items() if k != "image_png_base64"},
-               "github_run_id": os.environ.get("GITHUB_RUN_ID"), "actual_billed_usd": None, "attempt": 1}
+               "github_run_id": os.environ.get("GITHUB_RUN_ID"), "actual_billed_usd": None, "attempt": attempt}
     save(receipt_path, receipt)
     call = None
     completed = False
@@ -146,7 +152,7 @@ def render(film, shot_id, confirm):
                 result = call.get(timeout=min(20, remaining))
                 completed = True
                 break
-            except modal.exception.TimeoutError:
+            except (TimeoutError, modal.exception.TimeoutError):
                 print(f"{film}/{shot_id} : {round(time.monotonic()-started)} s d'attente", flush=True)
         raw = base64.b64decode(result["video_base64"], validate=True)
         path = folder / shot["render_path"]
@@ -240,6 +246,8 @@ def assemble(film):
     folder, plan = load_plan(film)
     if not plan["executable"]:
         raise ValueError("Film suspendu")
+    if plan.get("final_edit_script"):
+        raise ValueError("Montage final dédié : utiliser " + plan["final_edit_script"] + " ; ne pas écraser la V2 avec le montage initial")
     prepared = folder / "REPORTS/EDIT"
     prepared.mkdir(exist_ok=True)
     paths = []
@@ -294,11 +302,12 @@ def assemble(film):
             raise ValueError("Durée, cadence ou audio incorrects")
         command(["ffmpeg", "-v", "error", "-xerror", "-i", str(path), "-f", "null", "-"])
         reports.append({"path": str(path.relative_to(ROOT)), "probe": info, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "full_decode": "pass"})
-    command(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-ss", "11", "-i", str(final), "-frames:v", "1", str(folder / "EXPORTS/THUMBNAIL.jpg")])
+    with Image.open(folder / plan["shots"][2]["source"]["firstframe"]) as thumbnail:
+        ImageOps.fit(thumbnail.convert("RGB"), (720, 1280), method=Image.Resampling.LANCZOS).save(folder / "EXPORTS/THUMBNAIL.jpg", quality=94)
     command(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(final), "-vf", "fps=2,scale=144:256,tile=7x5", "-frames:v", "1", str(folder / "REPORTS/FINAL-CONTACT.jpg")])
     meter = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(final), "-af", "ebur128=peak=true", "-f", "null", "-"], capture_output=True, text=True, timeout=120, encoding="utf-8", errors="replace")
     (folder / "REPORTS/AUDIO-METER.txt").write_text(meter.stderr[-1800:], encoding="utf-8")
-    save(folder / "REPORTS/TECHNICAL_REPORT.json", {"at": now(), "exports": reports, "native_render": "768x1344/24fps, 121 frames each", "master": "crop and upscale to 1080x1920, not native 1080p generation", "audio": "licensed music and original sound design; native LTX track excluded", "creative_verdict": "pending real-video review and human listening"})
+    save(folder / "REPORTS/TECHNICAL_REPORT.json", {"at": now(), "exports": reports, "native_render": "768x1344/24fps, 121 frames each", "master": "crop and upscale to 1080x1920, not native 1080p generation", "thumbnail": "Pexels photographic source, deterministic crop only", "audio": "licensed music and original sound design; native LTX track excluded", "creative_verdict": "pending real-video review and human listening"})
     save(folder / "REPORTS/STATUS.json", {"film": film, "status": "real_final_mp4_technical_checks_passed", "quality": None,
          "actual_billed_usd": None, "final_mp4": str(final.relative_to(ROOT)), "review": "visual_and_critical_audio_review_pending", "publish": False,
          "github_run_id": os.environ.get("GITHUB_RUN_ID"), "defects": [], "warning": "Automatic checks do not validate artistic quality"})

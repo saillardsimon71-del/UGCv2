@@ -1,0 +1,12 @@
+{
+  "credits_dashboard_usd": 29.5,
+  "total_cycle_usage_dashboard_usd": 0.5,
+  "initial_cycle_usage_usd": 0.2,
+  "campaign_delta_dashboard_estimate_usd": 0.3,
+  "worker_partial_estimate_usd": 0.2909,
+  "dashboard_breakdown_sum_seen_usd": 0.66,
+  "counters_not_fully_settled": true,
+  "actual_billed_usd": null,
+  "new_gpu_input_before_next_pilot": 0,
+  "next_authorized_pilot": "05-architectural-living"
+}

@@ -3,5 +3,9 @@
   "reason": "GitHub Ubuntu CPU package download remained in progress for over seven minutes; cancelled before render stages.",
   "gpu_started": false,
   "gpu_retries": 0,
-  "cpu_reruns_allowed": 1
+  "cpu_reruns_allowed": 1,
+  "retry_run_id": 40570877880,
+  "retry_result": "CPU setup timeout after five minutes",
+  "gpu_steps_skipped": 3,
+  "fallback": "Persistent local process, pvs-ltx existing function"
 }

@@ -1,0 +1,10 @@
+{
+  "shot": "01",
+  "max_total_attempts": 2,
+  "automatic": false,
+  "reason": "Normal SDK poll TimeoutError was not caught; first call cancelled after about 22 seconds. Handler corrected and three CPU regression tests pass.",
+  "first_call_id": "fc-01M5ZE9RADNFGP8CR1C1QV52T9",
+  "credits_dashboard_after_first_attempt_usd": 29.78,
+  "dashboard_delta_estimate_usd": 0.02,
+  "actual_billed_usd": null
+}

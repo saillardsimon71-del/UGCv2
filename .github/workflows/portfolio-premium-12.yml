@@ -25,6 +25,7 @@ concurrency:
 
 jobs:
   production:
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'RUN_PREMIUM_03' || github.event.head_commit.message == 'RUN_PREMIUM_05' || github.event.head_commit.message == 'PREPARE_PREMIUM_12_20261027'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
@@ -83,6 +84,7 @@ jobs:
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/${{ steps.choose.outputs.film }}/REPORTS/shot-01-*
           retention-days: 90
           compression-level: 0
+
       - name: Prise 02, worker existant, un essai
         if: steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         env:
@@ -121,6 +123,24 @@ jobs:
           path: |
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/${{ steps.choose.outputs.film }}/
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.py
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.json
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.md
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PORTFOLIO_SUMMARY.md
+          retention-days: 90
+          compression-level: 0
+
+  archive:
+    if: github.event.head_commit.message == 'ARCHIVE_PREMIUM_PILOTS'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PREMIUM12-REAL-PILOTS-${{ github.run_id }}
+          path: |
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/03-skincare-sensoriel/
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/05-architectural-living/
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.json
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.md
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/PORTFOLIO_SUMMARY.md

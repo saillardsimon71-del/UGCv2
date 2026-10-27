@@ -1,0 +1,7 @@
+{
+  "film": "03-skincare-sensoriel",
+  "status": "real_mp4_created_pending_review",
+  "started_at": "2026-10-27T19:49:47.857742+00:00",
+  "purpose": "Persistent local fallback after GitHub CPU setup failure; existing Modal deployment only",
+  "finished_at": "2026-10-27T19:56:55.856482+00:00"
+}

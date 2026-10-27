@@ -29,3 +29,5 @@ La [licence LTX-2.x](https://github.com/Lightricks/LTX-2/blob/main/LICENSE-2_x) 
 La limite d'artefacts de UGCv2 lue via l'API GitHub est de 90 jours. Le workflow demande 90 jours, et l'expiration effective de chaque artefact produit devra être lue après exécution. Les anciens artefacts ECLAT/PULSE du run 40302562256 expirent le 25 novembre 2026. Le diagnostic Modal ne contient aucun artefact média : ne pas y chercher les nouveaux films.
 
 Les nouveaux MP4 seront téléchargés localement en plus de leur artefact GitHub. Aucun showreel et aucune modification de SiteQuiVend.fr dans cette mission.
+
+La préparation est effectivement conservée par l'artefact `PREMIUM12-none-delivery-40569251898`, ID 12763907705, expiration lue : 2027-01-25T19:27:17Z. Les deux tentatives de lancement GitHub ont échoué avant GPU à l'installation CPU Ubuntu ; le rendu passe au lanceur local persistant sans modifier Modal. Ces échecs CPU ne sont pas des essais GPU ni une preuve d'échec de LTX.

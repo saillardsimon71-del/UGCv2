@@ -1,10 +1,23 @@
 {
   "film": "03-skincare-sensoriel",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "03-skincare-sensoriel/EXPORTS/03-SKINCARE-SENSORIEL-V2-MASTER-1080x1920.mp4",
+  "review": "Real MP4 sampled at 4 fps per shot and 2 fps final, plus full-resolution macro frame. No continuous playback or critical listening claimed.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Poussée macro plus ample que prévue ; fin la plus incertaine écartée dans la V2.",
+    "Fidélité de l'extrémité de pipette, rythme et musique à juger en lecture continue."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "recommendation": "Présenter la V2 de 15,5 s pour validation ; conserver B avant visionnage et écoute critiques. Aucun nouvel essai GPU.",
+  "partial_worker_estimate_usd": 0.2909,
+  "failed_gpu_starts": 1,
+  "automatic_gpu_retries": 0,
+  "dashboard_estimate_after_pilot_usd": 0.3,
+  "billing_counters_settled": false,
+  "duration_s": 15.5,
+  "version": "v2_cpu_refinement"
 }

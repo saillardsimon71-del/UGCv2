@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-27T20:13:06.788204+00:00",
+  "exports": [
+    {
+      "film": "03-skincare-sensoriel",
+      "file": "03-SKINCARE-SENSORIEL-V2-MASTER-1080x1920.mp4",
+      "bytes": 8841303,
+      "duration_s": "15.500000",
+      "frames": 372,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "faststart": true,
+      "sha256": "0f296e24077413734fb1c4ea0cd5038f564b71a8ad57176578364c7697551e6f",
+      "full_decode_previously_passed": true
+    },
+    {
+      "film": "03-skincare-sensoriel",
+      "file": "03-SKINCARE-SENSORIEL-V2-WEB-720x1280.mp4",
+      "bytes": 1809427,
+      "duration_s": "15.509000",
+      "frames": 372,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "faststart": true,
+      "sha256": "4b2a7f2ea301ee4662ae75824ccc72a8368213a80815fff9366586acf297defe",
+      "full_decode_previously_passed": true
+    },
+    {
+      "film": "05-architectural-living",
+      "file": "05-ARCHITECTURAL-LIVING-MASTER-1080x1920.mp4",
+      "bytes": 14442534,
+      "duration_s": "17.500000",
+      "frames": 420,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "faststart": true,
+      "sha256": "ffd0d8410e4f6d3aa15c25bece6ca9644259096834b1a82315c363c34c0dd375",
+      "full_decode_previously_passed": true
+    },
+    {
+      "film": "05-architectural-living",
+      "file": "05-ARCHITECTURAL-LIVING-WEB-720x1280.mp4",
+      "bytes": 3106009,
+      "duration_s": "17.514000",
+      "frames": 420,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "faststart": true,
+      "sha256": "f2e1ab7ad518be29c2b9c1020b5b9fbec16d0fc4ac720b0e9f55b2d2854283b9",
+      "full_decode_previously_passed": true
+    }
+  ],
+  "gpu_running_inputs": 0,
+  "gpu_backlog": 0,
+  "gpu_runners": 0,
+  "series_launched": false,
+  "site_modified": false,
+  "showreel_created": false,
+  "actual_invoice_available": false
+}

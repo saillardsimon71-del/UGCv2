@@ -1,10 +1,17 @@
 {
   "film": "05-architectural-living",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "05-architectural-living\\EXPORTS\\05-ARCHITECTURAL-LIVING-MASTER-1080x1920.mp4",
+  "review": "Trois vrais MP4 examinés par planches à 4 images/s, puis montage à 2 images/s. Pas de visionnage continu ni écoute critique attestés.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Déplacement de caméra plus ample que le mouvement prévu au storyboard.",
+    "Les deux plans larges restent proches : rythme et variété à valider en lecture continue."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "recommendation": "Candidat prioritaire pour la branche maison, sous réserve de validation humaine du mouvement, des raccords et du son.",
+  "partial_worker_estimate_usd": 0.247
 }

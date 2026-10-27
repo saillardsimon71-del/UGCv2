@@ -5,7 +5,7 @@
   "effective_additional_ceiling_at_start": 19.8,
   "pilot_envelope_usd": 5,
   "film_expected_scenario_usd": null,
-  "status": "scenario_not_invoice",
+  "status": "produced_partial_estimate_not_invoice",
   "rate_source": "https://modal.com/pricing",
   "checked_date": "2026-10-27",
   "ltx_assumption": {
@@ -28,5 +28,8 @@
   ],
   "protection": "Limite mensuelle workspace abaissée à 20 USD, usage initial 0,20 USD ; un seul appel GPU, un essai, arrêt sur échec. Pas de série automatique.",
   "hold": null,
-  "actual_source": "Dashboard Modal à relever avant et après chaque film. Les secondes retournées par le worker donnent uniquement une estimation partielle."
+  "actual_source": "Dashboard Modal à relever avant et après chaque film. Les secondes retournées par le worker donnent uniquement une estimation partielle.",
+  "completed_gpu_shots": 3,
+  "partial_worker_estimate_usd": 0.247,
+  "interrupted_gpu_starts": 0
 }

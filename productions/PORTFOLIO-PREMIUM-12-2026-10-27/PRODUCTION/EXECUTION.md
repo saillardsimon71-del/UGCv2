@@ -13,3 +13,11 @@ Annulation : `gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2`. Le lanceur
 L'annulation est une demande à vérifier dans le dashboard. Si la confirmation d'extinction ou la consommation manque, suspendre les nouveaux appels. Le timeout client et le timeout Actions ne garantissent pas la facture. Le plafond workspace a été abaissé à 20 USD ; du stockage peut continuer à être comptabilisé. Cette mission ne démarre donc pas de série nocturne sans surveillance.
 
 Les fichiers entrants sont Pexels. Les MP4 finaux ne sont créés que si les trois vrais rendus existent et passent le décodage. Un échec ne sera jamais remplacé par un diaporama ou une simulation. La miniature et le carton ne constituent pas des vidéos produites.
+
+## Exécution observée le 27 octobre
+
+Le précontrôle GitHub 40569251898 a réussi et archivé les douze préparations. Le premier job pilote 40569401219 a été annulé pendant l'installation Ubuntu de ffmpeg ; ses trois étapes GPU ont été sautées. Une seule reprise CPU, 40570877880, a atteint son délai de cinq minutes à la même étape et s'est arrêtée sans appel GPU.
+
+Le secours `PRODUCTION/local_pilot.py --film 03-skincare-sensoriel` réutilise les mêmes payloads et la fonction Modal déjà déployée. Il tourne dans un processus Windows séparé, fenêtre cachée, et écrit LOCAL_JOB.json, reçus par prise et journaux dans le dossier de campagne. Il survit à l'arrêt de la conversation mais ne démarre qu'un film explicitement sélectionné. Les prises sont séquentielles, sans reprise GPU automatique ; le premier échec arrête le processus. Le second pilote exige un lancement séparé après contrôle de consommation.
+
+Le workflow dispose aussi d'un job d'archivage qui n'installe aucun outil et ne reçoit aucun secret Modal : message de commit `ARCHIVE_PREMIUM_PILOTS`. Il sert uniquement à conserver les vrais MP4 et rapports déjà produits localement.

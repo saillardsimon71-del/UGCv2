@@ -5,11 +5,11 @@
   "workspace": "lucj76861",
   "environment": "main",
   "mode": "existing_deployment_only",
-  "target_duration_s": 17.5,
+  "target_duration_s": 15.5,
   "card_duration_s": 2.5,
   "output": {
-    "master": "EXPORTS/03-SKINCARE-SENSORIEL-MASTER-1080x1920.mp4",
-    "web": "EXPORTS/03-SKINCARE-SENSORIEL-WEB-720x1280.mp4",
+    "master": "EXPORTS/03-SKINCARE-SENSORIEL-V2-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/03-SKINCARE-SENSORIEL-V2-WEB-720x1280.mp4",
     "fps": 24,
     "aspect": "9:16",
     "codec": "H.264/AAC",
@@ -21,13 +21,13 @@
     ],
     "upscaled_master": true
   },
-  "generation_status": "prepared_not_started",
+  "generation_status": "real_final_mp4_technical_checks_passed",
   "preparation_status": "prepared_sources_verified",
   "executable": true,
   "hold_reason": null,
   "pilot": true,
   "human_review_required": true,
-  "quality_grade": null,
+  "quality_grade": "B",
   "publish": false,
   "max_concurrent_gpu": 1,
   "attempts_per_shot": 1,
@@ -67,7 +67,7 @@
       "shot_id": "01",
       "duration_requested_s": 5,
       "timeline_start_s": 0,
-      "timeline_duration_s": 5,
+      "timeline_duration_s": 3,
       "native_frames": 121,
       "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
       "app": "pvs-ltx",
@@ -133,7 +133,7 @@
     {
       "shot_id": "02",
       "duration_requested_s": 5,
-      "timeline_start_s": 5,
+      "timeline_start_s": 3,
       "timeline_duration_s": 5,
       "native_frames": 121,
       "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
@@ -200,7 +200,7 @@
     {
       "shot_id": "03",
       "duration_requested_s": 5,
-      "timeline_start_s": 10,
+      "timeline_start_s": 8,
       "timeline_duration_s": 5,
       "native_frames": 121,
       "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
@@ -264,5 +264,8 @@
         "Vrai MP4 décodable, durée et conditionnement image documentés"
       ]
     }
-  ]
+  ],
+  "final_edit_script": "PRODUCTION/finish_serum_v2.py",
+  "production_location": "Local persistent process calling existing Modal pvs-ltx",
+  "workflow_execution_note": "GitHub GPU stages skipped after CPU setup failure. Local receipts are the real production proof; GitHub used for archive only."
 }

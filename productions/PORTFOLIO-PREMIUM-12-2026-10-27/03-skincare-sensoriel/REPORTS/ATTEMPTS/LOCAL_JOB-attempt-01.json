@@ -1,0 +1,8 @@
+{
+  "film": "03-skincare-sensoriel",
+  "status": "stopped_on_error",
+  "started_at": "2026-10-27T19:44:47.989999+00:00",
+  "purpose": "Persistent local fallback after GitHub CPU setup failure; existing Modal deployment only",
+  "error": "Command '['C:\\\\Users\\\\saill\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\python.exe', 'C:\\\\Users\\\\saill\\\\Documents\\\\Codex\\\\2026-10-27\\\\mission-work-sitequivend-important-peu-importe\\\\PORTFOLIO-PREMIUM-12-2026-10-27\\\\PRODUCTION\\\\run_campaign.py', 'render', '--film', '03-skincare-sensoriel', '--shot', '01', '--confirm-spend', 'oui']' returned non-zero exit status 1.",
+  "finished_at": "2026-10-27T19:45:12.904725+00:00"
+}
