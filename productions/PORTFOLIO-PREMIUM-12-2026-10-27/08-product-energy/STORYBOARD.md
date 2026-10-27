@@ -62,4 +62,3 @@ Bold final beverage hero shot from this authentic mint-background product photo.
 ## Plan 04 : 15.0-17.5 s
 
 Carton fixe CPU : ZESTE / Mettez de la couleur.. Image : ASSETS/endcard.png. Aucun moteur vidéo. Musique fondue sur 0,65 s. Validation : lisibilité, accents, absence de fausse collaboration et de résultat inventé.
-

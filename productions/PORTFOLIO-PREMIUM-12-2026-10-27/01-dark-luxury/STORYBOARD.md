@@ -62,4 +62,3 @@ Final premium perfume hero shot using this real photographic reference. Preserve
 ## Plan 04 : 15.0-17.5 s
 
 Carton fixe CPU : NOCTURNE / Le silence a une présence.. Image : ASSETS/endcard.png. Aucun moteur vidéo. Musique fondue sur 0,65 s. Validation : lisibilité, accents, absence de fausse collaboration et de résultat inventé.
-

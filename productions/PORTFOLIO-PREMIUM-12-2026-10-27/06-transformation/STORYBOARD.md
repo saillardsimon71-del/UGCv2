@@ -62,4 +62,3 @@ Warm premium home lighting closing shot using the exact white dome lamp from the
 ## Plan 04 : 15.0-17.5 s
 
 Carton fixe CPU : JUSTE UNE LUMIÈRE / Et l'ambiance change.. Image : ASSETS/endcard.png. Aucun moteur vidéo. Musique fondue sur 0,65 s. Validation : lisibilité, accents, absence de fausse collaboration et de résultat inventé.
-

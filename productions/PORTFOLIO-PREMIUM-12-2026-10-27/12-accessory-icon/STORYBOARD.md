@@ -62,4 +62,3 @@ Final premium accessory lifestyle reveal from this exact authentic interior phot
 ## Plan 04 : 15.0-17.5 s
 
 Carton fixe CPU : OBJET DE LIGNE / Le détail fait présence.. Image : ASSETS/endcard.png. Aucun moteur vidéo. Musique fondue sur 0,65 s. Validation : lisibilité, accents, absence de fausse collaboration et de résultat inventé.
-

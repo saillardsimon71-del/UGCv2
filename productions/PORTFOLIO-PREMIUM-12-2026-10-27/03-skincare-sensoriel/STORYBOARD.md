@@ -62,4 +62,3 @@ Impeccable final skincare packshot from this genuine photographic source. Preser
 ## Plan 04 : 15.0-17.5 s
 
 Carton fixe CPU : UNE GOUTTE / Le temps d'un rituel.. Image : ASSETS/endcard.png. Aucun moteur vidéo. Musique fondue sur 0,65 s. Validation : lisibilité, accents, absence de fausse collaboration et de résultat inventé.
-

@@ -62,4 +62,3 @@ Minimal premium notebook campaign closing shot from the same authentic photograp
 ## Plan 04 : 15.0-17.5 s
 
 Carton fixe CPU : UNE PAGE / Faites place à vos idées.. Image : ASSETS/endcard.png. Aucun moteur vidéo. Musique fondue sur 0,65 s. Validation : lisibilité, accents, absence de fausse collaboration et de résultat inventé.
-

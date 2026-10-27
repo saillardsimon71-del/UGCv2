@@ -62,4 +62,3 @@ Final high-end interior campaign composition from this exact real reference room
 ## Plan 04 : 15.0-17.5 s
 
 Carton fixe CPU : HABITER / L'espace prend son temps.. Image : ASSETS/endcard.png. Aucun moteur vidéo. Musique fondue sur 0,65 s. Validation : lisibilité, accents, absence de fausse collaboration et de résultat inventé.
-
