@@ -1,0 +1,8 @@
+scene: S2
+capacite: D — synchronisation labiale
+source: "Vidéo de parole autorisée 12 s"
+texte: "Bonjour, bienvenue ! Papa prépare un fabuleux buffet : pommes, mamans, bébés — tout le monde participe, même en février."
+moteurs: [modal_musetalk (brouillon), modal_latentsync (production)]
+criteres: [fermetures b/m/p, dents/langue, zéro dérive à 12 s, halos buccaux, secondes GPU par seconde vidéo]
+seuil: ">= 4/5 revue humaine"
+statut: à exécuter — prepare des poids requis (docs/MODAL.md)

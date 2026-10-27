@@ -1,0 +1,7 @@
+scene: S5
+capacite: H — production complète 30 s (après S1-S4 >= seuil)
+brief: "Application qui répond aux e-mails des artisans — hook avatar, problème, démo LTX, preuve, CTA"
+moteurs: [storyboard studio, avatar gagnant S4, modal_ltx, montage ffmpeg]
+criteres: [test spectateur premier visionnage, cohérence du personnage entre plans, coût par vidéo acceptée]
+seuil: "livrable client sans réserve + coût documenté"
+statut: bloqué par S1-S4 (volontairement)

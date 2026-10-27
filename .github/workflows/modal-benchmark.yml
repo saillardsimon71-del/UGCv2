@@ -1,0 +1,59 @@
+name: Modal — benchmark GPU (dépense explicite)
+
+# Premier rendu réel d'un moteur = une scène de référence courte (docs/BENCHMARKS.md).
+# Garde-fou : rien ne part sans confirm_spend = "oui", tapé par un humain.
+# Les MP4 reviennent en artifacts du run ; ils sont ensuite jugés À L'ŒIL dans
+# le studio (comparaison A/B + revue humaine). Un MP4 produit n'est pas une
+# preuve de qualité.
+
+on:
+  workflow_dispatch:
+    inputs:
+      scene:
+        description: Scène de référence
+        type: choice
+        options: [S1-faceswap, S2-lipsync-compare, S3-perf-validate, S4-avatar, S4-voice]
+        default: S3-perf-validate
+      confirm_spend:
+        description: 'Taper "oui" pour confirmer la dépense GPU'
+        required: true
+        default: "non"
+
+jobs:
+  benchmark:
+    if: ${{ inputs.confirm_spend == 'oui' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install modal
+      - name: S3 — valider le settings WanGP (dry-run, avant tout rendu long)
+        if: ${{ inputs.scene == 'S3-perf-validate' }}
+        run: |
+          modal deploy deploy/modal_perf_worker.py
+          modal run deploy/modal_perf_worker.py --mode validate --model animate2
+          modal run deploy/modal_perf_worker.py --mode validate --model scail2_14B
+      - name: Préparer les poids lipsync (CPU, une fois)
+        if: ${{ inputs.scene == 'S2-lipsync-compare' }}
+        run: |
+          modal deploy deploy/modal_lipsync_worker.py
+          modal run deploy/modal_lipsync_worker.py --mode prepare
+      - name: Déployer les workers S1/S4
+        if: ${{ contains('S1-faceswap,S4-avatar,S4-voice', inputs.scene) }}
+        run: |
+          modal deploy deploy/modal_face_worker.py || true
+          modal deploy deploy/modal_voice_worker.py || true
+          echo "Workers déployés. Lancez ensuite les scènes depuis le STUDIO"
+          echo "(serveur avec STUDIO_MODAL_ENABLED=1) pour comparer les prises A/B,"
+          echo "ou via scripts/benchmark_modal.py en local. Voir docs/BENCHMARKS.md."
+      - name: Rappel du protocole de jugement
+        run: |
+          echo "Ne pas conclure depuis les logs : importer les MP4 dans le studio,"
+          echo "comparer les deux moteurs sur LA MÊME source, noter /5 en revue"
+          echo "humaine (identité, lèvres, mains, dents), puis seulement passer le"
+          echo "moteur gagnant en maturity=production dans registry.py / docs/STATE.md."

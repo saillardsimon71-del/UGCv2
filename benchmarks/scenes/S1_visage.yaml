@@ -1,0 +1,8 @@
+scene: S1
+capacite: A — remplacement de visage
+source: "Vidéo autorisée 10 s : face caméra -> 3/4 -> main devant le visage -> retour face"
+personnage: benchmarks/character_reference.png
+moteurs: [modal_facefusion (production), modal_animate2 (premium/remplacement)]
+criteres: [identité en 3/4, raccord cou, occlusion main, absence d'effet masque, peau/lumière]
+seuil: ">= 4/5 revue humaine, toutes cases cochées, 2 visionnages"
+statut: à exécuter (voir docs/BENCHMARKS.md)

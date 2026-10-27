@@ -1,0 +1,10 @@
+scene: S3
+capacite: B/C — remplacement de personne & transfert de mouvement
+etape_0: "workflow Modal — benchmark GPU : S3-perf-validate (dry-run WanGP)"
+source: "Performance 8 s : marche vers caméra, geste main, saisie et pose d'un objet"
+personnage: benchmarks/character_reference.png
+moteurs: [modal_animate2, modal_scail2]
+modes: [animation, remplacement]
+criteres: [mains, contact objet, morphologie en marche, intégration décor/lumière, identité]
+seuil: ">= 4/5 ; le gagnant devient le défaut du routeur (recipes.py)"
+statut: à exécuter

@@ -1,0 +1,7 @@
+[project]
+name = "ugc-studio"
+version = "0.1.0"
+description = "Studio audiovisuel IA — commander une vidéo, pas un pipeline"
+requires-python = ">=3.11"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
