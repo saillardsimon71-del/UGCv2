@@ -1,0 +1,7 @@
+{
+  "run_id": 40569401219,
+  "reason": "GitHub Ubuntu CPU package download remained in progress for over seven minutes; cancelled before render stages.",
+  "gpu_started": false,
+  "gpu_retries": 0,
+  "cpu_reruns_allowed": 1
+}

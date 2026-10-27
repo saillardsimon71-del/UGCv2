@@ -39,6 +39,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Outils CPU, aucun build Modal
+        timeout-minutes: 5
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y ffmpeg fonts-dejavu-core
@@ -68,12 +69,12 @@ jobs:
       - name: Vérifier les 12 dossiers et les 36 sources sans calcul distant
         run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" check
       - name: Prise 01, worker existant, un essai
-        if: steps.choose.outputs.film != 'none'
+        if: steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         env:
           FILM: ${{ steps.choose.outputs.film }}
         run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" render --film "$FILM" --shot 01 --confirm-spend oui
       - name: Conserver la première prise avant la suivante
-        if: always() && steps.choose.outputs.film != 'none'
+        if: always() && steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         uses: actions/upload-artifact@v4
         with:
           name: PREMIUM12-${{ steps.choose.outputs.film }}-shot01-${{ github.run_id }}
@@ -83,12 +84,12 @@ jobs:
           retention-days: 90
           compression-level: 0
       - name: Prise 02, worker existant, un essai
-        if: steps.choose.outputs.film != 'none'
+        if: steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         env:
           FILM: ${{ steps.choose.outputs.film }}
         run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" render --film "$FILM" --shot 02 --confirm-spend oui
       - name: Conserver la deuxième prise avant la suivante
-        if: always() && steps.choose.outputs.film != 'none'
+        if: always() && steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         uses: actions/upload-artifact@v4
         with:
           name: PREMIUM12-${{ steps.choose.outputs.film }}-shot02-${{ github.run_id }}
@@ -98,28 +99,30 @@ jobs:
           retention-days: 90
           compression-level: 0
       - name: Prise 03, worker existant, un essai
-        if: steps.choose.outputs.film != 'none'
+        if: steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         env:
           FILM: ${{ steps.choose.outputs.film }}
         run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" render --film "$FILM" --shot 03 --confirm-spend oui
       - name: Monter les trois vrais rendus et contrôler le MP4 final
-        if: steps.choose.outputs.film != 'none'
+        if: steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         env:
           FILM: ${{ steps.choose.outputs.film }}
         run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" assemble --film "$FILM"
       - name: Annuler l'appel actif en cas d'échec ou d'interruption
-        if: always() && (failure() || cancelled()) && steps.choose.outputs.film != 'none'
+        if: always() && (failure() || cancelled()) && steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         env:
           FILM: ${{ steps.choose.outputs.film }}
         run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" cancel --film "$FILM"
       - name: Conserver sources, prises, exports et reçus
-        if: always()
+        if: always() && steps.choose.outputs.film != '' && steps.choose.outputs.film != 'none'
         uses: actions/upload-artifact@v4
         with:
           name: PREMIUM12-${{ steps.choose.outputs.film }}-delivery-${{ github.run_id }}
           path: |
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/
-            !productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/SOURCE_REVIEW/
-            !productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/PREVIOUS_REVIEW/
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/${{ steps.choose.outputs.film }}/
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.py
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.json
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.md
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PORTFOLIO_SUMMARY.md
           retention-days: 90
           compression-level: 0

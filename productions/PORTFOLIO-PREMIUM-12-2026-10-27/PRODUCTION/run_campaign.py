@@ -253,11 +253,29 @@ def assemble(film):
         paths.append(dst)
     card = prepared / "endcard.mp4"
     command(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-loop", "1", "-i", str(folder / "ASSETS/endcard.png"), "-t", "2.5", "-r", "24", "-vf", "setsar=1,format=yuv420p", "-an", "-c:v", "libx264", "-preset", "fast", "-crf", "17", str(card)])
+    if film.startswith("08-"):
+        timeline = [(0,0,1.5), (1,0,1), (0,1.5,1.25), (2,0,1.25), (1,1,1.5),
+                    (2,1.25,1.75), (0,2.75,2.25), (1,2.5,2.5), (2,3,2)]
+        recut = []
+        for index, (source_index, start, duration) in enumerate(timeline):
+            target = prepared / f"energy-{index:02d}.mp4"
+            command(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-ss", str(start), "-i", str(paths[source_index]), "-t", str(duration), "-an", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p", str(target)])
+            recut.append(target)
+        paths = recut
     paths.append(card)
     listing = prepared / "concat.txt"
     listing.write_text("".join("file '"+p.resolve().as_posix()+"'\n" for p in paths), encoding="utf-8")
     picture = prepared / "picture.mp4"
     command(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(listing), "-c", "copy", str(picture)])
+    if plan["edit_structure"]:
+        from graphics import AssStyle, Event, build_ass
+
+        events = [Event(start=e["at"], end=e["until"], text=e["text"], style="AdCopy") for e in plan["edit_structure"]]
+        overlay = build_ass(events, prepared / "ad-copy.ass", styles=[AssStyle(name="AdCopy", size=54, alignment=8, margin_v=165, outline=2.5)])
+        escaped = str(overlay.resolve()).replace("\\", "/").replace(":", r"\:").replace("'", r"\'")
+        with_copy = prepared / "picture-with-copy.mp4"
+        command(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(picture), "-vf", f"subtitles=filename='{escaped}'", "-an", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p", str(with_copy)])
+        picture = with_copy
     effects = prepared / "sound-design.wav"
     sound_design(film, 17.5, effects)
     final, web = folder / plan["output"]["master"], folder / plan["output"]["web"]
