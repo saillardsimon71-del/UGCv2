@@ -1,0 +1,32 @@
+{
+  "currency": "USD",
+  "actual_billed_usd": null,
+  "campaign_authorization_ceiling": 20,
+  "effective_additional_ceiling_at_start": 19.8,
+  "pilot_envelope_usd": 5,
+  "film_expected_scenario_usd": null,
+  "status": "scenario_not_invoice",
+  "rate_source": "https://modal.com/pricing",
+  "checked_date": "2026-10-27",
+  "ltx_assumption": {
+    "gpu_L40S_per_s": 0.000542,
+    "cpu_8_cores_per_s": 0.0001048,
+    "memory_64_GiB_per_s": 0.00014208,
+    "combined_reserved_per_s": 0.00078888
+  },
+  "three_calls_at_120_to_300_seconds_usd": [
+    0.284,
+    0.71
+  ],
+  "three_client_deadlines_600s_plus_180s_margin_scenario_usd": 1.562,
+  "not_a_cap": true,
+  "unresolved": [
+    "Temps de chargement et cold start facturés, non bornés par le délai client",
+    "CPU et RAM peuvent être facturés au-delà de la réservation",
+    "Facture inclut échecs, arrêt, stockage et éventuel egress",
+    "Aucun build ni téléchargement de modèle autorisé par ce job"
+  ],
+  "protection": "Limite mensuelle workspace abaissée à 20 USD, usage initial 0,20 USD ; un seul appel GPU, un essai, arrêt sur échec. Pas de série automatique.",
+  "hold": null,
+  "actual_source": "Dashboard Modal à relever avant et après chaque film. Les secondes retournées par le worker donnent uniquement une estimation partielle."
+}

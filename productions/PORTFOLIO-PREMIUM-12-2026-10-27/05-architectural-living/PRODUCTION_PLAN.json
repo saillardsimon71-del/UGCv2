@@ -1,0 +1,268 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "05-architectural-living",
+  "title": "ARCHITECTURAL LIVING",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/05-ARCHITECTURAL-LIVING-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/05-ARCHITECTURAL-LIVING-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": true,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "reverie",
+    "execution_track": "reverie",
+    "start_s": 91,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/reverie/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Air de pièce, léger froissement de rideau seulement si présent, transitions aérées sans effets de chantier.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 15743373,
+        "page": "https://www.pexels.com/photo/armchair-and-carpet-in-room-15743373/",
+        "category": "maison",
+        "download": "https://images.pexels.com/photos/15743373/pexels-photo-15743373.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\15743373.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "47d5a487ff7287e32a8f4154c7048dc16af8e3c1536a56a6a56ce8a9a62fdc4c",
+        "author_evidence": [
+          {
+            "name": "Ushindi Namegabe",
+            "page": "https://www.pexels.com/@ushindinamegabe/"
+          }
+        ],
+        "crop_fraction": [
+          0.02,
+          0.02,
+          0.98,
+          0.98
+        ],
+        "crop_pixels": [
+          48,
+          72,
+          2352,
+          3528
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "ab9d6ba5136e7d628dc0cde01ee41824faeda4e52d530d50eaaa8b1d76dc899c",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "warm-neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Plan d'ensemble vertical depuis l'entrée",
+      "camera": "Travelling avant de 4 cm maximum",
+      "lighting": "Fenêtre existante à gauche, lumière chaude naturelle, ombres directionnelles constantes.",
+      "action": "Lumière stable ; une ombre végétale respire très légèrement.",
+      "preserve": "Fenêtre, montants, fauteuil, tapis, plante, console et lampe, proportions et perspective de la même pièce.",
+      "prompt": "High-end architectural living film using this authentic interior photograph as the exact reference. Preserve the same room, window frame and muntins, dark slim armchair, rug, wood floor, plant, console and table lamp in their original positions. Very slow straight four-centimeter camera push into the room, no orbit, no pan. Natural warm window daylight, consistent perspective, detailed wood and fabric, restrained cinematic contrast. Only an almost imperceptible natural plant shadow movement. All furniture and architecture stay rigid and stationary. No new objects, people, doors or windows, no changing furniture, no text, no logo, no cut. Quiet indoor room tone only, no voice or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Ambiance de pièce feutrée",
+      "transition": "Coupe vers la matière du fauteuil",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 15743373,
+        "page": "https://www.pexels.com/photo/armchair-and-carpet-in-room-15743373/",
+        "category": "maison",
+        "download": "https://images.pexels.com/photos/15743373/pexels-photo-15743373.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\15743373.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "47d5a487ff7287e32a8f4154c7048dc16af8e3c1536a56a6a56ce8a9a62fdc4c",
+        "author_evidence": [
+          {
+            "name": "Ushindi Namegabe",
+            "page": "https://www.pexels.com/@ushindinamegabe/"
+          }
+        ],
+        "crop_fraction": [
+          0.14,
+          0.37,
+          0.74,
+          0.95
+        ],
+        "crop_pixels": [
+          336,
+          1332,
+          1776,
+          3420
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "5b69068c64d51d4d229bb4852d8cdf232686a5e7848de97bee3cdb4e93fae6a0",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "warm-neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Plan rapproché fauteuil et parquet",
+      "camera": "Glissement latéral de 2 cm",
+      "lighting": "Fenêtre existante à gauche, lumière chaude naturelle, ombres directionnelles constantes.",
+      "action": "Le faible déplacement révèle texture et contact au sol, sans faire bouger le meuble.",
+      "preserve": "Fenêtre, montants, fauteuil, tapis, plante, console et lampe, proportions et perspective de la même pièce.",
+      "prompt": "Premium furniture detail cinematography from the same real interior photo. Preserve the exact dark slim chair frame, textile seat, nearby rug, wood floor grain and original window light direction. A very short two-centimeter lateral optical slide reveals tactile upholstery and believable contact shadows. The chair is completely rigid and stationary; legs remain straight and on the floor. Natural warm neutral color, soft window highlights, elegant restrained depth of field. Same room layout and geometry throughout. No furniture substitution, no bending metal, no added person, no new decor, no text, no logo, no cut. Soft room ambience, no speech or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Détail textile subtil et souffle de transition",
+      "transition": "Raccord de lumière vers cadre final",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 15743373,
+        "page": "https://www.pexels.com/photo/armchair-and-carpet-in-room-15743373/",
+        "category": "maison",
+        "download": "https://images.pexels.com/photos/15743373/pexels-photo-15743373.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\15743373.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "47d5a487ff7287e32a8f4154c7048dc16af8e3c1536a56a6a56ce8a9a62fdc4c",
+        "author_evidence": [
+          {
+            "name": "Ushindi Namegabe",
+            "page": "https://www.pexels.com/@ushindinamegabe/"
+          }
+        ],
+        "crop_fraction": [
+          0.12,
+          0.1,
+          0.92,
+          0.98
+        ],
+        "crop_pixels": [
+          288,
+          360,
+          2208,
+          3528
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "443e25fd1654127e877bdb86d7d32c0806dc87f783fa286934847b88a9354a04",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "warm-neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Composition fauteuil, fenêtre, plante",
+      "camera": "Fixe, respiration de la lumière uniquement",
+      "lighting": "Fenêtre existante à gauche, lumière chaude naturelle, ombres directionnelles constantes.",
+      "action": "L'espace s'apaise pour accueillir la signature.",
+      "preserve": "Fenêtre, montants, fauteuil, tapis, plante, console et lampe, proportions et perspective de la même pièce.",
+      "prompt": "Final high-end interior campaign composition from this exact real reference room. Keep the window frame, dark armchair, pale rug, wood floor, tall plant, console and small lamp exactly as photographed. Locked camera with no perspective change. Very gentle daylight breathing across the existing floor, no day-to-night transition and no furniture movement. Refined warm natural materials, clear spatial depth, realistic architectural verticals and contact shadows. Preserve every object count and position. No people, new decor, text, brands, changing walls or impossible geometry, no cut. Quiet realistic room tone, no dialogue or music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Fin musicale ouverte, aucun impact",
+      "transition": "Carton HABITER",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

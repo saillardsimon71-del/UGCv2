@@ -1,0 +1,305 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "07-probleme-solution",
+  "title": "PROBLÈME / SOLUTION",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/07-PROBLEME-SOLUTION-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/07-PROBLEME-SOLUTION-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "catalyst",
+    "execution_track": "catalyst",
+    "start_s": 35,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/catalyst/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Clics de surcharge au début, froissement papier, silence bref avant CTA.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [
+    {
+      "at": 0,
+      "until": 1.5,
+      "text": "TROP D'IDÉES ?",
+      "role": "hook"
+    },
+    {
+      "at": 1.5,
+      "until": 3.0,
+      "text": "Tout reste en tête.",
+      "role": "problem"
+    },
+    {
+      "at": 3.0,
+      "until": 5.0,
+      "text": "Une page pour commencer.",
+      "role": "product"
+    },
+    {
+      "at": 5.0,
+      "until": 10.0,
+      "text": "Ouvrez. Posez l'idée.",
+      "role": "demonstration"
+    },
+    {
+      "at": 10.0,
+      "until": 15.0,
+      "text": "Une place pour chaque idée.",
+      "role": "benefit"
+    },
+    {
+      "at": 15.0,
+      "until": 17.5,
+      "text": "PASSEZ AU PAPIER",
+      "role": "cta"
+    }
+  ],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 7657397,
+        "page": "https://www.pexels.com/photo/close-up-shot-of-a-pen-beside-a-notebook-7657397/",
+        "category": "performance",
+        "download": "https://images.pexels.com/photos/7657397/pexels-photo-7657397.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\7657397.jpg",
+        "dimensions": [
+          2400,
+          3598
+        ],
+        "sha256": "9a4bbd4ff9064fc1bb8f987f0251f788a8e4b8d2cf8e83d9d3e00998510fd188",
+        "author_evidence": [
+          {
+            "name": "Cup of  Couple",
+            "page": "https://www.pexels.com/@cup-of-couple/"
+          }
+        ],
+        "crop_fraction": [
+          0.02,
+          0.02,
+          0.98,
+          0.98
+        ],
+        "crop_pixels": [
+          48,
+          72,
+          2352,
+          3526
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "ef6cff47ccd2ec6526270f60846d1c09e694fd6dbbf74ae97ba01090898e7f3b",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Produit et espace pour accroche",
+      "camera": "Rapprochement de 2 cm",
+      "lighting": "Lumière de bureau diffuse, papier crème lisible ; aucune écriture générée.",
+      "action": "Le papier frémit à peine ; la surcharge est ajoutée par typographie au montage.",
+      "preserve": "Nombre de pages visibles, couverture mouchetée, stylo transparent et ombres ; pas d'ajout de texte génératif sur le papier.",
+      "prompt": "Clear conversion-focused stationery commercial using this exact real photograph. Preserve the unbranded notebook with cream pages and patterned cover, transparent ballpoint pen and original desktop arrangement. Restrained two-centimeter optical push, soft diffuse daylight, crisp tactile paper. Only a very slight natural page-edge tremble, with all objects remaining in their original positions. Leave the pages blank and clean; all commercial typography will be added in postproduction. No writing generated on paper, no new hands or objects, no logo, no product substitution, no cuts. No speaking or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Trois petits clics puis souffle de sortie",
+      "transition": "Coupe nette au passage produit",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 7657397,
+        "page": "https://www.pexels.com/photo/close-up-shot-of-a-pen-beside-a-notebook-7657397/",
+        "category": "performance",
+        "download": "https://images.pexels.com/photos/7657397/pexels-photo-7657397.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\7657397.jpg",
+        "dimensions": [
+          2400,
+          3598
+        ],
+        "sha256": "9a4bbd4ff9064fc1bb8f987f0251f788a8e4b8d2cf8e83d9d3e00998510fd188",
+        "author_evidence": [
+          {
+            "name": "Cup of  Couple",
+            "page": "https://www.pexels.com/@cup-of-couple/"
+          }
+        ],
+        "crop_fraction": [
+          0.09,
+          0.0,
+          0.91,
+          0.78
+        ],
+        "crop_pixels": [
+          216,
+          0,
+          2184,
+          2806
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "4e03e9b7e673289d36f1216761e6385e07ff3b1f332a7240371046c9331ae83a",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Macro tranche et feuilles ouvertes",
+      "camera": "Fixe",
+      "lighting": "Lumière de bureau diffuse, papier crème lisible ; aucune écriture générée.",
+      "action": "Une feuille déjà entrouverte se soulève de quelques millimètres puis se repose.",
+      "preserve": "Nombre de pages visibles, couverture mouchetée, stylo transparent et ombres ; pas d'ajout de texte génératif sur le papier.",
+      "prompt": "Tactile stationery demonstration from this actual notebook photo. Tight view of the exact cream paper edges and patterned notebook cover already visible in the photograph. Locked camera, a single existing loose page edge lifts only a few millimeters in a gentle air movement and settles once. Preserve the paper count, binding, cover pattern and pen position. Natural white desktop, soft shadows, realistic paper thickness and restrained commercial clarity. The sheets remain completely blank. No new notebook, no hands, no page morphing, no printed or handwritten text, no logos, no cuts. No speech or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Froissement papier court",
+      "transition": "Coupe sur la page posée",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 7657397,
+        "page": "https://www.pexels.com/photo/close-up-shot-of-a-pen-beside-a-notebook-7657397/",
+        "category": "performance",
+        "download": "https://images.pexels.com/photos/7657397/pexels-photo-7657397.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\7657397.jpg",
+        "dimensions": [
+          2400,
+          3598
+        ],
+        "sha256": "9a4bbd4ff9064fc1bb8f987f0251f788a8e4b8d2cf8e83d9d3e00998510fd188",
+        "author_evidence": [
+          {
+            "name": "Cup of  Couple",
+            "page": "https://www.pexels.com/@cup-of-couple/"
+          }
+        ],
+        "crop_fraction": [
+          0.03,
+          0.14,
+          0.97,
+          0.98
+        ],
+        "crop_pixels": [
+          72,
+          504,
+          2328,
+          3526
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "55e5f4ebc8e6748dfc151a1092aefe248f9107c62ad80be33e7eaad42d51fbd3",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Packshot papier et stylo",
+      "camera": "Très léger recul",
+      "lighting": "Lumière de bureau diffuse, papier crème lisible ; aucune écriture générée.",
+      "action": "L'image se stabilise et la promesse émotionnelle apparaît au montage.",
+      "preserve": "Nombre de pages visibles, couverture mouchetée, stylo transparent et ombres ; pas d'ajout de texte génératif sur le papier.",
+      "prompt": "Minimal premium notebook campaign closing shot from the same authentic photograph. Same cream blank paper, patterned notebook cover, transparent pen and pale desk. Very slight slow camera pullback, final stable packshot. Honest soft daylight, precise pen geometry and paper texture. Keep the original arrangement rigid with believable shadows, pages blank, no hand, no generated writing, no new object, no logos, no cut. Clean negative space for postproduced copy. No voice or music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Arrêt des clics, petite résolution",
+      "transition": "CTA PASSEZ AU PAPIER",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+[
+  {
+    "id": 4830923,
+    "page": "https://www.pexels.com/photo/stylish-handbag-on-stool-in-light-room-4830923/",
+    "category": "accessoire",
+    "download": "https://images.pexels.com/photos/4830923/pexels-photo-4830923.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4830923.jpg",
+    "dimensions": [
+      2400,
+      3050
+    ],
+    "sha256": "969702c37eaf241bbf8385633e8af418e73780a38182ad9ab47fc17f6344d122",
+    "author_evidence": [
+      {
+        "name": "Diana Light",
+        "page": "https://www.pexels.com/@dreamcatchlight/"
+      }
+    ],
+    "crop_fraction": [
+      0.27,
+      0.42,
+      0.84,
+      0.85
+    ],
+    "crop_pixels": [
+      648,
+      1281,
+      2016,
+      2592
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "5e07bf99832b9ccc38fdb00f02d7765fccef8eca8f3478268b14efebfbbcb4dc",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 4830923,
+    "page": "https://www.pexels.com/photo/stylish-handbag-on-stool-in-light-room-4830923/",
+    "category": "accessoire",
+    "download": "https://images.pexels.com/photos/4830923/pexels-photo-4830923.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4830923.jpg",
+    "dimensions": [
+      2400,
+      3050
+    ],
+    "sha256": "969702c37eaf241bbf8385633e8af418e73780a38182ad9ab47fc17f6344d122",
+    "author_evidence": [
+      {
+        "name": "Diana Light",
+        "page": "https://www.pexels.com/@dreamcatchlight/"
+      }
+    ],
+    "crop_fraction": [
+      0.19,
+      0.24,
+      0.91,
+      0.96
+    ],
+    "crop_pixels": [
+      456,
+      732,
+      2184,
+      2928
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "e8de4cf6ee2be0912c2aacac809deb9b90d17433361a319134dc5b61d655678b",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 4830923,
+    "page": "https://www.pexels.com/photo/stylish-handbag-on-stool-in-light-room-4830923/",
+    "category": "accessoire",
+    "download": "https://images.pexels.com/photos/4830923/pexels-photo-4830923.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4830923.jpg",
+    "dimensions": [
+      2400,
+      3050
+    ],
+    "sha256": "969702c37eaf241bbf8385633e8af418e73780a38182ad9ab47fc17f6344d122",
+    "author_evidence": [
+      {
+        "name": "Diana Light",
+        "page": "https://www.pexels.com/@dreamcatchlight/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      48,
+      61,
+      2352,
+      2989
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "12b24b47d989b4921ddb46af8aa50e1e15b55122617e7ce3b31daf9135c98cb3",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  }
+]

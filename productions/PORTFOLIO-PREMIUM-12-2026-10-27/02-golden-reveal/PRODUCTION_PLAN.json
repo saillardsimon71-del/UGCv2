@@ -1,0 +1,268 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "02-golden-reveal",
+  "title": "GOLDEN REVEAL",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/02-GOLDEN-REVEAL-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/02-GOLDEN-REVEAL-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "helios",
+    "execution_track": "reverie",
+    "start_s": 18,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/reverie/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Verre cristallin, montée d'air douce, résolution lumineuse.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 4735929,
+        "page": "https://www.pexels.com/photo/a-clear-glass-perfume-bottle-with-brown-lid-on-white-surface-4735929/",
+        "category": "parfum",
+        "download": "https://images.pexels.com/photos/4735929/pexels-photo-4735929.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\4735929.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "ad3c7bf83a4e99c10052f621b9f805f9a3f47b4e472078f8f2a86114b9cd11e1",
+        "author_evidence": [
+          {
+            "name": "https://kaboompics.com/",
+            "page": "https://www.pexels.com/@karola-g/"
+          }
+        ],
+        "crop_fraction": [
+          0.3,
+          0.35,
+          0.7,
+          0.89
+        ],
+        "crop_pixels": [
+          720,
+          1260,
+          1680,
+          3204
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "f6d3462b2a4603ca739b5649a9500c0849c18f9851e4a429a6384c73a7eb7514",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "amber",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Macro arête de verre et jus",
+      "camera": "Glissement latéral de 2 cm",
+      "lighting": "Contre-jour ambré et lumière douce latérale ; rayons discrets, sans particules envahissantes.",
+      "action": "Une caustique traverse le verre immobile.",
+      "preserve": "Angles du verre, niveau de jus, bouchon brun et sa taille ; aucun nom de marque.",
+      "prompt": "Elegant luxury fragrance reveal from the real reference photo. Preserve the exact rectangular clear glass perfume bottle, pale amber liquid level and round brown closed cap. Tight macro composition around the glass body and liquid. A warm amber caustic moves gently across the glass while the camera slides two centimeters sideways. Soft optical depth of field, creamy warm backdrop, realistic refraction and glass thickness. Rigid bottle, no changes to corners or contents, no new text, no labels, no logo, no hands, no floating, no smoke, no cut. No dialogue or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Tintement bref de verre",
+      "transition": "Raccord de couleur ambre",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 4735929,
+        "page": "https://www.pexels.com/photo/a-clear-glass-perfume-bottle-with-brown-lid-on-white-surface-4735929/",
+        "category": "parfum",
+        "download": "https://images.pexels.com/photos/4735929/pexels-photo-4735929.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\4735929.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "ad3c7bf83a4e99c10052f621b9f805f9a3f47b4e472078f8f2a86114b9cd11e1",
+        "author_evidence": [
+          {
+            "name": "https://kaboompics.com/",
+            "page": "https://www.pexels.com/@karola-g/"
+          }
+        ],
+        "crop_fraction": [
+          0.17,
+          0.13,
+          0.83,
+          0.96
+        ],
+        "crop_pixels": [
+          408,
+          468,
+          1992,
+          3456
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "0cec993e9d8a1933d2c5d07006fc5af781bfa45596154ab7fd2033043c6c053c",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "amber",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Plan rapproché flacon et bouchon",
+      "camera": "Recul de 4 cm",
+      "lighting": "Contre-jour ambré et lumière douce latérale ; rayons discrets, sans particules envahissantes.",
+      "action": "Le recul découvre la silhouette sous un contre-jour chaud.",
+      "preserve": "Angles du verre, niveau de jus, bouchon brun et sa taille ; aucun nom de marque.",
+      "prompt": "Premium perfume product reveal using this authentic photograph. The exact clear rectangular bottle, pale amber contents and large round brown cap stay unchanged and sealed. The camera pulls back only four centimeters as a warm soft backlight brightens gradually behind the glass. Delicate volumetric warmth, clean creamy background, realistic shadows, controlled golden reflections. The bottle is stationary on the surface. Preserve proportions, flat faces, cap shape and liquid level. No spinning, no opening, no added accessories, no labels, no lettering, no logo, no hands, one continuous shot. No voice or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Montée d'air de 0,5 s",
+      "transition": "Coupe sur brillance",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 4735929,
+        "page": "https://www.pexels.com/photo/a-clear-glass-perfume-bottle-with-brown-lid-on-white-surface-4735929/",
+        "category": "parfum",
+        "download": "https://images.pexels.com/photos/4735929/pexels-photo-4735929.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\4735929.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "ad3c7bf83a4e99c10052f621b9f805f9a3f47b4e472078f8f2a86114b9cd11e1",
+        "author_evidence": [
+          {
+            "name": "https://kaboompics.com/",
+            "page": "https://www.pexels.com/@karola-g/"
+          }
+        ],
+        "crop_fraction": [
+          0.04,
+          0.01,
+          0.96,
+          0.99
+        ],
+        "crop_pixels": [
+          96,
+          36,
+          2304,
+          3564
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "3304851a7c7bb686599c1b96ed60fc9ac331189b2d3bd53974d275757e916547",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "amber",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Hero produit entier",
+      "camera": "Fixe",
+      "lighting": "Contre-jour ambré et lumière douce latérale ; rayons discrets, sans particules envahissantes.",
+      "action": "Le reflet s'apaise et laisse un flacon lisible pour la signature.",
+      "preserve": "Angles du verre, niveau de jus, bouchon brun et sa taille ; aucun nom de marque.",
+      "prompt": "Final luxury fragrance hero frame, same authentic unbranded clear glass bottle with pale amber liquid and brown cylindrical cap. Full bottle on the same neutral surface, grounded contact shadow, quiet warm ivory background. Locked-off camera and very gentle golden light sweep across one face of the bottle, ending in a stable readable packshot. Photographic glass refraction, precise rigid geometry, restrained cinematic highlights. No change in liquid level, no vapor, no levitation, no hands, no letters, labels or logos, no additional props or cut. No dialogue or music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Accord lumineux puis décroissance",
+      "transition": "Carton AMBRE",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

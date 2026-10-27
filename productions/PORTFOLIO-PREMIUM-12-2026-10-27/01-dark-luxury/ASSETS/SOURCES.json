@@ -1,0 +1,119 @@
+[
+  {
+    "id": 5994299,
+    "page": "https://www.pexels.com/photo/black-bottle-on-red-background-5994299/",
+    "category": "parfum",
+    "download": "https://images.pexels.com/photos/5994299/pexels-photo-5994299.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\5994299.jpg",
+    "dimensions": [
+      2400,
+      1600
+    ],
+    "sha256": "840b1c0c6552a07a47587a2274a69c69507edeed87581d7c7259628c2a7344e0",
+    "author_evidence": [
+      {
+        "name": "Maksim Goncharenok",
+        "page": "https://www.pexels.com/@maksgelatin/"
+      }
+    ],
+    "crop_fraction": [
+      0.37,
+      0.22,
+      0.63,
+      0.88
+    ],
+    "crop_pixels": [
+      888,
+      352,
+      1512,
+      1408
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "a31da28979e5393ea35e947bc18b0dee7f1348ccd7dbdc8d35c931debe2b9442",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "charcoal",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 5994299,
+    "page": "https://www.pexels.com/photo/black-bottle-on-red-background-5994299/",
+    "category": "parfum",
+    "download": "https://images.pexels.com/photos/5994299/pexels-photo-5994299.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\5994299.jpg",
+    "dimensions": [
+      2400,
+      1600
+    ],
+    "sha256": "840b1c0c6552a07a47587a2274a69c69507edeed87581d7c7259628c2a7344e0",
+    "author_evidence": [
+      {
+        "name": "Maksim Goncharenok",
+        "page": "https://www.pexels.com/@maksgelatin/"
+      }
+    ],
+    "crop_fraction": [
+      0.33,
+      0.29,
+      0.67,
+      0.91
+    ],
+    "crop_pixels": [
+      792,
+      464,
+      1608,
+      1456
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "68fb2764f4164551b08987257c802650e9ff9b10975193f2d34ffa6125cf1a18",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "charcoal",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 5994299,
+    "page": "https://www.pexels.com/photo/black-bottle-on-red-background-5994299/",
+    "category": "parfum",
+    "download": "https://images.pexels.com/photos/5994299/pexels-photo-5994299.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\5994299.jpg",
+    "dimensions": [
+      2400,
+      1600
+    ],
+    "sha256": "840b1c0c6552a07a47587a2274a69c69507edeed87581d7c7259628c2a7344e0",
+    "author_evidence": [
+      {
+        "name": "Maksim Goncharenok",
+        "page": "https://www.pexels.com/@maksgelatin/"
+      }
+    ],
+    "crop_fraction": [
+      0.24,
+      0.04,
+      0.76,
+      0.98
+    ],
+    "crop_pixels": [
+      576,
+      64,
+      1824,
+      1568
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "9c8dee48a041ba18242afe28fb234b1e0d90fd7f6347ba63bf4e55d1a5e26792",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "charcoal",
+    "license": "https://www.pexels.com/license/"
+  }
+]

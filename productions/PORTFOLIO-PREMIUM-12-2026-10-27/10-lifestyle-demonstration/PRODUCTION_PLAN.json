@@ -1,0 +1,263 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "10-lifestyle-demonstration",
+  "title": "LIFESTYLE DEMONSTRATION",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 22.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/10-LIFESTYLE-DEMONSTRATION-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/10-LIFESTYLE-DEMONSTRATION-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "suspended",
+  "preparation_status": "creative_complete_casting_and_voice_pending",
+  "executable": false,
+  "hold_reason": "SUSPENDU_INTERACTION_HUMAINE : source actuelle avec miroir et personne réelle, inadéquate pour garantir un avatar fictif et une parole synthétique autorisée. Casting photographique frontal sous autorisation et benchmark LongCat nécessaires. Aucun GPU pour ce film.",
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "reverie",
+    "execution_track": "reverie",
+    "start_s": 25,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/reverie/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": "Voici une façon de présenter ce rituel du matin : d'abord le produit, puis le geste, dans son vrai décor. Le cadrage reste simple pour voir ce qui se passe. Rien à surjouer : on montre, et on laisse le produit parler.",
+    "voice_status": "not_licensed_or_generated",
+    "sound_design": "Voix française de rôle, sans clonage, ambiance de salle de bain basse.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 7,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 7,
+      "native_frames": null,
+      "engine": "LongCat Video Avatar 1.5, INT8, 480p",
+      "app": "pvs-longcat-avatar",
+      "function": "render_avatar",
+      "gpu": "A100-80GB",
+      "source": {
+        "id": 10222471,
+        "page": "https://www.pexels.com/photo/a-senior-female-looking-at-camera-by-looking-at-mirror-10222471/",
+        "category": "routine",
+        "download": "https://images.pexels.com/photos/10222471/pexels-photo-10222471.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\10222471.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "dfc7a59e5baafd3cd1182b0cfd542bd70bf38bbc1bb3fed1574c7c254e8050ca",
+        "author_evidence": [],
+        "crop_fraction": [
+          0.32,
+          0.04,
+          0.97,
+          0.74
+        ],
+        "crop_pixels": [
+          768,
+          144,
+          2328,
+          2664
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "25722dde46c6c2d0d7b8439017256c64cac623f7cd8c87ce276d99f4a7be107e",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Portrait au miroir, casting non validé",
+      "camera": "Fixe",
+      "lighting": "Salle de bain réelle, lumière du jour cohérente dans le miroir.",
+      "action": "Présentation neutre ; plan bloqué tant que source frontale et droits ne sont pas validés.",
+      "preserve": "Même adulte, pyjama bleu à liseré, miroir, lavabo, flacons et mains anatomiquement correctes.",
+      "prompt": "A neutral scripted French product demonstration presenter in the exact real bathroom shown in the reference. Preserve the same adult stock model, tied-back hair, pale blue piped pajamas and honest skin texture. Static camera, calm conversation, natural subtle expressions and precise audio-driven lip synchronization. The bathroom mirror must show a physically consistent reflection of the same motion. No claims of personal experience, no product endorsement, no customer testimonial, no face replacement, no new packaging, no extra fingers, no text or logos. Benchmark only until the casting and reflection have been reviewed.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Introduction parlée sous réserve casting",
+      "transition": "Coupe vers mains",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "suspended",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 6,
+      "timeline_start_s": 7,
+      "timeline_duration_s": 6,
+      "native_frames": 145,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 10222458,
+        "page": "https://www.pexels.com/photo/woman-using-cosmetic-serum-in-bathroom-10222458/",
+        "category": "routine",
+        "download": "https://images.pexels.com/photos/10222458/pexels-photo-10222458.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\10222458.jpg",
+        "dimensions": [
+          2400,
+          1598
+        ],
+        "sha256": "581798eb68cc3f043db80cd08b98c6dec0af0186e86af040ed171c11534dc8f0",
+        "author_evidence": [
+          {
+            "name": "Ron Lach",
+            "page": "https://www.pexels.com/@ron-lach/"
+          }
+        ],
+        "crop_fraction": [
+          0.1,
+          0.04,
+          0.62,
+          0.99
+        ],
+        "crop_pixels": [
+          240,
+          64,
+          1488,
+          1582
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "a5bf0db49d8fb3414ab2e8e2921465c2ab2714a6a466db035ab538107fe68f9c",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Démonstration pipette et paume",
+      "camera": "Fixe",
+      "lighting": "Salle de bain réelle, lumière du jour cohérente dans le miroir.",
+      "action": "Un petit mouvement crédible au-dessus de la paume, sous narration.",
+      "preserve": "Même adulte, pyjama bleu à liseré, miroir, lavabo, flacons et mains anatomiquement correctes.",
+      "prompt": "Realistic daily skincare demonstration using the same authentic bathroom photo. Preserve the exact adult model's face, tied-back hair, pale blue pajamas, existing dropper, open palm and amber bottle. Only a tiny controlled wrist adjustment over the open palm, then a pause. Keep five correct fingers, rigid glass, consistent reflection and unchanged room. Closed lips during this non-speaking cutaway. No new bottle, no face transformation, no text, branding or product claims, no camera move, no cut. No generated voice or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Narration continue, goutte si visible",
+      "transition": "Retour contexte",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "suspended",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 7,
+      "timeline_start_s": 13,
+      "timeline_duration_s": 7,
+      "native_frames": 169,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 10221851,
+        "page": "https://www.pexels.com/photo/standing-woman-and-bathroom-sink-10221851/",
+        "category": "routine",
+        "download": "https://images.pexels.com/photos/10221851/pexels-photo-10221851.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\10221851.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "47fb25a4ac0fef39e98901e60f70f5c5f26359e30a5c93c8c6617ac24d37eb67",
+        "author_evidence": [
+          {
+            "name": "Ron Lach",
+            "page": "https://www.pexels.com/@ron-lach/"
+          }
+        ],
+        "crop_fraction": [
+          0.05,
+          0.02,
+          0.95,
+          0.98
+        ],
+        "crop_pixels": [
+          120,
+          72,
+          2280,
+          3528
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "ada55f9cac22348a0af155530bebd7a47793a6bd1ada32f802d4b917a2d3f164",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Plan vie quotidienne et produit",
+      "camera": "Recul de 2 cm",
+      "lighting": "Salle de bain réelle, lumière du jour cohérente dans le miroir.",
+      "action": "Fin du geste sans déplacer la gamme.",
+      "preserve": "Même adulte, pyjama bleu à liseré, miroir, lavabo, flacons et mains anatomiquement correctes.",
+      "prompt": "Quiet lifestyle closing insert from the exact same real bathroom source. Preserve the white sink, chrome faucet, amber bottles, pale blue pajama sleeve and original hand. Slow two-centimeter pullback, stable natural daylight and truthful product proportions. The hand relaxes without picking up an object. Keep every mirror and bottle edge consistent. No extra person, new item, lettering, logo, cut or product claim. No voice or music in the generated clip; the final narration is mixed later.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Fin de voix et ambiance",
+      "transition": "Mention démonstration scénarisée",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "suspended",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

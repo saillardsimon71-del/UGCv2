@@ -1,0 +1,1050 @@
+{
+  "campaign_id": "SQV-PREMIUM-20261027",
+  "workspace": "lucj76861",
+  "source_policy": "Photographies Pexels uniquement. Aucune image fixe générée par IA.",
+  "pilots": [
+    "03-skincare-sensoriel",
+    "05-architectural-living"
+  ],
+  "films": [
+    {
+      "id": "01-dark-luxury",
+      "title": "DARK LUXURY",
+      "category": "Luxe / parfum",
+      "signature": "NOCTURNE",
+      "tagline": "Le silence a une présence.",
+      "idea": "Le flacon noir devient une sculpture. Sa courbe émerge de l'obscurité avant une révélation frontale, sans effet impossible.",
+      "commercial_goal": "Vendre la capacité à réaliser un packshot de parfum premium par la maîtrise du noir et du reflet.",
+      "difference": "Matière et contraste ; le film 02 privilégie la transparence et la progression lumineuse.",
+      "palette": [
+        "#090b0e",
+        "#25272b",
+        "#a7a8aa"
+      ],
+      "light": "Source latérale étroite, noirs détaillés, liseré froid ; fond rouge du stock désaturé en préparation CPU.",
+      "product": "Flacon générique noir mat, épaule ronde, bouchon cylindrique. Aucune marque ni propriété olfactive annoncée.",
+      "preserve": "Silhouette ronde, bouchon fermé, proportions, noir mat ; aucun ajout de pulvérisateur ou gravure.",
+      "music": "catalyst",
+      "music_start": 8,
+      "sound": "Résonance grave feutrée, frottement d'air, tintement sec au packshot ; aucun bruit de pulvérisation si rien n'est pulvérisé.",
+      "references": [
+        "dior-dark",
+        "cos"
+      ],
+      "card_bg": "#090b0e",
+      "card_ink": "#e8e6df",
+      "serif": true,
+      "shots": [
+        {
+          "id": "01",
+          "source": 5994299,
+          "crop": [
+            0.37,
+            0.22,
+            0.63,
+            0.88
+          ],
+          "grade": "charcoal",
+          "framing": "Très gros plan épaule et bouchon",
+          "camera": "Travelling latéral de 2 cm maximum",
+          "action": "Un reflet froid glisse sur le bord du flacon, le produit reste immobile.",
+          "prompt": "Premium fragrance cinematography from this authentic photograph. Preserve the exact unbranded matte black round bottle, short cylindrical closed cap and curved shoulder. Extreme close product framing. A restrained silver rim reflection travels along the shoulder as the camera slides just two centimeters sideways. Deep charcoal blacks with visible edges, single narrow side softbox, elegant falloff and realistic material response. The bottle stays rigid and upright. No rotation, opening, liquid, mist, hands, labels, lettering or additional props. One continuous optical take. No speech, voices or music.",
+          "sound": "Impact sub très discret à 0,15 s, souffle court",
+          "cut": "Coupe sur le reflet"
+        },
+        {
+          "id": "02",
+          "source": 5994299,
+          "crop": [
+            0.33,
+            0.29,
+            0.67,
+            0.91
+          ],
+          "grade": "charcoal",
+          "framing": "Plan produit serré, épaule et corps",
+          "camera": "Très lent rapprochement de 3 cm",
+          "action": "La lumière dessine la courbe mate ; aucune transformation du flacon.",
+          "prompt": "Luxury unbranded fragrance product film. Exactly the same black bottle, cylindrical sealed cap, matte surface and curved geometry as the photographic source. A very slow three-centimeter camera push towards the bottle. A soft controlled highlight reveals the round body against a near-black neutral backdrop. Keep every edge and the cap-to-body proportions unchanged; keep the bottle resting on its original plane. Tactile restrained photographic realism, no floating, no spinning, no new text, no logo, no smoke, no additional object, no hands. One uninterrupted take. Quiet nonverbal room tone only.",
+          "sound": "Résonance métallique amortie",
+          "cut": "Coupe franche vers le plan large"
+        },
+        {
+          "id": "03",
+          "source": 5994299,
+          "crop": [
+            0.24,
+            0.04,
+            0.76,
+            0.98
+          ],
+          "grade": "charcoal",
+          "framing": "Packshot frontal avec espace négatif",
+          "camera": "Fixe, légère respiration lumineuse",
+          "action": "Révélation du flacon entier ; maintien lisible pour le titre en postproduction.",
+          "prompt": "Final premium perfume hero shot using this real photographic reference. Preserve the exact single unbranded matte black bottle with its closed cylindrical black cap. Full rigid silhouette, grounded on the original surface with a believable contact shadow. Locked camera. A gentle silver side light gradually defines both edges without changing the product geometry or adding objects. Dark minimal charcoal studio, refined black-on-black product photography, generous clean negative space. No generated writing, no label, no logo, no camera spin, no opening, no hand, no cut. No voice or music.",
+          "sound": "Signature sonore grave puis silence",
+          "cut": "Coupe vers carton NOCTURNE"
+        }
+      ]
+    },
+    {
+      "id": "02-golden-reveal",
+      "title": "GOLDEN REVEAL",
+      "category": "Luxe / parfum",
+      "signature": "AMBRE",
+      "tagline": "La lumière se révèle.",
+      "idea": "Un flacon transparent, son jus ambré et son bouchon brun sont révélés par étapes : bord de verre, matière, silhouette.",
+      "commercial_goal": "Montrer une révélation produit élégante et des effets de lumière maîtrisés.",
+      "difference": "Mise en scène lumineuse progressive plutôt que noir sculptural.",
+      "palette": [
+        "#3a2617",
+        "#b18147",
+        "#f4e5c9"
+      ],
+      "light": "Contre-jour ambré et lumière douce latérale ; rayons discrets, sans particules envahissantes.",
+      "product": "Flacon générique rectangulaire transparent, jus ambré pâle, grand bouchon brun cylindrique.",
+      "preserve": "Angles du verre, niveau de jus, bouchon brun et sa taille ; aucun nom de marque.",
+      "music": "helios",
+      "music_start": 18,
+      "sound": "Verre cristallin, montée d'air douce, résolution lumineuse.",
+      "references": [
+        "jadore",
+        "dior-dark"
+      ],
+      "card_bg": "#35251a",
+      "card_ink": "#f4e5c9",
+      "serif": true,
+      "shots": [
+        {
+          "id": "01",
+          "source": 4735929,
+          "crop": [
+            0.3,
+            0.35,
+            0.7,
+            0.89
+          ],
+          "grade": "amber",
+          "framing": "Macro arête de verre et jus",
+          "camera": "Glissement latéral de 2 cm",
+          "action": "Une caustique traverse le verre immobile.",
+          "prompt": "Elegant luxury fragrance reveal from the real reference photo. Preserve the exact rectangular clear glass perfume bottle, pale amber liquid level and round brown closed cap. Tight macro composition around the glass body and liquid. A warm amber caustic moves gently across the glass while the camera slides two centimeters sideways. Soft optical depth of field, creamy warm backdrop, realistic refraction and glass thickness. Rigid bottle, no changes to corners or contents, no new text, no labels, no logo, no hands, no floating, no smoke, no cut. No dialogue or music.",
+          "sound": "Tintement bref de verre",
+          "cut": "Raccord de couleur ambre"
+        },
+        {
+          "id": "02",
+          "source": 4735929,
+          "crop": [
+            0.17,
+            0.13,
+            0.83,
+            0.96
+          ],
+          "grade": "amber",
+          "framing": "Plan rapproché flacon et bouchon",
+          "camera": "Recul de 4 cm",
+          "action": "Le recul découvre la silhouette sous un contre-jour chaud.",
+          "prompt": "Premium perfume product reveal using this authentic photograph. The exact clear rectangular bottle, pale amber contents and large round brown cap stay unchanged and sealed. The camera pulls back only four centimeters as a warm soft backlight brightens gradually behind the glass. Delicate volumetric warmth, clean creamy background, realistic shadows, controlled golden reflections. The bottle is stationary on the surface. Preserve proportions, flat faces, cap shape and liquid level. No spinning, no opening, no added accessories, no labels, no lettering, no logo, no hands, one continuous shot. No voice or music.",
+          "sound": "Montée d'air de 0,5 s",
+          "cut": "Coupe sur brillance"
+        },
+        {
+          "id": "03",
+          "source": 4735929,
+          "crop": [
+            0.04,
+            0.01,
+            0.96,
+            0.99
+          ],
+          "grade": "amber",
+          "framing": "Hero produit entier",
+          "camera": "Fixe",
+          "action": "Le reflet s'apaise et laisse un flacon lisible pour la signature.",
+          "prompt": "Final luxury fragrance hero frame, same authentic unbranded clear glass bottle with pale amber liquid and brown cylindrical cap. Full bottle on the same neutral surface, grounded contact shadow, quiet warm ivory background. Locked-off camera and very gentle golden light sweep across one face of the bottle, ending in a stable readable packshot. Photographic glass refraction, precise rigid geometry, restrained cinematic highlights. No change in liquid level, no vapor, no levitation, no hands, no letters, labels or logos, no additional props or cut. No dialogue or music.",
+          "sound": "Accord lumineux puis décroissance",
+          "cut": "Carton AMBRE"
+        }
+      ]
+    },
+    {
+      "id": "03-skincare-sensoriel",
+      "title": "SKINCARE SENSORIEL",
+      "category": "Beauté / cosmétiques",
+      "signature": "UNE GOUTTE",
+      "tagline": "Le temps d'un rituel.",
+      "idea": "La goutte suspendue devient le point d'attention. Du ménisque à la silhouette, trois échelles rendent le sérum désirable sans promesse cosmétique.",
+      "commercial_goal": "Convaincre une marque de skincare par la fidélité du verre, du packaging et des petites matières fluides.",
+      "difference": "Film sans visage centré sur la sensation ; le film 04 met le geste dans une vraie salle de bain.",
+      "palette": [
+        "#ece9e2",
+        "#b69a88",
+        "#693c4b"
+      ],
+      "light": "Fenêtre diffuse, ombres de feuillage déjà présentes, tons crème et prune désaturé.",
+      "product": "Flacon générique prune/ambré, étiquette blanche vierge, pipette blanche déjà ouverte au-dessus du flacon, support bois clair et pot givré.",
+      "preserve": "Étiquette vierge, silhouette du flacon, pipette droite, ouverture, niveau de liquide, nombre de pots, support en bois.",
+      "music": "reverie",
+      "music_start": 45,
+      "sound": "Trois détails sonores de verre et de liquide, transitions d'air très discrètes.",
+      "references": [
+        "aesop-sensory",
+        "aesop-magnify"
+      ],
+      "card_bg": "#eae5dc",
+      "card_ink": "#4c3b38",
+      "serif": true,
+      "shots": [
+        {
+          "id": "01",
+          "source": 8101534,
+          "crop": [
+            0.12,
+            0.3,
+            0.5,
+            0.78
+          ],
+          "grade": "cream",
+          "framing": "Macro de la pointe de pipette et du verre visible",
+          "camera": "Glissement de 1 cm, lent",
+          "action": "Un reflet se déplace sur le ménisque teinté de la pointe ; verre immobile.",
+          "prompt": "Prestige skincare extreme macro cinematography from this authentic real product photograph. Preserve the exact visible section of the horizontal transparent glass pipette, its burgundy-tinted liquid and the visible edge of the burgundy bottle. Tight optical detail on the existing pipette tip and liquid meniscus. A tiny soft highlight glints at the photographed tip without changing the shape or color of the liquid. Only one centimeter of lateral camera drift. Soft ivory window light, existing leaf shadows, restrained cream and dusty plum palette, true glass refraction. The glass remains rigid and in the exact original position. Do not extend the pipette, add a cap, invent a new bottle or create a falling liquid string. No hands, text, logos or cuts. No speech, whisper, singing or music.",
+          "sound": "Petit tintement et détail liquide sec",
+          "cut": "Coupe de 0 image sur la pipette"
+        },
+        {
+          "id": "02",
+          "source": 8101534,
+          "crop": [
+            0.12,
+            0.24,
+            0.88,
+            0.94
+          ],
+          "grade": "cream",
+          "framing": "Plan matière et étiquette",
+          "camera": "Rapprochement de 2 cm maximum",
+          "action": "Une lumière douce révèle le verre, le papier et le bois ; produit immobile.",
+          "prompt": "Sensorial premium cosmetic product shot using the exact authentic photograph. Same single burgundy serum bottle, completely blank white paper label, open glass pipette with white bulb, frosted cosmetic jar and pale wooden lid. Slow two-centimeter optical push towards the bottle. A delicate natural window reflection crosses the glass, revealing real glass thickness, tactile paper and soft wood grain. Keep the photograph's object arrangement, bottle shape and dropper angle completely unchanged. Elegant creamy diffuse daylight and subtle existing plant shadows. No object moves independently, no cap changes, no extra bottle, no invented label lettering, no text, no hands, no morphing. One continuous shot. No voice, whisper, vocals or music.",
+          "sound": "Texture d'air légère, frottement feutré",
+          "cut": "Coupe vers packshot plus large"
+        },
+        {
+          "id": "03",
+          "source": 8101534,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "cream",
+          "framing": "Packshot complet avec support",
+          "camera": "Très léger recul, sans rotation",
+          "action": "La composition se stabilise, étiquette intégralement vierge.",
+          "prompt": "Impeccable final skincare packshot from this genuine photographic source. Preserve exactly the burgundy glass serum bottle with its blank white paper label, white dropper bulb and glass pipette in the existing open position, the frosted jar and the round wooden support. A very slight slow camera pullback, without orbiting, reveals the original elegant still life. Soft cream daylight, original leaf shadows moving almost imperceptibly, natural glass and wood texture. The product is rigid and motionless. No additional container, no new cap, no label text, no logo, no letters, no floating or morphing, no hands, no cut. No speech, no whisper, no music.",
+          "sound": "Signature de verre puis respiration musicale",
+          "cut": "Carton UNE GOUTTE"
+        }
+      ]
+    },
+    {
+      "id": "04-beauty-routine",
+      "title": "BEAUTY ROUTINE",
+      "category": "Beauté / cosmétiques",
+      "signature": "LE RITUEL",
+      "tagline": "Un moment pour soi.",
+      "idea": "Une routine du matin en trois gestes crédibles : approcher le soin, déposer une goutte, refermer le moment devant le miroir.",
+      "commercial_goal": "Prouver l'intégration d'un produit dans un décor réel et une gestuelle quotidienne.",
+      "difference": "Réalité des mains et du miroir plutôt que nature morte sensorielle.",
+      "palette": [
+        "#e6e8e6",
+        "#9caeaf",
+        "#64422d"
+      ],
+      "light": "Salle de bain photographiée, lumière naturelle froide adoucie, blancs préservés.",
+      "product": "Petits flacons ambrés génériques présents dans une même séance Pexels, sans marque ni allégation.",
+      "preserve": "Même interprète de stock, pyjama bleu clair à liseré, miroir et lavabo, bouchons noirs et flacon tenu ; pas de changement d'identité.",
+      "music": "reverie",
+      "music_start": 70,
+      "sound": "Contact verre/céramique, petit froissement de manche ; pas d'eau ni de geste sonore absent de l'image.",
+      "references": [
+        "aesop-ritual",
+        "aesop-sensory"
+      ],
+      "card_bg": "#e6e8e6",
+      "card_ink": "#30464a",
+      "serif": false,
+      "human_review": true,
+      "shots": [
+        {
+          "id": "01",
+          "source": 10221846,
+          "crop": [
+            0.28,
+            0.05,
+            0.93,
+            0.98
+          ],
+          "grade": "neutral",
+          "framing": "Gros plan main et produits sur lavabo",
+          "camera": "Fixe",
+          "action": "La main déjà présente s'approche de 1 cm du petit flacon, sans le saisir.",
+          "prompt": "Realistic premium morning skincare routine from this real photo. Preserve the same pale blue pajama sleeve, visible hand, existing amber glass skincare bottles with black caps, white sink, chrome tap and bathroom mirror. Locked camera, close shot on the hand and existing product arrangement. The hand shifts forward only one centimeter and stops beside the small amber bottle; do not pick up or replace any object. Soft natural bathroom light, truthful skin and glass detail. Keep five anatomically correct fingers, reflections consistent, all bottles rigid and labels unchanged without generating letters. No new person, product, finger, text, logo or cut. No speaking or music.",
+          "sound": "Contact discret sur céramique",
+          "cut": "Raccord main vers geste"
+        },
+        {
+          "id": "02",
+          "source": 10222458,
+          "crop": [
+            0.1,
+            0.04,
+            0.62,
+            0.99
+          ],
+          "grade": "neutral",
+          "framing": "Gros plan du geste, visage de profil",
+          "camera": "Fixe",
+          "action": "Le petit geste de pipette au-dessus de la paume se poursuit sans contact avec le visage.",
+          "prompt": "Authentic restrained beauty routine in the actual bathroom shown in this photographic reference. Same adult woman, exact facial identity, tied-back hair and pale blue piped pajamas. She holds the existing dropper over her open palm and makes only a tiny controlled wrist adjustment, then pauses. The dropper never touches her eye or mouth. Preserve the precise bottle, fingers, sleeve, sink and mirror geometry and consistent reflection. Soft natural window light, natural skin texture, calm closed lips, fixed camera. No speaking, no extra fingers, no face smoothing, no new packaging, no text or logos, no camera spin, one uninterrupted shot. No voice or music.",
+          "sound": "Goutte discrète uniquement si visible au rendu",
+          "cut": "Coupe de geste vers plan contexte"
+        },
+        {
+          "id": "03",
+          "source": 10221851,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "neutral",
+          "framing": "Contexte lavabo et gamme",
+          "camera": "Recul de 2 cm",
+          "action": "Les mains et les flacons restent stables, respiration du cadre.",
+          "prompt": "Quiet realistic skincare campaign closing shot from this genuine photograph of the same bathroom. Preserve the exact white sink, chrome faucet, small amber skincare bottles with black caps, pale blue pajama sleeve and existing hand. A restrained two-centimeter camera pullback, no orbit, reveals the original arrangement. Natural diffuse bathroom light and honest white surfaces. Keep every bottle, cap, mirror edge and finger count unchanged. The hand rests naturally without picking anything up. No new product or person, no label text, no branding, no cut, no impossible reflection, no speech or music.",
+          "sound": "Froissement de manche et fin musicale",
+          "cut": "Carton LE RITUEL"
+        }
+      ]
+    },
+    {
+      "id": "05-architectural-living",
+      "title": "ARCHITECTURAL LIVING",
+      "category": "Maison / lifestyle",
+      "signature": "HABITER",
+      "tagline": "L'espace prend son temps.",
+      "idea": "Une même pièce se raconte de l'ensemble au détail : lumière sur le parquet, fauteuil, profondeur de l'espace. Le mouvement reste assez lent pour laisser lire les matières.",
+      "commercial_goal": "Convaincre une marque de mobilier ou une agence déco par la cohérence spatiale et la mise en valeur d'un intérieur.",
+      "difference": "Architecture et rythme contemplatif ; le film 06 montre une transformation d'ambiance centrée sur une lampe.",
+      "palette": [
+        "#e6dfd1",
+        "#81765e",
+        "#3b4238"
+      ],
+      "light": "Fenêtre existante à gauche, lumière chaude naturelle, ombres directionnelles constantes.",
+      "product": "Fauteuil à structure fine sombre et assise textile, tapis et console de l'intérieur Pexels.",
+      "preserve": "Fenêtre, montants, fauteuil, tapis, plante, console et lampe, proportions et perspective de la même pièce.",
+      "music": "reverie",
+      "music_start": 91,
+      "sound": "Air de pièce, léger froissement de rideau seulement si présent, transitions aérées sans effets de chantier.",
+      "references": [
+        "vitra",
+        "cos"
+      ],
+      "card_bg": "#e6dfd1",
+      "card_ink": "#3b4238",
+      "serif": true,
+      "shots": [
+        {
+          "id": "01",
+          "source": 15743373,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "warm-neutral",
+          "framing": "Plan d'ensemble vertical depuis l'entrée",
+          "camera": "Travelling avant de 4 cm maximum",
+          "action": "Lumière stable ; une ombre végétale respire très légèrement.",
+          "prompt": "High-end architectural living film using this authentic interior photograph as the exact reference. Preserve the same room, window frame and muntins, dark slim armchair, rug, wood floor, plant, console and table lamp in their original positions. Very slow straight four-centimeter camera push into the room, no orbit, no pan. Natural warm window daylight, consistent perspective, detailed wood and fabric, restrained cinematic contrast. Only an almost imperceptible natural plant shadow movement. All furniture and architecture stay rigid and stationary. No new objects, people, doors or windows, no changing furniture, no text, no logo, no cut. Quiet indoor room tone only, no voice or music.",
+          "sound": "Ambiance de pièce feutrée",
+          "cut": "Coupe vers la matière du fauteuil"
+        },
+        {
+          "id": "02",
+          "source": 15743373,
+          "crop": [
+            0.14,
+            0.37,
+            0.74,
+            0.95
+          ],
+          "grade": "warm-neutral",
+          "framing": "Plan rapproché fauteuil et parquet",
+          "camera": "Glissement latéral de 2 cm",
+          "action": "Le faible déplacement révèle texture et contact au sol, sans faire bouger le meuble.",
+          "prompt": "Premium furniture detail cinematography from the same real interior photo. Preserve the exact dark slim chair frame, textile seat, nearby rug, wood floor grain and original window light direction. A very short two-centimeter lateral optical slide reveals tactile upholstery and believable contact shadows. The chair is completely rigid and stationary; legs remain straight and on the floor. Natural warm neutral color, soft window highlights, elegant restrained depth of field. Same room layout and geometry throughout. No furniture substitution, no bending metal, no added person, no new decor, no text, no logo, no cut. Soft room ambience, no speech or music.",
+          "sound": "Détail textile subtil et souffle de transition",
+          "cut": "Raccord de lumière vers cadre final"
+        },
+        {
+          "id": "03",
+          "source": 15743373,
+          "crop": [
+            0.12,
+            0.1,
+            0.92,
+            0.98
+          ],
+          "grade": "warm-neutral",
+          "framing": "Composition fauteuil, fenêtre, plante",
+          "camera": "Fixe, respiration de la lumière uniquement",
+          "action": "L'espace s'apaise pour accueillir la signature.",
+          "prompt": "Final high-end interior campaign composition from this exact real reference room. Keep the window frame, dark armchair, pale rug, wood floor, tall plant, console and small lamp exactly as photographed. Locked camera with no perspective change. Very gentle daylight breathing across the existing floor, no day-to-night transition and no furniture movement. Refined warm natural materials, clear spatial depth, realistic architectural verticals and contact shadows. Preserve every object count and position. No people, new decor, text, brands, changing walls or impossible geometry, no cut. Quiet realistic room tone, no dialogue or music.",
+          "sound": "Fin musicale ouverte, aucun impact",
+          "cut": "Carton HABITER"
+        }
+      ]
+    },
+    {
+      "id": "06-transformation",
+      "title": "TRANSFORMATION",
+      "category": "Maison / lifestyle",
+      "signature": "JUSTE UNE LUMIÈRE",
+      "tagline": "Et l'ambiance change.",
+      "idea": "Dans le même coin de pièce, une lampe à dôme blanc passe d'une présence diurne à une chaleur enveloppante. Le cadre ne change jamais pendant la transition.",
+      "commercial_goal": "Présenter une idée directement vendable à une marque de luminaires, sans changer artificiellement le mobilier.",
+      "difference": "Avant/après lumineux à cadre verrouillé plutôt que visite architecturale.",
+      "palette": [
+        "#e9e5db",
+        "#d3ae6e",
+        "#65513a"
+      ],
+      "light": "Évolution graduelle de l'intensité de la lampe ; rideau et meuble identiques ; pas de changement de soleil.",
+      "product": "Lampe de table blanche à dôme, pied droit, base ronde, table en bois et rideaux écrus.",
+      "preserve": "Dôme, base, pied, table et plis des rideaux ; aucun meuble ajouté entre les ambiances.",
+      "music": "reverie",
+      "music_start": 110,
+      "sound": "Petit clic au changement visible, souffle et résolution chaleureuse.",
+      "references": [
+        "vitra",
+        "apple-transformation"
+      ],
+      "card_bg": "#514431",
+      "card_ink": "#f2e7cf",
+      "serif": false,
+      "shots": [
+        {
+          "id": "01",
+          "source": 4612402,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "cool",
+          "framing": "Plan d'ensemble lampe et rideau",
+          "camera": "Fixe",
+          "action": "Ambiance de jour neutre ; la lampe reste à faible intensité.",
+          "prompt": "Realistic home lighting advertisement from this exact photograph of the white dome table lamp. Preserve its round white shade, slim straight stem, circular base, wooden table and every curtain fold. Locked camera, no object motion. Calm neutral daytime ambience with the existing lamp glow held at a low subtle level, soft cool-white room light. Keep the lamp shape, scale and contact shadows absolutely consistent. No new furniture, no moving curtains, no people, no labels, no text, no logo, no cut. No voice or music.",
+          "sound": "Ambiance claire sans clic",
+          "cut": "Raccord fixe vers l'allumage"
+        },
+        {
+          "id": "02",
+          "source": 4612402,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "neutral",
+          "framing": "Même cadre strict",
+          "camera": "Verrouillée",
+          "action": "Le halo chaud augmente progressivement ; aucune transformation du décor.",
+          "prompt": "A precise lighting transformation in the exact same photographed room. Locked camera with absolutely unchanged framing. Preserve the same white dome lamp, straight stem, circular base, wooden table and cream curtain folds. Over this continuous shot the existing warm glow under the lampshade slowly increases from subtle to comfortably warm, gently illuminating the nearby curtain and wood. This is only a change in light intensity, not a scene transformation. All geometry, objects and positions remain rigid. No room redesign, no curtain morphing, no hands, no extra light source, no text, no logo, no cut. No speech or music.",
+          "sound": "Clic doux à synchroniser sur hausse réelle du halo",
+          "cut": "Coupe dans la même ambiance chaude"
+        },
+        {
+          "id": "03",
+          "source": 4612402,
+          "crop": [
+            0.17,
+            0.17,
+            0.83,
+            0.95
+          ],
+          "grade": "amber",
+          "framing": "Détail dôme, pied et bois",
+          "camera": "Recul optique de 2 cm maximum",
+          "action": "Maintien de l'ambiance finale pour le bénéfice et le CTA.",
+          "prompt": "Warm premium home lighting closing shot using the exact white dome lamp from the reference photograph. Preserve the original shade, slim stem, round base, wood table and curtains. A very slow two-centimeter camera pullback. Comfortable amber illumination remains stable beneath the shade with realistic soft spill on the curtain and warm wood grain. The lamp is stationary, grounded and geometrically unchanged. Restrained natural cinematic image, no magical particles, no new furniture, no morphing, no person, no label or text, no logo, no cut. Quiet room tone only, no music or dialogue.",
+          "sound": "Résolution douce",
+          "cut": "Carton JUSTE UNE LUMIÈRE"
+        }
+      ]
+    },
+    {
+      "id": "07-probleme-solution",
+      "title": "PROBLÈME / SOLUTION",
+      "category": "E-commerce / performance",
+      "signature": "UNE PAGE",
+      "tagline": "Faites place à vos idées.",
+      "idea": "Des mots de surcharge visuelle apparaissent en montage, puis disparaissent au profit d'un carnet ouvert. Le produit donne une place concrète à l'idée, sans promesse de productivité chiffrée.",
+      "commercial_goal": "Démontrer une accroche, un problème, un produit, une démonstration et un CTA en moins de vingt secondes.",
+      "difference": "Narration de conversion et typographie précise ; le film 08 montre énergie et montage produit.",
+      "palette": [
+        "#faf8f1",
+        "#1f2528",
+        "#b9997d"
+      ],
+      "light": "Lumière de bureau diffuse, papier crème lisible ; aucune écriture générée.",
+      "product": "Carnet générique à couverture mouchetée, pages crème et stylo transparent, source Pexels sans marque.",
+      "preserve": "Nombre de pages visibles, couverture mouchetée, stylo transparent et ombres ; pas d'ajout de texte génératif sur le papier.",
+      "music": "catalyst",
+      "music_start": 35,
+      "sound": "Clics de surcharge au début, froissement papier, silence bref avant CTA.",
+      "references": [
+        "apple-performance",
+        "aesop-magnify"
+      ],
+      "card_bg": "#1f2528",
+      "card_ink": "#faf8f1",
+      "serif": false,
+      "edit_structure": [
+        {
+          "at": 0,
+          "until": 1.5,
+          "text": "TROP D'IDÉES ?",
+          "role": "hook"
+        },
+        {
+          "at": 1.5,
+          "until": 3.0,
+          "text": "Tout reste en tête.",
+          "role": "problem"
+        },
+        {
+          "at": 3.0,
+          "until": 5.0,
+          "text": "Une page pour commencer.",
+          "role": "product"
+        },
+        {
+          "at": 5.0,
+          "until": 10.0,
+          "text": "Ouvrez. Posez l'idée.",
+          "role": "demonstration"
+        },
+        {
+          "at": 10.0,
+          "until": 15.0,
+          "text": "Une place pour chaque idée.",
+          "role": "benefit"
+        },
+        {
+          "at": 15.0,
+          "until": 17.5,
+          "text": "PASSEZ AU PAPIER",
+          "role": "cta"
+        }
+      ],
+      "shots": [
+        {
+          "id": "01",
+          "source": 7657397,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "neutral",
+          "framing": "Produit et espace pour accroche",
+          "camera": "Rapprochement de 2 cm",
+          "action": "Le papier frémit à peine ; la surcharge est ajoutée par typographie au montage.",
+          "prompt": "Clear conversion-focused stationery commercial using this exact real photograph. Preserve the unbranded notebook with cream pages and patterned cover, transparent ballpoint pen and original desktop arrangement. Restrained two-centimeter optical push, soft diffuse daylight, crisp tactile paper. Only a very slight natural page-edge tremble, with all objects remaining in their original positions. Leave the pages blank and clean; all commercial typography will be added in postproduction. No writing generated on paper, no new hands or objects, no logo, no product substitution, no cuts. No speaking or music.",
+          "sound": "Trois petits clics puis souffle de sortie",
+          "cut": "Coupe nette au passage produit"
+        },
+        {
+          "id": "02",
+          "source": 7657397,
+          "crop": [
+            0.09,
+            0.0,
+            0.91,
+            0.78
+          ],
+          "grade": "neutral",
+          "framing": "Macro tranche et feuilles ouvertes",
+          "camera": "Fixe",
+          "action": "Une feuille déjà entrouverte se soulève de quelques millimètres puis se repose.",
+          "prompt": "Tactile stationery demonstration from this actual notebook photo. Tight view of the exact cream paper edges and patterned notebook cover already visible in the photograph. Locked camera, a single existing loose page edge lifts only a few millimeters in a gentle air movement and settles once. Preserve the paper count, binding, cover pattern and pen position. Natural white desktop, soft shadows, realistic paper thickness and restrained commercial clarity. The sheets remain completely blank. No new notebook, no hands, no page morphing, no printed or handwritten text, no logos, no cuts. No speech or music.",
+          "sound": "Froissement papier court",
+          "cut": "Coupe sur la page posée"
+        },
+        {
+          "id": "03",
+          "source": 7657397,
+          "crop": [
+            0.03,
+            0.14,
+            0.97,
+            0.98
+          ],
+          "grade": "neutral",
+          "framing": "Packshot papier et stylo",
+          "camera": "Très léger recul",
+          "action": "L'image se stabilise et la promesse émotionnelle apparaît au montage.",
+          "prompt": "Minimal premium notebook campaign closing shot from the same authentic photograph. Same cream blank paper, patterned notebook cover, transparent pen and pale desk. Very slight slow camera pullback, final stable packshot. Honest soft daylight, precise pen geometry and paper texture. Keep the original arrangement rigid with believable shadows, pages blank, no hand, no generated writing, no new object, no logos, no cut. Clean negative space for postproduced copy. No voice or music.",
+          "sound": "Arrêt des clics, petite résolution",
+          "cut": "CTA PASSEZ AU PAPIER"
+        }
+      ]
+    },
+    {
+      "id": "08-product-energy",
+      "title": "PRODUCT ENERGY",
+      "category": "E-commerce / performance",
+      "signature": "ZESTE",
+      "tagline": "Mettez de la couleur.",
+      "idea": "Un jus orange et une bouteille sans marque sur fond menthe deviennent une suite de trois prises recoupées sur le rythme : couleur, verre, hero.",
+      "commercial_goal": "Montrer une création verticale adaptée aux coupes courtes de Meta et TikTok, avec produit et CTA lisibles.",
+      "difference": "Montage syncopé et sound design plutôt que narration problème/solution.",
+      "palette": [
+        "#eab130",
+        "#b5d9d5",
+        "#173b3d"
+      ],
+      "light": "Lumière dure douce de studio, couleurs franches ; respect du liquide photographié.",
+      "product": "Bouteille transparente à bouchon blanc, jus orange, petit verre à paille bleue et assiette blanche.",
+      "preserve": "Silhouette de bouteille, bouchon blanc fermé, niveau de jus, verre et paille ; aucune promesse nutritionnelle.",
+      "music": "catalyst",
+      "music_start": 52,
+      "sound": "Impacts brefs, souffle stéréo discret, résonance de verre ; pas de bruit de décapsulage sur un bouchon fermé.",
+      "references": [
+        "apple-performance",
+        "dyson"
+      ],
+      "card_bg": "#173b3d",
+      "card_ink": "#f8c23b",
+      "serif": false,
+      "edit_structure": [
+        {
+          "at": 0,
+          "until": 1.5,
+          "text": "DE LA COULEUR.",
+          "role": "hook"
+        },
+        {
+          "at": 5,
+          "until": 7.5,
+          "text": "DU RYTHME.",
+          "role": "energy"
+        },
+        {
+          "at": 15,
+          "until": 17.5,
+          "text": "DÉCOUVREZ ZESTE",
+          "role": "cta"
+        }
+      ],
+      "shots": [
+        {
+          "id": "01",
+          "source": 9228137,
+          "crop": [
+            0.39,
+            0.18,
+            0.93,
+            0.95
+          ],
+          "grade": "punch",
+          "framing": "Gros plan bouteille orange",
+          "camera": "Travelling latéral de 4 cm, sans rotation",
+          "action": "Reflets mobiles et couleur franche ; bouteille posée.",
+          "prompt": "Energetic premium beverage product cinematography from this real reference photo. Preserve the exact unbranded clear bottle of orange juice, closed white cap, juice level and mint background. A short controlled four-centimeter lateral camera move with crisp glass reflections and vibrant orange against mint. The bottle stays upright, rigid and resting on the surface, no independent motion. Bright clean studio light, sharp readable silhouette, subtle natural liquid surface only. No new label, no text, no logos, no floating fruit, no splash, no uncapping, no hands, no cuts. No voices or music.",
+          "sound": "Impact mat à l'entrée puis verre bref",
+          "cut": "Deux recoupes de la même prise sans répétition temporelle"
+        },
+        {
+          "id": "02",
+          "source": 9228137,
+          "crop": [
+            0.05,
+            0.42,
+            0.67,
+            0.99
+          ],
+          "grade": "punch",
+          "framing": "Verre, paille, demi-orange",
+          "camera": "Rapprochement de 3 cm",
+          "action": "Le reflet suit la courbe du verre, la paille reste rigide.",
+          "prompt": "Fresh rhythmic beverage detail shot using the exact real photographic source. Keep the same small orange juice glass, blue-striped straw, white saucer and orange slice on the mint surface. Controlled three-centimeter camera push with vivid natural orange color and clean specular glass highlights. The glass, straw, plate and fruit remain rigid and in their original positions. Only a tiny physically plausible shimmer at the liquid surface. No splashing, no added ice, no floating fruit, no new straw, no label or text, no brand, no hand, one continuous shot. No speech or music.",
+          "sound": "Souffle court et petit impact de verre",
+          "cut": "Coupe au rythme vers ensemble"
+        },
+        {
+          "id": "03",
+          "source": 9228137,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "punch",
+          "framing": "Ensemble bouteille et verre",
+          "camera": "Fixe, lumière stable",
+          "action": "Hero propre pour lecture de la marque de concept au montage.",
+          "prompt": "Bold final beverage hero shot from this authentic mint-background product photo. Preserve the same unbranded clear bottle with white cap, orange juice, small glass with blue-striped straw, orange slice and white saucer. Locked camera and precise clean studio light, saturated but realistic orange and mint. The product arrangement is fully stable and grounded, no geometry or liquid-level changes. Clear commercial negative space. No generated words, no logos, no fruit explosion, no new prop, no hand, no floating product, no cut. No speech or music.",
+          "sound": "Signature rythmique puis coupure nette",
+          "cut": "CTA DÉCOUVREZ ZESTE"
+        }
+      ]
+    },
+    {
+      "id": "09-authentic-creator",
+      "title": "AUTHENTIC CREATOR",
+      "category": "UGC / avatars",
+      "signature": "LE GESTE SIMPLE",
+      "tagline": "Présentation scénarisée.",
+      "idea": "Une interprète présente le principe d'un rituel, puis le produit est montré en insert. Aucun récit d'expérience ou recommandation personnelle.",
+      "commercial_goal": "Tester uniquement après les pilotes produit si un avatar audio-dirigé peut atteindre un naturel acceptable.",
+      "difference": "Face caméra et conversation ; le film 10 impose en plus une interaction et des raccords de lieu.",
+      "palette": [
+        "#e5dfd3",
+        "#b6a78e",
+        "#544c3d"
+      ],
+      "light": "Fenêtre diffuse, cadrage smartphone stable et sans effet glamour.",
+      "product": "Sérum générique de la référence 8101534, montré seulement en insert pour ne pas inventer de prise en main.",
+      "preserve": "Identité de l'interprète de stock et tenue, lèvres et dents stables ; flacon identique à l'insert.",
+      "music": "reverie",
+      "music_start": 12,
+      "sound": "Voix française naturelle sous licence distincte, jamais clonée depuis Pexels ; musique très basse sous dialogue.",
+      "references": [
+        "aesop-ritual",
+        "apple-performance"
+      ],
+      "card_bg": "#e5dfd3",
+      "card_ink": "#544c3d",
+      "serif": false,
+      "hold": "SUSPENDU_AVATAR_ET_CASTING : photographie de personne réelle, rôle scénarisé seulement. Pas d'avatar fictif garanti, pas d'autorisation individuelle de parole synthétique attestée et aucun benchmark premium de LongCat sur ce casting. Aucun coût GPU engagé pour ce film.",
+      "script": "Pour ce rituel, tout commence par un geste simple. On prend le temps de regarder la texture, puis on laisse le produit trouver sa place. Une goutte, un moment, et une présentation qui va à l'essentiel.",
+      "shots": [
+        {
+          "id": "01",
+          "source": 7959590,
+          "crop": [
+            0.15,
+            0.01,
+            0.85,
+            0.78
+          ],
+          "grade": "neutral",
+          "engine": "longcat",
+          "framing": "Portrait face caméra, référence de casting",
+          "camera": "Fixe smartphone",
+          "action": "Petites expressions, lèvres synchronisées à la voix ; aucun produit ajouté dans les mains.",
+          "prompt": "A clearly scripted product presenter performance using the same adult stock model in the reference photo, preserving her exact face, short blonde hair, cream jacket and white top. Static natural smartphone camera. She speaks the separately provided French narration with relaxed eye contact, subtle blinks and small believable expressions. Hands remain still and out of the close framing. Preserve facial identity, teeth, lips, clothes and soft neutral background. No new product in her hands, no extra fingers, no beauty filter, no exaggerated expression, no logos or generated text. This is an actor role, not a customer testimonial.",
+          "sound": "Voix : première phrase du script",
+          "cut": "Coupe franche sur insert produit"
+        },
+        {
+          "id": "02",
+          "source": 8101534,
+          "crop": [
+            0.05,
+            0.08,
+            0.95,
+            0.97
+          ],
+          "grade": "cream",
+          "framing": "Insert sérum fidèle",
+          "camera": "Fixe, léger reflet",
+          "action": "Flacon immobile sous la narration.",
+          "prompt": "Natural skincare insert from the authentic source photograph. Preserve the exact burgundy bottle, completely blank white label, glass pipette with white bulb, wooden support and frosted jar. Static camera, subtle soft window reflection, realistic glass and paper. No moving container, no label text, no logos, no hands or added product. Single continuous photographic shot. No speech or music in the generated source track; a licensed narration is added later.",
+          "sound": "Voix continue, détail verre très bas",
+          "cut": "Retour vers portrait"
+        },
+        {
+          "id": "03",
+          "source": 7959590,
+          "crop": [
+            0.15,
+            0.01,
+            0.85,
+            0.78
+          ],
+          "grade": "neutral",
+          "engine": "longcat",
+          "framing": "Même portrait",
+          "camera": "Fixe",
+          "action": "Fin de phrase et pause, sans sourire figé ni geste commercial.",
+          "prompt": "Continuation of the same scripted French presenter performance from the provided reference. Preserve the exact adult stock model's face, short blonde hair, cream jacket, white top and neutral background. Static smartphone framing and natural window light. Accurate gentle lip synchronization to the provided final phrase, subtle natural head motion, a relaxed pause after speaking. No exaggerated smile, no nod loop, no identity drift, no new objects, no product endorsement or customer-testimonial acting, no generated words or logos.",
+          "sound": "Fin de voix, pause de 0,5 s",
+          "cut": "Mention présentation scénarisée"
+        }
+      ]
+    },
+    {
+      "id": "10-lifestyle-demonstration",
+      "title": "LIFESTYLE DEMONSTRATION",
+      "category": "UGC / avatars",
+      "signature": "LE MATIN, SIMPLEMENT",
+      "tagline": "Démonstration scénarisée.",
+      "idea": "Dans une salle de bain d'appartement, une interprète explique sobrement le geste puis le montre. Le miroir et les mains imposent un contrôle renforcé.",
+      "commercial_goal": "Tester un format UGC mêlant présentation et démonstration uniquement si le casting et le benchmark humain sont validés.",
+      "difference": "Continuité d'interaction et de décor ; le film 09 peut se contenter d'une présentation statique et d'inserts.",
+      "palette": [
+        "#e3e7e5",
+        "#95a7a9",
+        "#6a4d36"
+      ],
+      "light": "Salle de bain réelle, lumière du jour cohérente dans le miroir.",
+      "product": "Soin ambré générique de la séance Pexels 102218xx ; aucun témoignage ni résultat revendiqué.",
+      "preserve": "Même adulte, pyjama bleu à liseré, miroir, lavabo, flacons et mains anatomiquement correctes.",
+      "music": "reverie",
+      "music_start": 25,
+      "sound": "Voix française de rôle, sans clonage, ambiance de salle de bain basse.",
+      "references": [
+        "aesop-ritual",
+        "vitra"
+      ],
+      "card_bg": "#dfe5e3",
+      "card_ink": "#354b4d",
+      "serif": false,
+      "hold": "SUSPENDU_INTERACTION_HUMAINE : source actuelle avec miroir et personne réelle, inadéquate pour garantir un avatar fictif et une parole synthétique autorisée. Casting photographique frontal sous autorisation et benchmark LongCat nécessaires. Aucun GPU pour ce film.",
+      "script": "Voici une façon de présenter ce rituel du matin : d'abord le produit, puis le geste, dans son vrai décor. Le cadrage reste simple pour voir ce qui se passe. Rien à surjouer : on montre, et on laisse le produit parler.",
+      "shots": [
+        {
+          "id": "01",
+          "source": 10222471,
+          "crop": [
+            0.32,
+            0.04,
+            0.97,
+            0.74
+          ],
+          "grade": "neutral",
+          "engine": "longcat",
+          "framing": "Portrait au miroir, casting non validé",
+          "camera": "Fixe",
+          "action": "Présentation neutre ; plan bloqué tant que source frontale et droits ne sont pas validés.",
+          "prompt": "A neutral scripted French product demonstration presenter in the exact real bathroom shown in the reference. Preserve the same adult stock model, tied-back hair, pale blue piped pajamas and honest skin texture. Static camera, calm conversation, natural subtle expressions and precise audio-driven lip synchronization. The bathroom mirror must show a physically consistent reflection of the same motion. No claims of personal experience, no product endorsement, no customer testimonial, no face replacement, no new packaging, no extra fingers, no text or logos. Benchmark only until the casting and reflection have been reviewed.",
+          "sound": "Introduction parlée sous réserve casting",
+          "cut": "Coupe vers mains"
+        },
+        {
+          "id": "02",
+          "source": 10222458,
+          "crop": [
+            0.1,
+            0.04,
+            0.62,
+            0.99
+          ],
+          "grade": "neutral",
+          "framing": "Démonstration pipette et paume",
+          "camera": "Fixe",
+          "action": "Un petit mouvement crédible au-dessus de la paume, sous narration.",
+          "prompt": "Realistic daily skincare demonstration using the same authentic bathroom photo. Preserve the exact adult model's face, tied-back hair, pale blue pajamas, existing dropper, open palm and amber bottle. Only a tiny controlled wrist adjustment over the open palm, then a pause. Keep five correct fingers, rigid glass, consistent reflection and unchanged room. Closed lips during this non-speaking cutaway. No new bottle, no face transformation, no text, branding or product claims, no camera move, no cut. No generated voice or music.",
+          "sound": "Narration continue, goutte si visible",
+          "cut": "Retour contexte"
+        },
+        {
+          "id": "03",
+          "source": 10221851,
+          "crop": [
+            0.05,
+            0.02,
+            0.95,
+            0.98
+          ],
+          "grade": "neutral",
+          "framing": "Plan vie quotidienne et produit",
+          "camera": "Recul de 2 cm",
+          "action": "Fin du geste sans déplacer la gamme.",
+          "prompt": "Quiet lifestyle closing insert from the exact same real bathroom source. Preserve the white sink, chrome faucet, amber bottles, pale blue pajama sleeve and original hand. Slow two-centimeter pullback, stable natural daylight and truthful product proportions. The hand relaxes without picking up an object. Keep every mirror and bottle edge consistent. No extra person, new item, lettering, logo, cut or product claim. No voice or music in the generated clip; the final narration is mixed later.",
+          "sound": "Fin de voix et ambiance",
+          "cut": "Mention démonstration scénarisée"
+        }
+      ]
+    },
+    {
+      "id": "11-fashion-campaign",
+      "title": "FASHION CAMPAIGN",
+      "category": "Mode / fashion",
+      "signature": "LIGNE",
+      "tagline": "Taillé pour la lumière.",
+      "idea": "Une silhouette assise devient une étude éditoriale du tailoring : revers, regard, ensemble. Un seul décor et une seule tenue évitent les faux raccords.",
+      "commercial_goal": "Démontrer une direction mode cinématographique et le respect de la construction d'un vêtement.",
+      "difference": "Silhouette et jeu subtil du modèle ; le film 12 reste centré sur la matière d'un accessoire.",
+      "palette": [
+        "#352a23",
+        "#b99a74",
+        "#eee3d1"
+      ],
+      "light": "Faisceau latéral chaud et fond brun, détails dans les ombres, exposition de peau stable.",
+      "product": "Ensemble tailleur beige générique porté par une interprète de stock, chaise et studio bruns.",
+      "preserve": "Même modèle, coupe, revers, manches, boutons et pantalon ; aucune marche ni changement de vêtement.",
+      "music": "helios",
+      "music_start": 36,
+      "sound": "Tissu, respiration de pièce et coupe nette ; pas de voix ni de commentaire sur la personne.",
+      "references": [
+        "cos",
+        "jadore"
+      ],
+      "card_bg": "#352a23",
+      "card_ink": "#eee3d1",
+      "serif": true,
+      "human_review": true,
+      "shots": [
+        {
+          "id": "01",
+          "source": 20788943,
+          "crop": [
+            0.23,
+            0.32,
+            0.83,
+            0.89
+          ],
+          "grade": "warm-neutral",
+          "framing": "Matière et revers du tailleur",
+          "camera": "Glissement de 1 cm",
+          "action": "Le tissu suit une respiration très légère, coutures préservées.",
+          "prompt": "Premium editorial tailoring campaign from this real studio photograph. Preserve the same beige tailored jacket lapels, seams, sleeve length, buttons and matching trousers on the seated adult model. Tight fabric-focused framing, a restrained one-centimeter lateral camera slide. The fabric moves only subtly with natural breathing while the model remains seated. Original warm directional studio light and brown background, tactile weave, refined shadow detail. No changes to garment cut, no new buttons or accessories, no logo, no text, no extra hands, no cut. No voices or music.",
+          "sound": "Froissement textile discret",
+          "cut": "Coupe vers regard"
+        },
+        {
+          "id": "02",
+          "source": 20788943,
+          "crop": [
+            0.2,
+            0.05,
+            0.82,
+            0.68
+          ],
+          "grade": "warm-neutral",
+          "framing": "Portrait éditorial trois-quarts",
+          "camera": "Fixe",
+          "action": "Un clignement et un léger mouvement de regard, sans tourner complètement la tête.",
+          "prompt": "Cinematic fashion portrait using exactly the adult stock model in the reference photo. Preserve her face, short dark bob, beige tailored jacket and seated three-quarter pose. Locked camera, one gentle natural blink and a tiny eye movement towards the original light, no full head turn. Strong warm side light, brown studio background and authentic skin texture. Keep hair silhouette, facial proportions and jacket lapels stable. No speaking, no beauty filter, no identity change, no new accessories, no extra fingers, no text or logos, one continuous take. No voice or music.",
+          "sound": "Ambiance studio, note tenue",
+          "cut": "Coupe vers silhouette complète"
+        },
+        {
+          "id": "03",
+          "source": 20788943,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "warm-neutral",
+          "framing": "Silhouette assise entière",
+          "camera": "Recul de 3 cm maximum",
+          "action": "La posture reste stable et la lumière dessine la tenue.",
+          "prompt": "Final premium fashion campaign silhouette from this exact real reference photograph. Same seated adult model, beige tailored suit, chair, brown studio floor and warm directional light. A slow straight three-centimeter camera pullback, no orbit. The model holds the original elegant seated pose with only subtle breathing. Preserve jacket cut, lapels, sleeve length, hands, trousers, shoes and chair geometry. No standing, walking, garment swap, extra limb, new accessory, lettering or logo, no cut. Refined editorial photographic realism, no dialogue or music.",
+          "sound": "Résolution musicale sobre",
+          "cut": "Carton LIGNE"
+        }
+      ]
+    },
+    {
+      "id": "12-accessory-icon",
+      "title": "ACCESSORY ICON",
+      "category": "Mode / accessoires",
+      "signature": "OBJET DE LIGNE",
+      "tagline": "Le détail fait présence.",
+      "idea": "Le grain, le fermoir puis l'objet dans la pièce : un sac vert profond est traité comme une icône de design, sans fausse marque ni porteur ajouté.",
+      "commercial_goal": "Séduire une marque d'accessoires par la netteté de la matière, les raccords et une mise en situation élégante.",
+      "difference": "Micro-détails et produit en contexte ; le film 11 montre une silhouette habillée.",
+      "palette": [
+        "#174f50",
+        "#b89850",
+        "#e7e5db"
+      ],
+      "light": "Fenêtre diffuse, reflet doré doux sur fermoir, lumière stable sur cuir grainé.",
+      "product": "Sac structuré vert canard, poignée noire et fermoir doré, posé sur un tabouret noir dans une pièce claire.",
+      "preserve": "Grain, surpiqûres, rabat, fermoir doré, poignée, absence de marque ; pas de changement de couleur ni de quincaillerie.",
+      "music": "reverie",
+      "music_start": 135,
+      "sound": "Résonance métal douce, frottement de matière, souffle de raccord ; aucun faux bruit d'ouverture.",
+      "references": [
+        "cos",
+        "vitra"
+      ],
+      "card_bg": "#174f50",
+      "card_ink": "#f0e6d0",
+      "serif": true,
+      "shots": [
+        {
+          "id": "01",
+          "source": 4830923,
+          "crop": [
+            0.27,
+            0.42,
+            0.84,
+            0.85
+          ],
+          "grade": "neutral",
+          "framing": "Macro grain et fermoir",
+          "camera": "Glissement de 1 cm",
+          "action": "Un reflet souligne le fermoir ; aucune ouverture.",
+          "prompt": "Premium leather-accessory macro from this exact real photograph. Preserve the same structured deep teal handbag, fine grain, flap edge, stitching and single gold clasp. Tight optical detail framing, one-centimeter lateral camera slide and a soft reflection along the existing clasp. The bag remains closed, rigid and motionless on its original stool. Natural window light, tactile leather, refined metal response. No opening, no new hardware, no lettering or logos, no new hand, no brand, no product deformation, no cut. No speech or music.",
+          "sound": "Petit tintement métallique amorti",
+          "cut": "Raccord fermoir vers poignée"
+        },
+        {
+          "id": "02",
+          "source": 4830923,
+          "crop": [
+            0.19,
+            0.24,
+            0.91,
+            0.96
+          ],
+          "grade": "neutral",
+          "framing": "Sac complet, poignée et silhouette",
+          "camera": "Très lent rapprochement de 2 cm",
+          "action": "Le mouvement appartient à la caméra ; le sac garde sa géométrie.",
+          "prompt": "Luxury accessory product motion shot using this authentic teal handbag photo. Preserve the exact deep teal structured bag, black top handle, gold clasp, flap, stitching and stool. A restrained two-centimeter camera push gives subtle optical parallax and moving reflections, while the bag itself remains stationary and grounded. Soft natural room light, precise shape and leather grain. Keep all proportions and hardware identical. No handle bending, no color shift, no added strap or label, no hand, no opening, no cut, no text, no logo. No voices or music.",
+          "sound": "Frottement de matière très léger",
+          "cut": "Coupe vers mise en situation"
+        },
+        {
+          "id": "03",
+          "source": 4830923,
+          "crop": [
+            0.02,
+            0.02,
+            0.98,
+            0.98
+          ],
+          "grade": "neutral",
+          "framing": "Mise en situation sur tabouret dans pièce claire",
+          "camera": "Recul de 3 cm",
+          "action": "Révélation de l'objet dans son environnement réel, sans ajouter de personne.",
+          "prompt": "Final premium accessory lifestyle reveal from this exact authentic interior photo. Same deep teal structured handbag with black handle and gold clasp, sitting on the black stool in the original bright room beside the white cabinet and plants. A slow straight three-centimeter camera pullback reveals its real setting. Preserve bag proportions, grain, clasp, stool, cabinet and plant positions. Soft natural daylight, grounded contact shadows and elegant commercial composition. No new person, new bag, added branding, text, moving furniture, color changes or impossible geometry, no cut. No voice or music.",
+          "sound": "Accord final et souffle court",
+          "cut": "Carton OBJET DE LIGNE"
+        }
+      ]
+    }
+  ]
+}

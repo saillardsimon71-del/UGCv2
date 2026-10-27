@@ -1,0 +1,268 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "11-fashion-campaign",
+  "title": "FASHION CAMPAIGN",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/11-FASHION-CAMPAIGN-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/11-FASHION-CAMPAIGN-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "helios",
+    "execution_track": "reverie",
+    "start_s": 36,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/reverie/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Tissu, respiration de pièce et coupe nette ; pas de voix ni de commentaire sur la personne.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 20788943,
+        "page": "https://www.pexels.com/photo/elegant-woman-in-beige-jacket-sitting-on-armchair-20788943/",
+        "category": "mode",
+        "download": "https://images.pexels.com/photos/20788943/pexels-photo-20788943.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\20788943.jpg",
+        "dimensions": [
+          2048,
+          3070
+        ],
+        "sha256": "43a76a4a040f33f5b28e01a7fdf8ffe3745afcc01764de9f5de67cb09ab409a2",
+        "author_evidence": [
+          {
+            "name": "Phuc Lai",
+            "page": "https://www.pexels.com/@phuc-lai-1112451390/"
+          }
+        ],
+        "crop_fraction": [
+          0.23,
+          0.32,
+          0.83,
+          0.89
+        ],
+        "crop_pixels": [
+          471,
+          982,
+          1700,
+          2732
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "ff26a5259bc34d18b205a5f8a8fabae049dd8f633b7cf3639ea6a78980912b02",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "warm-neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Matière et revers du tailleur",
+      "camera": "Glissement de 1 cm",
+      "lighting": "Faisceau latéral chaud et fond brun, détails dans les ombres, exposition de peau stable.",
+      "action": "Le tissu suit une respiration très légère, coutures préservées.",
+      "preserve": "Même modèle, coupe, revers, manches, boutons et pantalon ; aucune marche ni changement de vêtement.",
+      "prompt": "Premium editorial tailoring campaign from this real studio photograph. Preserve the same beige tailored jacket lapels, seams, sleeve length, buttons and matching trousers on the seated adult model. Tight fabric-focused framing, a restrained one-centimeter lateral camera slide. The fabric moves only subtly with natural breathing while the model remains seated. Original warm directional studio light and brown background, tactile weave, refined shadow detail. No changes to garment cut, no new buttons or accessories, no logo, no text, no extra hands, no cut. No voices or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Froissement textile discret",
+      "transition": "Coupe vers regard",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 20788943,
+        "page": "https://www.pexels.com/photo/elegant-woman-in-beige-jacket-sitting-on-armchair-20788943/",
+        "category": "mode",
+        "download": "https://images.pexels.com/photos/20788943/pexels-photo-20788943.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\20788943.jpg",
+        "dimensions": [
+          2048,
+          3070
+        ],
+        "sha256": "43a76a4a040f33f5b28e01a7fdf8ffe3745afcc01764de9f5de67cb09ab409a2",
+        "author_evidence": [
+          {
+            "name": "Phuc Lai",
+            "page": "https://www.pexels.com/@phuc-lai-1112451390/"
+          }
+        ],
+        "crop_fraction": [
+          0.2,
+          0.05,
+          0.82,
+          0.68
+        ],
+        "crop_pixels": [
+          410,
+          154,
+          1679,
+          2088
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "f20cba11c1a4ef2d7ff3db3549aa0ff1fe6f8b94b35b0007e03acb2f03c22981",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "warm-neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Portrait éditorial trois-quarts",
+      "camera": "Fixe",
+      "lighting": "Faisceau latéral chaud et fond brun, détails dans les ombres, exposition de peau stable.",
+      "action": "Un clignement et un léger mouvement de regard, sans tourner complètement la tête.",
+      "preserve": "Même modèle, coupe, revers, manches, boutons et pantalon ; aucune marche ni changement de vêtement.",
+      "prompt": "Cinematic fashion portrait using exactly the adult stock model in the reference photo. Preserve her face, short dark bob, beige tailored jacket and seated three-quarter pose. Locked camera, one gentle natural blink and a tiny eye movement towards the original light, no full head turn. Strong warm side light, brown studio background and authentic skin texture. Keep hair silhouette, facial proportions and jacket lapels stable. No speaking, no beauty filter, no identity change, no new accessories, no extra fingers, no text or logos, one continuous take. No voice or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Ambiance studio, note tenue",
+      "transition": "Coupe vers silhouette complète",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 20788943,
+        "page": "https://www.pexels.com/photo/elegant-woman-in-beige-jacket-sitting-on-armchair-20788943/",
+        "category": "mode",
+        "download": "https://images.pexels.com/photos/20788943/pexels-photo-20788943.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\20788943.jpg",
+        "dimensions": [
+          2048,
+          3070
+        ],
+        "sha256": "43a76a4a040f33f5b28e01a7fdf8ffe3745afcc01764de9f5de67cb09ab409a2",
+        "author_evidence": [
+          {
+            "name": "Phuc Lai",
+            "page": "https://www.pexels.com/@phuc-lai-1112451390/"
+          }
+        ],
+        "crop_fraction": [
+          0.02,
+          0.02,
+          0.98,
+          0.98
+        ],
+        "crop_pixels": [
+          41,
+          61,
+          2007,
+          3009
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "b3da88aa6faf0dee75ed9b27592ca3bd109f30de41f792aa663008c41ff29da2",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "warm-neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Silhouette assise entière",
+      "camera": "Recul de 3 cm maximum",
+      "lighting": "Faisceau latéral chaud et fond brun, détails dans les ombres, exposition de peau stable.",
+      "action": "La posture reste stable et la lumière dessine la tenue.",
+      "preserve": "Même modèle, coupe, revers, manches, boutons et pantalon ; aucune marche ni changement de vêtement.",
+      "prompt": "Final premium fashion campaign silhouette from this exact real reference photograph. Same seated adult model, beige tailored suit, chair, brown studio floor and warm directional light. A slow straight three-centimeter camera pullback, no orbit. The model holds the original elegant seated pose with only subtle breathing. Preserve jacket cut, lapels, sleeve length, hands, trousers, shoes and chair geometry. No standing, walking, garment swap, extra limb, new accessory, lettering or logo, no cut. Refined editorial photographic realism, no dialogue or music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Résolution musicale sobre",
+      "transition": "Carton LIGNE",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

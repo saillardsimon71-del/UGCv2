@@ -1,0 +1,119 @@
+[
+  {
+    "id": 7959590,
+    "page": "https://www.pexels.com/photo/photo-of-a-businesswoman-smiling-while-her-hands-are-in-her-pockets-7959590/",
+    "category": "mode",
+    "download": "https://images.pexels.com/photos/7959590/pexels-photo-7959590.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\7959590.jpg",
+    "dimensions": [
+      2333,
+      3500
+    ],
+    "sha256": "e723c3db6c7b7a979f486402b9188558bd9544a1fca2ed54a4c1bfed0efc5ef1",
+    "author_evidence": [
+      {
+        "name": "Darina Belonogova",
+        "page": "https://www.pexels.com/@darina-belonogova/"
+      }
+    ],
+    "crop_fraction": [
+      0.15,
+      0.01,
+      0.85,
+      0.78
+    ],
+    "crop_pixels": [
+      350,
+      35,
+      1983,
+      2730
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "a76ab2110448907906c3deed2076dd8d27c7d42c746a1ef32585713784586f04",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 8101534,
+    "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+    "category": "serum",
+    "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+    "dimensions": [
+      2400,
+      3196
+    ],
+    "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+    "author_evidence": [
+      {
+        "name": "Polina ⠀",
+        "page": "https://www.pexels.com/@polina-kovaleva/"
+      }
+    ],
+    "crop_fraction": [
+      0.05,
+      0.08,
+      0.95,
+      0.97
+    ],
+    "crop_pixels": [
+      120,
+      256,
+      2280,
+      3100
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "0ca2685a104bf44671c9cd85fdbb5739b355e0aa225bef3b9c77096ae3fee2cd",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "cream",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 7959590,
+    "page": "https://www.pexels.com/photo/photo-of-a-businesswoman-smiling-while-her-hands-are-in-her-pockets-7959590/",
+    "category": "mode",
+    "download": "https://images.pexels.com/photos/7959590/pexels-photo-7959590.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\7959590.jpg",
+    "dimensions": [
+      2333,
+      3500
+    ],
+    "sha256": "e723c3db6c7b7a979f486402b9188558bd9544a1fca2ed54a4c1bfed0efc5ef1",
+    "author_evidence": [
+      {
+        "name": "Darina Belonogova",
+        "page": "https://www.pexels.com/@darina-belonogova/"
+      }
+    ],
+    "crop_fraction": [
+      0.15,
+      0.01,
+      0.85,
+      0.78
+    ],
+    "crop_pixels": [
+      350,
+      35,
+      1983,
+      2730
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "a76ab2110448907906c3deed2076dd8d27c7d42c746a1ef32585713784586f04",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  }
+]

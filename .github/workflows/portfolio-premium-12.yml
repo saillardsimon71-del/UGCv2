@@ -1,0 +1,125 @@
+name: Portfolio premium 12 - pilotes contrôlés
+
+on:
+  push:
+    branches: [production/portfolio-premium12-20261027]
+  workflow_dispatch:
+    inputs:
+      film:
+        description: Pilote à produire après autorisation de campagne
+        type: choice
+        options: [prepare-only, 03-skincare-sensoriel, 05-architectural-living]
+        default: prepare-only
+      confirm_spend:
+        description: Taper oui pour le calcul Modal autorisé
+        type: string
+        default: non
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: sqv-premium12-modal-gpu
+  cancel-in-progress: false
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: '1'
+      CAMPAIGN: productions/PORTFOLIO-PREMIUM-12-2026-10-27
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Outils CPU, aucun build Modal
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+          python -m pip install --disable-pip-version-check 'modal==1.6.1' 'Pillow>=11,<13'
+      - name: Sélection explicite du pilote
+        id: choose
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          HEAD_MESSAGE: ${{ github.event.head_commit.message }}
+          INPUT_FILM: ${{ inputs.film }}
+          INPUT_CONFIRM: ${{ inputs.confirm_spend }}
+        run: |
+          python - <<'PY'
+          import os
+          film = 'none'
+          if os.environ['EVENT_NAME'] == 'push':
+              film = {'RUN_PREMIUM_03': '03-skincare-sensoriel',
+                      'RUN_PREMIUM_05': '05-architectural-living'}.get(os.environ['HEAD_MESSAGE'].strip(), 'none')
+          elif os.environ['INPUT_CONFIRM'] == 'oui':
+              selected = os.environ['INPUT_FILM']
+              if selected in ('03-skincare-sensoriel', '05-architectural-living'):
+                  film = selected
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'film={film}\n')
+          print('Production sélectionnée :', film)
+          PY
+      - name: Vérifier les 12 dossiers et les 36 sources sans calcul distant
+        run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" check
+      - name: Prise 01, worker existant, un essai
+        if: steps.choose.outputs.film != 'none'
+        env:
+          FILM: ${{ steps.choose.outputs.film }}
+        run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" render --film "$FILM" --shot 01 --confirm-spend oui
+      - name: Conserver la première prise avant la suivante
+        if: always() && steps.choose.outputs.film != 'none'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PREMIUM12-${{ steps.choose.outputs.film }}-shot01-${{ github.run_id }}
+          path: |
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/${{ steps.choose.outputs.film }}/RENDERS/shot-01.mp4
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/${{ steps.choose.outputs.film }}/REPORTS/shot-01-*
+          retention-days: 90
+          compression-level: 0
+      - name: Prise 02, worker existant, un essai
+        if: steps.choose.outputs.film != 'none'
+        env:
+          FILM: ${{ steps.choose.outputs.film }}
+        run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" render --film "$FILM" --shot 02 --confirm-spend oui
+      - name: Conserver la deuxième prise avant la suivante
+        if: always() && steps.choose.outputs.film != 'none'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PREMIUM12-${{ steps.choose.outputs.film }}-shot02-${{ github.run_id }}
+          path: |
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/${{ steps.choose.outputs.film }}/RENDERS/shot-02.mp4
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/${{ steps.choose.outputs.film }}/REPORTS/shot-02-*
+          retention-days: 90
+          compression-level: 0
+      - name: Prise 03, worker existant, un essai
+        if: steps.choose.outputs.film != 'none'
+        env:
+          FILM: ${{ steps.choose.outputs.film }}
+        run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" render --film "$FILM" --shot 03 --confirm-spend oui
+      - name: Monter les trois vrais rendus et contrôler le MP4 final
+        if: steps.choose.outputs.film != 'none'
+        env:
+          FILM: ${{ steps.choose.outputs.film }}
+        run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" assemble --film "$FILM"
+      - name: Annuler l'appel actif en cas d'échec ou d'interruption
+        if: always() && (failure() || cancelled()) && steps.choose.outputs.film != 'none'
+        env:
+          FILM: ${{ steps.choose.outputs.film }}
+        run: python "$CAMPAIGN/PRODUCTION/run_campaign.py" cancel --film "$FILM"
+      - name: Conserver sources, prises, exports et reçus
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PREMIUM12-${{ steps.choose.outputs.film }}-delivery-${{ github.run_id }}
+          path: |
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/
+            !productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/SOURCE_REVIEW/
+            !productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/PREVIOUS_REVIEW/
+          retention-days: 90
+          compression-level: 0

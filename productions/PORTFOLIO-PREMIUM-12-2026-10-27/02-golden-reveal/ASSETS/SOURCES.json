@@ -1,0 +1,119 @@
+[
+  {
+    "id": 4735929,
+    "page": "https://www.pexels.com/photo/a-clear-glass-perfume-bottle-with-brown-lid-on-white-surface-4735929/",
+    "category": "parfum",
+    "download": "https://images.pexels.com/photos/4735929/pexels-photo-4735929.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4735929.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "ad3c7bf83a4e99c10052f621b9f805f9a3f47b4e472078f8f2a86114b9cd11e1",
+    "author_evidence": [
+      {
+        "name": "https://kaboompics.com/",
+        "page": "https://www.pexels.com/@karola-g/"
+      }
+    ],
+    "crop_fraction": [
+      0.3,
+      0.35,
+      0.7,
+      0.89
+    ],
+    "crop_pixels": [
+      720,
+      1260,
+      1680,
+      3204
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "f6d3462b2a4603ca739b5649a9500c0849c18f9851e4a429a6384c73a7eb7514",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "amber",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 4735929,
+    "page": "https://www.pexels.com/photo/a-clear-glass-perfume-bottle-with-brown-lid-on-white-surface-4735929/",
+    "category": "parfum",
+    "download": "https://images.pexels.com/photos/4735929/pexels-photo-4735929.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4735929.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "ad3c7bf83a4e99c10052f621b9f805f9a3f47b4e472078f8f2a86114b9cd11e1",
+    "author_evidence": [
+      {
+        "name": "https://kaboompics.com/",
+        "page": "https://www.pexels.com/@karola-g/"
+      }
+    ],
+    "crop_fraction": [
+      0.17,
+      0.13,
+      0.83,
+      0.96
+    ],
+    "crop_pixels": [
+      408,
+      468,
+      1992,
+      3456
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "0cec993e9d8a1933d2c5d07006fc5af781bfa45596154ab7fd2033043c6c053c",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "amber",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 4735929,
+    "page": "https://www.pexels.com/photo/a-clear-glass-perfume-bottle-with-brown-lid-on-white-surface-4735929/",
+    "category": "parfum",
+    "download": "https://images.pexels.com/photos/4735929/pexels-photo-4735929.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4735929.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "ad3c7bf83a4e99c10052f621b9f805f9a3f47b4e472078f8f2a86114b9cd11e1",
+    "author_evidence": [
+      {
+        "name": "https://kaboompics.com/",
+        "page": "https://www.pexels.com/@karola-g/"
+      }
+    ],
+    "crop_fraction": [
+      0.04,
+      0.01,
+      0.96,
+      0.99
+    ],
+    "crop_pixels": [
+      96,
+      36,
+      2304,
+      3564
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "3304851a7c7bb686599c1b96ed60fc9ac331189b2d3bd53974d275757e916547",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "amber",
+    "license": "https://www.pexels.com/license/"
+  }
+]

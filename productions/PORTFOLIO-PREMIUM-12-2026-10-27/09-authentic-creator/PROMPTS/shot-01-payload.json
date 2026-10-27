@@ -1,0 +1,9 @@
+{
+  "prompt": "A clearly scripted product presenter performance using the same adult stock model in the reference photo, preserving her exact face, short blonde hair, cream jacket and white top. Static natural smartphone camera. She speaks the separately provided French narration with relaxed eye contact, subtle blinks and small believable expressions. Hands remain still and out of the close framing. Preserve facial identity, teeth, lips, clothes and soft neutral background. No new product in her hands, no extra fingers, no beauty filter, no exaggerated expression, no logos or generated text. This is an actor role, not a customer testimonial.",
+  "duration_s": 7,
+  "aspect_ratio": "9:16",
+  "seed": 2026102780,
+  "audio_mode": "silent",
+  "image_strength": 0.9,
+  "trace_id": "sqv27-09-01"
+}

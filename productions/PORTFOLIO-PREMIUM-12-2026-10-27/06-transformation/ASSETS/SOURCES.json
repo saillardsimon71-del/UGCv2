@@ -1,0 +1,119 @@
+[
+  {
+    "id": 4612402,
+    "page": "https://www.pexels.com/photo/a-white-lamp-on-the-table-4612402/",
+    "category": "maison",
+    "download": "https://images.pexels.com/photos/4612402/pexels-photo-4612402.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4612402.jpg",
+    "dimensions": [
+      2160,
+      3840
+    ],
+    "sha256": "dfa6256c246ade23dc472db1f283cba7611e8cede0487f4c0a97f94630143b00",
+    "author_evidence": [
+      {
+        "name": "Artem Podrez",
+        "page": "https://www.pexels.com/@artempodrez/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      43,
+      77,
+      2117,
+      3763
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "12ce79022b3e8544f707cc27d1d0a1e8f454838d8813d535820e8588ae3ed575",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "cool",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 4612402,
+    "page": "https://www.pexels.com/photo/a-white-lamp-on-the-table-4612402/",
+    "category": "maison",
+    "download": "https://images.pexels.com/photos/4612402/pexels-photo-4612402.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4612402.jpg",
+    "dimensions": [
+      2160,
+      3840
+    ],
+    "sha256": "dfa6256c246ade23dc472db1f283cba7611e8cede0487f4c0a97f94630143b00",
+    "author_evidence": [
+      {
+        "name": "Artem Podrez",
+        "page": "https://www.pexels.com/@artempodrez/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      43,
+      77,
+      2117,
+      3763
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "9cee31d47987172ce7edc6e0ce846cb276d0682425658cbe8d74556ed8a557ec",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 4612402,
+    "page": "https://www.pexels.com/photo/a-white-lamp-on-the-table-4612402/",
+    "category": "maison",
+    "download": "https://images.pexels.com/photos/4612402/pexels-photo-4612402.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\4612402.jpg",
+    "dimensions": [
+      2160,
+      3840
+    ],
+    "sha256": "dfa6256c246ade23dc472db1f283cba7611e8cede0487f4c0a97f94630143b00",
+    "author_evidence": [
+      {
+        "name": "Artem Podrez",
+        "page": "https://www.pexels.com/@artempodrez/"
+      }
+    ],
+    "crop_fraction": [
+      0.17,
+      0.17,
+      0.83,
+      0.95
+    ],
+    "crop_pixels": [
+      367,
+      653,
+      1793,
+      3648
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "a24d4e3c93b39651f9d49d901959cba151ddb39fbe4e0721f42cff6558238ae6",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "amber",
+    "license": "https://www.pexels.com/license/"
+  }
+]

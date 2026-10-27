@@ -1,0 +1,119 @@
+[
+  {
+    "id": 15743373,
+    "page": "https://www.pexels.com/photo/armchair-and-carpet-in-room-15743373/",
+    "category": "maison",
+    "download": "https://images.pexels.com/photos/15743373/pexels-photo-15743373.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\15743373.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "47d5a487ff7287e32a8f4154c7048dc16af8e3c1536a56a6a56ce8a9a62fdc4c",
+    "author_evidence": [
+      {
+        "name": "Ushindi Namegabe",
+        "page": "https://www.pexels.com/@ushindinamegabe/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      48,
+      72,
+      2352,
+      3528
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "ab9d6ba5136e7d628dc0cde01ee41824faeda4e52d530d50eaaa8b1d76dc899c",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "warm-neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 15743373,
+    "page": "https://www.pexels.com/photo/armchair-and-carpet-in-room-15743373/",
+    "category": "maison",
+    "download": "https://images.pexels.com/photos/15743373/pexels-photo-15743373.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\15743373.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "47d5a487ff7287e32a8f4154c7048dc16af8e3c1536a56a6a56ce8a9a62fdc4c",
+    "author_evidence": [
+      {
+        "name": "Ushindi Namegabe",
+        "page": "https://www.pexels.com/@ushindinamegabe/"
+      }
+    ],
+    "crop_fraction": [
+      0.14,
+      0.37,
+      0.74,
+      0.95
+    ],
+    "crop_pixels": [
+      336,
+      1332,
+      1776,
+      3420
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "5b69068c64d51d4d229bb4852d8cdf232686a5e7848de97bee3cdb4e93fae6a0",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "warm-neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 15743373,
+    "page": "https://www.pexels.com/photo/armchair-and-carpet-in-room-15743373/",
+    "category": "maison",
+    "download": "https://images.pexels.com/photos/15743373/pexels-photo-15743373.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\15743373.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "47d5a487ff7287e32a8f4154c7048dc16af8e3c1536a56a6a56ce8a9a62fdc4c",
+    "author_evidence": [
+      {
+        "name": "Ushindi Namegabe",
+        "page": "https://www.pexels.com/@ushindinamegabe/"
+      }
+    ],
+    "crop_fraction": [
+      0.12,
+      0.1,
+      0.92,
+      0.98
+    ],
+    "crop_pixels": [
+      288,
+      360,
+      2208,
+      3528
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "443e25fd1654127e877bdb86d7d32c0806dc87f783fa286934847b88a9354a04",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "warm-neutral",
+    "license": "https://www.pexels.com/license/"
+  }
+]

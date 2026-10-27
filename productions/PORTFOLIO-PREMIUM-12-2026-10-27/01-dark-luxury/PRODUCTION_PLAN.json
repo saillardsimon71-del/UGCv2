@@ -1,0 +1,268 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "01-dark-luxury",
+  "title": "DARK LUXURY",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/01-DARK-LUXURY-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/01-DARK-LUXURY-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "catalyst",
+    "execution_track": "catalyst",
+    "start_s": 8,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/catalyst/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Résonance grave feutrée, frottement d'air, tintement sec au packshot ; aucun bruit de pulvérisation si rien n'est pulvérisé.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 5994299,
+        "page": "https://www.pexels.com/photo/black-bottle-on-red-background-5994299/",
+        "category": "parfum",
+        "download": "https://images.pexels.com/photos/5994299/pexels-photo-5994299.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\5994299.jpg",
+        "dimensions": [
+          2400,
+          1600
+        ],
+        "sha256": "840b1c0c6552a07a47587a2274a69c69507edeed87581d7c7259628c2a7344e0",
+        "author_evidence": [
+          {
+            "name": "Maksim Goncharenok",
+            "page": "https://www.pexels.com/@maksgelatin/"
+          }
+        ],
+        "crop_fraction": [
+          0.37,
+          0.22,
+          0.63,
+          0.88
+        ],
+        "crop_pixels": [
+          888,
+          352,
+          1512,
+          1408
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "a31da28979e5393ea35e947bc18b0dee7f1348ccd7dbdc8d35c931debe2b9442",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "charcoal",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Très gros plan épaule et bouchon",
+      "camera": "Travelling latéral de 2 cm maximum",
+      "lighting": "Source latérale étroite, noirs détaillés, liseré froid ; fond rouge du stock désaturé en préparation CPU.",
+      "action": "Un reflet froid glisse sur le bord du flacon, le produit reste immobile.",
+      "preserve": "Silhouette ronde, bouchon fermé, proportions, noir mat ; aucun ajout de pulvérisateur ou gravure.",
+      "prompt": "Premium fragrance cinematography from this authentic photograph. Preserve the exact unbranded matte black round bottle, short cylindrical closed cap and curved shoulder. Extreme close product framing. A restrained silver rim reflection travels along the shoulder as the camera slides just two centimeters sideways. Deep charcoal blacks with visible edges, single narrow side softbox, elegant falloff and realistic material response. The bottle stays rigid and upright. No rotation, opening, liquid, mist, hands, labels, lettering or additional props. One continuous optical take. No speech, voices or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Impact sub très discret à 0,15 s, souffle court",
+      "transition": "Coupe sur le reflet",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 5994299,
+        "page": "https://www.pexels.com/photo/black-bottle-on-red-background-5994299/",
+        "category": "parfum",
+        "download": "https://images.pexels.com/photos/5994299/pexels-photo-5994299.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\5994299.jpg",
+        "dimensions": [
+          2400,
+          1600
+        ],
+        "sha256": "840b1c0c6552a07a47587a2274a69c69507edeed87581d7c7259628c2a7344e0",
+        "author_evidence": [
+          {
+            "name": "Maksim Goncharenok",
+            "page": "https://www.pexels.com/@maksgelatin/"
+          }
+        ],
+        "crop_fraction": [
+          0.33,
+          0.29,
+          0.67,
+          0.91
+        ],
+        "crop_pixels": [
+          792,
+          464,
+          1608,
+          1456
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "68fb2764f4164551b08987257c802650e9ff9b10975193f2d34ffa6125cf1a18",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "charcoal",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Plan produit serré, épaule et corps",
+      "camera": "Très lent rapprochement de 3 cm",
+      "lighting": "Source latérale étroite, noirs détaillés, liseré froid ; fond rouge du stock désaturé en préparation CPU.",
+      "action": "La lumière dessine la courbe mate ; aucune transformation du flacon.",
+      "preserve": "Silhouette ronde, bouchon fermé, proportions, noir mat ; aucun ajout de pulvérisateur ou gravure.",
+      "prompt": "Luxury unbranded fragrance product film. Exactly the same black bottle, cylindrical sealed cap, matte surface and curved geometry as the photographic source. A very slow three-centimeter camera push towards the bottle. A soft controlled highlight reveals the round body against a near-black neutral backdrop. Keep every edge and the cap-to-body proportions unchanged; keep the bottle resting on its original plane. Tactile restrained photographic realism, no floating, no spinning, no new text, no logo, no smoke, no additional object, no hands. One uninterrupted take. Quiet nonverbal room tone only.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Résonance métallique amortie",
+      "transition": "Coupe franche vers le plan large",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 5994299,
+        "page": "https://www.pexels.com/photo/black-bottle-on-red-background-5994299/",
+        "category": "parfum",
+        "download": "https://images.pexels.com/photos/5994299/pexels-photo-5994299.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\5994299.jpg",
+        "dimensions": [
+          2400,
+          1600
+        ],
+        "sha256": "840b1c0c6552a07a47587a2274a69c69507edeed87581d7c7259628c2a7344e0",
+        "author_evidence": [
+          {
+            "name": "Maksim Goncharenok",
+            "page": "https://www.pexels.com/@maksgelatin/"
+          }
+        ],
+        "crop_fraction": [
+          0.24,
+          0.04,
+          0.76,
+          0.98
+        ],
+        "crop_pixels": [
+          576,
+          64,
+          1824,
+          1568
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "9c8dee48a041ba18242afe28fb234b1e0d90fd7f6347ba63bf4e55d1a5e26792",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "charcoal",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Packshot frontal avec espace négatif",
+      "camera": "Fixe, légère respiration lumineuse",
+      "lighting": "Source latérale étroite, noirs détaillés, liseré froid ; fond rouge du stock désaturé en préparation CPU.",
+      "action": "Révélation du flacon entier ; maintien lisible pour le titre en postproduction.",
+      "preserve": "Silhouette ronde, bouchon fermé, proportions, noir mat ; aucun ajout de pulvérisateur ou gravure.",
+      "prompt": "Final premium perfume hero shot using this real photographic reference. Preserve the exact single unbranded matte black bottle with its closed cylindrical black cap. Full rigid silhouette, grounded on the original surface with a believable contact shadow. Locked camera. A gentle silver side light gradually defines both edges without changing the product geometry or adding objects. Dark minimal charcoal studio, refined black-on-black product photography, generous clean negative space. No generated writing, no label, no logo, no camera spin, no opening, no hand, no cut. No voice or music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Signature sonore grave puis silence",
+      "transition": "Coupe vers carton NOCTURNE",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

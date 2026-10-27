@@ -1,0 +1,21 @@
+{
+  "workspace": "lucj76861",
+  "date": "2026-10-27",
+  "starting_credit_usd_dashboard_rounded": 29.80,
+  "starting_cycle_usage_usd_dashboard_rounded": 0.20,
+  "campaign_ceiling_usd": 20,
+  "reserve_usd": 10,
+  "effective_additional_ceiling_usd": 19.80,
+  "pilot_allocation_ceiling_usd": 5,
+  "series_allocation_ceiling_usd": 14.80,
+  "workspace_monthly_usage_limit_usd": 20,
+  "previous_workspace_limit_usd": 42.50,
+  "limit_verified_after_reload": true,
+  "dashboard": "https://modal.com/settings/lucj76861/usage?tab=budgets",
+  "evidence": "PRODUCTION/modal-budget-20usd.jpg",
+  "documentation": "https://modal.com/docs/guide/budgets",
+  "billing_guarantee": "No independent invoice cap guarantee. Modal describes the workspace budget as a hard outer cap; metering delay and continuing storage make a client timeout insufficient. This mission only starts supervised pilot runs, one GPU at a time, no overnight series.",
+  "controls": ["No model downloads or deployments", "One attempt per shot", "600-second client deadline with terminate_containers cancellation", "Stop entire run on any failure", "No series before real pilot approval", "Record dashboard after each pilot"],
+  "actual_campaign_billed_usd": null,
+  "partial_worker_estimate_usd": null
+}

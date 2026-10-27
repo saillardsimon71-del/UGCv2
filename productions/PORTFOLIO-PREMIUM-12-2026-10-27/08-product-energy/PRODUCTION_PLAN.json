@@ -1,0 +1,287 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "08-product-energy",
+  "title": "PRODUCT ENERGY",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/08-PRODUCT-ENERGY-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/08-PRODUCT-ENERGY-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "catalyst",
+    "execution_track": "catalyst",
+    "start_s": 52,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/catalyst/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Impacts brefs, souffle stéréo discret, résonance de verre ; pas de bruit de décapsulage sur un bouchon fermé.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [
+    {
+      "at": 0,
+      "until": 1.5,
+      "text": "DE LA COULEUR.",
+      "role": "hook"
+    },
+    {
+      "at": 5,
+      "until": 7.5,
+      "text": "DU RYTHME.",
+      "role": "energy"
+    },
+    {
+      "at": 15,
+      "until": 17.5,
+      "text": "DÉCOUVREZ ZESTE",
+      "role": "cta"
+    }
+  ],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 9228137,
+        "page": "https://www.pexels.com/photo/fresh-orange-juice-in-a-glass-with-a-drinking-straw-9228137/",
+        "category": "boisson",
+        "download": "https://images.pexels.com/photos/9228137/pexels-photo-9228137.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\9228137.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "638eb207d4c978125b7009dde8b79fd8769de39637144c0b5573cc56cf583c6b",
+        "author_evidence": [
+          {
+            "name": "DS stories",
+            "page": "https://www.pexels.com/@ds-stories/"
+          }
+        ],
+        "crop_fraction": [
+          0.39,
+          0.18,
+          0.93,
+          0.95
+        ],
+        "crop_pixels": [
+          936,
+          648,
+          2232,
+          3420
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "8e843f53c9f218b8a026b400b37f28bf3a3b77b089ff2d7a244145d47a053fd1",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "punch",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Gros plan bouteille orange",
+      "camera": "Travelling latéral de 4 cm, sans rotation",
+      "lighting": "Lumière dure douce de studio, couleurs franches ; respect du liquide photographié.",
+      "action": "Reflets mobiles et couleur franche ; bouteille posée.",
+      "preserve": "Silhouette de bouteille, bouchon blanc fermé, niveau de jus, verre et paille ; aucune promesse nutritionnelle.",
+      "prompt": "Energetic premium beverage product cinematography from this real reference photo. Preserve the exact unbranded clear bottle of orange juice, closed white cap, juice level and mint background. A short controlled four-centimeter lateral camera move with crisp glass reflections and vibrant orange against mint. The bottle stays upright, rigid and resting on the surface, no independent motion. Bright clean studio light, sharp readable silhouette, subtle natural liquid surface only. No new label, no text, no logos, no floating fruit, no splash, no uncapping, no hands, no cuts. No voices or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Impact mat à l'entrée puis verre bref",
+      "transition": "Deux recoupes de la même prise sans répétition temporelle",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 9228137,
+        "page": "https://www.pexels.com/photo/fresh-orange-juice-in-a-glass-with-a-drinking-straw-9228137/",
+        "category": "boisson",
+        "download": "https://images.pexels.com/photos/9228137/pexels-photo-9228137.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\9228137.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "638eb207d4c978125b7009dde8b79fd8769de39637144c0b5573cc56cf583c6b",
+        "author_evidence": [
+          {
+            "name": "DS stories",
+            "page": "https://www.pexels.com/@ds-stories/"
+          }
+        ],
+        "crop_fraction": [
+          0.05,
+          0.42,
+          0.67,
+          0.99
+        ],
+        "crop_pixels": [
+          120,
+          1512,
+          1608,
+          3564
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "24d3cc91178241f8323c6dcbd9602a04e73f97ab9a55c48a0e12333637200a52",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "punch",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Verre, paille, demi-orange",
+      "camera": "Rapprochement de 3 cm",
+      "lighting": "Lumière dure douce de studio, couleurs franches ; respect du liquide photographié.",
+      "action": "Le reflet suit la courbe du verre, la paille reste rigide.",
+      "preserve": "Silhouette de bouteille, bouchon blanc fermé, niveau de jus, verre et paille ; aucune promesse nutritionnelle.",
+      "prompt": "Fresh rhythmic beverage detail shot using the exact real photographic source. Keep the same small orange juice glass, blue-striped straw, white saucer and orange slice on the mint surface. Controlled three-centimeter camera push with vivid natural orange color and clean specular glass highlights. The glass, straw, plate and fruit remain rigid and in their original positions. Only a tiny physically plausible shimmer at the liquid surface. No splashing, no added ice, no floating fruit, no new straw, no label or text, no brand, no hand, one continuous shot. No speech or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Souffle court et petit impact de verre",
+      "transition": "Coupe au rythme vers ensemble",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 9228137,
+        "page": "https://www.pexels.com/photo/fresh-orange-juice-in-a-glass-with-a-drinking-straw-9228137/",
+        "category": "boisson",
+        "download": "https://images.pexels.com/photos/9228137/pexels-photo-9228137.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\9228137.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "638eb207d4c978125b7009dde8b79fd8769de39637144c0b5573cc56cf583c6b",
+        "author_evidence": [
+          {
+            "name": "DS stories",
+            "page": "https://www.pexels.com/@ds-stories/"
+          }
+        ],
+        "crop_fraction": [
+          0.02,
+          0.02,
+          0.98,
+          0.98
+        ],
+        "crop_pixels": [
+          48,
+          72,
+          2352,
+          3528
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "879550d86465b008ecc68e7e5ef00e99c49b3cdcb9fa80faa1bfbdd6b219f417",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "punch",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Ensemble bouteille et verre",
+      "camera": "Fixe, lumière stable",
+      "lighting": "Lumière dure douce de studio, couleurs franches ; respect du liquide photographié.",
+      "action": "Hero propre pour lecture de la marque de concept au montage.",
+      "preserve": "Silhouette de bouteille, bouchon blanc fermé, niveau de jus, verre et paille ; aucune promesse nutritionnelle.",
+      "prompt": "Bold final beverage hero shot from this authentic mint-background product photo. Preserve the same unbranded clear bottle with white cap, orange juice, small glass with blue-striped straw, orange slice and white saucer. Locked camera and precise clean studio light, saturated but realistic orange and mint. The product arrangement is fully stable and grounded, no geometry or liquid-level changes. Clear commercial negative space. No generated words, no logos, no fruit explosion, no new prop, no hand, no floating product, no cut. No speech or music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Signature rythmique puis coupure nette",
+      "transition": "CTA DÉCOUVREZ ZESTE",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

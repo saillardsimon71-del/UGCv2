@@ -1,0 +1,119 @@
+[
+  {
+    "id": 10221846,
+    "page": "https://www.pexels.com/photo/cosmetic-products-on-sink-10221846/",
+    "category": "routine",
+    "download": "https://images.pexels.com/photos/10221846/pexels-photo-10221846.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\10221846.jpg",
+    "dimensions": [
+      2400,
+      1600
+    ],
+    "sha256": "218d812976a3e5bfe563aa12e08dac472539ca0c3cb90f9100b0eeb29822b3ac",
+    "author_evidence": [
+      {
+        "name": "Ron Lach",
+        "page": "https://www.pexels.com/@ron-lach/"
+      }
+    ],
+    "crop_fraction": [
+      0.28,
+      0.05,
+      0.93,
+      0.98
+    ],
+    "crop_pixels": [
+      672,
+      80,
+      2232,
+      1568
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "28e979197cde4cc6726f3099fe00c01a95cf6ed1b6e5eed5a2fef61e06eb2cbf",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 10222458,
+    "page": "https://www.pexels.com/photo/woman-using-cosmetic-serum-in-bathroom-10222458/",
+    "category": "routine",
+    "download": "https://images.pexels.com/photos/10222458/pexels-photo-10222458.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\10222458.jpg",
+    "dimensions": [
+      2400,
+      1598
+    ],
+    "sha256": "581798eb68cc3f043db80cd08b98c6dec0af0186e86af040ed171c11534dc8f0",
+    "author_evidence": [
+      {
+        "name": "Ron Lach",
+        "page": "https://www.pexels.com/@ron-lach/"
+      }
+    ],
+    "crop_fraction": [
+      0.1,
+      0.04,
+      0.62,
+      0.99
+    ],
+    "crop_pixels": [
+      240,
+      64,
+      1488,
+      1582
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "a5bf0db49d8fb3414ab2e8e2921465c2ab2714a6a466db035ab538107fe68f9c",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 10221851,
+    "page": "https://www.pexels.com/photo/standing-woman-and-bathroom-sink-10221851/",
+    "category": "routine",
+    "download": "https://images.pexels.com/photos/10221851/pexels-photo-10221851.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\10221851.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "47fb25a4ac0fef39e98901e60f70f5c5f26359e30a5c93c8c6617ac24d37eb67",
+    "author_evidence": [
+      {
+        "name": "Ron Lach",
+        "page": "https://www.pexels.com/@ron-lach/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      48,
+      72,
+      2352,
+      3528
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "ada55f9cac22348a0af155530bebd7a47793a6bd1ada32f802d4b917a2d3f164",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  }
+]

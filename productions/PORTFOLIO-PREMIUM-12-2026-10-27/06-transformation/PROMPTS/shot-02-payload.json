@@ -1,0 +1,9 @@
+{
+  "prompt": "A precise lighting transformation in the exact same photographed room. Locked camera with absolutely unchanged framing. Preserve the same white dome lamp, straight stem, circular base, wooden table and cream curtain folds. Over this continuous shot the existing warm glow under the lampshade slowly increases from subtle to comfortably warm, gently illuminating the nearby curtain and wood. This is only a change in light intensity, not a scene transformation. All geometry, objects and positions remain rigid. No room redesign, no curtain morphing, no hands, no extra light source, no text, no logo, no cut. No speech or music.",
+  "duration_s": 5,
+  "aspect_ratio": "9:16",
+  "seed": 2026102751,
+  "audio_mode": "silent",
+  "image_strength": 0.9,
+  "trace_id": "sqv27-06-02"
+}

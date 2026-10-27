@@ -1,0 +1,20 @@
+[
+  {
+    "film": "03-skincare-sensoriel",
+    "guard": "--confirm-spend",
+    "rejected": true,
+    "paid_call_created": false
+  },
+  {
+    "film": "09-authentic-creator",
+    "guard": "SUSPENDU",
+    "rejected": true,
+    "paid_call_created": false
+  },
+  {
+    "film": "01-dark-luxury",
+    "guard": "validation humaine",
+    "rejected": true,
+    "paid_call_created": false
+  }
+]

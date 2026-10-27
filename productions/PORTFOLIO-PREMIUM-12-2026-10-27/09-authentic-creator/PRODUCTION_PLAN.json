@@ -1,0 +1,268 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "09-authentic-creator",
+  "title": "AUTHENTIC CREATOR",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 22.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/09-AUTHENTIC-CREATOR-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/09-AUTHENTIC-CREATOR-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "suspended",
+  "preparation_status": "creative_complete_casting_and_voice_pending",
+  "executable": false,
+  "hold_reason": "SUSPENDU_AVATAR_ET_CASTING : photographie de personne réelle, rôle scénarisé seulement. Pas d'avatar fictif garanti, pas d'autorisation individuelle de parole synthétique attestée et aucun benchmark premium de LongCat sur ce casting. Aucun coût GPU engagé pour ce film.",
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "reverie",
+    "execution_track": "reverie",
+    "start_s": 12,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/reverie/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": "Pour ce rituel, tout commence par un geste simple. On prend le temps de regarder la texture, puis on laisse le produit trouver sa place. Une goutte, un moment, et une présentation qui va à l'essentiel.",
+    "voice_status": "not_licensed_or_generated",
+    "sound_design": "Voix française naturelle sous licence distincte, jamais clonée depuis Pexels ; musique très basse sous dialogue.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 7,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 7,
+      "native_frames": null,
+      "engine": "LongCat Video Avatar 1.5, INT8, 480p",
+      "app": "pvs-longcat-avatar",
+      "function": "render_avatar",
+      "gpu": "A100-80GB",
+      "source": {
+        "id": 7959590,
+        "page": "https://www.pexels.com/photo/photo-of-a-businesswoman-smiling-while-her-hands-are-in-her-pockets-7959590/",
+        "category": "mode",
+        "download": "https://images.pexels.com/photos/7959590/pexels-photo-7959590.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\7959590.jpg",
+        "dimensions": [
+          2333,
+          3500
+        ],
+        "sha256": "e723c3db6c7b7a979f486402b9188558bd9544a1fca2ed54a4c1bfed0efc5ef1",
+        "author_evidence": [
+          {
+            "name": "Darina Belonogova",
+            "page": "https://www.pexels.com/@darina-belonogova/"
+          }
+        ],
+        "crop_fraction": [
+          0.15,
+          0.01,
+          0.85,
+          0.78
+        ],
+        "crop_pixels": [
+          350,
+          35,
+          1983,
+          2730
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "a76ab2110448907906c3deed2076dd8d27c7d42c746a1ef32585713784586f04",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Portrait face caméra, référence de casting",
+      "camera": "Fixe smartphone",
+      "lighting": "Fenêtre diffuse, cadrage smartphone stable et sans effet glamour.",
+      "action": "Petites expressions, lèvres synchronisées à la voix ; aucun produit ajouté dans les mains.",
+      "preserve": "Identité de l'interprète de stock et tenue, lèvres et dents stables ; flacon identique à l'insert.",
+      "prompt": "A clearly scripted product presenter performance using the same adult stock model in the reference photo, preserving her exact face, short blonde hair, cream jacket and white top. Static natural smartphone camera. She speaks the separately provided French narration with relaxed eye contact, subtle blinks and small believable expressions. Hands remain still and out of the close framing. Preserve facial identity, teeth, lips, clothes and soft neutral background. No new product in her hands, no extra fingers, no beauty filter, no exaggerated expression, no logos or generated text. This is an actor role, not a customer testimonial.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Voix : première phrase du script",
+      "transition": "Coupe franche sur insert produit",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "suspended",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 6,
+      "timeline_start_s": 7,
+      "timeline_duration_s": 6,
+      "native_frames": 145,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 8101534,
+        "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+        "category": "serum",
+        "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+        "dimensions": [
+          2400,
+          3196
+        ],
+        "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+        "author_evidence": [
+          {
+            "name": "Polina ⠀",
+            "page": "https://www.pexels.com/@polina-kovaleva/"
+          }
+        ],
+        "crop_fraction": [
+          0.05,
+          0.08,
+          0.95,
+          0.97
+        ],
+        "crop_pixels": [
+          120,
+          256,
+          2280,
+          3100
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "0ca2685a104bf44671c9cd85fdbb5739b355e0aa225bef3b9c77096ae3fee2cd",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "cream",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Insert sérum fidèle",
+      "camera": "Fixe, léger reflet",
+      "lighting": "Fenêtre diffuse, cadrage smartphone stable et sans effet glamour.",
+      "action": "Flacon immobile sous la narration.",
+      "preserve": "Identité de l'interprète de stock et tenue, lèvres et dents stables ; flacon identique à l'insert.",
+      "prompt": "Natural skincare insert from the authentic source photograph. Preserve the exact burgundy bottle, completely blank white label, glass pipette with white bulb, wooden support and frosted jar. Static camera, subtle soft window reflection, realistic glass and paper. No moving container, no label text, no logos, no hands or added product. Single continuous photographic shot. No speech or music in the generated source track; a licensed narration is added later.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Voix continue, détail verre très bas",
+      "transition": "Retour vers portrait",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "suspended",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 7,
+      "timeline_start_s": 13,
+      "timeline_duration_s": 7,
+      "native_frames": null,
+      "engine": "LongCat Video Avatar 1.5, INT8, 480p",
+      "app": "pvs-longcat-avatar",
+      "function": "render_avatar",
+      "gpu": "A100-80GB",
+      "source": {
+        "id": 7959590,
+        "page": "https://www.pexels.com/photo/photo-of-a-businesswoman-smiling-while-her-hands-are-in-her-pockets-7959590/",
+        "category": "mode",
+        "download": "https://images.pexels.com/photos/7959590/pexels-photo-7959590.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\7959590.jpg",
+        "dimensions": [
+          2333,
+          3500
+        ],
+        "sha256": "e723c3db6c7b7a979f486402b9188558bd9544a1fca2ed54a4c1bfed0efc5ef1",
+        "author_evidence": [
+          {
+            "name": "Darina Belonogova",
+            "page": "https://www.pexels.com/@darina-belonogova/"
+          }
+        ],
+        "crop_fraction": [
+          0.15,
+          0.01,
+          0.85,
+          0.78
+        ],
+        "crop_pixels": [
+          350,
+          35,
+          1983,
+          2730
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "a76ab2110448907906c3deed2076dd8d27c7d42c746a1ef32585713784586f04",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Même portrait",
+      "camera": "Fixe",
+      "lighting": "Fenêtre diffuse, cadrage smartphone stable et sans effet glamour.",
+      "action": "Fin de phrase et pause, sans sourire figé ni geste commercial.",
+      "preserve": "Identité de l'interprète de stock et tenue, lèvres et dents stables ; flacon identique à l'insert.",
+      "prompt": "Continuation of the same scripted French presenter performance from the provided reference. Preserve the exact adult stock model's face, short blonde hair, cream jacket, white top and neutral background. Static smartphone framing and natural window light. Accurate gentle lip synchronization to the provided final phrase, subtle natural head motion, a relaxed pause after speaking. No exaggerated smile, no nod loop, no identity drift, no new objects, no product endorsement or customer-testimonial acting, no generated words or logos.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Fin de voix, pause de 0,5 s",
+      "transition": "Mention présentation scénarisée",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "suspended",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

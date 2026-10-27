@@ -1,0 +1,119 @@
+[
+  {
+    "id": 7657397,
+    "page": "https://www.pexels.com/photo/close-up-shot-of-a-pen-beside-a-notebook-7657397/",
+    "category": "performance",
+    "download": "https://images.pexels.com/photos/7657397/pexels-photo-7657397.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\7657397.jpg",
+    "dimensions": [
+      2400,
+      3598
+    ],
+    "sha256": "9a4bbd4ff9064fc1bb8f987f0251f788a8e4b8d2cf8e83d9d3e00998510fd188",
+    "author_evidence": [
+      {
+        "name": "Cup of  Couple",
+        "page": "https://www.pexels.com/@cup-of-couple/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      48,
+      72,
+      2352,
+      3526
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "ef6cff47ccd2ec6526270f60846d1c09e694fd6dbbf74ae97ba01090898e7f3b",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 7657397,
+    "page": "https://www.pexels.com/photo/close-up-shot-of-a-pen-beside-a-notebook-7657397/",
+    "category": "performance",
+    "download": "https://images.pexels.com/photos/7657397/pexels-photo-7657397.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\7657397.jpg",
+    "dimensions": [
+      2400,
+      3598
+    ],
+    "sha256": "9a4bbd4ff9064fc1bb8f987f0251f788a8e4b8d2cf8e83d9d3e00998510fd188",
+    "author_evidence": [
+      {
+        "name": "Cup of  Couple",
+        "page": "https://www.pexels.com/@cup-of-couple/"
+      }
+    ],
+    "crop_fraction": [
+      0.09,
+      0.0,
+      0.91,
+      0.78
+    ],
+    "crop_pixels": [
+      216,
+      0,
+      2184,
+      2806
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "4e03e9b7e673289d36f1216761e6385e07ff3b1f332a7240371046c9331ae83a",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 7657397,
+    "page": "https://www.pexels.com/photo/close-up-shot-of-a-pen-beside-a-notebook-7657397/",
+    "category": "performance",
+    "download": "https://images.pexels.com/photos/7657397/pexels-photo-7657397.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\7657397.jpg",
+    "dimensions": [
+      2400,
+      3598
+    ],
+    "sha256": "9a4bbd4ff9064fc1bb8f987f0251f788a8e4b8d2cf8e83d9d3e00998510fd188",
+    "author_evidence": [
+      {
+        "name": "Cup of  Couple",
+        "page": "https://www.pexels.com/@cup-of-couple/"
+      }
+    ],
+    "crop_fraction": [
+      0.03,
+      0.14,
+      0.97,
+      0.98
+    ],
+    "crop_pixels": [
+      72,
+      504,
+      2328,
+      3526
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "55e5f4ebc8e6748dfc151a1092aefe248f9107c62ad80be33e7eaad42d51fbd3",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "neutral",
+    "license": "https://www.pexels.com/license/"
+  }
+]

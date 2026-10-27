@@ -1,0 +1,119 @@
+[
+  {
+    "id": 9228137,
+    "page": "https://www.pexels.com/photo/fresh-orange-juice-in-a-glass-with-a-drinking-straw-9228137/",
+    "category": "boisson",
+    "download": "https://images.pexels.com/photos/9228137/pexels-photo-9228137.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\9228137.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "638eb207d4c978125b7009dde8b79fd8769de39637144c0b5573cc56cf583c6b",
+    "author_evidence": [
+      {
+        "name": "DS stories",
+        "page": "https://www.pexels.com/@ds-stories/"
+      }
+    ],
+    "crop_fraction": [
+      0.39,
+      0.18,
+      0.93,
+      0.95
+    ],
+    "crop_pixels": [
+      936,
+      648,
+      2232,
+      3420
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "8e843f53c9f218b8a026b400b37f28bf3a3b77b089ff2d7a244145d47a053fd1",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "punch",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 9228137,
+    "page": "https://www.pexels.com/photo/fresh-orange-juice-in-a-glass-with-a-drinking-straw-9228137/",
+    "category": "boisson",
+    "download": "https://images.pexels.com/photos/9228137/pexels-photo-9228137.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\9228137.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "638eb207d4c978125b7009dde8b79fd8769de39637144c0b5573cc56cf583c6b",
+    "author_evidence": [
+      {
+        "name": "DS stories",
+        "page": "https://www.pexels.com/@ds-stories/"
+      }
+    ],
+    "crop_fraction": [
+      0.05,
+      0.42,
+      0.67,
+      0.99
+    ],
+    "crop_pixels": [
+      120,
+      1512,
+      1608,
+      3564
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "24d3cc91178241f8323c6dcbd9602a04e73f97ab9a55c48a0e12333637200a52",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "punch",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 9228137,
+    "page": "https://www.pexels.com/photo/fresh-orange-juice-in-a-glass-with-a-drinking-straw-9228137/",
+    "category": "boisson",
+    "download": "https://images.pexels.com/photos/9228137/pexels-photo-9228137.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\9228137.jpg",
+    "dimensions": [
+      2400,
+      3600
+    ],
+    "sha256": "638eb207d4c978125b7009dde8b79fd8769de39637144c0b5573cc56cf583c6b",
+    "author_evidence": [
+      {
+        "name": "DS stories",
+        "page": "https://www.pexels.com/@ds-stories/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      48,
+      72,
+      2352,
+      3528
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "879550d86465b008ecc68e7e5ef00e99c49b3cdcb9fa80faa1bfbdd6b219f417",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "punch",
+    "license": "https://www.pexels.com/license/"
+  }
+]

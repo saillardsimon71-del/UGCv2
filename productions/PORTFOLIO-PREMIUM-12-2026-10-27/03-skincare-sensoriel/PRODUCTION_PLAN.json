@@ -1,0 +1,268 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "03-skincare-sensoriel",
+  "title": "SKINCARE SENSORIEL",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/03-SKINCARE-SENSORIEL-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/03-SKINCARE-SENSORIEL-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": true,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "reverie",
+    "execution_track": "reverie",
+    "start_s": 45,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/reverie/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Trois détails sonores de verre et de liquide, transitions d'air très discrètes.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 8101534,
+        "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+        "category": "serum",
+        "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+        "dimensions": [
+          2400,
+          3196
+        ],
+        "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+        "author_evidence": [
+          {
+            "name": "Polina ⠀",
+            "page": "https://www.pexels.com/@polina-kovaleva/"
+          }
+        ],
+        "crop_fraction": [
+          0.12,
+          0.3,
+          0.5,
+          0.78
+        ],
+        "crop_pixels": [
+          288,
+          959,
+          1200,
+          2493
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "3733a98420d25b3c8d713bbfbf0a9daa1c8cd86a77e72de3cf7e3f52de16e267",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "cream",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Macro de la pointe de pipette et du verre visible",
+      "camera": "Glissement de 1 cm, lent",
+      "lighting": "Fenêtre diffuse, ombres de feuillage déjà présentes, tons crème et prune désaturé.",
+      "action": "Un reflet se déplace sur le ménisque teinté de la pointe ; verre immobile.",
+      "preserve": "Étiquette vierge, silhouette du flacon, pipette droite, ouverture, niveau de liquide, nombre de pots, support en bois.",
+      "prompt": "Prestige skincare extreme macro cinematography from this authentic real product photograph. Preserve the exact visible section of the horizontal transparent glass pipette, its burgundy-tinted liquid and the visible edge of the burgundy bottle. Tight optical detail on the existing pipette tip and liquid meniscus. A tiny soft highlight glints at the photographed tip without changing the shape or color of the liquid. Only one centimeter of lateral camera drift. Soft ivory window light, existing leaf shadows, restrained cream and dusty plum palette, true glass refraction. The glass remains rigid and in the exact original position. Do not extend the pipette, add a cap, invent a new bottle or create a falling liquid string. No hands, text, logos or cuts. No speech, whisper, singing or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Petit tintement et détail liquide sec",
+      "transition": "Coupe de 0 image sur la pipette",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 8101534,
+        "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+        "category": "serum",
+        "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+        "dimensions": [
+          2400,
+          3196
+        ],
+        "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+        "author_evidence": [
+          {
+            "name": "Polina ⠀",
+            "page": "https://www.pexels.com/@polina-kovaleva/"
+          }
+        ],
+        "crop_fraction": [
+          0.12,
+          0.24,
+          0.88,
+          0.94
+        ],
+        "crop_pixels": [
+          288,
+          767,
+          2112,
+          3004
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "2cefe4b26cda271bbfd12e889a1bc061f2c436f860130eb089264e569211e006",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "cream",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Plan matière et étiquette",
+      "camera": "Rapprochement de 2 cm maximum",
+      "lighting": "Fenêtre diffuse, ombres de feuillage déjà présentes, tons crème et prune désaturé.",
+      "action": "Une lumière douce révèle le verre, le papier et le bois ; produit immobile.",
+      "preserve": "Étiquette vierge, silhouette du flacon, pipette droite, ouverture, niveau de liquide, nombre de pots, support en bois.",
+      "prompt": "Sensorial premium cosmetic product shot using the exact authentic photograph. Same single burgundy serum bottle, completely blank white paper label, open glass pipette with white bulb, frosted cosmetic jar and pale wooden lid. Slow two-centimeter optical push towards the bottle. A delicate natural window reflection crosses the glass, revealing real glass thickness, tactile paper and soft wood grain. Keep the photograph's object arrangement, bottle shape and dropper angle completely unchanged. Elegant creamy diffuse daylight and subtle existing plant shadows. No object moves independently, no cap changes, no extra bottle, no invented label lettering, no text, no hands, no morphing. One continuous shot. No voice, whisper, vocals or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Texture d'air légère, frottement feutré",
+      "transition": "Coupe vers packshot plus large",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 8101534,
+        "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+        "category": "serum",
+        "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+        "dimensions": [
+          2400,
+          3196
+        ],
+        "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+        "author_evidence": [
+          {
+            "name": "Polina ⠀",
+            "page": "https://www.pexels.com/@polina-kovaleva/"
+          }
+        ],
+        "crop_fraction": [
+          0.02,
+          0.02,
+          0.98,
+          0.98
+        ],
+        "crop_pixels": [
+          48,
+          64,
+          2352,
+          3132
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "a5d2e438c98df164bf98266adf7bbafe04997da5b81d1abbf35a782f106aad0c",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "cream",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Packshot complet avec support",
+      "camera": "Très léger recul, sans rotation",
+      "lighting": "Fenêtre diffuse, ombres de feuillage déjà présentes, tons crème et prune désaturé.",
+      "action": "La composition se stabilise, étiquette intégralement vierge.",
+      "preserve": "Étiquette vierge, silhouette du flacon, pipette droite, ouverture, niveau de liquide, nombre de pots, support en bois.",
+      "prompt": "Impeccable final skincare packshot from this genuine photographic source. Preserve exactly the burgundy glass serum bottle with its blank white paper label, white dropper bulb and glass pipette in the existing open position, the frosted jar and the round wooden support. A very slight slow camera pullback, without orbiting, reveals the original elegant still life. Soft cream daylight, original leaf shadows moving almost imperceptibly, natural glass and wood texture. The product is rigid and motionless. No additional container, no new cap, no label text, no logo, no letters, no floating or morphing, no hands, no cut. No speech, no whisper, no music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Signature de verre puis respiration musicale",
+      "transition": "Carton UNE GOUTTE",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

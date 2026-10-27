@@ -1,0 +1,119 @@
+[
+  {
+    "id": 20788943,
+    "page": "https://www.pexels.com/photo/elegant-woman-in-beige-jacket-sitting-on-armchair-20788943/",
+    "category": "mode",
+    "download": "https://images.pexels.com/photos/20788943/pexels-photo-20788943.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\20788943.jpg",
+    "dimensions": [
+      2048,
+      3070
+    ],
+    "sha256": "43a76a4a040f33f5b28e01a7fdf8ffe3745afcc01764de9f5de67cb09ab409a2",
+    "author_evidence": [
+      {
+        "name": "Phuc Lai",
+        "page": "https://www.pexels.com/@phuc-lai-1112451390/"
+      }
+    ],
+    "crop_fraction": [
+      0.23,
+      0.32,
+      0.83,
+      0.89
+    ],
+    "crop_pixels": [
+      471,
+      982,
+      1700,
+      2732
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "ff26a5259bc34d18b205a5f8a8fabae049dd8f633b7cf3639ea6a78980912b02",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "warm-neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 20788943,
+    "page": "https://www.pexels.com/photo/elegant-woman-in-beige-jacket-sitting-on-armchair-20788943/",
+    "category": "mode",
+    "download": "https://images.pexels.com/photos/20788943/pexels-photo-20788943.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\20788943.jpg",
+    "dimensions": [
+      2048,
+      3070
+    ],
+    "sha256": "43a76a4a040f33f5b28e01a7fdf8ffe3745afcc01764de9f5de67cb09ab409a2",
+    "author_evidence": [
+      {
+        "name": "Phuc Lai",
+        "page": "https://www.pexels.com/@phuc-lai-1112451390/"
+      }
+    ],
+    "crop_fraction": [
+      0.2,
+      0.05,
+      0.82,
+      0.68
+    ],
+    "crop_pixels": [
+      410,
+      154,
+      1679,
+      2088
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "f20cba11c1a4ef2d7ff3db3549aa0ff1fe6f8b94b35b0007e03acb2f03c22981",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "warm-neutral",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 20788943,
+    "page": "https://www.pexels.com/photo/elegant-woman-in-beige-jacket-sitting-on-armchair-20788943/",
+    "category": "mode",
+    "download": "https://images.pexels.com/photos/20788943/pexels-photo-20788943.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\20788943.jpg",
+    "dimensions": [
+      2048,
+      3070
+    ],
+    "sha256": "43a76a4a040f33f5b28e01a7fdf8ffe3745afcc01764de9f5de67cb09ab409a2",
+    "author_evidence": [
+      {
+        "name": "Phuc Lai",
+        "page": "https://www.pexels.com/@phuc-lai-1112451390/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      41,
+      61,
+      2007,
+      3009
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "b3da88aa6faf0dee75ed9b27592ca3bd109f30de41f792aa663008c41ff29da2",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "warm-neutral",
+    "license": "https://www.pexels.com/license/"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "prompt": "Realistic home lighting advertisement from this exact photograph of the white dome table lamp. Preserve its round white shade, slim straight stem, circular base, wooden table and every curtain fold. Locked camera, no object motion. Calm neutral daytime ambience with the existing lamp glow held at a low subtle level, soft cool-white room light. Keep the lamp shape, scale and contact shadows absolutely consistent. No new furniture, no moving curtains, no people, no labels, no text, no logo, no cut. No voice or music.",
+  "duration_s": 5,
+  "aspect_ratio": "9:16",
+  "seed": 2026102750,
+  "audio_mode": "silent",
+  "image_strength": 0.9,
+  "trace_id": "sqv27-06-01"
+}

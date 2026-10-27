@@ -1,0 +1,268 @@
+{
+  "campaign": "SQV-PREMIUM-20261027",
+  "film_id": "04-beauty-routine",
+  "title": "BEAUTY ROUTINE",
+  "workspace": "lucj76861",
+  "environment": "main",
+  "mode": "existing_deployment_only",
+  "target_duration_s": 17.5,
+  "card_duration_s": 2.5,
+  "output": {
+    "master": "EXPORTS/04-BEAUTY-ROUTINE-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/04-BEAUTY-ROUTINE-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "generation_status": "prepared_not_started",
+  "preparation_status": "prepared_sources_verified",
+  "executable": true,
+  "hold_reason": null,
+  "pilot": false,
+  "human_review_required": true,
+  "quality_grade": null,
+  "publish": false,
+  "max_concurrent_gpu": 1,
+  "attempts_per_shot": 1,
+  "automatic_retry": false,
+  "client_deadline_per_shot_s": 600,
+  "worker_timeout_note": "déploiement existant, timeout distant non changé ; le délai client ne plafonne pas la facture",
+  "cancellation": {
+    "local": "CTRL+C : annulation de l'appel actif avec terminate_containers=True",
+    "github": "gh run cancel RUN_ID --repo saillardsimon71-del/UGCv2 puis python PRODUCTION/run_campaign.py cancel --film FILM",
+    "remote": "modal.FunctionCall.from_id(call_id).cancel(terminate_containers=True)",
+    "shared_app_stop": false
+  },
+  "workflow": ".github/workflows/portfolio-premium-12.yml",
+  "github_run_id": null,
+  "artifact_retention_days_requested": 90,
+  "music": {
+    "creative_reference": "reverie",
+    "execution_track": "reverie",
+    "start_s": 70,
+    "path": "ASSETS/music.mp3",
+    "author": "Scott Buckley",
+    "license": "CC BY 4.0",
+    "page": "https://www.scottbuckley.com.au/library/reverie/",
+    "attribution_required": true
+  },
+  "audio": {
+    "source_generated_audio_used": false,
+    "voice_script": null,
+    "voice_status": "not_required",
+    "sound_design": "Contact verre/céramique, petit froissement de manche ; pas d'eau ni de geste sonore absent de l'image.",
+    "target_lufs": -16,
+    "max_true_peak_dbtp": -1.5
+  },
+  "edit_structure": [],
+  "shots": [
+    {
+      "shot_id": "01",
+      "duration_requested_s": 5,
+      "timeline_start_s": 0,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 10221846,
+        "page": "https://www.pexels.com/photo/cosmetic-products-on-sink-10221846/",
+        "category": "routine",
+        "download": "https://images.pexels.com/photos/10221846/pexels-photo-10221846.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\10221846.jpg",
+        "dimensions": [
+          2400,
+          1600
+        ],
+        "sha256": "218d812976a3e5bfe563aa12e08dac472539ca0c3cb90f9100b0eeb29822b3ac",
+        "author_evidence": [
+          {
+            "name": "Ron Lach",
+            "page": "https://www.pexels.com/@ron-lach/"
+          }
+        ],
+        "crop_fraction": [
+          0.28,
+          0.05,
+          0.93,
+          0.98
+        ],
+        "crop_pixels": [
+          672,
+          80,
+          2232,
+          1568
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-01-firstframe.png",
+        "firstframe_sha256": "28e979197cde4cc6726f3099fe00c01a95cf6ed1b6e5eed5a2fef61e06eb2cbf",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Gros plan main et produits sur lavabo",
+      "camera": "Fixe",
+      "lighting": "Salle de bain photographiée, lumière naturelle froide adoucie, blancs préservés.",
+      "action": "La main déjà présente s'approche de 1 cm du petit flacon, sans le saisir.",
+      "preserve": "Même interprète de stock, pyjama bleu clair à liseré, miroir et lavabo, bouchons noirs et flacon tenu ; pas de changement d'identité.",
+      "prompt": "Realistic premium morning skincare routine from this real photo. Preserve the same pale blue pajama sleeve, visible hand, existing amber glass skincare bottles with black caps, white sink, chrome tap and bathroom mirror. Locked camera, close shot on the hand and existing product arrangement. The hand shifts forward only one centimeter and stops beside the small amber bottle; do not pick up or replace any object. Soft natural bathroom light, truthful skin and glass detail. Keep five anatomically correct fingers, reflections consistent, all bottles rigid and labels unchanged without generating letters. No new person, product, finger, text, logo or cut. No speaking or music.",
+      "payload_file": "PROMPTS/shot-01-payload.json",
+      "sound": "Contact discret sur céramique",
+      "transition": "Raccord main vers geste",
+      "render_path": "RENDERS/shot-01.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "02",
+      "duration_requested_s": 5,
+      "timeline_start_s": 5,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 10222458,
+        "page": "https://www.pexels.com/photo/woman-using-cosmetic-serum-in-bathroom-10222458/",
+        "category": "routine",
+        "download": "https://images.pexels.com/photos/10222458/pexels-photo-10222458.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\10222458.jpg",
+        "dimensions": [
+          2400,
+          1598
+        ],
+        "sha256": "581798eb68cc3f043db80cd08b98c6dec0af0186e86af040ed171c11534dc8f0",
+        "author_evidence": [
+          {
+            "name": "Ron Lach",
+            "page": "https://www.pexels.com/@ron-lach/"
+          }
+        ],
+        "crop_fraction": [
+          0.1,
+          0.04,
+          0.62,
+          0.99
+        ],
+        "crop_pixels": [
+          240,
+          64,
+          1488,
+          1582
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-02-firstframe.png",
+        "firstframe_sha256": "a5bf0db49d8fb3414ab2e8e2921465c2ab2714a6a466db035ab538107fe68f9c",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Gros plan du geste, visage de profil",
+      "camera": "Fixe",
+      "lighting": "Salle de bain photographiée, lumière naturelle froide adoucie, blancs préservés.",
+      "action": "Le petit geste de pipette au-dessus de la paume se poursuit sans contact avec le visage.",
+      "preserve": "Même interprète de stock, pyjama bleu clair à liseré, miroir et lavabo, bouchons noirs et flacon tenu ; pas de changement d'identité.",
+      "prompt": "Authentic restrained beauty routine in the actual bathroom shown in this photographic reference. Same adult woman, exact facial identity, tied-back hair and pale blue piped pajamas. She holds the existing dropper over her open palm and makes only a tiny controlled wrist adjustment, then pauses. The dropper never touches her eye or mouth. Preserve the precise bottle, fingers, sleeve, sink and mirror geometry and consistent reflection. Soft natural window light, natural skin texture, calm closed lips, fixed camera. No speaking, no extra fingers, no face smoothing, no new packaging, no text or logos, no camera spin, one uninterrupted shot. No voice or music.",
+      "payload_file": "PROMPTS/shot-02-payload.json",
+      "sound": "Goutte discrète uniquement si visible au rendu",
+      "transition": "Coupe de geste vers plan contexte",
+      "render_path": "RENDERS/shot-02.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    },
+    {
+      "shot_id": "03",
+      "duration_requested_s": 5,
+      "timeline_start_s": 10,
+      "timeline_duration_s": 5,
+      "native_frames": 121,
+      "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
+      "app": "pvs-ltx",
+      "function": "render_clip",
+      "gpu": "L40S",
+      "source": {
+        "id": 10221851,
+        "page": "https://www.pexels.com/photo/standing-woman-and-bathroom-sink-10221851/",
+        "category": "routine",
+        "download": "https://images.pexels.com/photos/10221851/pexels-photo-10221851.jpeg?auto=compress&cs=tinysrgb&w=2400",
+        "path": "PRODUCTION\\SOURCE_REVIEW\\10221851.jpg",
+        "dimensions": [
+          2400,
+          3600
+        ],
+        "sha256": "47fb25a4ac0fef39e98901e60f70f5c5f26359e30a5c93c8c6617ac24d37eb67",
+        "author_evidence": [
+          {
+            "name": "Ron Lach",
+            "page": "https://www.pexels.com/@ron-lach/"
+          }
+        ],
+        "crop_fraction": [
+          0.02,
+          0.02,
+          0.98,
+          0.98
+        ],
+        "crop_pixels": [
+          48,
+          72,
+          2352,
+          3528
+        ],
+        "prepared_dimensions": [
+          768,
+          1344
+        ],
+        "firstframe": "ASSETS/shot-03-firstframe.png",
+        "firstframe_sha256": "ada55f9cac22348a0af155530bebd7a47793a6bd1ada32f802d4b917a2d3f164",
+        "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+        "grade": "neutral",
+        "license": "https://www.pexels.com/license/"
+      },
+      "framing": "Contexte lavabo et gamme",
+      "camera": "Recul de 2 cm",
+      "lighting": "Salle de bain photographiée, lumière naturelle froide adoucie, blancs préservés.",
+      "action": "Les mains et les flacons restent stables, respiration du cadre.",
+      "preserve": "Même interprète de stock, pyjama bleu clair à liseré, miroir et lavabo, bouchons noirs et flacon tenu ; pas de changement d'identité.",
+      "prompt": "Quiet realistic skincare campaign closing shot from this genuine photograph of the same bathroom. Preserve the exact white sink, chrome faucet, small amber skincare bottles with black caps, pale blue pajama sleeve and existing hand. A restrained two-centimeter camera pullback, no orbit, reveals the original arrangement. Natural diffuse bathroom light and honest white surfaces. Keep every bottle, cap, mirror edge and finger count unchanged. The hand rests naturally without picking anything up. No new product or person, no label text, no branding, no cut, no impossible reflection, no speech or music.",
+      "payload_file": "PROMPTS/shot-03-payload.json",
+      "sound": "Froissement de manche et fin musicale",
+      "transition": "Carton LE RITUEL",
+      "render_path": "RENDERS/shot-03.mp4",
+      "status": "ready",
+      "validation": [
+        "Produit, acteur et décor identiques à la photographie d'entrée",
+        "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
+        "Mouvement conforme à l'action et raccord lisible",
+        "Vrai MP4 décodable, durée et conditionnement image documentés"
+      ]
+    }
+  ]
+}

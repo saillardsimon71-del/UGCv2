@@ -1,0 +1,119 @@
+[
+  {
+    "id": 8101534,
+    "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+    "category": "serum",
+    "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+    "dimensions": [
+      2400,
+      3196
+    ],
+    "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+    "author_evidence": [
+      {
+        "name": "Polina ⠀",
+        "page": "https://www.pexels.com/@polina-kovaleva/"
+      }
+    ],
+    "crop_fraction": [
+      0.12,
+      0.3,
+      0.5,
+      0.78
+    ],
+    "crop_pixels": [
+      288,
+      959,
+      1200,
+      2493
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-01-firstframe.png",
+    "firstframe_sha256": "3733a98420d25b3c8d713bbfbf0a9daa1c8cd86a77e72de3cf7e3f52de16e267",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "cream",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 8101534,
+    "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+    "category": "serum",
+    "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+    "dimensions": [
+      2400,
+      3196
+    ],
+    "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+    "author_evidence": [
+      {
+        "name": "Polina ⠀",
+        "page": "https://www.pexels.com/@polina-kovaleva/"
+      }
+    ],
+    "crop_fraction": [
+      0.12,
+      0.24,
+      0.88,
+      0.94
+    ],
+    "crop_pixels": [
+      288,
+      767,
+      2112,
+      3004
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-02-firstframe.png",
+    "firstframe_sha256": "2cefe4b26cda271bbfd12e889a1bc061f2c436f860130eb089264e569211e006",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "cream",
+    "license": "https://www.pexels.com/license/"
+  },
+  {
+    "id": 8101534,
+    "page": "https://www.pexels.com/photo/cosmetic-containers-on-gray-textile-8101534/",
+    "category": "serum",
+    "download": "https://images.pexels.com/photos/8101534/pexels-photo-8101534.jpeg?auto=compress&cs=tinysrgb&w=2400",
+    "path": "PRODUCTION\\SOURCE_REVIEW\\8101534.jpg",
+    "dimensions": [
+      2400,
+      3196
+    ],
+    "sha256": "b3a731a0f91896e663cd43c50da8bdb06b7fa1617502097f0c8a74513e848181",
+    "author_evidence": [
+      {
+        "name": "Polina ⠀",
+        "page": "https://www.pexels.com/@polina-kovaleva/"
+      }
+    ],
+    "crop_fraction": [
+      0.02,
+      0.02,
+      0.98,
+      0.98
+    ],
+    "crop_pixels": [
+      48,
+      64,
+      2352,
+      3132
+    ],
+    "prepared_dimensions": [
+      768,
+      1344
+    ],
+    "firstframe": "ASSETS/shot-03-firstframe.png",
+    "firstframe_sha256": "a5d2e438c98df164bf98266adf7bbafe04997da5b81d1abbf35a782f106aad0c",
+    "processing": "EXIF orientation, deterministic crop, Lanczos fit, simple grade; no generative image editing",
+    "grade": "cream",
+    "license": "https://www.pexels.com/license/"
+  }
+]
