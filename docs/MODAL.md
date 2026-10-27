@@ -73,5 +73,7 @@ cochée** (garde-fou aussi côté moteur : sans `confirm_spend`, refus explicite
 - « Poids absents » (lipsync) → `modal run deploy/modal_lipsync_worker.py --mode prepare`.
 - Settings WanGP refusés → voir la sortie du dry-run, ajuster
   `_build_settings` dans `deploy/modal_perf_worker.py` (clés média), re-valider.
-- LongCat refuse > 3,72 s → limite du pilote actuel : découper en plans
-  courts ; la continuation longue est l'objet de S4.
+- LongCat accepte une piste WAV jusqu'à 40 s avec continuation native. Une
+  production anglaise de 35,12 s a été générée et décodée intégralement avec
+  ce chemin. Les segments restent liés dans le moteur ; aucun redémarrage
+  indépendant n'est requis entre les phrases.
