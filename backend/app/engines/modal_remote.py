@@ -98,9 +98,8 @@ class ModalEngine(Engine):
             if not audio.is_file():
                 raise ValueError("Avatar : piste audio manquante (générer la voix d'abord)")
             dur = media.probe(audio).duration_s
-            if not 0 < dur <= 3.72:
-                raise ValueError(f"Pilote LongCat actuel : voix de 3,72 s maximum (reçu {dur:.1f} s). "
-                                 "Découper le dialogue en plans courts ; la continuation longue est au benchmark S4.")
+            if not 0 < dur <= 40:
+                raise ValueError(f"LongCat : voix de 40 s maximum (reçu {dur:.1f} s).")
             ref = i.get("reference_image")
             if not ref or not Path(ref).is_file():
                 raise ValueError("Avatar : personnage avec photo de référence requis")
@@ -185,8 +184,9 @@ class ModalEngine(Engine):
         try:
             while True:
                 ctx.check_cancelled()
-                if time.monotonic() - started > 2100:
-                    raise TimeoutError("Modal : délai maximal de rendu dépassé (35 min)")
+                limit = 6000 if self.name == "modal_longcat_avatar" else 2100
+                if time.monotonic() - started > limit:
+                    raise TimeoutError(f"Modal : délai maximal de rendu dépassé ({limit // 60} min)")
                 try:
                     result = call.get(timeout=5)
                     complete = True

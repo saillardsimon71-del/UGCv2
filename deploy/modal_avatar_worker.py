@@ -8,10 +8,12 @@ from __future__ import annotations
 
 import base64
 import json
+import math
 import os
 import subprocess
 import tempfile
 import time
+import wave
 from pathlib import Path
 
 import modal
@@ -49,7 +51,7 @@ render_image = (
     gpu=GPU_NAME,
     cpu=8,
     memory=65536,
-    timeout=1800,
+    timeout=6000,
     min_containers=0,
     max_containers=1,
     scaledown_window=2,
@@ -59,20 +61,25 @@ render_image = (
     },
 )
 def render_avatar(image_b64: str, audio_b64: str, prompt: str) -> dict:
-    """One real 93-frame (~3.72s) French talking avatar, then vertical MP4."""
+    """Audio-driven avatar with native continuation, then a vertical MP4."""
     if not inspection()["ready"]:
         raise RuntimeError("LongCat models absent/incomplete: run --mode prepare first")
     started = time.perf_counter()
     with tempfile.TemporaryDirectory(prefix="pvs-avatar-") as temp:
         folder = Path(temp)
         img_path = folder / "reference.png"
-        audio_path = folder / "french_voice.wav"
+        audio_path = folder / "voice.wav"
         img_path.write_bytes(base64.b64decode(image_b64, validate=True))
         audio_path.write_bytes(base64.b64decode(audio_b64, validate=True))
         if not img_path.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"):
             raise ValueError("Expected PNG reference")
         if not audio_path.read_bytes().startswith(b"RIFF"):
             raise ValueError("Expected PCM WAV speech")
+        with wave.open(str(audio_path)) as speech:
+            duration = speech.getnframes() / speech.getframerate()
+        if not 0 < duration <= 40:
+            raise ValueError("Avatar speech must last more than zero and at most 40 seconds")
+        segments = 1 + math.ceil(max(0, duration - 93 / 25) / (80 / 25))
         payload = {
             "prompt": prompt,
             "cond_image": str(img_path),
@@ -92,9 +99,10 @@ def render_avatar(image_b64: str, audio_b64: str, prompt: str) -> dict:
             f"--output_dir={output}",
             "--model_type=avatar-v1.5",
             "--resolution=480p",
+            f"--num_segments={segments}",
             "--use_distill", "--use_int8",
         ]
-        print("Running official LongCat Avatar v1.5, INT8, 480p, 1 segment ...", flush=True)
+        print(f"Running LongCat Avatar v1.5, INT8, 480p, {segments} continuous segments ...", flush=True)
         samples_path = folder / "gpu.csv"
         with samples_path.open("w") as samples:
             monitor = subprocess.Popen(
@@ -104,7 +112,7 @@ def render_avatar(image_b64: str, audio_b64: str, prompt: str) -> dict:
             try:
                 completed = subprocess.run(
                     cmd, cwd="/opt/LongCat-Video", text=True,
-                    stderr=subprocess.STDOUT, timeout=1500,
+                    stderr=subprocess.STDOUT, timeout=5400,
                     env={**os.environ, "OMP_NUM_THREADS": "4", "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1"},
                 )
             finally:
@@ -121,7 +129,7 @@ def render_avatar(image_b64: str, audio_b64: str, prompt: str) -> dict:
         # without stretching faces. Preserve speech and verify video/audio streams.
         subprocess.run(
             ["ffmpeg", "-y", "-v", "error", "-i", str(raw),
-             "-map", "0:v:0", "-map", "0:a:0",
+             "-map", "0:v:0", "-map", "0:a:0", "-t", str(duration),
              "-vf", "crop=ih*9/16:ih,scale=720:1280",
              "-c:v", "libx264", "-crf", "19", "-preset", "fast",
              "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart",
@@ -136,7 +144,9 @@ def render_avatar(image_b64: str, audio_b64: str, prompt: str) -> dict:
         detail = json.loads(meta)
         tracks = {s["codec_type"] for s in detail.get("streams", [])}
         if not {"video", "audio"}.issubset(tracks):
-            raise RuntimeError("LongCat MP4 missing video or French audio track")
+            raise RuntimeError("LongCat MP4 missing video or speech track")
+        if abs(float(detail["format"]["duration"]) - duration) > 0.1:
+            raise RuntimeError("LongCat output does not cover the complete speech")
         wall = round(time.perf_counter() - started, 2)
         samples = [tuple(float(v.strip()) for v in line.split(",")) for line in samples_path.read_text().splitlines()]
         import resource
@@ -146,6 +156,8 @@ def render_avatar(image_b64: str, audio_b64: str, prompt: str) -> dict:
             "metadata": {
                 "engine": "longcat-video-avatar-1.5",
                 "gpu": GPU_NAME,
+                "native_segments": segments,
+                "speech_duration_seconds": duration,
                 "gpu_wall_seconds": wall,
                 "gpu_peak_memory_mib": max((s[0] for s in samples), default=0),
                 "gpu_mean_utilization_percent": round(sum(s[1] for s in samples) / max(1, len(samples)), 2),
