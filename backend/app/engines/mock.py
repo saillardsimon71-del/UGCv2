@@ -46,7 +46,7 @@ class TestPlateEngine(Engine):
         out_path = request.out("plate.mp4")
         # Léger mouvement (zoom lent) pour que le QC « image figée » reste significatif
         vf = (f"zoompan=z='min(1+0.08*on/({dur}*30),1.25)':d={int(dur*30)}:s={w}x{h}:fps=30,"
-              f"subtitles=filename='{str(ass).replace(':', chr(92)+':')}'")
+              f"subtitles=filename='{ass.as_posix().replace(':', chr(92)+':')}'")
         media.run_ffmpeg([
             "-f", "lavfi", "-i", f"color=c={colour}:s={w}x{h}:r=30:d={dur}",
             "-f", "lavfi", "-i", f"sine=frequency={330+idx*40}:sample_rate=48000:d={dur}",

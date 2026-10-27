@@ -187,7 +187,7 @@ def validate(payload: dict) -> dict:
         "fps": LTX_FPS,
         "frames": frames,
         "duration_s": round(frames / LTX_FPS, 3),
-        "steps": 3 if video_b64 else LTX_STEPS,
+        "steps": 4 if video_b64 else LTX_STEPS,
         "seed": seed,
         "audio_mode": audio_mode,
         "image_png_base64": image_b64,
@@ -288,7 +288,7 @@ def build_graph(request: dict, *, output_prefix: str, uploaded_image: str | None
         graph["30"] = node("VAEEncodeTiled", pixels=["5", 0], vae=["11", 0],
                            tile_size=512, overlap=64, temporal_size=64, temporal_overlap=16)
         # Partial flow denoising preserves a signal from every source frame.
-        graph["9"]["inputs"]["sigmas"] = "0.85, 0.725, 0.421875, 0.0"
+        graph["9"]["inputs"]["sigmas"] = "0.975, 0.909375, 0.725, 0.421875, 0.0"
     if uploaded_image:
         graph["1"] = node("LoadImage", image=uploaded_image)
         graph["2"] = node("LTXVPreprocess", image=["1", 0], img_compression=18)
@@ -650,7 +650,7 @@ def render_clip(payload: dict) -> dict:
             "audio_mode": request["audio_mode"],
             "continuity_mode": "video" if uploaded_video else "image" if uploaded else "none",
             "source_video": source_info,
-            "source_noise_sigma": 0.85 if uploaded_video else None,
+            "source_noise_sigma": 0.975 if uploaded_video else None,
             "image_strength": request["image_strength"],
             "model_revision": LTX_MODEL_REVISION,
             "comfyui_revision": LTX_COMFYUI_REVISION,

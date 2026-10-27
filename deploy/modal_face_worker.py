@@ -36,7 +36,7 @@ image = (
     modal.Image.debian_slim(python_version="3.12")
     .apt_install("git", "ffmpeg", "libgl1", "libglib2.0-0")
     .run_commands(
-        f"git clone --depth 1 --branch {FACEFUSION_REF} https://github.com/facefusion/facefusion /opt/facefusion || git clone --depth 1 https://github.com/facefusion/facefusion /opt/facefusion",
+        f"git clone --depth 1 --branch {FACEFUSION_REF} https://github.com/facefusion/facefusion /opt/facefusion",
         "cd /opt/facefusion && python install.py --onnxruntime cuda --skip-conda",
     )
 )
@@ -49,12 +49,14 @@ def _probe(path: Path) -> dict:
     return {"ffprobe": out.stdout.strip()[-500:], "bytes": path.stat().st_size}
 
 
-@app.function(image=image, timeout=600, volumes={"/models": models_vol})
+@app.function(image=image, timeout=600, volumes={"/opt/facefusion/.assets/models": models_vol})
 def doctor() -> dict:
     """0 GPU : vérifie l'installation et l'état du cache de modèles."""
     r = subprocess.run(["python", "facefusion.py", "--version"], cwd="/opt/facefusion",
                        capture_output=True, text=True, timeout=300)
-    cache = Path("/models")
+    if r.returncode:
+        raise RuntimeError(f"Installation FaceFusion invalide : {(r.stdout + r.stderr)[-1000:]}")
+    cache = Path("/opt/facefusion/.assets/models")
     return {"app": APP_NAME, "facefusion_version": (r.stdout or r.stderr).strip()[:200],
             "models_cached": sorted(p.name for p in cache.rglob("*.onnx"))[:20],
             "note": "Les modèles se téléchargent au premier rendu dans le volume ugc-face-models."}
@@ -62,7 +64,7 @@ def doctor() -> dict:
 
 @app.function(image=image, gpu=GPU, cpu=8, memory=32768, timeout=3600,
               min_containers=0, max_containers=1, scaledown_window=2,
-              volumes={"/models": models_vol})
+              volumes={"/opt/facefusion/.assets/models": models_vol})
 def render_faceswap(video_b64: str, face_b64: str, params: dict) -> dict:
     t0 = time.perf_counter()
     with tempfile.TemporaryDirectory(prefix="ugc-face-") as tmp:
@@ -78,10 +80,9 @@ def render_faceswap(video_b64: str, face_b64: str, params: dict) -> dict:
                "--face-swapper-model", str(params.get("swapper", "inswapper_128_fp16")),
                "--face-enhancer-model", str(params.get("enhancer", "gfpgan_1.4")),
                "--execution-providers", "cuda",
-               "--video-encoder", "libx264", "--video-quality", "16",
+               "--output-video-encoder", "libx264", "--output-video-quality", "90",
                "--output-audio-encoder", "aac"]
-        env = {**os.environ, "FACEFUSION_CACHE_PATH": "/models"}
-        r = subprocess.run(cmd, cwd="/opt/facefusion", env=env,
+        r = subprocess.run(cmd, cwd="/opt/facefusion",
                            capture_output=True, text=True, timeout=3400)
         if r.returncode != 0 or not out.is_file():
             raise RuntimeError(f"FaceFusion a échoué :\n{(r.stdout + r.stderr)[-2000:]}")

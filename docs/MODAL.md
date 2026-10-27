@@ -17,24 +17,26 @@ Dans **ce** dépôt (UGCv2) : Settings → Secrets and variables → Actions →
 
 Valeurs : dashboard Modal → Settings → API Tokens (les mêmes que ceux de
 l'ancien studio si vous les avez conservés). **Ne les envoyez jamais dans un
-chat.** Recommandé : variable `MODAL_WORKSPACE_EXPECTED` = nom du workspace
+chat.** Recommandé : variable `STUDIO_MODAL_WORKSPACE` = nom du workspace
 affiché dans le dashboard (le studio refusera de dépenser sur un autre compte).
 
-## 2. Diagnostic — 0 GPU, 0 rendu
+## 2. Diagnostic sans calcul par défaut
 
-Onglet **Actions** → *Modal — diagnostic (0 GPU)* → Run workflow :
-- prouve l'identité du compte **lue sur le jeton** (`modal token info`) —
+Onglet **Actions** → *Modal - diagnostic (lecture seule par défaut)* → Run workflow :
+- prouve l'identité du compte **lue sur le jeton** (seuls workspace et utilisateur sont affichés) -
   le nom d'une app ne prouve jamais un compte ;
 - liste apps et volumes existants ;
-- `deploy_first: true` déploie un worker (build d'image CPU) puis lance son
+- Sans `confirm_compute: oui`, seules les métadonnées du compte sont lues.
+- Avec `confirm_compute: oui`, `deploy_first: true` déploie un worker (build d'image CPU) puis lance son
   `doctor()` (état des modèles, versions). Le premier build peut prendre
-  plusieurs minutes ; c'est un coût d'image, pas de GPU de rendu.
+  plusieurs minutes. Builds, calcul CPU et stockage peuvent être facturés :
+  aucun de ces appels n'est gratuit par le seul fait de ne pas utiliser de GPU.
 
 ## 3. Ordre de mise en service recommandé
 
 | Étape | Workflow / action | Coût | Ce qu'elle prouve |
 |---|---|---|---|
-| 1 | Diagnostic tous workers (`deploy_first: false`) | ~0 | Le compte, les apps `pvs-*` déjà là |
+| 1 | Diagnostic (`confirm_compute: non`) | Aucun calcul distant | Le compte, les apps et volumes déjà là, pas l'état des poids |
 | 2 | Benchmark `S3-perf-validate` (`confirm_spend: oui`) | quelques minutes de conteneur | Le format WanGP est accepté (dry-run) avant tout rendu long |
 | 3 | Déployer `ugc-voice`, tester une voix dans le studio | L4, secondes | Écoute réelle Chatterbox FR |
 | 4 | `S2` : prepare lipsync (CPU) puis scène studio | A10G, minutes | MuseTalk vs LatentSync à l'œil |
@@ -58,7 +60,9 @@ cochée** (garde-fou aussi côté moteur : sans `confirm_spend`, refus explicite
 - Annuler un job dans l'UI tue le conteneur GPU (`terminate_containers=True`).
 - Timeout dur 35 min côté studio ; 1 GPU à la fois (`max_containers=1`).
 - Le workspace est vérifié sur le jeton si `STUDIO_MODAL_WORKSPACE` est défini.
-- Chaque rendu retourne ses secondes GPU → coût comptabilisé, échecs inclus.
+- Les rendus réussis retournent des secondes utilisées pour une estimation GPU.
+  Le studio ne comptabilise pas actuellement les échecs sans résultat, le démarrage,
+  le CPU/RAM et le stockage. La facture Modal reste la référence.
 - Le solde Modal n'est pas lisible par API : il se vérifie dans le dashboard
   (Settings → Billing). Aucun de nos écrans ne prétend l'avoir vérifié.
 
