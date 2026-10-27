@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install modal
-      - name: Identité du compte (la seule preuve : lue sur le jeton)
+      - name: "Identité du compte (lue sur le jeton)"
         run: |
           modal token info || (echo "Jeton invalide ou absent: vérifier les secrets MODAL_TOKEN_*" && exit 1)
           modal app list | head -n 40
