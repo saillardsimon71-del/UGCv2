@@ -22,7 +22,7 @@ Workspace lucj76861. Relevé après arrêt des calculs : neuf films réellement 
 | 01 + 06 | 0,60 USD | 0,5551 USD |
 | 04 + 11, dont deux tests beauté suspendus | 0,58 USD | 0,5063 USD |
 
-Le dernier total est 3,26 USD, pour 26,74 USD de crédits. La ventilation affiche encore 3,21 USD d'apps déployées et 0,20 USD d'apps éphémères : elle ne s'additionne pas au total. Ces compteurs restent asynchrones. Le delta de 3,06 USD est une estimation globale de la fenêtre de campagne ; il ne constitue pas une facture rapprochée.
+Le dernier total est 3,26 USD, pour 26,74 USD de crédits. Après rechargement post-archivage, la ventilation affiche encore 3,12 USD d'apps déployées et 0,20 USD d'apps éphémères : elle ne s'additionne pas au total. Ces compteurs restent asynchrones. Le delta de 3,06 USD est une estimation globale de la fenêtre de campagne ; il ne constitue pas une facture rapprochée.
 
 Les secondes internes excluent une partie des démarrages préalables, de l'extinction, du stockage et d'éventuels dépassements CPU/RAM. Un appel annulé ou film rejeté n'est jamais considéré gratuit. Les reçus des trente appels et les relevés successifs sont conservés. Captures financières locales uniquement.
 

@@ -1,0 +1,121 @@
+{
+  "verified_at": "2026-10-28T09:51:01.902481+00:00",
+  "repo": "saillardsimon71-del/UGCv2",
+  "branch": "production/portfolio-premium12-20261027",
+  "head_sha": "aafd925199b7b019b313a69a24859c247c2632e3",
+  "run_id": 40666404639,
+  "run_url": "https://github.com/saillardsimon71-del/UGCv2/actions/runs/40666404639",
+  "run_conclusion": "success",
+  "archive_job_id": 122741900082,
+  "production_job_conclusion": "skipped",
+  "artifacts": [
+    {
+      "id": 12806347494,
+      "name": "PREMIUM12-CAMPAIGN-SOURCES-40666404639",
+      "size_bytes": 751127758,
+      "expired": false,
+      "expires_at": "2027-01-26T09:42:58Z",
+      "digest": "sha256:bc0b544c122550e5b16d3f741ca9e19eec6b741b7856c7ec67d06bb28a26114b",
+      "metadata_and_upload_verified": true,
+      "full_archive_downloaded_for_this_check": false
+    },
+    {
+      "id": 12805883076,
+      "name": "PREMIUM12-WEB-PREVIEWS-40666404639",
+      "size_bytes": 28171696,
+      "expired": false,
+      "expires_at": "2027-01-26T09:42:58Z",
+      "digest": "sha256:a0d823f0ff0079b6472143c8fdf7b23d6897b96d445ae40cfda849b1ad321186",
+      "metadata_and_upload_verified": true,
+      "download_and_sha256_verification": "pass"
+    }
+  ],
+  "preview_download_verification": "pass",
+  "text_manifest_comparison": "Parsed JSON identical; Git checkout normalizes text line endings. Binary MP4 hashes match exactly.",
+  "preview_files": [
+    {
+      "film": "01-dark-luxury",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/01-DARK-LUXURY-V2-WEB-720x1280.mp4",
+      "bytes": 1504392,
+      "sha256": "a32994f73f116a34d9c6fa34a29dd0e6edc993d631639907bd2ac9dc52333258"
+    },
+    {
+      "film": "02-golden-reveal",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/02-GOLDEN-REVEAL-V2-WEB-720x1280.mp4",
+      "bytes": 1928332,
+      "sha256": "37f6fedc8788f268d4c0471517ecbed8ea44ec0faa21bb351fd1c5fcc8fab45d"
+    },
+    {
+      "film": "03-skincare-sensoriel",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/03-SKINCARE-SENSORIEL-V2-WEB-720x1280.mp4",
+      "bytes": 1809427,
+      "sha256": "4b2a7f2ea301ee4662ae75824ccc72a8368213a80815fff9366586acf297defe"
+    },
+    {
+      "film": "05-architectural-living",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/05-ARCHITECTURAL-LIVING-WEB-720x1280.mp4",
+      "bytes": 3106009,
+      "sha256": "f2e1ab7ad518be29c2b9c1020b5b9fbec16d0fc4ac720b0e9f55b2d2854283b9"
+    },
+    {
+      "film": "06-transformation",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/06-TRANSFORMATION-WEB-720x1280.mp4",
+      "bytes": 1605109,
+      "sha256": "4b5cd39489fdb93d7f80d598b8097d76f8966515dd69b98dd7c8be6ac678a99c"
+    },
+    {
+      "film": "07-probleme-solution",
+      "kind": "final",
+      "quality": "C",
+      "file": "REJECTED-C/07-PROBLEME-SOLUTION-WEB-720x1280.mp4",
+      "bytes": 1793704,
+      "sha256": "61c626ae5acbd0c59ef279226ab0fbbc0b7353900b9a139c5ab0d61093855b20"
+    },
+    {
+      "film": "08-product-energy",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/08-PRODUCT-ENERGY-WEB-720x1280.mp4",
+      "bytes": 2037441,
+      "sha256": "9fbb09cd605748b94e7ab08d008a376c41b9d395e034302c1bb9f2af803689c2"
+    },
+    {
+      "film": "11-fashion-campaign",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/11-FASHION-CAMPAIGN-WEB-720x1280.mp4",
+      "bytes": 2899384,
+      "sha256": "c74edcfd216bba525db4f789bec8988624e7d41990d71e5d2088cca84fe457f4"
+    },
+    {
+      "film": "12-accessory-icon",
+      "kind": "final",
+      "quality": "B",
+      "file": "CANDIDATES-B/12-ACCESSORY-ICON-WEB-720x1280.mp4",
+      "bytes": 8071651,
+      "sha256": "29ba55bd633ab46208fc0d7dde6b90c9089663467e06c2da3c5e60daedc1433b"
+    },
+    {
+      "film": "04-beauty-routine",
+      "kind": "test_no_final",
+      "quality": "C",
+      "file": "TESTS-REJECTED-NO-FINAL/04-BEAUTY-ROUTINE-REJECTED-TEST-5s.mp4",
+      "bytes": 2019942,
+      "sha256": "84d67412f58fd7033ea0663076b62d5a08e484ad30fbe303df7f1d2ae582de78"
+    }
+  ],
+  "preferred_local_exports_verified": 18,
+  "source_preservation": "All campaign folders local and committed; full source archive upload succeeded. No claim that the full source ZIP was downloaded again.",
+  "financial_screenshots_in_repository": false,
+  "portfolio_publication": false
+}

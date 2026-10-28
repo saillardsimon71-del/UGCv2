@@ -29,5 +29,9 @@
   "stop_reason": "All feasible approved films attempted; rejected beauty gesture suspended, UGC capacities still held. Further compute is not needed for this delivery.",
   "site_modified": false,
   "showreel_created": false,
-  "publication_authorized": false
+  "publication_authorized": false,
+  "final_remote_stats_verified_at": "2026-10-28T09:51:01.902481+00:00",
+  "active_local_campaign_python_processes": 0,
+  "final_artifacts_verified": true,
+  "final_artifacts_expire_at": "2027-01-26T09:42:58Z"
 }

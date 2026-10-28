@@ -37,6 +37,6 @@ SKINCARE SENSORIEL reste à vérifier sur la pipette ; DARK LUXURY sur la lisibi
 
 Les masters, versions web, miniatures Pexels, prises réelles, sources et rapports sont conservés dans chaque dossier. Le paquet DELIVERY/WEB fournit les versions préférées et isole les rejets et tests sans final.
 
-Archives finales en préparation. L'archive des [quatre premiers films](https://github.com/saillardsimon71-del/UGCv2/actions/runs/40654464396) est déjà disponible jusqu'au 26 janvier 2027 ; ses huit exports ont été réellement téléchargés et vérifiés par SHA256. Voir PRODUCTION/GITHUB_LOT_02_12_DELIVERY.json.
+[Archives GitHub finales](https://github.com/saillardsimon71-del/UGCv2/actions/runs/40666404639) : choisir WEB-PREVIEWS pour le visionnage ou CAMPAIGN-SOURCES pour la campagne complète. Expirations vérifiées dans PRODUCTION/GITHUB_FINAL_DELIVERY.json. Le paquet web a été téléchargé et ses SHA256 comparés aux vrais fichiers locaux.
 
 La revue visuelle repose sur des photogrammes des vrais MP4, par prise et montage, et des détails pleine définition. Elle ne remplace pas un visionnage continu avec écoute critique. Les contrôles automatiques vérifient la technique, sans valider l'esthétique. Les validations reçues pendant la production autorisent les lots suivants ; la sélection portfolio reste ultérieure.
