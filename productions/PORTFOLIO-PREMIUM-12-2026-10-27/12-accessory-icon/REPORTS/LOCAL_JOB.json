@@ -1,0 +1,7 @@
+{
+  "film": "12-accessory-icon",
+  "status": "real_mp4_created_pending_review",
+  "started_at": "2026-10-28T07:46:30.452088+00:00",
+  "purpose": "Persistent local fallback after GitHub CPU setup failure; existing Modal deployment only",
+  "finished_at": "2026-10-28T07:54:44.585507+00:00"
+}

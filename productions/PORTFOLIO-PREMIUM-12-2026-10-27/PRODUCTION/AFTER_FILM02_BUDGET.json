@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-28T07:46:30.246385+00:00",
+  "workspace": "lucj76861",
+  "credits_usd_dashboard_rounded": 28.9,
+  "total_cycle_usage_usd_dashboard_rounded": 1.1,
+  "deployed_apps_usd_dashboard_rounded": 1.07,
+  "ephemeral_apps_usd_dashboard_rounded": 0.2,
+  "campaign_consumption_usd_dashboard_rounded": 0.9,
+  "film02_consumption_usd_dashboard_rounded": 0.3,
+  "counters_settled": false,
+  "note": "Overview credit and total usage imply 0.30 USD for film02; breakdown temporarily sums to a different value. Not a final invoice.",
+  "ltx_running_inputs": 0,
+  "ltx_backlog": 0,
+  "ltx_runners": 0,
+  "reserve_preserved": true,
+  "evidence": "PRODUCTION/modal-after-film02.jpg"
+}

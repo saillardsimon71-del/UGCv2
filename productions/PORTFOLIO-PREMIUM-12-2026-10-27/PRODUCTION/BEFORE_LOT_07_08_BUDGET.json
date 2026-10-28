@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-28T08:02:49.499829+00:00",
+  "workspace": "lucj76861",
+  "credits_usd_dashboard_rounded": 28.55,
+  "total_cycle_usage_usd_dashboard_rounded": 1.45,
+  "workspace_usage_limit_usd": 20,
+  "campaign_consumption_estimate_usd": 1.25,
+  "reserve_usd": 10,
+  "counters_settled": false,
+  "gpu_running_inputs": 0,
+  "gpu_backlog": 0,
+  "gpu_runners": 0,
+  "human_reply": "Valider et lancer le prochain lot de deux films",
+  "allowed_films": [
+    "07-probleme-solution",
+    "08-product-energy"
+  ],
+  "mode": "Controlled serial lot, no automatic retry; record dashboard after each film"
+}

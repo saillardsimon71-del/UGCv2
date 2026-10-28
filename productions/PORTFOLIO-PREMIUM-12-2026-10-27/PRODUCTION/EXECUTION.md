@@ -21,3 +21,11 @@ Le précontrôle GitHub 40569251898 a réussi et archivé les douze préparation
 Le secours `PRODUCTION/local_pilot.py --film 03-skincare-sensoriel` réutilise les mêmes payloads et la fonction Modal déjà déployée. Il tourne dans un processus Windows séparé, fenêtre cachée, et écrit LOCAL_JOB.json, reçus par prise et journaux dans le dossier de campagne. Il survit à l'arrêt de la conversation mais ne démarre qu'un film explicitement sélectionné. Les prises sont séquentielles, sans reprise GPU automatique ; le premier échec arrête le processus. Le second pilote exige un lancement séparé après contrôle de consommation.
 
 Le workflow dispose aussi d'un job d'archivage qui n'installe aucun outil et ne reçoit aucun secret Modal : message de commit `ARCHIVE_PREMIUM_PILOTS`. Il sert uniquement à conserver les vrais MP4 et rapports déjà produits localement.
+
+## Lot validé le 28 octobre
+
+Réponse humaine reçue : "Valider et lancer le lot de deux films". Le périmètre consigné dans HUMAN_PILOT_APPROVAL.json autorise exclusivement GOLDEN REVEAL puis ACCESSORY ICON. Le solde avant ce lot est de 29,20 USD, l'usage du cycle de 0,80 USD et la limite workspace de 20 USD. Les UGC 09 et 10 restent suspendus. La sélection pour publication reste ultérieure.
+
+Le même lanceur local persistant accepte ces deux identifiants, avec un lancement séparé par film. Le second attend la revue du premier et son relevé de consommation. Aucune régénération automatique, aucun appel parallèle, aucune modification des workers. Annulation de la prise active : `python PRODUCTION/run_campaign.py cancel --film 02-golden-reveal` ou `--film 12-accessory-icon`. Vérifier ensuite l'absence d'entrée active et de file d'attente.
+
+L'archive dédiée au lot se déclenche uniquement par le message `ARCHIVE_PREMIUM_LOT_02_12`. Elle conserve les quatre films réels, leurs sources, reçus, scripts et rapports pendant 90 jours, sans calcul Modal.

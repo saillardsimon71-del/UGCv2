@@ -1,0 +1,50 @@
+{
+  "status": "two_real_final_mp4_created_class_B_human_review_pending",
+  "authorization": "PRODUCTION/HUMAN_PILOT_APPROVAL.json",
+  "workspace": "lucj76861",
+  "execution": "Persistent local controller, existing deployed pvs-ltx/render_clip, supervised serial films",
+  "films": [
+    {
+      "film": "02-golden-reveal",
+      "pid": 84464,
+      "started_at": "2026-10-28T07:38:13.327587+00:00",
+      "stdout": "PRODUCTION/local-film02.out.log",
+      "stderr": "PRODUCTION/local-film02.err.log",
+      "status": "real_mp4_v2_created_pending_human_review",
+      "finished_at": "2026-10-28T07:45:08.813235+00:00",
+      "partial_worker_estimate_usd": 0.2703,
+      "final_web": "02-golden-reveal/EXPORTS/02-GOLDEN-REVEAL-V2-WEB-720x1280.mp4"
+    },
+    {
+      "film": "12-accessory-icon",
+      "status": "real_mp4_created_pending_human_review",
+      "pid": 85500,
+      "started_at": "2026-10-28T07:46:30.452088+00:00",
+      "stdout": "PRODUCTION/local-film12.out.log",
+      "stderr": "PRODUCTION/local-film12.err.log",
+      "finished_at": "2026-10-28T07:54:44.585507+00:00",
+      "partial_worker_estimate_usd": 0.3233,
+      "final_web": "12-accessory-icon/EXPORTS/12-ACCESSORY-ICON-WEB-720x1280.mp4"
+    }
+  ],
+  "concurrency_gpu": 1,
+  "automatic_retry": false,
+  "reserve_usd": 10,
+  "campaign_ceiling_usd": 20,
+  "cancel_command": "python PRODUCTION/run_campaign.py cancel --film FILM_ID",
+  "stop_conditions": [
+    "Any generation or technical failure",
+    "Unacceptable product drift",
+    "Reserve or authorized budget at risk",
+    "No verification of remote cancellation"
+  ],
+  "publication_authorized": false,
+  "finished_at": "2026-10-28T07:59:54.763940+00:00",
+  "partial_worker_estimate_usd": 0.5936,
+  "dashboard_delta_estimate_usd": 0.65,
+  "actual_billed_usd": null,
+  "all_gpu_calls_complete": true,
+  "gpu_running_inputs": 0,
+  "gpu_backlog": 0,
+  "gpu_runners": 0
+}

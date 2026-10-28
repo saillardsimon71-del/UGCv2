@@ -14,24 +14,28 @@
   "dashboard": "https://modal.com/settings/lucj76861/usage?tab=budgets",
   "evidence": "PRODUCTION/modal-budget-20usd.jpg",
   "documentation": "https://modal.com/docs/guide/budgets",
-  "billing_guarantee": "No independent invoice cap guarantee. Modal describes the workspace budget as a hard outer cap; metering delay and continuing storage make a client timeout insufficient. This mission only starts supervised pilot runs, one GPU at a time, no overnight series.",
+  "billing_guarantee": "No independent invoice cap guarantee. Modal describes the workspace budget as a hard outer cap; metering delay and continuing storage make a client timeout insufficient. This mission only starts supervised, explicitly authorized finite film runs, one GPU at a time, no unattended overnight series.",
   "controls": [
     "No model downloads or deployments",
     "One attempt per shot",
     "600-second client deadline with terminate_containers cancellation",
     "Stop entire run on any failure",
     "No series before real pilot approval",
-    "Record dashboard after each pilot"
+    "Record dashboard after each film"
   ],
   "actual_campaign_billed_usd": null,
-  "partial_worker_estimate_usd": 0.5379,
+  "partial_worker_estimate_usd": 1.1315,
   "credits_after_two_pilots_dashboard_usd": 29.2,
   "total_cycle_usage_after_two_pilots_dashboard_usd": 0.8,
-  "estimated_campaign_consumption_dashboard_usd": 0.6,
+  "estimated_campaign_consumption_dashboard_usd": 1.25,
   "reserve_preserved_at_observation": true,
-  "billing_note": "Rounded asynchronous dashboard counters. Two films, six completed shots plus one cancelled GPU start; not a final invoice.",
+  "billing_note": "Four films, twelve completed clips plus one cancelled startup. Credit/total usage counters indicate about 1.25 USD campaign delta and 0.65 USD lot delta. Breakdown still asynchronous, not a final invoice.",
   "evidence_scope": "Screenshots kept locally only",
-  "last_visible_counters_coherent": true,
-  "last_deployed_app_usage_usd": 0.6,
-  "last_ephemeral_app_usage_usd": 0.2
+  "last_visible_counters_coherent": false,
+  "last_deployed_app_usage_usd": 1.4,
+  "last_ephemeral_app_usage_usd": 0.2,
+  "last_observed_at": "2026-10-28T07:59:54.763940+00:00",
+  "credits_after_four_films_dashboard_usd": 28.55,
+  "total_cycle_usage_after_four_films_dashboard_usd": 1.45,
+  "estimated_lot_02_12_consumption_dashboard_usd": 0.65
 }

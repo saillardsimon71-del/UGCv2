@@ -1,10 +1,23 @@
 {
   "film": "02-golden-reveal",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "02-golden-reveal/EXPORTS/02-GOLDEN-REVEAL-V2-MASTER-1080x1920.mp4",
+  "review": "Three real clips sampled at 4 fps, both final edits at 2 fps; full-resolution hero compared with Pexels input. No continuous playback or critical listening claimed.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Mouvement du premier plan plus ample que prévu au prompt.",
+    "Raccord lumineux à 10 s amélioré par coupe CPU, mais changement de contraste encore visible.",
+    "Rythme et son à valider sur le vrai MP4 en lecture continue."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "duration_s": 15.5,
+  "version": "v2_cpu_refinement",
+  "recommendation": "Film validé par le client pour poursuivre la production. Sélection portfolio et publication encore séparées.",
+  "partial_worker_estimate_usd": 0.2703,
+  "human_approved_for_next_lot": true,
+  "human_approval_at": "2026-10-28T08:02:49.499829+00:00",
+  "publication_authorized": false
 }

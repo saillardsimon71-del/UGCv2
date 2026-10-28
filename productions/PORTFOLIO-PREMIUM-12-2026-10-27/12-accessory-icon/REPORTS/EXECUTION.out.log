@@ -1,0 +1,30 @@
+{"at": "2026-10-28T07:46:30.702491+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "12-accessory-icon", "shot": "01", "call_id": "fc-01M60QK7QVN2M4K40ZY17W98CR", "status": "running"}
+12-accessory-icon/01 : 22 s d'attente
+12-accessory-icon/01 : 42 s d'attente
+12-accessory-icon/01 : 63 s d'attente
+12-accessory-icon/01 : 83 s d'attente
+12-accessory-icon/01 : 103 s d'attente
+12-accessory-icon/01 : 123 s d'attente
+12-accessory-icon/01 : 144 s d'attente
+12-accessory-icon/01 : 164 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\12-accessory-icon\\RENDERS\\shot-01.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.1281}
+{"at": "2026-10-28T07:49:32.768881+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "12-accessory-icon", "shot": "02", "call_id": "fc-01M60QRSEZV5YWPSYTDS2SEJJZ", "status": "running"}
+12-accessory-icon/02 : 22 s d'attente
+12-accessory-icon/02 : 42 s d'attente
+12-accessory-icon/02 : 63 s d'attente
+12-accessory-icon/02 : 83 s d'attente
+12-accessory-icon/02 : 103 s d'attente
+12-accessory-icon/02 : 123 s d'attente
+12-accessory-icon/02 : 144 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\12-accessory-icon\\RENDERS\\shot-02.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.108}
+{"at": "2026-10-28T07:52:10.182286+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "12-accessory-icon", "shot": "03", "call_id": "fc-01M60QXKGDJSSY2QRCHXB704CM", "status": "running"}
+12-accessory-icon/03 : 22 s d'attente
+12-accessory-icon/03 : 43 s d'attente
+12-accessory-icon/03 : 63 s d'attente
+12-accessory-icon/03 : 83 s d'attente
+12-accessory-icon/03 : 103 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\12-accessory-icon\\RENDERS\\shot-03.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0872}
+MP4 réels et contrôles techniques enregistrés : C:\Users\saill\Documents\Codex\2026-10-27\mission-work-sitequivend-important-peu-importe\PORTFOLIO-PREMIUM-12-2026-10-27\12-accessory-icon\EXPORTS\12-ACCESSORY-ICON-MASTER-1080x1920.mp4

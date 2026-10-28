@@ -12,6 +12,9 @@
     "Les deux plans larges restent proches : rythme et variété à valider en lecture continue."
   ],
   "warning": "Automatic checks do not validate artistic quality",
-  "recommendation": "Candidat prioritaire pour la branche maison, sous réserve de validation humaine du mouvement, des raccords et du son.",
-  "partial_worker_estimate_usd": 0.247
+  "recommendation": "Pilote validé par le client pour poursuivre la production. Sélection portfolio et publication encore séparées.",
+  "partial_worker_estimate_usd": 0.247,
+  "human_approved_for_next_lot": true,
+  "human_approval_at": "2026-10-28T07:38:03.185716+00:00",
+  "publication_authorized": false
 }

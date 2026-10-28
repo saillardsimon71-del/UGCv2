@@ -12,12 +12,15 @@
     "Fidélité de l'extrémité de pipette, rythme et musique à juger en lecture continue."
   ],
   "warning": "Automatic checks do not validate artistic quality",
-  "recommendation": "Présenter la V2 de 15,5 s pour validation ; conserver B avant visionnage et écoute critiques. Aucun nouvel essai GPU.",
+  "recommendation": "Pilote validé par le client pour poursuivre la production. Sélection portfolio et publication encore séparées.",
   "partial_worker_estimate_usd": 0.2909,
   "failed_gpu_starts": 1,
   "automatic_gpu_retries": 0,
   "dashboard_estimate_after_pilot_usd": 0.3,
   "billing_counters_settled": false,
   "duration_s": 15.5,
-  "version": "v2_cpu_refinement"
+  "version": "v2_cpu_refinement",
+  "human_approved_for_next_lot": true,
+  "human_approval_at": "2026-10-28T07:38:03.185716+00:00",
+  "publication_authorized": false
 }

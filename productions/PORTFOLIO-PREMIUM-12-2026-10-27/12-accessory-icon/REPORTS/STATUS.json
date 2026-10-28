@@ -1,10 +1,22 @@
 {
   "film": "12-accessory-icon",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "12-accessory-icon\\EXPORTS\\12-ACCESSORY-ICON-MASTER-1080x1920.mp4",
+  "review": "Three real clips sampled at 4 fps and final edit at 2 fps; full-resolution clasp and leather detail compared with Pexels input. No continuous playback or critical listening claimed.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Amplitude des mouvements supérieure aux glissements de quelques centimètres demandés.",
+    "Plans 02 et 03 proches visuellement ; variété et rythme à juger en lecture continue.",
+    "Écoute critique et stabilité fine des détails pendant le mouvement à valider."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "partial_worker_estimate_usd": 0.3233,
+  "duration_s": 17.5,
+  "recommendation": "Film validé par le client pour poursuivre la production. Sélection portfolio et publication encore séparées.",
+  "human_approved_for_next_lot": true,
+  "human_approval_at": "2026-10-28T08:02:49.499829+00:00",
+  "publication_authorized": false
 }

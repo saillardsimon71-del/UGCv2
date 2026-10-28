@@ -1,0 +1,25 @@
+{
+  "status": "running_first_film",
+  "authorization": "PRODUCTION/HUMAN_PILOT_APPROVAL.json",
+  "workspace": "lucj76861",
+  "films": [
+    {
+      "film": "07-probleme-solution",
+      "pid": 70392,
+      "started_at": "2026-10-28T08:02:57.143927+00:00",
+      "status": "running",
+      "stdout": "PRODUCTION/local-film07.out.log",
+      "stderr": "PRODUCTION/local-film07.err.log"
+    },
+    {
+      "film": "08-product-energy",
+      "status": "awaiting_first_film_review_and_budget"
+    }
+  ],
+  "max_concurrent_gpu": 1,
+  "automatic_retry": false,
+  "campaign_ceiling_usd": 20,
+  "reserve_usd": 10,
+  "cancel_command": "python PRODUCTION/run_campaign.py cancel --film FILM_ID",
+  "publication_authorized": false
+}

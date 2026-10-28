@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-28T07:52:55.181587+00:00",
+  "film": "02-golden-reveal",
+  "workspace": "lucj76861",
+  "status": "real_final_v2_mp4_created",
+  "duration_s": 15.5,
+  "quality": "B",
+  "publish": false,
+  "successful_ai_shots": 3,
+  "failed_calls": 0,
+  "gpu_retries": 0,
+  "final_edit": "PRODUCTION/finish_golden_v2.py",
+  "native_render_size": [
+    768,
+    1344
+  ],
+  "master_upscaled": true,
+  "real_mp4": {
+    "master": "EXPORTS/02-GOLDEN-REVEAL-V2-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/02-GOLDEN-REVEAL-V2-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "partial_worker_estimate_usd": 0.2703,
+  "dashboard_delta_film_estimate_usd": 0.3,
+  "actual_billed_usd": null,
+  "billing_note": "Dashboard rounded and asynchronous; internal seconds omit some startup and storage. Not an invoice.",
+  "shots": [
+    {
+      "shot": "01",
+      "call_id": "fc-01M60Q42CSEAA81RXNQZAZGM73",
+      "source_sha256": "f6d3462b2a4603ca739b5649a9500c0849c18f9851e4a429a6384c73a7eb7514",
+      "output_sha256": "8bce90e68b82c928bcafe9d483c0453f93f9acc027097da70beaa4d66fff98b2",
+      "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+      "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+      "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+      "seed": 2026102710,
+      "generation_seconds": 114.587,
+      "partial_worker_estimate_usd": 0.0904
+    },
+    {
+      "shot": "02",
+      "call_id": "fc-01M60Q860F33SWAR5E8JEAW7KJ",
+      "source_sha256": "0cec993e9d8a1933d2c5d07006fc5af781bfa45596154ab7fd2033043c6c053c",
+      "output_sha256": "aa40f5881d021ffe77c193ca3e0a07c3760d03dc13241efd64b7b9b10562d326",
+      "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+      "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+      "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+      "seed": 2026102711,
+      "generation_seconds": 97.688,
+      "partial_worker_estimate_usd": 0.0771
+    },
+    {
+      "shot": "03",
+      "call_id": "fc-01M60QBHB4VYCZAZ8X91QASADC",
+      "source_sha256": "3304851a7c7bb686599c1b96ed60fc9ac331189b2d3bd53974d275757e916547",
+      "output_sha256": "7eb4bc91baf9f379b360dcf61863aa5abcc0476e1516a7a904dcc854edf4c08e",
+      "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+      "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+      "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+      "seed": 2026102712,
+      "generation_seconds": 130.279,
+      "partial_worker_estimate_usd": 0.1028
+    }
+  ]
+}

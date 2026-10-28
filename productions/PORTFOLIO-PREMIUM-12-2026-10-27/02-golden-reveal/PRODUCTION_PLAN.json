@@ -5,11 +5,11 @@
   "workspace": "lucj76861",
   "environment": "main",
   "mode": "existing_deployment_only",
-  "target_duration_s": 17.5,
+  "target_duration_s": 15.5,
   "card_duration_s": 2.5,
   "output": {
-    "master": "EXPORTS/02-GOLDEN-REVEAL-MASTER-1080x1920.mp4",
-    "web": "EXPORTS/02-GOLDEN-REVEAL-WEB-720x1280.mp4",
+    "master": "EXPORTS/02-GOLDEN-REVEAL-V2-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/02-GOLDEN-REVEAL-V2-WEB-720x1280.mp4",
     "fps": 24,
     "aspect": "9:16",
     "codec": "H.264/AAC",
@@ -21,13 +21,13 @@
     ],
     "upscaled_master": true
   },
-  "generation_status": "prepared_not_started",
+  "generation_status": "real_mp4_created",
   "preparation_status": "prepared_sources_verified",
   "executable": true,
   "hold_reason": null,
   "pilot": false,
   "human_review_required": true,
-  "quality_grade": null,
+  "quality_grade": "B",
   "publish": false,
   "max_concurrent_gpu": 1,
   "attempts_per_shot": 1,
@@ -201,7 +201,7 @@
       "shot_id": "03",
       "duration_requested_s": 5,
       "timeline_start_s": 10,
-      "timeline_duration_s": 5,
+      "timeline_duration_s": 3,
       "native_frames": 121,
       "engine": "LTX-2.5 Distilled, ComfyUI 2 passes",
       "app": "pvs-ltx",
@@ -262,7 +262,10 @@
         "Pas de géométrie variable, texte parasite, scintillement ou objet ajouté",
         "Mouvement conforme à l'action et raccord lisible",
         "Vrai MP4 décodable, durée et conditionnement image documentés"
-      ]
+      ],
+      "source_in_s": 2
     }
-  ]
+  ],
+  "final_edit_script": "PRODUCTION/finish_golden_v2.py",
+  "execution_route": "PRODUCTION/local_pilot.py --film 02-golden-reveal"
 }

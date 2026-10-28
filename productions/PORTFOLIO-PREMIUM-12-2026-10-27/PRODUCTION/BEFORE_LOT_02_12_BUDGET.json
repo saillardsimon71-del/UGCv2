@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-28T07:38:03.185716+00:00",
+  "workspace": "lucj76861",
+  "credits_usd_dashboard_rounded": 29.2,
+  "total_cycle_usage_usd_dashboard_rounded": 0.8,
+  "workspace_usage_limit_usd": 20,
+  "observed_in_dashboard": true,
+  "campaign_consumption_usd_dashboard_rounded": 0.6,
+  "estimated_remaining_campaign_usd": 19.2,
+  "reserve_usd": 10,
+  "active_ltx_inputs": 0,
+  "ltx_backlog": 0,
+  "ltx_runners": 0,
+  "mode": "Supervised finite lot, one film at a time, no unattended overnight series"
+}

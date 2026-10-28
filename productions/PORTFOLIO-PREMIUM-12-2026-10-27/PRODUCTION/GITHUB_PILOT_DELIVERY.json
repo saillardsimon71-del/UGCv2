@@ -1,0 +1,41 @@
+{
+  "verified_at": "2026-10-28T07:40:12.030774+00:00",
+  "repo": "saillardsimon71-del/UGCv2",
+  "run_id": 40576929268,
+  "run_url": "https://github.com/saillardsimon71-del/UGCv2/actions/runs/40576929268",
+  "conclusion": "success",
+  "artifact_id": 12768485156,
+  "name": "PREMIUM12-REAL-PILOTS-40576929268",
+  "size_bytes": 143887393,
+  "expires_at": "2027-01-25T20:18:58Z",
+  "expired": false,
+  "digest": "sha256:a2888447a464cdc4976e8f5fcf0b4321a1e71d740a59f2d95e0a2fb8bc6b9eba",
+  "download_verification": "pass",
+  "download_verified_at": "2026-10-28T07:40:20.464036+00:00",
+  "exports": [
+    {
+      "file": "03-skincare-sensoriel/EXPORTS/03-SKINCARE-SENSORIEL-V2-MASTER-1080x1920.mp4",
+      "bytes": 8841303,
+      "sha256": "0f296e24077413734fb1c4ea0cd5038f564b71a8ad57176578364c7697551e6f",
+      "downloaded_from_artifact": true
+    },
+    {
+      "file": "03-skincare-sensoriel/EXPORTS/03-SKINCARE-SENSORIEL-V2-WEB-720x1280.mp4",
+      "bytes": 1809427,
+      "sha256": "4b2a7f2ea301ee4662ae75824ccc72a8368213a80815fff9366586acf297defe",
+      "downloaded_from_artifact": true
+    },
+    {
+      "file": "05-architectural-living/EXPORTS/05-ARCHITECTURAL-LIVING-MASTER-1080x1920.mp4",
+      "bytes": 14442534,
+      "sha256": "ffd0d8410e4f6d3aa15c25bece6ca9644259096834b1a82315c363c34c0dd375",
+      "downloaded_from_artifact": true
+    },
+    {
+      "file": "05-architectural-living/EXPORTS/05-ARCHITECTURAL-LIVING-WEB-720x1280.mp4",
+      "bytes": 3106009,
+      "sha256": "f2e1ab7ad518be29c2b9c1020b5b9fbec16d0fc4ac720b0e9f55b2d2854283b9",
+      "downloaded_from_artifact": true
+    }
+  ]
+}

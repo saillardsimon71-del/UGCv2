@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-28T07:38:03.185716+00:00",
+  "human_approved": true,
+  "user_reply": "Valider et lancer le lot de deux films",
+  "pilots_reviewed": [
+    "03-SKINCARE-SENSORIEL-V2-WEB-720x1280.mp4",
+    "05-ARCHITECTURAL-LIVING-WEB-720x1280.mp4"
+  ],
+  "allowed_films": [
+    "02-golden-reveal",
+    "12-accessory-icon",
+    "07-probleme-solution",
+    "08-product-energy"
+  ],
+  "scope": "Deux lots explicitement validés : 02+12 puis 07+08. Budget inchangé, aucune publication automatique.",
+  "budget_ceiling_usd": 20,
+  "reserve_usd": 10,
+  "max_concurrent_gpu": 1,
+  "automatic_retry": false,
+  "ugc_suspended": true,
+  "publication_authorized": false,
+  "approvals": [
+    {
+      "at": "2026-10-28T07:38:03.185716+00:00",
+      "user_reply": "Valider et lancer le lot de deux films",
+      "allowed_films": [
+        "02-golden-reveal",
+        "12-accessory-icon"
+      ]
+    },
+    {
+      "at": "2026-10-28T08:02:49.499829+00:00",
+      "user_reply": "Valider et lancer le prochain lot de deux films",
+      "reviewed_mp4": [
+        "02-GOLDEN-REVEAL-V2-WEB-720x1280.mp4",
+        "12-ACCESSORY-ICON-WEB-720x1280.mp4"
+      ],
+      "allowed_films": [
+        "07-probleme-solution",
+        "08-product-energy"
+      ]
+    }
+  ],
+  "last_updated_at": "2026-10-28T08:02:49.499829+00:00"
+}

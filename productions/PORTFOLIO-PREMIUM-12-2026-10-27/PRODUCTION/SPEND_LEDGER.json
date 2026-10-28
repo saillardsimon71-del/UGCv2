@@ -1,6 +1,36 @@
 {
-  "updated_at": "2026-10-27T20:13:07.956102+00:00",
+  "updated_at": "2026-10-28T08:04:23.100331+00:00",
   "calls": [
+    {
+      "film": "02-golden-reveal",
+      "shot": "01",
+      "attempt": 1,
+      "call_id": "fc-01M60Q42CSEAA81RXNQZAZGM73",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0904,
+      "actual_billed_usd": null,
+      "receipt": "02-golden-reveal/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "02-golden-reveal",
+      "shot": "02",
+      "attempt": 1,
+      "call_id": "fc-01M60Q860F33SWAR5E8JEAW7KJ",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0771,
+      "actual_billed_usd": null,
+      "receipt": "02-golden-reveal/REPORTS/shot-02-receipt.json"
+    },
+    {
+      "film": "02-golden-reveal",
+      "shot": "03",
+      "attempt": 1,
+      "call_id": "fc-01M60QBHB4VYCZAZ8X91QASADC",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1028,
+      "actual_billed_usd": null,
+      "receipt": "02-golden-reveal/REPORTS/shot-03-receipt.json"
+    },
     {
       "film": "03-skincare-sensoriel",
       "shot": "01",
@@ -70,9 +100,49 @@
       "partial_worker_estimate_usd": 0.0844,
       "actual_billed_usd": null,
       "receipt": "05-architectural-living/REPORTS/shot-03-receipt.json"
+    },
+    {
+      "film": "07-probleme-solution",
+      "shot": "01",
+      "attempt": 1,
+      "call_id": "fc-01M60RHBFQHR4E3FT8DJMK8TY4",
+      "status": "running",
+      "partial_worker_estimate_usd": null,
+      "actual_billed_usd": null,
+      "receipt": "07-probleme-solution/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "12-accessory-icon",
+      "shot": "01",
+      "attempt": 1,
+      "call_id": "fc-01M60QK7QVN2M4K40ZY17W98CR",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1281,
+      "actual_billed_usd": null,
+      "receipt": "12-accessory-icon/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "12-accessory-icon",
+      "shot": "02",
+      "attempt": 1,
+      "call_id": "fc-01M60QRSEZV5YWPSYTDS2SEJJZ",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.108,
+      "actual_billed_usd": null,
+      "receipt": "12-accessory-icon/REPORTS/shot-02-receipt.json"
+    },
+    {
+      "film": "12-accessory-icon",
+      "shot": "03",
+      "attempt": 1,
+      "call_id": "fc-01M60QXKGDJSSY2QRCHXB704CM",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0872,
+      "actual_billed_usd": null,
+      "receipt": "12-accessory-icon/REPORTS/shot-03-receipt.json"
     }
   ],
-  "known_partial_worker_estimate_usd": 0.5379,
+  "known_partial_worker_estimate_usd": 1.1315,
   "actual_campaign_billed_usd": null,
   "failed_starts_included_in_call_count": true,
   "note": "No charge estimated as zero merely because a call failed; invoice and dashboard reconciliation required."

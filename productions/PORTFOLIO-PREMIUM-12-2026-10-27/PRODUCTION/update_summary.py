@@ -34,11 +34,13 @@ for folder in sorted(ROOT.glob("[0-9][0-9]-*")):
     cost = f"{partial:.4f} USD worker partiel" if receipts else "0 appel GPU"
     if failed:
         cost += f" ; {failed} démarrage interrompu non ventilé"
-    recommendation = status.get("recommendation") or ("Conserver les crédits" if not plan["executable"] else "Valider le vrai pilote avant série")
+    recommendation = status.get("recommendation") or ("Conserver les crédits" if not plan["executable"] else "Prêt pour un prochain lot contrôlé")
     cells = [plan["title"], concept["category"], prep, generation, mp4, cost, quality, defects, recommendation]
     rows.append("| " + " | ".join(str(c).replace("|", "/").replace("\n", " ") for c in cells) + " |")
 rows += ["", "## Budget et preuve", "", "Compte : lucj76861. Solde initial observé : 29,80 USD ; usage initial du cycle : 0,20 USD. Limite mensuelle abaissée à 20 USD, réserve visée : 10 USD. Budget additionnel effectif initial : 19,80 USD ; enveloppe pilotes : 5 USD. Voir PRODUCTION/BUDGET.json et les relevés de consommation. Les compteurs du dashboard peuvent se mettre à jour à des rythmes différents : aucune facture définitive n'est déclarée.",
-         "", "## Récupération", "", "Préparations complètes : [artefact GitHub](https://github.com/saillardsimon71-del/UGCv2/actions/runs/40569251898), expiration vérifiée au 25 janvier 2027. Les nouveaux exports sont également conservés localement. Le rapport de livraison précisera le run et l'expiration de l'archive des vrais pilotes.",
+         "", "## Récupération", "", "Préparations complètes : [artefact GitHub](https://github.com/saillardsimon71-del/UGCv2/actions/runs/40569251898), expiration vérifiée au 25 janvier 2027. Les nouveaux exports sont également conservés localement. Les [vrais pilotes archivés](https://github.com/saillardsimon71-del/UGCv2/actions/runs/40576929268) expirent le 25 janvier 2027 à 20:18 UTC ; leurs quatre exports ont été réellement téléchargés et leurs SHA256 vérifiés. Voir PRODUCTION/GITHUB_PILOT_DELIVERY.json.",
+         "", "Relevé du 28 octobre : solde 28,55 USD, consommation de campagne estimée à 1,25 USD, dont 0,65 USD pour le lot GOLDEN REVEAL + ACCESSORY ICON. Compteurs asynchrones, facture définitive indisponible. Les six prises de ce lot ont abouti sans relance ; les deux V2 ont uniquement été montées sur CPU.",
+         "", "Les pilotes 03 et 05 ont reçu une validation humaine pour poursuivre la production. Les films 02 et 12 ont également reçu une validation humaine pour poursuivre avec le lot 07 + 08. La sélection portfolio reste ultérieure.",
          "", "La qualité visuelle est contrôlée sur des photogrammes extraits des vrais MP4, par prise et montage. Une validation humaine en lecture continue et une écoute critique restent nécessaires avant sélection portfolio. Les contrôles techniques ne constituent pas une validation esthétique."]
 (ROOT / "PORTFOLIO_SUMMARY.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
 report = {"updated_at": datetime.now(timezone.utc).isoformat(), "calls": ledger,
