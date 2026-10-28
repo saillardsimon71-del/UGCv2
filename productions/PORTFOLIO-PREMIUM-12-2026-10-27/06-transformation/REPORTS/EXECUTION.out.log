@@ -1,0 +1,26 @@
+{"at": "2026-10-28T08:34:24.924923+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "06-transformation", "shot": "01", "call_id": "fc-01M60TB10CZ3B870ZSNJEQWNDX", "status": "running"}
+06-transformation/01 : 25 s d'attente
+06-transformation/01 : 45 s d'attente
+06-transformation/01 : 65 s d'attente
+06-transformation/01 : 85 s d'attente
+06-transformation/01 : 106 s d'attente
+06-transformation/01 : 126 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\06-transformation\\RENDERS\\shot-01.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.1047}
+{"at": "2026-10-28T08:36:52.598480+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "06-transformation", "shot": "02", "call_id": "fc-01M60TFEQYFQBQ7R218KHC4TBT", "status": "running"}
+06-transformation/02 : 22 s d'attente
+06-transformation/02 : 42 s d'attente
+06-transformation/02 : 63 s d'attente
+06-transformation/02 : 83 s d'attente
+06-transformation/02 : 103 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\06-transformation\\RENDERS\\shot-02.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.09}
+{"at": "2026-10-28T08:38:55.540453+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "06-transformation", "shot": "03", "call_id": "fc-01M60TK6TJGZVMQ9BNNYVHWKRN", "status": "running"}
+06-transformation/03 : 22 s d'attente
+06-transformation/03 : 42 s d'attente
+06-transformation/03 : 63 s d'attente
+06-transformation/03 : 83 s d'attente
+06-transformation/03 : 103 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\06-transformation\\RENDERS\\shot-03.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0914}
+MP4 réels et contrôles techniques enregistrés : C:\Users\saill\Documents\Codex\2026-10-27\mission-work-sitequivend-important-peu-importe\PORTFOLIO-PREMIUM-12-2026-10-27\06-transformation\EXPORTS\06-TRANSFORMATION-MASTER-1080x1920.mp4

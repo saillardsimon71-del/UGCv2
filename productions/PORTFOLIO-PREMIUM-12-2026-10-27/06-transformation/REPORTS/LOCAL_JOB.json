@@ -1,0 +1,7 @@
+{
+  "film": "06-transformation",
+  "status": "real_mp4_created_pending_review",
+  "started_at": "2026-10-28T08:34:24.683806+00:00",
+  "purpose": "Persistent local fallback after GitHub CPU setup failure; existing Modal deployment only",
+  "finished_at": "2026-10-28T08:41:24.452309+00:00"
+}

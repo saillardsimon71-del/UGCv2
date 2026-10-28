@@ -33,3 +33,7 @@ L'archive dédiée au lot se déclenche uniquement par le message `ARCHIVE_PREMI
 ## Lot 07 + 08
 
 Réponse humaine du 28 octobre : "Valider et lancer le prochain lot de deux films", après présentation du parfum V2 et du sac. Le même budget autorise PROBLÈME / SOLUTION puis PRODUCT ENERGY, un seul GPU, aucune reprise automatique. Le premier film est rejeté C pour incohérence des pages et élément ajouté en bas du plan final. Son vrai MP4 et ses coûts sont conservés. PRODUCT ENERGY poursuit ses trois prises sans dépendre de ce rejet. Le message ARCHIVE_PREMIUM_LOT_07_08 conserve les six dossiers comprenant l'essai C, sans calcul Modal.
+
+## Dernier lot humain 04 + 11
+
+Le client a validé les huit films pour poursuivre avec deux benchmarks conditionnels. Premier appel : `python PRODUCTION/run_campaign.py render --film 04-beauty-routine --shot 01 --confirm-spend oui`. Le portrait mode se teste sur la prise 02 de 11-fashion-campaign. Chaque appel est lancé dans un processus Windows caché et persistant, avec reçus et journaux. Aucun enchaînement automatique des trois prises : la revue visuelle du benchmark conditionne les appels suivants. Pas de régénération, aucun UGC 09/10.

@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-28T08:34:24.644404+00:00",
+  "workspace": "lucj76861",
+  "credits_usd_dashboard_rounded": 27.62,
+  "total_cycle_usage_usd_dashboard_rounded": 2.38,
+  "deployed_apps_usd_dashboard_rounded": 2.43,
+  "ephemeral_apps_usd_dashboard_rounded": 0.2,
+  "counters_settled": false,
+  "campaign_delta_estimate_usd": 2.18,
+  "film01_delta_estimate_usd": 0.3,
+  "actual_invoice_usd": null,
+  "gpu_running_inputs_before_film06": 0,
+  "gpu_backlog_before_film06": 0,
+  "gpu_runners_before_film06": 0,
+  "reserve_preserved": true,
+  "evidence": "PRODUCTION/modal-after-film01.jpg"
+}

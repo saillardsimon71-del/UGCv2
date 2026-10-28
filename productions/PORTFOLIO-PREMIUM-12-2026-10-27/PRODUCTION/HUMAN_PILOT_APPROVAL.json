@@ -12,9 +12,11 @@
     "07-probleme-solution",
     "08-product-energy",
     "01-dark-luxury",
-    "06-transformation"
+    "06-transformation",
+    "04-beauty-routine",
+    "11-fashion-campaign"
   ],
-  "scope": "Trois lots explicitement validés : 02+12, 07+08, puis 01+06. Budget inchangé, aucune publication automatique.",
+  "scope": "Four explicitly approved finite lots. Final human films require a passed benchmark first. No UGC09/10 call or automatic publication.",
   "budget_ceiling_usd": 20,
   "reserve_usd": 10,
   "max_concurrent_gpu": 1,
@@ -53,7 +55,20 @@
         "01-dark-luxury",
         "06-transformation"
       ]
+    },
+    {
+      "at": "2026-10-28T08:52:45.320439+00:00",
+      "user_reply": "Valider et tester les deux films avec humains",
+      "reviewed_mp4": [
+        "01-DARK-LUXURY-V2-WEB-720x1280.mp4",
+        "06-TRANSFORMATION-WEB-720x1280.mp4"
+      ],
+      "allowed_films": [
+        "04-beauty-routine",
+        "11-fashion-campaign"
+      ],
+      "conditions": "One benchmark per film first; continue only if hands, face and garments convincing; suspend on major defect without GPU retry. UGC09/10 remain suspended."
     }
   ],
-  "last_updated_at": "2026-10-28T08:25:18.572022+00:00"
+  "last_updated_at": "2026-10-28T08:52:45.320439+00:00"
 }

@@ -1,10 +1,23 @@
 {
   "film": "01-dark-luxury",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "01-dark-luxury/EXPORTS/01-DARK-LUXURY-V2-MASTER-1080x1920.mp4",
+  "review": "Three real clips sampled at 4 fps and original final picture at 2 fps. V2 keeps that picture and corrects audio only. No continuous playback or critical listening claimed.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Exposition volontairement très sombre ; lisibilité du flacon à juger sur écran mobile.",
+    "Le dernier plan crée un contour lumineux visible, dont le naturel doit être apprécié.",
+    "Mouvements plus amples et parfois de sens différent du prompt."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "duration_s": 17.5,
+  "version": "v2_cpu_audio_refinement",
+  "partial_worker_estimate_usd": 0.269,
+  "recommendation": "Candidat noir à valider sur le vrai MP4 V2. Priorité de sélection inférieure au parfum doré tant que contraste et contour lumineux ne sont pas jugés convaincants.",
+  "human_approved_for_next_lot": true,
+  "human_approval_at": "2026-10-28T08:52:45.320439+00:00",
+  "publication_authorized": false
 }

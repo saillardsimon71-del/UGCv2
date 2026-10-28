@@ -1,0 +1,7 @@
+{
+  "film": "01-dark-luxury",
+  "status": "real_mp4_created_pending_review",
+  "started_at": "2026-10-28T08:25:20.061713+00:00",
+  "purpose": "Persistent local fallback after GitHub CPU setup failure; existing Modal deployment only",
+  "finished_at": "2026-10-28T08:32:13.892950+00:00"
+}

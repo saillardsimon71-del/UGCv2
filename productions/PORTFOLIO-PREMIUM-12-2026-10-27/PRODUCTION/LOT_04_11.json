@@ -1,0 +1,30 @@
+{
+  "status": "running_first_benchmark",
+  "authorization": "PRODUCTION/HUMAN_PILOT_APPROVAL.json",
+  "workspace": "lucj76861",
+  "films": [
+    {
+      "film": "04-beauty-routine",
+      "benchmark_shot": "01",
+      "pid": 77316,
+      "started_at": "2026-10-28T08:52:48.445618+00:00",
+      "call_id": "fc-01M60VCJ9N3GT0JDDSWJ3Q6HWY",
+      "status": "benchmark_running",
+      "stdout": "PRODUCTION/local-film04-benchmark.out.log",
+      "stderr": "PRODUCTION/local-film04-benchmark.err.log"
+    },
+    {
+      "film": "11-fashion-campaign",
+      "benchmark_shot": "02",
+      "status": "awaiting_first_benchmark_and_budget"
+    }
+  ],
+  "max_concurrent_gpu": 1,
+  "automatic_retry": false,
+  "continuation_requires_visual_benchmark_pass": true,
+  "campaign_ceiling_usd": 20,
+  "reserve_usd": 10,
+  "cancel_command": "python PRODUCTION/run_campaign.py cancel --film FILM_ID",
+  "ugc_09_10_suspended": true,
+  "publication_authorized": false
+}

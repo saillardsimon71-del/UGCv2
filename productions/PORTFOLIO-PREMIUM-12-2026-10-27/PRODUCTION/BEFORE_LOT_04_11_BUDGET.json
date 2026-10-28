@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-28T08:52:45.320439+00:00",
+  "workspace": "lucj76861",
+  "credits_usd_dashboard_rounded": 27.32,
+  "total_cycle_usage_usd_dashboard_rounded": 2.68,
+  "workspace_usage_limit_usd": 20,
+  "reserve_usd": 10,
+  "campaign_delta_estimate_usd": 2.48,
+  "allowed_films": [
+    "04-beauty-routine",
+    "11-fashion-campaign"
+  ],
+  "benchmarks": [
+    {
+      "film": "04-beauty-routine",
+      "shot": "01"
+    },
+    {
+      "film": "11-fashion-campaign",
+      "shot": "02"
+    }
+  ],
+  "max_concurrent_gpu": 1,
+  "automatic_retry": false,
+  "continuation_conditional_on_visual_benchmark": true,
+  "human_reply": "Valider et tester les deux films avec humains"
+}

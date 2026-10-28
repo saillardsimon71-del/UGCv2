@@ -1,19 +1,29 @@
 {
-  "status": "running_first_film",
+  "status": "complete_two_B_human_review_pending",
   "authorization": "PRODUCTION/HUMAN_PILOT_APPROVAL.json",
   "workspace": "lucj76861",
   "films": [
     {
       "film": "01-dark-luxury",
       "pid": 81132,
-      "status": "running",
+      "status": "real_mp4_v2_class_B",
       "started_at": "2026-10-28T08:25:20.061713+00:00",
       "stdout": "PRODUCTION/local-film01.out.log",
-      "stderr": "PRODUCTION/local-film01.err.log"
+      "stderr": "PRODUCTION/local-film01.err.log",
+      "finished_at": "2026-10-28T08:32:13.892950+00:00",
+      "partial_worker_estimate_usd": 0.269,
+      "final_web": "01-dark-luxury/EXPORTS/01-DARK-LUXURY-V2-WEB-720x1280.mp4"
     },
     {
       "film": "06-transformation",
-      "status": "awaiting_first_film_review_and_budget"
+      "status": "real_mp4_class_B",
+      "pid": 85716,
+      "started_at": "2026-10-28T08:34:24.683806+00:00",
+      "stdout": "PRODUCTION/local-film06.out.log",
+      "stderr": "PRODUCTION/local-film06.err.log",
+      "finished_at": "2026-10-28T08:41:24.452309+00:00",
+      "partial_worker_estimate_usd": 0.2861,
+      "final_web": "06-transformation/EXPORTS/06-TRANSFORMATION-WEB-720x1280.mp4"
     }
   ],
   "max_concurrent_gpu": 1,
@@ -21,5 +31,15 @@
   "campaign_ceiling_usd": 20,
   "reserve_usd": 10,
   "cancel_command": "python PRODUCTION/run_campaign.py cancel --film FILM_ID",
-  "publication_authorized": false
+  "publication_authorized": false,
+  "finished_at": "2026-10-28T08:46:50.118138+00:00",
+  "partial_worker_estimate_usd": 0.5551,
+  "actual_billed_usd": null,
+  "successful_ai_calls": 6,
+  "technical_failures": 0,
+  "gpu_retries": 0,
+  "gpu_running_inputs": 0,
+  "gpu_backlog": 0,
+  "gpu_runners": 0,
+  "dashboard_delta_estimate_usd": 0.6
 }

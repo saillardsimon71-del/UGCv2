@@ -1,0 +1,26 @@
+{"at": "2026-10-28T08:25:20.325887+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "01-dark-luxury", "shot": "01", "call_id": "fc-01M60STAGF24A432APK4SAGEP8", "status": "running"}
+01-dark-luxury/01 : 22 s d'attente
+01-dark-luxury/01 : 42 s d'attente
+01-dark-luxury/01 : 62 s d'attente
+01-dark-luxury/01 : 83 s d'attente
+01-dark-luxury/01 : 103 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\01-dark-luxury\\RENDERS\\shot-01.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0888}
+{"at": "2026-10-28T08:27:26.876625+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "01-dark-luxury", "shot": "02", "call_id": "fc-01M60SY6A81FC06JSY1KPDBJVD", "status": "running"}
+01-dark-luxury/02 : 22 s d'attente
+01-dark-luxury/02 : 42 s d'attente
+01-dark-luxury/02 : 63 s d'attente
+01-dark-luxury/02 : 83 s d'attente
+01-dark-luxury/02 : 103 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\01-dark-luxury\\RENDERS\\shot-02.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0771}
+{"at": "2026-10-28T08:29:17.243621+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "01-dark-luxury", "shot": "03", "call_id": "fc-01M60T1JHHWPDZBAT4M4Q2G37X", "status": "running"}
+01-dark-luxury/03 : 23 s d'attente
+01-dark-luxury/03 : 43 s d'attente
+01-dark-luxury/03 : 63 s d'attente
+01-dark-luxury/03 : 83 s d'attente
+01-dark-luxury/03 : 104 s d'attente
+01-dark-luxury/03 : 124 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\01-dark-luxury\\RENDERS\\shot-03.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.1031}
+MP4 réels et contrôles techniques enregistrés : C:\Users\saill\Documents\Codex\2026-10-27\mission-work-sitequivend-important-peu-importe\PORTFOLIO-PREMIUM-12-2026-10-27\01-dark-luxury\EXPORTS\01-DARK-LUXURY-MASTER-1080x1920.mp4

@@ -1,10 +1,21 @@
 {
   "film": "06-transformation",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "06-transformation\\EXPORTS\\06-TRANSFORMATION-MASTER-1080x1920.mp4",
+  "review": "Three real clips sampled at 4 fps and final montage at 2 fps; full-resolution second-shot stem compared to its Pexels input. No continuous playback or critical listening claimed.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Intensité lumineuse forte à la fin du plan 02, puis baisse perceptible au raccord vers le plan rapproché.",
+    "Rythme, continuité fine des rideaux et ambiance sonore à juger en lecture continue."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "partial_worker_estimate_usd": 0.2861,
+  "duration_s": 17.5,
+  "recommendation": "Candidat maison prioritaire avec ARCHITECTURAL LIVING. La transformation lumineuse est lisible et le pied vérifié reste droit. Sélection après visionnage et écoute critiques.",
+  "human_approved_for_next_lot": true,
+  "human_approval_at": "2026-10-28T08:52:45.320439+00:00",
+  "publication_authorized": false
 }

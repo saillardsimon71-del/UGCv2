@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-28T07:58:46.576594+00:00",
+  "at": "2026-10-28T08:49:52.442072+00:00",
   "exports": [
     {
       "film": "02-golden-reveal",
@@ -112,6 +112,134 @@
       "faststart": true,
       "sha256": "29ba55bd633ab46208fc0d7dde6b90c9089663467e06c2da3c5e60daedc1433b",
       "full_decode_previously_passed": true
+    },
+    {
+      "film": "01-dark-luxury",
+      "file": "01-DARK-LUXURY-V2-MASTER-1080x1920.mp4",
+      "bytes": 8077097,
+      "duration_s": "17.514000",
+      "frames": 420,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "faststart": true,
+      "sha256": "aba7bfb3d5ddd7fa12a52c83494b0c0292992d8320590d9f024f5f518f859bd1",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
+    },
+    {
+      "film": "01-dark-luxury",
+      "file": "01-DARK-LUXURY-V2-WEB-720x1280.mp4",
+      "bytes": 1504392,
+      "duration_s": "17.514000",
+      "frames": 420,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "faststart": true,
+      "sha256": "a32994f73f116a34d9c6fa34a29dd0e6edc993d631639907bd2ac9dc52333258",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
+    },
+    {
+      "film": "06-transformation",
+      "file": "06-TRANSFORMATION-MASTER-1080x1920.mp4",
+      "bytes": 8656444,
+      "duration_s": "17.500000",
+      "frames": 420,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "faststart": true,
+      "sha256": "e95d7e2b467116e34bed9de22e5b1c89ef8572f143078b7d863dd02dfbf33004",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
+    },
+    {
+      "film": "06-transformation",
+      "file": "06-TRANSFORMATION-WEB-720x1280.mp4",
+      "bytes": 1605109,
+      "duration_s": "17.514000",
+      "frames": 420,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "faststart": true,
+      "sha256": "4b5cd39489fdb93d7f80d598b8097d76f8966515dd69b98dd7c8be6ac678a99c",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
+    },
+    {
+      "film": "07-probleme-solution",
+      "file": "07-PROBLEME-SOLUTION-MASTER-1080x1920.mp4",
+      "bytes": 8501275,
+      "duration_s": "17.500000",
+      "frames": 420,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "faststart": true,
+      "sha256": "1551f401073eaade5f0cb16e6b26505671cbdcea937dfafe05074bc693bf2a2e",
+      "full_decode_previously_passed": true,
+      "quality": "C",
+      "portfolio_selected": false
+    },
+    {
+      "film": "07-probleme-solution",
+      "file": "07-PROBLEME-SOLUTION-WEB-720x1280.mp4",
+      "bytes": 1793704,
+      "duration_s": "17.514000",
+      "frames": 420,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "faststart": true,
+      "sha256": "61c626ae5acbd0c59ef279226ab0fbbc0b7353900b9a139c5ab0d61093855b20",
+      "full_decode_previously_passed": true,
+      "quality": "C",
+      "portfolio_selected": false
+    },
+    {
+      "film": "08-product-energy",
+      "file": "08-PRODUCT-ENERGY-MASTER-1080x1920.mp4",
+      "bytes": 9455588,
+      "duration_s": "17.500000",
+      "frames": 420,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "faststart": true,
+      "sha256": "506ca099797d4c95d1e766071b62754845a50db5f0e89d64a29edf71284a813a",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
+    },
+    {
+      "film": "08-product-energy",
+      "file": "08-PRODUCT-ENERGY-WEB-720x1280.mp4",
+      "bytes": 2037441,
+      "duration_s": "17.514000",
+      "frames": 420,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "faststart": true,
+      "sha256": "9fbb09cd605748b94e7ab08d008a376c41b9d395e034302c1bb9f2af803689c2",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
     }
   ],
   "gpu_running_inputs": 0,
@@ -121,6 +249,6 @@
   "site_modified": false,
   "showreel_created": false,
   "actual_invoice_available": false,
-  "lot": "02+12",
-  "conclusion": "Eight selected exports verified; no automatic portfolio publication"
+  "lot": "01+06",
+  "conclusion": "Sixteen actual final exports verified: seven B candidates and one C creative rejection. No automatic publication."
 }
