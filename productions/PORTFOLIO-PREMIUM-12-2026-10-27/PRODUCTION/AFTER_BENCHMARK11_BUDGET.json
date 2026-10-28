@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-28T09:04:36.123566+00:00",
+  "workspace": "lucj76861",
+  "credits_usd_dashboard_rounded": 27.08,
+  "total_cycle_usage_usd_dashboard_rounded": 2.92,
+  "deployed_apps_usd_dashboard_rounded": 2.9,
+  "ephemeral_apps_usd_dashboard_rounded": 0.2,
+  "counters_settled": false,
+  "benchmark_delta_estimate_usd": 0.12,
+  "campaign_delta_estimate_usd": 2.72,
+  "actual_invoice_usd": null,
+  "gpu_running_inputs": 0,
+  "gpu_backlog": 0,
+  "gpu_runners": 0,
+  "reserve_preserved": true,
+  "evidence": "PRODUCTION/modal-after-benchmark11.jpg"
+}

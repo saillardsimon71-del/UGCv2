@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-28T08:49:52.442072+00:00",
+  "at": "2026-10-28T09:39:37.419778+00:00",
   "exports": [
     {
       "film": "02-golden-reveal",
@@ -240,6 +240,38 @@
       "full_decode_previously_passed": true,
       "quality": "B",
       "portfolio_selected": false
+    },
+    {
+      "film": "11-fashion-campaign",
+      "file": "11-FASHION-CAMPAIGN-MASTER-1080x1920.mp4",
+      "bytes": 13376908,
+      "duration_s": "17.500000",
+      "frames": 420,
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "faststart": true,
+      "sha256": "a1a7b4e585da1307c496d3a8a6eea3eeea16a4d47ace63c1ce50c8c959ba0e23",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
+    },
+    {
+      "film": "11-fashion-campaign",
+      "file": "11-FASHION-CAMPAIGN-WEB-720x1280.mp4",
+      "bytes": 2899384,
+      "duration_s": "17.514000",
+      "frames": 420,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "faststart": true,
+      "sha256": "c74edcfd216bba525db4f789bec8988624e7d41990d71e5d2088cca84fe457f4",
+      "full_decode_previously_passed": true,
+      "quality": "B",
+      "portfolio_selected": false
     }
   ],
   "gpu_running_inputs": 0,
@@ -250,5 +282,9 @@
   "showreel_created": false,
   "actual_invoice_available": false,
   "lot": "01+06",
-  "conclusion": "Sixteen actual final exports verified: seven B candidates and one C creative rejection. No automatic publication."
+  "conclusion": "Eighteen preferred real exports verified. Eight B candidates and one C final rejection; beauty has two native tests and no final. No publication.",
+  "final_films": 9,
+  "candidate_B_films": 8,
+  "rejected_C_final_films": 1,
+  "beauty_no_final": true
 }

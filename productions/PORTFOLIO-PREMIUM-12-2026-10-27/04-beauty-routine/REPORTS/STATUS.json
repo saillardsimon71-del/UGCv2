@@ -1,10 +1,18 @@
 {
   "film": "04-beauty-routine",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "suspended_after_failed_gesture_test_no_final",
+  "quality": "C",
   "actual_billed_usd": null,
   "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "defects": [
+    "La prise02 rapproche fortement le capuchon de la zone oeil/nez et fait pencher le visage, au lieu du simple ajustement prévu.",
+    "La pointe reste orientée vers la paume, mais la posture et la proximité du visage rendent la démonstration ambiguë.",
+    "Prise03 non lancée et aucun MP4 final de 15 à 25 s."
+  ],
+  "review": "Two real clips sampled at 4 fps; hand01 at 8 fps and full resolution; gesture02 inspected at full resolution against source. No final film exists.",
+  "hold": null,
+  "publish": false,
+  "benchmark_mp4": "RENDERS/shot-02.mp4",
+  "partial_worker_estimate_usd": 0.1857,
+  "recommendation": "Suspendre et écarter de cette sélection. Conserver les deux tests bruts, sans relance ni film de substitution."
 }

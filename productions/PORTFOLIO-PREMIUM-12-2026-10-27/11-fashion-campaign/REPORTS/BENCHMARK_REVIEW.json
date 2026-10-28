@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-28T09:04:36.122438+00:00",
+  "film": "11-fashion-campaign",
+  "shot": "02",
+  "decision": "pass_for_conditional_continuation",
+  "method": "Real MP4 sampled at 8 fps on face crop and 4 fps full frame, full-resolution frame at 4 seconds, comparison to Pexels input.",
+  "observations": [
+    "No obvious facial collapse, unstable eye or extra limb in sampled frames",
+    "Beige jacket, black top, bob hairstyle and seated pose remain coherent",
+    "Head turns towards camera and camera pushes in much more than requested",
+    "Source grain is softened by generation"
+  ],
+  "limits": [
+    "Continuous playback and critical artistic review remain necessary",
+    "Unseen facial angles cannot be certified as exact reference identity",
+    "Garments and hands in remaining takes still require review"
+  ],
+  "remaining_calls_allowed": [
+    "01",
+    "03"
+  ],
+  "quality_grade": "not_a_final_film",
+  "publish": false
+}

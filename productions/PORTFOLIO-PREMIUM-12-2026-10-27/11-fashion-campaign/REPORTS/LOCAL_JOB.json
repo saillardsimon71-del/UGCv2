@@ -1,0 +1,13 @@
+{
+  "film": "11-fashion-campaign",
+  "status": "real_mp4_created_class_B",
+  "started_at": "2026-10-28T08:58:47.795501+00:00",
+  "finished_at": "2026-10-28T09:28:52.818355+00:00",
+  "controller": "Existing run_campaign.py individual commands with visual gates, then CPU assembly",
+  "pids": [
+    75716,
+    85988,
+    66052
+  ],
+  "automatic_retry": false
+}

@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-28T09:16:32.748410+00:00",
+  "status": "no_final_export",
+  "raw_clips": 2,
+  "native_size": [
+    768,
+    1344
+  ],
+  "fps": 24,
+  "frames_per_clip": 121,
+  "raw_full_decode_previously_passed": true,
+  "image_conditioning_embedded": true,
+  "final_duration_requirement_met": false,
+  "reason": "Stopped after creative gesture rejection, no assembly attempted"
+}

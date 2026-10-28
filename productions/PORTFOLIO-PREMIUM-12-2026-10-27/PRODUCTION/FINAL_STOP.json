@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-28T09:36:54.141045+00:00",
+  "workspace": "lucj76861",
+  "status": "gpu_production_stopped",
+  "concepts_prepared": 12,
+  "final_mp4_films": 9,
+  "candidate_B_films": 8,
+  "rejected_C_final_films": [
+    "07-probleme-solution"
+  ],
+  "suspended_C_no_final": [
+    "04-beauty-routine"
+  ],
+  "ugc_not_started": [
+    "09-authentic-creator",
+    "10-lifestyle-demonstration"
+  ],
+  "successful_ai_calls": 29,
+  "cancelled_starts": 1,
+  "automatic_gpu_retries": 0,
+  "current_gpu_running_inputs": 0,
+  "current_gpu_backlog": 0,
+  "current_gpu_runners": 0,
+  "estimated_campaign_credit_consumption_usd": 3.06,
+  "observed_credit_balance_usd": 26.74,
+  "actual_invoice_usd": null,
+  "reserve_usd": 10,
+  "reserve_preserved": true,
+  "stop_reason": "All feasible approved films attempted; rejected beauty gesture suspended, UGC capacities still held. Further compute is not needed for this delivery.",
+  "site_modified": false,
+  "showreel_created": false,
+  "publication_authorized": false
+}

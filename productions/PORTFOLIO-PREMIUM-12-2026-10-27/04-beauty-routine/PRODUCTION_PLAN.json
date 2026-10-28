@@ -21,13 +21,13 @@
     ],
     "upscaled_master": true
   },
-  "generation_status": "prepared_not_started",
+  "generation_status": "suspended_after_gesture_test_no_final",
   "preparation_status": "prepared_sources_verified",
-  "executable": true,
-  "hold_reason": null,
+  "executable": false,
+  "hold_reason": "Geste de la prise02 non conforme et ambigu près de la zone oeil/nez ; troisième prise suspendue, aucun montage final.",
   "pilot": false,
   "human_review_required": true,
-  "quality_grade": null,
+  "quality_grade": "C",
   "publish": false,
   "max_concurrent_gpu": 1,
   "attempts_per_shot": 1,
@@ -264,5 +264,7 @@
         "Vrai MP4 décodable, durée et conditionnement image documentés"
       ]
     }
-  ]
+  ],
+  "regeneration_authorized": false,
+  "execution_route": "Individual existing LTX calls, benchmark01 then gesture02; shot03 not started"
 }

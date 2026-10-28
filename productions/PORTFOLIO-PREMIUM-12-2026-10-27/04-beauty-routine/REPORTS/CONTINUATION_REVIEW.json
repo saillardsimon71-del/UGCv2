@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-28T09:16:32.748410+00:00",
+  "shot": "02",
+  "decision": "reject_C_suspend_film",
+  "evidence": [
+    "REPORTS/shot-02-contact.jpg",
+    "REPORTS/gesture-4s.png",
+    "ASSETS/shot-02-firstframe.png"
+  ],
+  "finding": "Cap held against eye/nose area and strong forward lean, although glass tip still points towards palm. Ambiguous demonstration unsuitable for this skincare concept.",
+  "shot03_authorized_to_start": false,
+  "gpu_retry_authorized": false,
+  "final_mp4_exists": false
+}

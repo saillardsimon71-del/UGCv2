@@ -1,10 +1,19 @@
 {
   "film": "11-fashion-campaign",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "11-fashion-campaign\\EXPORTS\\11-FASHION-CAMPAIGN-MASTER-1080x1920.mp4",
+  "review": "All real clips sampled at 4 fps; portrait at 8 fps and full resolution; final montage at 2 fps; final silhouette compared at full resolution to Pexels input. No continuous playback or critical listening claimed.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Mouvements plus amples que prévu : rotation de tête et orbite au dernier plan au lieu du recul rectiligne demandé.",
+    "Le grain de la source et le petit motif du pantalon perdent en lisibilité dans la vue frontale.",
+    "Raccords de pose et fidélité fine des textiles à confirmer avant sélection portfolio."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "partial_worker_estimate_usd": 0.3206,
+  "duration_s": 17.5,
+  "recommendation": "Candidat mode B à corriger ou valider sur le vrai MP4. Le contrôle des matières reste indispensable pour une marque ; ne pas publier automatiquement."
 }

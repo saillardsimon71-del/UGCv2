@@ -1,0 +1,9 @@
+{"at": "2026-10-28T09:18:46.982764+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "11-fashion-campaign", "shot": "03", "call_id": "fc-01M60WW68Q8CMGG3EE6KBHJCG5", "status": "running"}
+11-fashion-campaign/03 : 22 s d'attente
+11-fashion-campaign/03 : 42 s d'attente
+11-fashion-campaign/03 : 63 s d'attente
+11-fashion-campaign/03 : 83 s d'attente
+11-fashion-campaign/03 : 103 s d'attente
+11-fashion-campaign/03 : 124 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\11-fashion-campaign\\RENDERS\\shot-03.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.1046}

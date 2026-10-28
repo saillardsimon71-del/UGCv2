@@ -37,3 +37,9 @@ Réponse humaine du 28 octobre : "Valider et lancer le prochain lot de deux film
 ## Dernier lot humain 04 + 11
 
 Le client a validé les huit films pour poursuivre avec deux benchmarks conditionnels. Premier appel : `python PRODUCTION/run_campaign.py render --film 04-beauty-routine --shot 01 --confirm-spend oui`. Le portrait mode se teste sur la prise 02 de 11-fashion-campaign. Chaque appel est lancé dans un processus Windows caché et persistant, avec reçus et journaux. Aucun enchaînement automatique des trois prises : la revue visuelle du benchmark conditionne les appels suivants. Pas de régénération, aucun UGC 09/10.
+
+## Arrêt et livraison
+
+Tous les appels GPU sont terminés. BEAUTY ROUTINE est suspendu après deux tests : geste de la prise02 ambigu près du visage, troisième prise non lancée. FASHION CAMPAIGN a terminé ses trois appels après contrôle du portrait et des mains, puis le montage. Aucun nouvel appel planifié. Les MP4 de visionnage, leur manifeste SHA256 et les crédits sont dans DELIVERY/WEB. Le message ARCHIVE_PREMIUM_FINAL_20261028 déclenche uniquement deux uploads : WEB-PREVIEWS et CAMPAIGN-SOURCES, conservation de 90 jours, sans secret ni calcul Modal.
+
+Le connecteur GitHub utilisé ne liste que les exécutions de PR pour un commit. Le CLI sert donc à suivre les workflows déclenchés par push et à récupérer les paquets pour vérification des SHA256. Les métadonnées des artefacts sont relues via le connecteur.

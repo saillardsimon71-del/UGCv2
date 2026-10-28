@@ -1,0 +1,226 @@
+{
+  "at": "2026-10-28T09:28:52.818355+00:00",
+  "film": "11-fashion-campaign",
+  "workspace": "lucj76861",
+  "status": "real_final_mp4_created",
+  "duration_s": 17.5,
+  "quality": "B",
+  "publish": false,
+  "successful_ai_calls": 3,
+  "technical_failures": 0,
+  "gpu_retries": 0,
+  "benchmark_shot": "02",
+  "benchmark_review": "REPORTS/BENCHMARK_REVIEW.json",
+  "native_render_size": [
+    768,
+    1344
+  ],
+  "master_upscaled": true,
+  "real_mp4": {
+    "master": "EXPORTS/11-FASHION-CAMPAIGN-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/11-FASHION-CAMPAIGN-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "partial_worker_estimate_usd": 0.3206,
+  "dashboard_film_delta_estimate_usd": 0.37,
+  "actual_billed_usd": null,
+  "audio_measured_lufs": -15.9,
+  "audio_true_peak_dbfs": -2.6,
+  "shots": [
+    {
+      "shot": "01",
+      "call_id": "fc-01M60WJ1E5EAXVBBNYJ7TM8T9M",
+      "source_sha256": "ff26a5259bc34d18b205a5f8a8fabae049dd8f633b7cf3639ea6a78980912b02",
+      "output_sha256": "1325ff3fa001c66eefac2fbed6de2630b14a257402e6b625e17c4cedf63c35a0",
+      "metadata": {
+        "width": 768,
+        "height": 1344,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "audio_codec": null,
+        "has_audio": false,
+        "duration_sec": 5.042,
+        "bytes": 2561307,
+        "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+        "gpu": "L40S",
+        "app": "pvs-ltx",
+        "trace_id": "sqv27-11-01",
+        "seed": 2026102800,
+        "steps": 8,
+        "width_requested": 768,
+        "height_requested": 1344,
+        "frames": 121,
+        "fps": 24,
+        "duration_requested": 5.042,
+        "aspect_ratio": "9:16",
+        "audio_mode": "silent",
+        "continuity_mode": "image",
+        "source_video": null,
+        "source_noise_sigma": null,
+        "image_strength": 0.9,
+        "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+        "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+        "video_cfg": 1.0,
+        "comfy_startup_seconds": 22.143,
+        "comfy_reused": false,
+        "generation_seconds": 139.288,
+        "phases": [
+          {
+            "phase": "COMFY_READY",
+            "seconds": 22.143,
+            "detail": "reused=False"
+          },
+          {
+            "phase": "GRAPH_BUILT",
+            "seconds": 0.013,
+            "detail": "30 nodes"
+          },
+          {
+            "phase": "RENDERED",
+            "seconds": 116.744,
+            "detail": "sqv27-11-01_00001_.mp4"
+          },
+          {
+            "phase": "PROBED",
+            "seconds": 0.35,
+            "detail": ""
+          }
+        ]
+      },
+      "partial_worker_estimate_usd": 0.1099
+    },
+    {
+      "shot": "02",
+      "call_id": "fc-01M60VQHFM6QEZAE2BNRQ30FD1",
+      "source_sha256": "f20cba11c1a4ef2d7ff3db3549aa0ff1fe6f8b94b35b0007e03acb2f03c22981",
+      "output_sha256": "369b5f4318f4a81a044d56e7f4afe56484854bf79f2341514bf5230deb1419d6",
+      "metadata": {
+        "width": 768,
+        "height": 1344,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "audio_codec": null,
+        "has_audio": false,
+        "duration_sec": 5.042,
+        "bytes": 1684246,
+        "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+        "gpu": "L40S",
+        "app": "pvs-ltx",
+        "trace_id": "sqv27-11-02",
+        "seed": 2026102801,
+        "steps": 8,
+        "width_requested": 768,
+        "height_requested": 1344,
+        "frames": 121,
+        "fps": 24,
+        "duration_requested": 5.042,
+        "aspect_ratio": "9:16",
+        "audio_mode": "silent",
+        "continuity_mode": "image",
+        "source_video": null,
+        "source_noise_sigma": null,
+        "image_strength": 0.9,
+        "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+        "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+        "video_cfg": 1.0,
+        "comfy_startup_seconds": 18.09,
+        "comfy_reused": false,
+        "generation_seconds": 134.455,
+        "phases": [
+          {
+            "phase": "COMFY_READY",
+            "seconds": 18.09,
+            "detail": "reused=False"
+          },
+          {
+            "phase": "GRAPH_BUILT",
+            "seconds": 0.004,
+            "detail": "30 nodes"
+          },
+          {
+            "phase": "RENDERED",
+            "seconds": 115.91,
+            "detail": "sqv27-11-02_00001_.mp4"
+          },
+          {
+            "phase": "PROBED",
+            "seconds": 0.436,
+            "detail": ""
+          }
+        ]
+      },
+      "partial_worker_estimate_usd": 0.1061
+    },
+    {
+      "shot": "03",
+      "call_id": "fc-01M60WW68Q8CMGG3EE6KBHJCG5",
+      "source_sha256": "b3da88aa6faf0dee75ed9b27592ca3bd109f30de41f792aa663008c41ff29da2",
+      "output_sha256": "8868610aaac7be6ca26572b06ccc257c264cbf4c1c24e16d6f479c1c1ca63507",
+      "metadata": {
+        "width": 768,
+        "height": 1344,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "audio_codec": null,
+        "has_audio": false,
+        "duration_sec": 5.042,
+        "bytes": 1602761,
+        "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+        "gpu": "L40S",
+        "app": "pvs-ltx",
+        "trace_id": "sqv27-11-03",
+        "seed": 2026102802,
+        "steps": 8,
+        "width_requested": 768,
+        "height_requested": 1344,
+        "frames": 121,
+        "fps": 24,
+        "duration_requested": 5.042,
+        "aspect_ratio": "9:16",
+        "audio_mode": "silent",
+        "continuity_mode": "image",
+        "source_video": null,
+        "source_noise_sigma": null,
+        "image_strength": 0.9,
+        "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+        "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+        "video_cfg": 1.0,
+        "comfy_startup_seconds": 18.131,
+        "comfy_reused": false,
+        "generation_seconds": 132.581,
+        "phases": [
+          {
+            "phase": "COMFY_READY",
+            "seconds": 18.131,
+            "detail": "reused=False"
+          },
+          {
+            "phase": "GRAPH_BUILT",
+            "seconds": 0.004,
+            "detail": "30 nodes"
+          },
+          {
+            "phase": "RENDERED",
+            "seconds": 114.06,
+            "detail": "sqv27-11-03_00001_.mp4"
+          },
+          {
+            "phase": "PROBED",
+            "seconds": 0.359,
+            "detail": ""
+          }
+        ]
+      },
+      "partial_worker_estimate_usd": 0.1046
+    }
+  ]
+}

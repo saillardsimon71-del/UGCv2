@@ -1,0 +1,147 @@
+{
+  "at": "2026-10-28T09:16:32.748410+00:00",
+  "film": "04-beauty-routine",
+  "workspace": "lucj76861",
+  "status": "suspended_no_final",
+  "quality": "C",
+  "publish": false,
+  "successful_ai_calls": 2,
+  "technical_failures": 0,
+  "creative_rejected_shot": "02",
+  "shot03_started": false,
+  "gpu_retries": 0,
+  "raw_mp4s": [
+    "RENDERS/shot-01.mp4",
+    "RENDERS/shot-02.mp4"
+  ],
+  "final_mp4_exists": false,
+  "partial_worker_estimate_usd": 0.1857,
+  "dashboard_film_delta_estimate_usd": 0.21,
+  "actual_billed_usd": null,
+  "shots": [
+    {
+      "shot": "01",
+      "call_id": "fc-01M60VCJ9N3GT0JDDSWJ3Q6HWY",
+      "source_sha256": "28e979197cde4cc6726f3099fe00c01a95cf6ed1b6e5eed5a2fef61e06eb2cbf",
+      "output_sha256": "85568ef76907369d1cc42a50085f9d27553bf10a5bca3ccd71a11ee202927d88",
+      "metadata": {
+        "width": 768,
+        "height": 1344,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "audio_codec": null,
+        "has_audio": false,
+        "duration_sec": 5.042,
+        "bytes": 1088416,
+        "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+        "gpu": "L40S",
+        "app": "pvs-ltx",
+        "trace_id": "sqv27-04-01",
+        "seed": 2026102730,
+        "steps": 8,
+        "width_requested": 768,
+        "height_requested": 1344,
+        "frames": 121,
+        "fps": 24,
+        "duration_requested": 5.042,
+        "aspect_ratio": "9:16",
+        "audio_mode": "silent",
+        "continuity_mode": "image",
+        "source_video": null,
+        "source_noise_sigma": null,
+        "image_strength": 0.9,
+        "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+        "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+        "video_cfg": 1.0,
+        "comfy_startup_seconds": 14.047,
+        "comfy_reused": false,
+        "generation_seconds": 130.49,
+        "phases": [
+          {
+            "phase": "COMFY_READY",
+            "seconds": 14.047,
+            "detail": "reused=False"
+          },
+          {
+            "phase": "GRAPH_BUILT",
+            "seconds": 0.002,
+            "detail": "30 nodes"
+          },
+          {
+            "phase": "RENDERED",
+            "seconds": 116.027,
+            "detail": "sqv27-04-01_00001_.mp4"
+          },
+          {
+            "phase": "PROBED",
+            "seconds": 0.408,
+            "detail": ""
+          }
+        ]
+      },
+      "partial_worker_estimate_usd": 0.1029
+    },
+    {
+      "shot": "02",
+      "call_id": "fc-01M60W27M28P4BJ5PN9MHP7QQE",
+      "source_sha256": "a5bf0db49d8fb3414ab2e8e2921465c2ab2714a6a466db035ab538107fe68f9c",
+      "output_sha256": "84d67412f58fd7033ea0663076b62d5a08e484ad30fbe303df7f1d2ae582de78",
+      "metadata": {
+        "width": 768,
+        "height": 1344,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "audio_codec": null,
+        "has_audio": false,
+        "duration_sec": 5.042,
+        "bytes": 2019942,
+        "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+        "gpu": "L40S",
+        "app": "pvs-ltx",
+        "trace_id": "sqv27-04-02",
+        "seed": 2026102731,
+        "steps": 8,
+        "width_requested": 768,
+        "height_requested": 1344,
+        "frames": 121,
+        "fps": 24,
+        "duration_requested": 5.042,
+        "aspect_ratio": "9:16",
+        "audio_mode": "silent",
+        "continuity_mode": "image",
+        "source_video": null,
+        "source_noise_sigma": null,
+        "image_strength": 0.9,
+        "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+        "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+        "video_cfg": 1.0,
+        "comfy_startup_seconds": 10.037,
+        "comfy_reused": false,
+        "generation_seconds": 104.938,
+        "phases": [
+          {
+            "phase": "COMFY_READY",
+            "seconds": 10.037,
+            "detail": "reused=False"
+          },
+          {
+            "phase": "GRAPH_BUILT",
+            "seconds": 0.003,
+            "detail": "30 nodes"
+          },
+          {
+            "phase": "RENDERED",
+            "seconds": 94.627,
+            "detail": "sqv27-04-02_00001_.mp4"
+          },
+          {
+            "phase": "PROBED",
+            "seconds": 0.269,
+            "detail": ""
+          }
+        ]
+      },
+      "partial_worker_estimate_usd": 0.0828
+    }
+  ]
+}

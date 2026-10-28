@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-28T09:18:46.607538+00:00",
+  "workspace": "lucj76861",
+  "credits_usd_dashboard_rounded": 26.86,
+  "total_cycle_usage_usd_dashboard_rounded": 3.14,
+  "deployed_apps_usd_dashboard_rounded": 3.1,
+  "ephemeral_apps_usd_dashboard_rounded": 0.2,
+  "campaign_delta_estimate_usd": 2.94,
+  "shot_delta_estimate_usd": 0.13,
+  "actual_invoice_usd": null,
+  "counters_settled": false,
+  "reserve_preserved": true,
+  "gpu_running_inputs": 0,
+  "gpu_backlog": 0,
+  "gpu_runners": 0,
+  "last_planned_call": "11-fashion-campaign/03",
+  "evidence": "PRODUCTION/modal-before-last-shot.jpg"
+}

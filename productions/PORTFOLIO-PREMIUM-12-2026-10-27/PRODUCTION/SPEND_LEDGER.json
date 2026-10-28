@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T08:54:28.368745+00:00",
+  "updated_at": "2026-10-28T09:36:54.368305+00:00",
   "calls": [
     {
       "film": "01-dark-luxury",
@@ -106,10 +106,20 @@
       "shot": "01",
       "attempt": 1,
       "call_id": "fc-01M60VCJ9N3GT0JDDSWJ3Q6HWY",
-      "status": "running",
-      "partial_worker_estimate_usd": null,
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1029,
       "actual_billed_usd": null,
       "receipt": "04-beauty-routine/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "04-beauty-routine",
+      "shot": "02",
+      "attempt": 1,
+      "call_id": "fc-01M60W27M28P4BJ5PN9MHP7QQE",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0828,
+      "actual_billed_usd": null,
+      "receipt": "04-beauty-routine/REPORTS/shot-02-receipt.json"
     },
     {
       "film": "05-architectural-living",
@@ -232,6 +242,36 @@
       "receipt": "08-product-energy/REPORTS/shot-03-receipt.json"
     },
     {
+      "film": "11-fashion-campaign",
+      "shot": "01",
+      "attempt": 1,
+      "call_id": "fc-01M60WJ1E5EAXVBBNYJ7TM8T9M",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1099,
+      "actual_billed_usd": null,
+      "receipt": "11-fashion-campaign/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "11-fashion-campaign",
+      "shot": "02",
+      "attempt": 1,
+      "call_id": "fc-01M60VQHFM6QEZAE2BNRQ30FD1",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1061,
+      "actual_billed_usd": null,
+      "receipt": "11-fashion-campaign/REPORTS/shot-02-receipt.json"
+    },
+    {
+      "film": "11-fashion-campaign",
+      "shot": "03",
+      "attempt": 1,
+      "call_id": "fc-01M60WW68Q8CMGG3EE6KBHJCG5",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1046,
+      "actual_billed_usd": null,
+      "receipt": "11-fashion-campaign/REPORTS/shot-03-receipt.json"
+    },
+    {
       "film": "12-accessory-icon",
       "shot": "01",
       "attempt": 1,
@@ -262,7 +302,7 @@
       "receipt": "12-accessory-icon/REPORTS/shot-03-receipt.json"
     }
   ],
-  "known_partial_worker_estimate_usd": 2.272,
+  "known_partial_worker_estimate_usd": 2.7783,
   "actual_campaign_billed_usd": null,
   "failed_starts_included_in_call_count": true,
   "note": "No charge estimated as zero merely because a call failed; invoice and dashboard reconciliation required."

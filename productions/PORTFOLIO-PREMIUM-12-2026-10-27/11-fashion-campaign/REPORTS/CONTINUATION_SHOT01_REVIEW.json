@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-28T09:18:22.787848+00:00",
+  "shot": "01",
+  "decision": "pass_for_last_shot",
+  "method": "Real MP4 sampled at 4 fps against prepared Pexels storyboard",
+  "observations": [
+    "Jacket lapels, beige material and checked trousers stay coherent in sampled frames",
+    "Hands remain resting, no obvious extra digit or limb",
+    "Camera pushes in rather than the small lateral slide requested"
+  ],
+  "limits": [
+    "Full continuous playback still required for final creative selection"
+  ],
+  "remaining_calls_allowed": [
+    "03"
+  ],
+  "publish": false
+}

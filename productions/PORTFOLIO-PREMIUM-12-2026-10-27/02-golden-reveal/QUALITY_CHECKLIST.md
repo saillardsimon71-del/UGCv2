@@ -17,4 +17,4 @@
 
 Classe A : produit fidèle, qualité créative convaincante et validation artistique sur le vrai MP4. Classe B : prometteur, correction ou validation humaine encore nécessaire. Classe C : rejet. B et C ne sont jamais publiés automatiquement.
 
-Revue du 28 octobre : échantillonnage des vrais MP4, détails dans REPORTS/CREATIVE_REVIEW.md. Les critères visuels globaux et l’écoute critique restent ouverts ; classe B.
+Revue du 28 octobre : échantillonnage des vrais MP4, détails dans REPORTS/CREATIVE_REVIEW.md. Les critères visuels globaux et l'écoute critique restent ouverts ; classe B.

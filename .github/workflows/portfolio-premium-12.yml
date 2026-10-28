@@ -130,26 +130,24 @@ jobs:
           compression-level: 0
 
   archive:
-    if: github.event.head_commit.message == 'ARCHIVE_PREMIUM_PILOTS' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_02_12' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_07_08' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_01_06'
+    if: github.event.head_commit.message == 'ARCHIVE_PREMIUM_PILOTS' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_02_12' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_07_08' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_01_06' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_FINAL_20261028'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/upload-artifact@v4
+      - name: MP4 de visionnage et statuts
+        uses: actions/upload-artifact@v4
         with:
-          name: PREMIUM12-REAL-FILMS-${{ github.run_id }}
-          path: |
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/01-dark-luxury/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/02-golden-reveal/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/03-skincare-sensoriel/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/05-architectural-living/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/06-transformation/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/07-probleme-solution/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/08-product-energy/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/12-accessory-icon/
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.py
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.json
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.md
-            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PORTFOLIO_SUMMARY.md
+          name: PREMIUM12-WEB-PREVIEWS-${{ github.run_id }}
+          path: productions/PORTFOLIO-PREMIUM-12-2026-10-27/DELIVERY/WEB/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
+      - name: Sources, masters, prises et rapports
+        uses: actions/upload-artifact@v4
+        with:
+          name: PREMIUM12-CAMPAIGN-SOURCES-${{ github.run_id }}
+          path: productions/PORTFOLIO-PREMIUM-12-2026-10-27/
+          if-no-files-found: error
           retention-days: 90
           compression-level: 0

@@ -1,0 +1,10 @@
+{"at": "2026-10-28T09:04:36.482815+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "04-beauty-routine", "shot": "02", "call_id": "fc-01M60W27M28P4BJ5PN9MHP7QQE", "status": "running"}
+04-beauty-routine/02 : 22 s d'attente
+04-beauty-routine/02 : 42 s d'attente
+04-beauty-routine/02 : 63 s d'attente
+04-beauty-routine/02 : 83 s d'attente
+04-beauty-routine/02 : 103 s d'attente
+04-beauty-routine/02 : 123 s d'attente
+04-beauty-routine/02 : 144 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\04-beauty-routine\\RENDERS\\shot-02.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0828}

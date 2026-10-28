@@ -1,5 +1,5 @@
 {
-  "status": "running_first_benchmark",
+  "status": "complete_beauty_suspended_C_fashion_final_B",
   "authorization": "PRODUCTION/HUMAN_PILOT_APPROVAL.json",
   "workspace": "lucj76861",
   "films": [
@@ -9,14 +9,26 @@
       "pid": 77316,
       "started_at": "2026-10-28T08:52:48.445618+00:00",
       "call_id": "fc-01M60VCJ9N3GT0JDDSWJ3Q6HWY",
-      "status": "benchmark_running",
+      "status": "suspended_C_after_shot02_no_final",
       "stdout": "PRODUCTION/local-film04-benchmark.out.log",
-      "stderr": "PRODUCTION/local-film04-benchmark.err.log"
+      "stderr": "PRODUCTION/local-film04-benchmark.err.log",
+      "partial_worker_estimate_usd": 0.1857,
+      "final_mp4": null,
+      "shot03_started": false
     },
     {
       "film": "11-fashion-campaign",
       "benchmark_shot": "02",
-      "status": "awaiting_first_benchmark_and_budget"
+      "status": "real_mp4_class_B",
+      "pid": 75716,
+      "call_id": "fc-01M60VQHFM6QEZAE2BNRQ30FD1",
+      "started_at": "2026-10-28T08:58:47.795501+00:00",
+      "partial_worker_estimate_usd": 0.3206,
+      "stdout": "PRODUCTION/local-film11-benchmark.out.log",
+      "stderr": "PRODUCTION/local-film11-benchmark.err.log",
+      "shot01_pid": 85988,
+      "final_web": "11-fashion-campaign/EXPORTS/11-FASHION-CAMPAIGN-WEB-720x1280.mp4",
+      "shot03_pid": 66052
     }
   ],
   "max_concurrent_gpu": 1,
@@ -26,5 +38,16 @@
   "reserve_usd": 10,
   "cancel_command": "python PRODUCTION/run_campaign.py cancel --film FILM_ID",
   "ugc_09_10_suspended": true,
-  "publication_authorized": false
+  "publication_authorized": false,
+  "benchmark_partial_worker_estimate_usd": 0.209,
+  "finished_at": "2026-10-28T09:28:52.818355+00:00",
+  "successful_ai_calls": 5,
+  "technical_failures": 0,
+  "gpu_retries": 0,
+  "partial_worker_estimate_usd": 0.5063,
+  "dashboard_delta_estimate_usd": 0.58,
+  "actual_billed_usd": null,
+  "gpu_running_inputs": 0,
+  "gpu_backlog": 0,
+  "gpu_runners": 0
 }

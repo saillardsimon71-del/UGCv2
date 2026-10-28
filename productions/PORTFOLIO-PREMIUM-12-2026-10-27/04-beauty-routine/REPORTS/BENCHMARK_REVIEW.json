@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-28T08:58:45.592566+00:00",
+  "film": "04-beauty-routine",
+  "shot": "01",
+  "decision": "pass_for_conditional_continuation",
+  "method": "Real MP4 sampled at 8 fps on hand crop, 4 fps full frame, full-resolution frame at 4 seconds and Pexels input comparison.",
+  "observations": [
+    "No obvious extra or fused finger in sampled images",
+    "Amber bottles, caps and bathroom remain coherent",
+    "Hand lifts and presses the dropper rather than the small translation requested"
+  ],
+  "limits": [
+    "No continuous playback or critical listening claimed",
+    "Face and dropper-over-palm action in shot02 remain untested",
+    "Packaging text not approved for a real brand campaign"
+  ],
+  "remaining_calls_allowed": [],
+  "quality_grade": "not_a_final_film",
+  "publish": false,
+  "initial_hand_decision": "pass_for_conditional_continuation",
+  "final_decision": "stop_after_shot02",
+  "continuation_review": "REPORTS/CONTINUATION_REVIEW.json"
+}
