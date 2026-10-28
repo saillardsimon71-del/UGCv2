@@ -1,5 +1,5 @@
 {
-  "status": "running_first_film",
+  "status": "complete_one_B_one_C",
   "authorization": "PRODUCTION/HUMAN_PILOT_APPROVAL.json",
   "workspace": "lucj76861",
   "films": [
@@ -7,13 +7,22 @@
       "film": "07-probleme-solution",
       "pid": 70392,
       "started_at": "2026-10-28T08:02:57.143927+00:00",
-      "status": "running",
+      "status": "real_mp4_creatively_rejected_C",
       "stdout": "PRODUCTION/local-film07.out.log",
-      "stderr": "PRODUCTION/local-film07.err.log"
+      "stderr": "PRODUCTION/local-film07.err.log",
+      "partial_worker_estimate_usd": 0.2806,
+      "finished_at": "2026-10-28T08:09:58.722106+00:00"
     },
     {
       "film": "08-product-energy",
-      "status": "awaiting_first_film_review_and_budget"
+      "status": "real_mp4_class_B_human_approved_for_next_lot",
+      "pid": 79508,
+      "started_at": "2026-10-28T08:13:43.811850+00:00",
+      "stdout": "PRODUCTION/local-film08.out.log",
+      "stderr": "PRODUCTION/local-film08.err.log",
+      "finished_at": "2026-10-28T08:21:38.272508+00:00",
+      "partial_worker_estimate_usd": 0.3048,
+      "final_web": "08-product-energy/EXPORTS/08-PRODUCT-ENERGY-WEB-720x1280.mp4"
     }
   ],
   "max_concurrent_gpu": 1,
@@ -21,5 +30,12 @@
   "campaign_ceiling_usd": 20,
   "reserve_usd": 10,
   "cancel_command": "python PRODUCTION/run_campaign.py cancel --film FILM_ID",
-  "publication_authorized": false
+  "publication_authorized": false,
+  "finished_at": "2026-10-28T08:28:07.183607+00:00",
+  "partial_worker_estimate_usd": 0.5854,
+  "dashboard_delta_estimate_usd": 0.63,
+  "actual_billed_usd": null,
+  "successful_ai_calls": 6,
+  "technical_failures": 0,
+  "gpu_retries": 0
 }

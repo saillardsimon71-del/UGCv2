@@ -1,6 +1,36 @@
 {
-  "updated_at": "2026-10-28T08:04:23.100331+00:00",
+  "updated_at": "2026-10-28T08:30:08.201772+00:00",
   "calls": [
+    {
+      "film": "01-dark-luxury",
+      "shot": "01",
+      "attempt": 1,
+      "call_id": "fc-01M60STAGF24A432APK4SAGEP8",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0888,
+      "actual_billed_usd": null,
+      "receipt": "01-dark-luxury/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "01-dark-luxury",
+      "shot": "02",
+      "attempt": 1,
+      "call_id": "fc-01M60SY6A81FC06JSY1KPDBJVD",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0771,
+      "actual_billed_usd": null,
+      "receipt": "01-dark-luxury/REPORTS/shot-02-receipt.json"
+    },
+    {
+      "film": "01-dark-luxury",
+      "shot": "03",
+      "attempt": 1,
+      "call_id": "fc-01M60T1JHHWPDZBAT4M4Q2G37X",
+      "status": "running",
+      "partial_worker_estimate_usd": null,
+      "actual_billed_usd": null,
+      "receipt": "01-dark-luxury/REPORTS/shot-03-receipt.json"
+    },
     {
       "film": "02-golden-reveal",
       "shot": "01",
@@ -106,10 +136,60 @@
       "shot": "01",
       "attempt": 1,
       "call_id": "fc-01M60RHBFQHR4E3FT8DJMK8TY4",
-      "status": "running",
-      "partial_worker_estimate_usd": null,
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1045,
       "actual_billed_usd": null,
       "receipt": "07-probleme-solution/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "07-probleme-solution",
+      "shot": "02",
+      "attempt": 1,
+      "call_id": "fc-01M60RNRRSY1YTDGH0V9MM0343",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0898,
+      "actual_billed_usd": null,
+      "receipt": "07-probleme-solution/REPORTS/shot-02-receipt.json"
+    },
+    {
+      "film": "07-probleme-solution",
+      "shot": "03",
+      "attempt": 1,
+      "call_id": "fc-01M60RSFSWYDQF8D96D6Y1Y5CS",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0863,
+      "actual_billed_usd": null,
+      "receipt": "07-probleme-solution/REPORTS/shot-03-receipt.json"
+    },
+    {
+      "film": "08-product-energy",
+      "shot": "01",
+      "attempt": 1,
+      "call_id": "fc-01M60S53H4JKVGEYTGZRJ829YR",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1028,
+      "actual_billed_usd": null,
+      "receipt": "08-product-energy/REPORTS/shot-01-receipt.json"
+    },
+    {
+      "film": "08-product-energy",
+      "shot": "02",
+      "attempt": 1,
+      "call_id": "fc-01M60S9E9PEG58ABAJN17R3GYC",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.0879,
+      "actual_billed_usd": null,
+      "receipt": "08-product-energy/REPORTS/shot-02-receipt.json"
+    },
+    {
+      "film": "08-product-energy",
+      "shot": "03",
+      "attempt": 1,
+      "call_id": "fc-01M60SD3CZ2KGT0EPC8E4HEZ7C",
+      "status": "technically_checked_visual_review_pending",
+      "partial_worker_estimate_usd": 0.1141,
+      "actual_billed_usd": null,
+      "receipt": "08-product-energy/REPORTS/shot-03-receipt.json"
     },
     {
       "film": "12-accessory-icon",
@@ -142,7 +222,7 @@
       "receipt": "12-accessory-icon/REPORTS/shot-03-receipt.json"
     }
   ],
-  "known_partial_worker_estimate_usd": 1.1315,
+  "known_partial_worker_estimate_usd": 1.8828,
   "actual_campaign_billed_usd": null,
   "failed_starts_included_in_call_count": true,
   "note": "No charge estimated as zero merely because a call failed; invoice and dashboard reconciliation required."

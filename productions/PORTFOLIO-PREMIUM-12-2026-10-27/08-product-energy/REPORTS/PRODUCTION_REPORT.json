@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-28T08:28:07.160331+00:00",
+  "film": "08-product-energy",
+  "workspace": "lucj76861",
+  "status": "real_final_mp4_created",
+  "duration_s": 17.5,
+  "quality": "B",
+  "publish": false,
+  "successful_ai_shots": 3,
+  "failed_calls": 0,
+  "gpu_retries": 0,
+  "native_render_size": [
+    768,
+    1344
+  ],
+  "master_upscaled": true,
+  "real_mp4": {
+    "master": "EXPORTS/08-PRODUCT-ENERGY-MASTER-1080x1920.mp4",
+    "web": "EXPORTS/08-PRODUCT-ENERGY-WEB-720x1280.mp4",
+    "fps": 24,
+    "aspect": "9:16",
+    "codec": "H.264/AAC",
+    "pixel_format": "yuv420p",
+    "audio_hz": 48000,
+    "native_render_size": [
+      768,
+      1344
+    ],
+    "upscaled_master": true
+  },
+  "partial_worker_estimate_usd": 0.3048,
+  "dashboard_delta_film_estimate_usd": 0.33,
+  "actual_billed_usd": null,
+  "billing_note": "Rounded asynchronous dashboard, not an invoice.",
+  "shots": [
+    {
+      "shot": "01",
+      "call_id": "fc-01M60S53H4JKVGEYTGZRJ829YR",
+      "source_sha256": "8e843f53c9f218b8a026b400b37f28bf3a3b77b089ff2d7a244145d47a053fd1",
+      "output_sha256": "2842e65b827e41133e278cdfce7ae0c3afcf9f37ebef15b1cda02147def45ae7",
+      "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+      "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+      "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+      "seed": 2026102770,
+      "generation_seconds": 130.345,
+      "partial_worker_estimate_usd": 0.1028
+    },
+    {
+      "shot": "02",
+      "call_id": "fc-01M60S9E9PEG58ABAJN17R3GYC",
+      "source_sha256": "24d3cc91178241f8323c6dcbd9602a04e73f97ab9a55c48a0e12333637200a52",
+      "output_sha256": "baa784d22ca6062958da54addb159b4921d915322ff8aa16af6cb1a542f3db7e",
+      "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+      "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+      "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+      "seed": 2026102771,
+      "generation_seconds": 111.364,
+      "partial_worker_estimate_usd": 0.0879
+    },
+    {
+      "shot": "03",
+      "call_id": "fc-01M60SD3CZ2KGT0EPC8E4HEZ7C",
+      "source_sha256": "879550d86465b008ecc68e7e5ef00e99c49b3cdcb9fa80faa1bfbdd6b219f417",
+      "output_sha256": "0bd8ec7968cae284bcad326e57dd7deb15d1d932cd28fa9cb7cfd604fbc12537",
+      "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+      "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+      "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+      "seed": 2026102772,
+      "generation_seconds": 144.621,
+      "partial_worker_estimate_usd": 0.1141
+    }
+  ]
+}

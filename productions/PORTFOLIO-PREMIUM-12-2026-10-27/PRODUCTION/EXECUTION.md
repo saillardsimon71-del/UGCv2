@@ -29,3 +29,7 @@ Réponse humaine reçue : "Valider et lancer le lot de deux films". Le périmèt
 Le même lanceur local persistant accepte ces deux identifiants, avec un lancement séparé par film. Le second attend la revue du premier et son relevé de consommation. Aucune régénération automatique, aucun appel parallèle, aucune modification des workers. Annulation de la prise active : `python PRODUCTION/run_campaign.py cancel --film 02-golden-reveal` ou `--film 12-accessory-icon`. Vérifier ensuite l'absence d'entrée active et de file d'attente.
 
 L'archive dédiée au lot se déclenche uniquement par le message `ARCHIVE_PREMIUM_LOT_02_12`. Elle conserve les quatre films réels, leurs sources, reçus, scripts et rapports pendant 90 jours, sans calcul Modal.
+
+## Lot 07 + 08
+
+Réponse humaine du 28 octobre : "Valider et lancer le prochain lot de deux films", après présentation du parfum V2 et du sac. Le même budget autorise PROBLÈME / SOLUTION puis PRODUCT ENERGY, un seul GPU, aucune reprise automatique. Le premier film est rejeté C pour incohérence des pages et élément ajouté en bas du plan final. Son vrai MP4 et ses coûts sont conservés. PRODUCT ENERGY poursuit ses trois prises sans dépendre de ce rejet. Le message ARCHIVE_PREMIUM_LOT_07_08 conserve les six dossiers comprenant l'essai C, sans calcul Modal.

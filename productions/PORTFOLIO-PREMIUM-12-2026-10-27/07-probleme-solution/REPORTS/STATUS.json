@@ -1,10 +1,19 @@
 {
   "film": "07-probleme-solution",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "C",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "07-probleme-solution\\EXPORTS\\07-PROBLEME-SOLUTION-MASTER-1080x1920.mp4",
+  "review": "Three real clips at 4 fps, final montage at 2 fps, full Pexels original and full-resolution caption frame examined. No continuous playback or critical listening claimed. Creative rejection C.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Le macro tourne plusieurs pages et modifie leur présentation, au-delà du léger frémissement demandé.",
+    "Le dernier plan révèle une forme de papier supplémentaire en bas à droite, absente de la photographie source.",
+    "Un recadrage de contrôle enlève trop du produit et ne suffit pas à conserver une démonstration convaincante."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "partial_worker_estimate_usd": 0.2806,
+  "recommendation": "Écarter du portfolio. Conserver les MP4 comme essai rejeté. Aucune régénération ni simulation de remplacement.",
+  "creative_rejected": true
 }

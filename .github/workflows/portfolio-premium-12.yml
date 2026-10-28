@@ -8,7 +8,7 @@ on:
       film:
         description: Film explicitement autorisé à produire
         type: choice
-        options: [prepare-only, 03-skincare-sensoriel, 05-architectural-living, 02-golden-reveal, 12-accessory-icon, 07-probleme-solution, 08-product-energy]
+        options: [prepare-only, 03-skincare-sensoriel, 05-architectural-living, 02-golden-reveal, 12-accessory-icon, 07-probleme-solution, 08-product-energy, 01-dark-luxury, 06-transformation]
         default: prepare-only
       confirm_spend:
         description: Taper oui pour le calcul Modal autorisé
@@ -61,7 +61,7 @@ jobs:
                       'RUN_PREMIUM_05': '05-architectural-living'}.get(os.environ['HEAD_MESSAGE'].strip(), 'none')
           elif os.environ['INPUT_CONFIRM'] == 'oui':
               selected = os.environ['INPUT_FILM']
-              if selected in ('03-skincare-sensoriel', '05-architectural-living', '02-golden-reveal', '12-accessory-icon', '07-probleme-solution', '08-product-energy'):
+              if selected in ('03-skincare-sensoriel', '05-architectural-living', '02-golden-reveal', '12-accessory-icon', '07-probleme-solution', '08-product-energy', '01-dark-luxury', '06-transformation'):
                   film = selected
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write(f'film={film}\n')
@@ -130,7 +130,7 @@ jobs:
           compression-level: 0
 
   archive:
-    if: github.event.head_commit.message == 'ARCHIVE_PREMIUM_PILOTS' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_02_12'
+    if: github.event.head_commit.message == 'ARCHIVE_PREMIUM_PILOTS' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_02_12' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_07_08' || github.event.head_commit.message == 'ARCHIVE_PREMIUM_LOT_01_06'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -139,9 +139,13 @@ jobs:
         with:
           name: PREMIUM12-REAL-FILMS-${{ github.run_id }}
           path: |
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/01-dark-luxury/
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/02-golden-reveal/
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/03-skincare-sensoriel/
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/05-architectural-living/
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/06-transformation/
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/07-probleme-solution/
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/08-product-energy/
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/12-accessory-icon/
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.py
             productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION/*.json

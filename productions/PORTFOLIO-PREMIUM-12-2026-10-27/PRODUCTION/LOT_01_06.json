@@ -1,0 +1,25 @@
+{
+  "status": "running_first_film",
+  "authorization": "PRODUCTION/HUMAN_PILOT_APPROVAL.json",
+  "workspace": "lucj76861",
+  "films": [
+    {
+      "film": "01-dark-luxury",
+      "pid": 81132,
+      "status": "running",
+      "started_at": "2026-10-28T08:25:20.061713+00:00",
+      "stdout": "PRODUCTION/local-film01.out.log",
+      "stderr": "PRODUCTION/local-film01.err.log"
+    },
+    {
+      "film": "06-transformation",
+      "status": "awaiting_first_film_review_and_budget"
+    }
+  ],
+  "max_concurrent_gpu": 1,
+  "automatic_retry": false,
+  "campaign_ceiling_usd": 20,
+  "reserve_usd": 10,
+  "cancel_command": "python PRODUCTION/run_campaign.py cancel --film FILM_ID",
+  "publication_authorized": false
+}

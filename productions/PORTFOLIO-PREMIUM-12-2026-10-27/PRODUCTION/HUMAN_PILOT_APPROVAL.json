@@ -10,9 +10,11 @@
     "02-golden-reveal",
     "12-accessory-icon",
     "07-probleme-solution",
-    "08-product-energy"
+    "08-product-energy",
+    "01-dark-luxury",
+    "06-transformation"
   ],
-  "scope": "Deux lots explicitement validés : 02+12 puis 07+08. Budget inchangé, aucune publication automatique.",
+  "scope": "Trois lots explicitement validés : 02+12, 07+08, puis 01+06. Budget inchangé, aucune publication automatique.",
   "budget_ceiling_usd": 20,
   "reserve_usd": 10,
   "max_concurrent_gpu": 1,
@@ -39,7 +41,19 @@
         "07-probleme-solution",
         "08-product-energy"
       ]
+    },
+    {
+      "at": "2026-10-28T08:25:18.572022+00:00",
+      "user_reply": "Valider et lancer DARK LUXURY + TRANSFORMATION",
+      "reviewed_mp4": [
+        "08-PRODUCT-ENERGY-WEB-720x1280.mp4"
+      ],
+      "rejected_film": "07-probleme-solution",
+      "allowed_films": [
+        "01-dark-luxury",
+        "06-transformation"
+      ]
     }
   ],
-  "last_updated_at": "2026-10-28T08:02:49.499829+00:00"
+  "last_updated_at": "2026-10-28T08:25:18.572022+00:00"
 }

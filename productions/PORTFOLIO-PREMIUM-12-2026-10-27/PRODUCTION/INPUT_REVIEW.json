@@ -7,7 +7,9 @@
     "02-golden-reveal",
     "12-accessory-icon",
     "07-probleme-solution",
-    "08-product-energy"
+    "08-product-energy",
+    "01-dark-luxury",
+    "06-transformation"
   ],
   "notes": [
     "Sérum sans texte ni logo, mêmes objets dans les trois cadrages",
@@ -16,7 +18,8 @@
     "Aucune validation esthétique de MP4 à ce stade",
     "Lot 02 et 12 : photographies Pexels et cadrages préparés inspectés, aucune nouvelle image générée.",
     "Pilotes validés par réponse humaine pour ce lot uniquement ; sélection portfolio ultérieure.",
-    "Planches Pexels 07 et 08 inspectées avant lancement : carnet sans texte parasite et jus sans marque. Pages, stylo, bouchon, paille et niveau de liquide à préserver."
+    "Planches Pexels 07 et 08 inspectées avant lancement : carnet sans texte parasite et jus sans marque. Pages, stylo, bouchon, paille et niveau de liquide à préserver.",
+    "Planches initiales 01 et 06 inspectées : flacon noir sans marque, lampe blanche unique et même table/rideaux. Photos Pexels, pas de génération d’image fixe."
   ],
   "series_authorized": true,
   "publication_authorized": false,
@@ -24,7 +27,9 @@
     "02-golden-reveal",
     "12-accessory-icon",
     "07-probleme-solution",
-    "08-product-energy"
+    "08-product-energy",
+    "01-dark-luxury",
+    "06-transformation"
   ],
-  "updated_at": "2026-10-28T08:02:49.499829+00:00"
+  "updated_at": "2026-10-28T08:25:18.572022+00:00"
 }

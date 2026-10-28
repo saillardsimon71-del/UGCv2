@@ -1,28 +1,24 @@
-# Consommation : estimation provisoire au 28 octobre
+# Consommation provisoire après six films
 
-Workspace : lucj76861. Quatre films réels, douze prises IA abouties et un démarrage annulé pendant les pilotes. Aucun secret, moteur, modèle ou profil recréé. Aucun téléchargement de poids ou build Modal par cette campagne.
+Relevé du 28 octobre avant le lot DARK LUXURY + TRANSFORMATION. Workspace : lucj76861. Six vrais MP4 montés, dont cinq candidats B et le carnet rejeté C. Dix-huit prises IA abouties, un démarrage annulé pendant les pilotes. Aucun poids téléchargé, build, déploiement ou secret recréé.
 
 | Mesure | Valeur | Nature |
 |---|---:|---|
-| Crédits avant la mission | 29,80 USD | Tableau de bord arrondi |
-| Usage du cycle avant la mission | 0,20 USD | Tableau de bord arrondi |
-| Crédits avant le lot 02 + 12 | 29,20 USD | Relevé du 28 octobre |
-| Crédits après le lot 02 + 12 | 28,55 USD | Relevé provisoire |
-| Usage total du cycle après les quatre films | 1,45 USD | Relevé provisoire |
-| Consommation estimée de la campagne | Environ 1,25 USD | Différence des crédits, pas une facture |
-| Consommation estimée du lot 02 + 12 | Environ 0,65 USD | Différence des crédits, pas une facture |
-| Somme interne des douze rendus aboutis | 1,1315 USD | Estimation worker partielle |
-| Dont lot 02 + 12 | 0,5936 USD | Six prises abouties, zéro relance |
-| Facture définitive de campagne | Non disponible | Non déclarée connue |
-| Limite mensuelle totale configurée | 20 USD | Vérifiée dans le dashboard |
-| Réserve à préserver | 10 USD | Solde observé supérieur à la réserve |
+| Crédits avant mission | 29,80 USD | Dashboard arrondi |
+| Usage initial du cycle | 0,20 USD | Dashboard arrondi |
+| Crédits après six films | 27,92 USD | Relevé provisoire |
+| Usage du cycle après six films | 2,08 USD | Relevé provisoire |
+| Consommation de campagne estimée | Environ 1,88 USD | Différence des crédits, pas une facture |
+| Pilotes 03 + 05 | Environ 0,60 USD | Différence de dashboard |
+| Lot 02 + 12 | Environ 0,65 USD | Différence de dashboard |
+| Lot 07 + 08, y compris rejet C | Environ 0,63 USD | Différence de dashboard |
+| Somme worker des dix-huit prises abouties | 1,7169 USD | Estimation partielle GPU, CPU et RAM réservés |
+| Facture définitive | Indisponible | Non déclarée connue |
+| Limite mensuelle workspace | 20 USD | Vérifiée dans le dashboard |
+| Réserve à conserver | 10 USD | Préservée au relevé |
 
-Le dashboard reste asynchrone : le dernier total est 1,45 USD pour 28,55 USD de crédits, mais la ventilation affiche 1,40 USD d'apps déployées et 0,20 USD d'apps éphémères. Ces lignes ne s'additionnent pas au total. Ne pas les présenter comme une facture rapprochée. Les relevés datés et captures sont conservés localement ; les captures financières ne sont pas publiées dans le dépôt.
+La ventilation du dernier relevé affiche 2,03 USD d'apps déployées et 0,20 USD d'apps éphémères pour un total affiché de 2,08 USD. Ces compteurs sont asynchrones et ne doivent pas être présentés comme une facture rapprochée. Captures conservées localement, sans publication dans le dépôt.
 
-Les estimations worker multiplient les secondes internes retournées par le scénario L40S + 8 coeurs CPU + 64 Gio. Elles omettent une partie du démarrage préalable, de l'extinction, du stockage et d'éventuels dépassements mémoire. Les prises échouées ne valent jamais zéro par défaut. Le montant réellement facturé par film n'est pas attesté.
+Les secondes internes ne couvrent pas tous les démarrages, l'extinction, le stockage, les échecs ni les dépassements de réservation CPU/RAM. Aucun appel échoué ou film rejeté n'est considéré gratuit. Les rapports par film conservent le coût partiel et la valeur facturée inconnue. Les V2 du sérum et du parfum sont uniquement des recoupes CPU ; le carnet n'a pas été régénéré.
 
-Les deux premiers pilotes totalisent 0,5379 USD de worker partiel. Un premier appel avait été annulé vers 22 secondes à cause d'une erreur d'attente du lanceur ; un seul nouvel essai manuel a été effectué après correction testée sur CPU. Le lot 02 + 12 n'a connu aucun échec ni régénération. Les V2 du sérum et du parfum sont des recoupes CPU des vrais rendus, avec musique remélangée et effets recadrés.
-
-Les deux jobs GitHub interrompus à l'installation CPU n'ont exécuté aucune étape GPU. Les frais éventuels de minutes ou stockage GitHub ne sont pas certifiés par ce relevé Modal.
-
-Les processus des quatre films sont terminés. LTX indique zéro entrée active, zéro file d'attente et zéro conteneur. Aucun appel UGC n'a été lancé. La limite workspace et les délais client ne constituent pas une garantie inventée de facture exacte : aucune série payante nocturne sans surveillance. Ce relevé clôt le lot 02 + 12, avant le démarrage du lot 07 + 08 validé ensuite par le client.
+Le lot 01 + 06 a ensuite reçu une validation humaine et démarre avec un seul GPU à la fois. Sa consommation n'est pas incluse dans le relevé ci-dessus. Les UGC 09 et 10 restent suspendus. Aucun site modifié, aucun showreel créé, aucune publication automatique. Les frais éventuels de stockage et de minutes GitHub ne sont pas attestés par le dashboard Modal.

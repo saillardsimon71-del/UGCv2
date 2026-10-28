@@ -1,0 +1,66 @@
+{
+  "verified_at": "2026-10-28T08:09:10.551979+00:00",
+  "repo": "saillardsimon71-del/UGCv2",
+  "run_id": 40654464396,
+  "run_url": "https://github.com/saillardsimon71-del/UGCv2/actions/runs/40654464396",
+  "conclusion": "success",
+  "artifact_id": 12800369519,
+  "name": "PREMIUM12-REAL-FILMS-40654464396",
+  "size_bytes": 373182823,
+  "expires_at": "2027-01-26T08:06:39Z",
+  "expired": false,
+  "digest": "sha256:a609d4757159b4f99d7ce36e17eedfd4becd6124d13643df7390434f8b12db2b",
+  "download_verification": "pass",
+  "scope": "Four finished films 02/03/05/12 and production metadata snapshot; lot 07/08 in progress elsewhere",
+  "download_verified_at": "2026-10-28T08:17:01.001815+00:00",
+  "exports": [
+    {
+      "film": "02-golden-reveal",
+      "file": "02-GOLDEN-REVEAL-V2-MASTER-1080x1920.mp4",
+      "bytes": 8626462,
+      "sha256": "c68120da31767b0bf21498c673044fd4d9d20bb2ee91906314721cd804cd7758"
+    },
+    {
+      "film": "02-golden-reveal",
+      "file": "02-GOLDEN-REVEAL-V2-WEB-720x1280.mp4",
+      "bytes": 1928332,
+      "sha256": "37f6fedc8788f268d4c0471517ecbed8ea44ec0faa21bb351fd1c5fcc8fab45d"
+    },
+    {
+      "film": "03-skincare-sensoriel",
+      "file": "03-SKINCARE-SENSORIEL-V2-MASTER-1080x1920.mp4",
+      "bytes": 8841303,
+      "sha256": "0f296e24077413734fb1c4ea0cd5038f564b71a8ad57176578364c7697551e6f"
+    },
+    {
+      "film": "03-skincare-sensoriel",
+      "file": "03-SKINCARE-SENSORIEL-V2-WEB-720x1280.mp4",
+      "bytes": 1809427,
+      "sha256": "4b2a7f2ea301ee4662ae75824ccc72a8368213a80815fff9366586acf297defe"
+    },
+    {
+      "film": "05-architectural-living",
+      "file": "05-ARCHITECTURAL-LIVING-MASTER-1080x1920.mp4",
+      "bytes": 14442534,
+      "sha256": "ffd0d8410e4f6d3aa15c25bece6ca9644259096834b1a82315c363c34c0dd375"
+    },
+    {
+      "film": "05-architectural-living",
+      "file": "05-ARCHITECTURAL-LIVING-WEB-720x1280.mp4",
+      "bytes": 3106009,
+      "sha256": "f2e1ab7ad518be29c2b9c1020b5b9fbec16d0fc4ac720b0e9f55b2d2854283b9"
+    },
+    {
+      "film": "12-accessory-icon",
+      "file": "12-ACCESSORY-ICON-MASTER-1080x1920.mp4",
+      "bytes": 36018168,
+      "sha256": "e2cfc9f95105f98d1e2bde365b1272f8ed53a891b72536bf41010968005f933f"
+    },
+    {
+      "film": "12-accessory-icon",
+      "file": "12-ACCESSORY-ICON-WEB-720x1280.mp4",
+      "bytes": 8071651,
+      "sha256": "29ba55bd633ab46208fc0d7dde6b90c9089663467e06c2da3c5e60daedc1433b"
+    }
+  ]
+}

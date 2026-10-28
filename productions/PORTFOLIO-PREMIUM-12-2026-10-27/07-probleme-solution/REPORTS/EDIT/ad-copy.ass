@@ -1,0 +1,19 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: AdCopy,DejaVu Sans,54,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2.5,0.0,8,60,60,165,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.50,AdCopy,,0,0,0,,TROP D'IDÉES ?
+Dialogue: 0,0:00:01.50,0:00:03.00,AdCopy,,0,0,0,,Tout reste en tête.
+Dialogue: 0,0:00:03.00,0:00:05.00,AdCopy,,0,0,0,,Une page pour commencer.
+Dialogue: 0,0:00:05.00,0:00:10.00,AdCopy,,0,0,0,,Ouvrez. Posez l'idée.
+Dialogue: 0,0:00:10.00,0:00:15.00,AdCopy,,0,0,0,,Une place pour chaque idée.
+Dialogue: 0,0:00:15.00,0:00:17.50,AdCopy,,0,0,0,,PASSEZ AU PAPIER

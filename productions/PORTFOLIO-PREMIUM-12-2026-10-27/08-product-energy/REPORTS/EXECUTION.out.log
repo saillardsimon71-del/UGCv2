@@ -1,0 +1,28 @@
+{"at": "2026-10-28T08:13:44.622369+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "08-product-energy", "shot": "01", "call_id": "fc-01M60S53H4JKVGEYTGZRJ829YR", "status": "running"}
+08-product-energy/01 : 22 s d'attente
+08-product-energy/01 : 42 s d'attente
+08-product-energy/01 : 63 s d'attente
+08-product-energy/01 : 83 s d'attente
+08-product-energy/01 : 103 s d'attente
+08-product-energy/01 : 123 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\08-product-energy\\RENDERS\\shot-01.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.1028}
+{"at": "2026-10-28T08:16:06.985882+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "08-product-energy", "shot": "02", "call_id": "fc-01M60S9E9PEG58ABAJN17R3GYC", "status": "running"}
+08-product-energy/02 : 22 s d'attente
+08-product-energy/02 : 42 s d'attente
+08-product-energy/02 : 63 s d'attente
+08-product-energy/02 : 83 s d'attente
+08-product-energy/02 : 103 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\08-product-energy\\RENDERS\\shot-02.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0879}
+{"at": "2026-10-28T08:18:06.953716+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "08-product-energy", "shot": "03", "call_id": "fc-01M60SD3CZ2KGT0EPC8E4HEZ7C", "status": "running"}
+08-product-energy/03 : 22 s d'attente
+08-product-energy/03 : 42 s d'attente
+08-product-energy/03 : 63 s d'attente
+08-product-energy/03 : 83 s d'attente
+08-product-energy/03 : 103 s d'attente
+08-product-energy/03 : 123 s d'attente
+08-product-energy/03 : 144 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\08-product-energy\\RENDERS\\shot-03.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.1141}
+MP4 réels et contrôles techniques enregistrés : C:\Users\saill\Documents\Codex\2026-10-27\mission-work-sitequivend-important-peu-importe\PORTFOLIO-PREMIUM-12-2026-10-27\08-product-energy\EXPORTS\08-PRODUCT-ENERGY-MASTER-1080x1920.mp4

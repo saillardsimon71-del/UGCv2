@@ -1,10 +1,21 @@
 {
   "film": "08-product-energy",
-  "status": "prepared_not_started",
-  "quality": null,
+  "status": "real_final_mp4_technical_checks_passed",
+  "quality": "B",
   "actual_billed_usd": null,
-  "final_mp4": null,
-  "defects": [],
-  "review": "not_rendered",
-  "hold": null
+  "final_mp4": "08-product-energy\\EXPORTS\\08-PRODUCT-ENERGY-MASTER-1080x1920.mp4",
+  "review": "All three real clips sampled at 4 fps and the nine-segment final montage at 2 fps. No continuous playback or critical listening claimed.",
+  "publish": false,
+  "github_run_id": null,
+  "defects": [
+    "Rapprochements plus amples que les déplacements demandés au prompt.",
+    "Lisibilité des coupes rapides, stabilité fine du liquide et placement des accents sonores à confirmer en lecture continue."
+  ],
+  "warning": "Automatic checks do not validate artistic quality",
+  "human_approved_for_next_lot": true,
+  "human_approval_at": "2026-10-28T08:25:18.572022+00:00",
+  "publication_authorized": false,
+  "partial_worker_estimate_usd": 0.3048,
+  "duration_s": 17.5,
+  "recommendation": "Validé par le client pour poursuivre la production. Candidat Social Ads à sélectionner après écoute et visionnage critiques, sans publication automatique."
 }

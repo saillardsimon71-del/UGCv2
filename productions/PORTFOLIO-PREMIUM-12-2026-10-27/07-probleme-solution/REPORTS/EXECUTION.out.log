@@ -1,0 +1,26 @@
+{"at": "2026-10-28T08:02:57.436069+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "07-probleme-solution", "shot": "01", "call_id": "fc-01M60RHBFQHR4E3FT8DJMK8TY4", "status": "running"}
+07-probleme-solution/01 : 22 s d'attente
+07-probleme-solution/01 : 42 s d'attente
+07-probleme-solution/01 : 63 s d'attente
+07-probleme-solution/01 : 83 s d'attente
+07-probleme-solution/01 : 103 s d'attente
+07-probleme-solution/01 : 123 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\07-probleme-solution\\RENDERS\\shot-01.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.1045}
+{"at": "2026-10-28T08:05:22.197793+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "07-probleme-solution", "shot": "02", "call_id": "fc-01M60RNRRSY1YTDGH0V9MM0343", "status": "running"}
+07-probleme-solution/02 : 22 s d'attente
+07-probleme-solution/02 : 43 s d'attente
+07-probleme-solution/02 : 64 s d'attente
+07-probleme-solution/02 : 84 s d'attente
+07-probleme-solution/02 : 105 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\07-probleme-solution\\RENDERS\\shot-02.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0898}
+{"at": "2026-10-28T08:07:24.145898+00:00", "films": 1, "source_frames": 3, "result": "pass", "gpu_called": false}
+{"film": "07-probleme-solution", "shot": "03", "call_id": "fc-01M60RSFSWYDQF8D96D6Y1Y5CS", "status": "running"}
+07-probleme-solution/03 : 22 s d'attente
+07-probleme-solution/03 : 42 s d'attente
+07-probleme-solution/03 : 63 s d'attente
+07-probleme-solution/03 : 83 s d'attente
+07-probleme-solution/03 : 103 s d'attente
+{"saved": "C:\\Users\\saill\\Documents\\Codex\\2026-10-27\\mission-work-sitequivend-important-peu-importe\\PORTFOLIO-PREMIUM-12-2026-10-27\\07-probleme-solution\\RENDERS\\shot-03.mp4", "status": "technically_checked_visual_review_pending", "partial_estimate_usd": 0.0863}
+MP4 réels et contrôles techniques enregistrés : C:\Users\saill\Documents\Codex\2026-10-27\mission-work-sitequivend-important-peu-importe\PORTFOLIO-PREMIUM-12-2026-10-27\07-probleme-solution\EXPORTS\07-PROBLEME-SOLUTION-MASTER-1080x1920.mp4

@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--film", required=True, choices=["03-skincare-sensoriel", "05-architectural-living", "02-golden-reveal", "12-accessory-icon", "07-probleme-solution", "08-product-energy"])
+parser.add_argument("--film", required=True, choices=["03-skincare-sensoriel", "05-architectural-living", "02-golden-reveal", "12-accessory-icon", "07-probleme-solution", "08-product-energy", "01-dark-luxury", "06-transformation"])
 args = parser.parse_args()
 receipt = ROOT / args.film / "REPORTS/LOCAL_JOB.json"
 status = {"film": args.film, "status": "running", "started_at": datetime.now(timezone.utc).isoformat(),
