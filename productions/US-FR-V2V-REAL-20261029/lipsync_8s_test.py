@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse, base64, hashlib, io, json, os, subprocess, sys, zipfile
 from pathlib import Path
 import requests
+# GitHub Actions executes by script path; include the checked-out repository root.
+sys.path.insert(0,str(Path.cwd()))
 
 ROOT=Path("productions/US-FR-V2V-REAL-20261029/LIPSYNC_8S")
 ROOT.mkdir(parents=True,exist_ok=True)
