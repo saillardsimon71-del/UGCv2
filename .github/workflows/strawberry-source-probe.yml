@@ -23,7 +23,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p source_probe
-          url='https://videos.pexels.com/video-files/4081319/4081319-uhd_3840_2160_24fps.mp4'
+          url='https://videos.pexels.com/video-files/9020974/9020974-uhd_3840_2160_25fps.mp4'
           code=$(curl -L --compressed -sS -w '%{http_code}' -o source_probe/strawberry.mp4 --max-time 150 --max-filesize 170000000 "$url" || true)
           echo "HTTP status: $code"
           test "$code" = '200' || { echo "::error::CDN inaccessible: HTTP $code"; exit 1; }
