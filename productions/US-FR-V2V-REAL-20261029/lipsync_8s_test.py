@@ -70,13 +70,18 @@ def voice():
     # NOT a claim that a particular voice sounds better without listening.
     out=ROOT/"french_candidate.mp3"
     import edge_tts, asyncio
-    async def generate():
-        comm=edge_tts.Communicate(TEXT,voice="fr-FR-RemyMultilingualNeural",rate="-2%",pitch="-1Hz")
-        await comm.save(str(out))
-    asyncio.run(generate())
     wav=ROOT/"french_candidate_raw.wav"
-    sh("ffmpeg","-y","-v","error","-i",str(out),"-ar","48000","-ac","1",str(wav))
-    d=duration(wav)
+    failure=None
+    try:
+        async def generate():
+            comm=edge_tts.Communicate(TEXT,voice="fr-FR-RemyMultilingualNeural",rate="-2%",pitch="-1Hz")
+            await comm.save(str(out))
+        asyncio.run(generate())
+        sh("ffmpeg","-y","-v","error","-i",str(out),"-ar","48000","-ac","1",str(wav))
+        d=duration(wav)
+    except Exception as exc:
+        failure=str(exc)[:250]
+        d=0.0
     ratio=d/S
     if not .80<=ratio<=1.25:
         # Do not force absurd prosody; use current French dub instead.
@@ -95,7 +100,7 @@ def voice():
            "-ar","48000","-ac","1",str(outwav))
     save("voice_comparison.json",{"candidate":"fr-FR-RemyMultilingualNeural",
          "script":TEXT,"raw_duration_s":d,"selection":used,
-         "final_duration_s":duration(outwav),"human_listening":"REQUIRED",
+         "final_duration_s":duration(outwav),"human_listening":"REQUIRED","candidate_error":failure,
          "warning":"Voix candidate and lip timing are not quality-verified by automated tests"})
     print("VOICE_READY",used,d,flush=True)
 def lipsync():
@@ -108,17 +113,30 @@ def lipsync():
     if not vid.exists() or not wav.exists():raise RuntimeError("Missing original or FR voice")
     if os.environ.get("STUDIO_MODAL_WORKSPACE")!="lucj76861":
         raise RuntimeError("Unapproved Modal workspace; GPU forbidden")
+    # Check existing volume before building the large lip-sync image at all.
+    # One 8-second test should not trigger 14+ GB of surprise downloads.
+    state={"latentsync16_ready":False,"musetalk15_ready":False}
+    try:
+        v=modal.Volume.from_name("ugc-lipsync-models",create_if_missing=False)
+        for label,folder,target in [
+            ("latentsync16_ready","/latentsync","latentsync_unet.pt"),
+            ("musetalk15_ready","/musetalk/musetalkV15","unet.pth")]:
+            try:
+                state[label]=any(e.path.rstrip("/").endswith(target) for e in v.listdir(folder))
+            except Exception as exc:
+                state[label+"_probe"]=str(exc)[:150]
+    except Exception as exc:
+        state["volume_probe"]=str(exc)[:200]
+    save("model_doctor.json",state)
+    model=("latentsync16" if state.get("latentsync16_ready") else
+           "musetalk15" if state.get("musetalk15_ready") else None)
+    if model is None:
+        save("render_status.json",{"status":"BLOCKED_MODEL_WEIGHTS_NOT_READY",
+            "gpu_calls":0,"model_doctor":state,
+            "next":"Prepare existing lip-sync model weights before GPU rendering"})
+        print("LIPSYNC_BLOCKED: weights missing, no image build or GPU",flush=True)
+        return
     with worker.app.run(name="ugcv2-fr-lipsync-eight-second-test",environment_name="main"):
-        status=worker.doctor.remote()
-        save("model_doctor.json",status)
-        model=("latentsync16" if status.get("latentsync16_ready") else
-               "musetalk15" if status.get("musetalk15_ready") else None)
-        if model is None:
-            save("render_status.json",{"status":"BLOCKED_MODEL_WEIGHTS_NOT_READY",
-                "gpu_calls":0,"model_doctor":status,
-                "next":"Prepare weights in existing ugc-lipsync-models volume before rendering"})
-            print("LIPSYNC_BLOCKED: neither validated model is available; zero GPU",flush=True)
-            return
         if os.getenv("CONFIRM_ONE_LIPSYNC_GPU")!="YES":
             raise RuntimeError("One-GPU-call authorization missing")
         result=worker.render_lipsync.remote(
