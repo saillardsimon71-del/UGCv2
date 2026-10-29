@@ -1,0 +1,49 @@
+name: US FR60 | Read FaceFusion Modal run logs (CPU, no additional GPU)
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_DIAG_FACE.txt]
+permissions:
+  contents: read
+jobs:
+  logs_only:
+    if: github.event.head_commit.message == 'READ_FR60_FACE_LOGS_ONLY'
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: productions/US-FR-V2V-REAL-20261029/REAL_60S
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read-only Modal status and last logs
+        shell: bash
+        run: |
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_DIAG_FACE.txt)" = "ONLY_READ_MODAL_FACE_LOGS_NO_GPU"
+          pip install -q 'modal==1.6.1'
+          mkdir -p diagnostic
+          modal app list --env main --json > diagnostic/apps.json || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('diagnostic/apps.json')
+          j=json.loads(p.read_text())
+          matches=[z for z in j if 'ugcv2-fr60-only-four-face-shots' in z.get('description','')]
+          Path('diagnostic/matched.json').write_text(json.dumps(matches,indent=2))
+          if matches:
+              Path('diagnostic/id.txt').write_text(matches[0].get('app_id',''))
+          PY
+          if test -s diagnostic/id.txt; then
+            timeout 50 modal app logs "$(cat diagnostic/id.txt)" --env main --since 2h --tail 900 --timestamps > diagnostic/log.txt 2>&1 || true
+          fi
+          tail -40 diagnostic/log.txt || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: FR60-FACE-LOGS-${{ github.run_id }}
+          path: diagnostic/
+          if-no-files-found: warn
