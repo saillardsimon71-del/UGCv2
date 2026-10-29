@@ -5,6 +5,7 @@ on:
     branches: [production/us-fr-v2v-real-video-pilot-20261029]
     paths:
       - productions/US-FR-V2V-REAL-20261029/START_REAL_15S_V2V_ONCE.txt
+      - productions/US-FR-V2V-REAL-20261029/START_REAL_15S_V2V_FIX_IMPORT_ONCE.txt
 
 permissions:
   contents: read
@@ -16,7 +17,7 @@ concurrency:
 
 jobs:
   real_15s_v2v:
-    if: github.event.head_commit.message == 'RUN_US_FR_REAL_V2V_15S_ONE_GPU_ONCE' && github.run_attempt == 1
+    if: (github.event.head_commit.message == 'RUN_US_FR_REAL_V2V_15S_ONE_GPU_ONCE' || github.event.head_commit.message == 'RUN_US_FR_REAL_V2V_15S_FIX_IMPORT_CPU') && github.run_attempt == 1
     runs-on: ubuntu-latest
     timeout-minutes: 40
     env:
