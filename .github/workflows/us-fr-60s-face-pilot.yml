@@ -1,0 +1,103 @@
+name: US FR 60s | new artificial presenter, unchanged screen captures, no EDTalk
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FACE_IDENTITY_ONCE.txt]
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: ugcv2-fr60-one-face-identity-render
+  cancel-in-progress: false
+jobs:
+  face_only:
+    if: github.event.head_commit.message == 'RUN_FR60_PRESENTERS_FACE_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      GH_TOKEN: ${{ github.token }}
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      SINGLE_FACE_GPU: 'YES'
+      PY: productions/US-FR-V2V-REAL-20261029/REAL_60S/render_video_faceswap_60s.py
+      OUTPUT: productions/US-FR-V2V-REAL-20261029/REAL_60S/FACE_SWAP
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Confirm private research request, one-time GPU and compile
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FACE_IDENTITY_ONCE.txt)" = "ONE_PRIVATE_60S_FACE_SWAP_GPU_PRESERVE_SCREEN"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$PY"
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          python -m pip install -q 'modal==1.6.1'
+      - name: Genuine user-supplied original 60s video, proof and scene analysis
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      - name: Existing artificial instructor identity from successful LTX V2V (no LTX render)
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-V2V-15S-40899629965
+          run-id: 40899629965
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/EXISTING_V2V_15S
+      - name: Validate two existing inputs and extract artificial reference face CPU
+        timeout-minutes: 5
+        run: python "$PY" preflight
+      - name: One FaceFusion face-swapper GPU (no lip_syncer or EDTalk)
+        timeout-minutes: 62
+        run: python "$PY" run
+      - name: Verify 60s media and extract representative visuals
+        timeout-minutes: 6
+        run: python "$PY" inspect
+      - name: Preserve face render, identity snapshot and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-60S-NEW-PRESENTER-${{ github.run_id }}
+          path: |
+            ${{ env.OUTPUT }}/UGCv2_presenter_reference_5s.jpg
+            ${{ env.OUTPUT }}/faceswapped_raw_60s.mp4
+            ${{ env.OUTPUT }}/faceswapped_video_no_audio_60s.mp4
+            ${{ env.OUTPUT }}/face_*.jpg
+            ${{ env.OUTPUT }}/*.json
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
+      - name: Report stage outcome (don't claim lip sync)
+        if: always()
+        shell: bash
+        env:
+          RESULT: ${{ job.status }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,json
+          p=Path(os.environ["OUTPUT"])
+          d=json.loads((p/"status.json").read_text()) if (p/"status.json").is_file() else {}
+          msg=("### US-FR 60s face identity test (private)\n\n"
+          "Run: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+
+          "/actions/runs/"+os.environ["GITHUB_RUN_ID"]+"\n\nJob: **"+
+          os.environ["RESULT"]+"**; phase **"+d.get("stage","NOT_REACHED")+"**.\n"
+          "Real changed-face video: "+str((p/"faceswapped_video_no_audio_60s.mp4").is_file())+
+          "\nSource UI untouched by generative video. No EDTalk used. "
+          "French lipsync and real visual quality are separate human-review gates.")
+          Path("fr60_face_issue.md").write_text(msg)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file fr60_face_issue.md
