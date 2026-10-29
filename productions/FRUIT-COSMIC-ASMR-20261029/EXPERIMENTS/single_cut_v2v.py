@@ -16,9 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
 sys.path.insert(0, str(REPO))
 OUT = ROOT / "EXPERIMENTS" / "output"
-SOURCE_PAGE = "https://www.pexels.com/video/slicing-a-fresh-strawberry-fruit-with-a-knife-4081319/"
+SOURCE_PAGE = "https://www.pexels.com/video/person-slicing-a-strawberry-9020974/"
 # Pexels free-license source. Download is checked for playable real footage BEFORE any GPU call.
-SOURCE_URL = "https://www.pexels.com/video/download/4081319/"
+SOURCE_URL = "https://videos.pexels.com/video-files/9020974/9020974-uhd_3840_2160_25fps.mp4"
 SFX_URL = "https://opengameart.org/sites/default/files/glass_breaking.wav"
 SFX_PAGE = "https://opengameart.org/content/glass-break"  # Till Behrend, CC0.
 PROMPT = (
@@ -94,13 +94,13 @@ def prepare():
             raise ValueError("Stock source has too few decoded frames")
         changes = [(sum(abs(a-b) for a, b in zip(frames[i], frames[i-1])) / frame_size, i / 3)
                    for i in range(1, len(frames))]
-        eligible = [(v, t) for v, t in changes if 1.5 < t < duration - 1.5]
+        eligible = [(v, t) for v, t in changes if 4.0 < t < 7.0]
         if not eligible:
             raise ValueError("No usable action window")
         motion, t_peak = max(eligible)
         if motion < 2.0:
             raise ValueError("Insufficient source motion")
-        start = max(0, min(duration - 5.1, t_peak - 2.15))
+        start = 3.5  # Human-reviewed: whole strawberry and blade enter frame, split completed before 8.5s
         source = OUT / "guide-real-slicing-121f.mp4"
         cmd(["ffmpeg", "-v", "error", "-y", "-ss", str(round(start,3)), "-i", str(original),
              "-vf", "fps=24,scale=768:1344:force_original_aspect_ratio=increase,"
@@ -124,7 +124,7 @@ def prepare():
                   "source_duration_s": duration, "source_start_s": round(start,3),
                   "motion_peak_s": round(t_peak,3), "motion_peak_score": round(motion,2),
                   "possible_cut_s_in_guide": round(t_peak-start, 3),
-                  "selection_warning": "Largest movement may NOT be the knife cutting. Human review required.",
+                  "selection_warning": "Window 3.5–8.5s manually checked in vertical 9:16 frames; visual quality of LTX output still pending.",
                   "render_gpu_calls_allowed": 1, "publish": False}
         write("guide_report.json", record)
         return record
