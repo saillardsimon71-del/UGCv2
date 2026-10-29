@@ -281,3 +281,58 @@ def render_student_four_seconds(video_b64: str, audio_b64: str) -> dict:
                 "log_tail": stdout[-1700:],
             },
         }
+
+
+@app.function(
+    image=image, gpu="L40S", cpu=8, memory=48000, timeout=3000,
+    min_containers=0, max_containers=1, scaledown_window=2,
+    volumes={str(MODEL_ROOT): model_vol},
+)
+def render_student_french_twelve_to_fifteen_seconds(video_b64: str, audio_b64: str) -> dict:
+    """Reuse validated TBDub Student weights and official paste-back for 12-15s."""
+    state = _exists_check()
+    if not state["all_present"]:
+        raise RuntimeError("TBDub v1.1 Student checkpoint cache is absent")
+    start = time.perf_counter()
+    with tempfile.TemporaryDirectory(prefix="tbdub-fr-v3-longer-") as temp:
+        folder = Path(temp)
+        video, audio = _media_inputs(folder, video_b64, audio_b64)
+        output = folder / "rendered"
+        output.mkdir()
+        report = folder / "face_report.json"
+        stdout, stderr = _run_inference(
+            [
+                "--video", str(video), "--audio", str(audio),
+                "--inference-mode", "student",
+                "--num-student-steps", "2",
+                "--sigma-shift", "1.0", "--motion-from-latents",
+                "--seed", "42", "--checkpoint-dir", str(MODEL_ROOT),
+                "--preprocess-report", str(report),
+                "--sample-name", "UGCv2_Chatterbox_V3_TBDub_15s",
+                "--output-dir", str(output),
+            ], timeout=2850, directory=folder,
+        )
+        produced = list(output.glob("*_tbdub.mp4"))
+        if len(produced) != 1 or produced[0].stat().st_size < 100_000:
+            raise RuntimeError(f"Expected one actual TBDub MP4, got {list(output.iterdir())}")
+        file = produced[0]
+        media = json.loads(subprocess.check_output(
+            ["ffprobe", "-v", "error", "-show_entries",
+             "format=duration,size:stream=codec_type,width,height",
+             "-of", "json", str(file)], text=True, timeout=90))
+        if not 11.0 <= float(media["format"]["duration"]) <= 15.3:
+            raise RuntimeError(f"Invalid lip-sync duration: {media}")
+        return {
+            "video_base64": base64.b64encode(file.read_bytes()).decode(),
+            "metadata": {
+                "status": "ACTUAL_TBDUB_OUTPUT_HUMAN_REVIEW_REQUIRED",
+                "engine": "TBDub Student v1.1",
+                "upstream_sha": UPSTREAM_SHA,
+                "gpu": "L40S", "student_steps": 2,
+                "render_seconds": round(time.perf_counter() - start, 2),
+                "video_sha256": hashlib.sha256(file.read_bytes()).hexdigest(),
+                "media": media,
+                "face_report": json.loads(report.read_text()) if report.is_file() else {},
+                "log_tail": stdout[-2000:],
+            },
+        }
