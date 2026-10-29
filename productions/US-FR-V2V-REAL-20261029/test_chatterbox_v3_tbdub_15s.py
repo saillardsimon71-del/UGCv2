@@ -29,7 +29,8 @@ SCRIPT_FR = (
     "Vous savez comment automatiser ChatGPT ? Regardez. "
     "Un fichier arrive sur Dropbox, et le Zap démarre automatiquement. "
     "Plus besoin de répéter les mêmes gestes chaque jour. "
-    "Vous configurez une fois, et ça tourne tout seul."
+    "Vous configurez une fois, et ça tourne tout seul. "
+    "C'est pratique, et même un débutant peut le faire."
 )
 
 def sh(parts:list[str],limit=180) -> str:
