@@ -109,8 +109,8 @@ def render_original_paced_french_blocks(blocks: list[dict]) -> dict:
     Source English provides ONLY utterance timestamps, not the person's timbre.
     Target block times are supplied by *actual* Whisper alignment, not guessed.
     """
-    if len(blocks)!=7:
-        raise ValueError("Expected seven source-aligned speech blocks")
+    if not 1 <= len(blocks) <= 7:
+        raise ValueError("Expected one through seven source-aligned speech blocks")
     import torch
     import torchaudio
     from chatterbox.mtl_tts import ChatterboxMultilingualTTS
