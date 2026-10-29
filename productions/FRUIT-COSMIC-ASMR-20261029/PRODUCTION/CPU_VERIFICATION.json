@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-29T09:32:42.325588+00:00",
+  "result": "pass",
+  "gpu_called": false,
+  "test_material": "ffmpeg testsrc2 CPU fixture only, not a production render",
+  "tests": [
+    "eight safety/audio unit tests passed",
+    "all real starting images and payloads validated",
+    "full three-clip assembly, motion cue alignment, audio mux and full decode passed on CPU fixtures",
+    "1080x1920, 360 frames, 15 seconds, h264 yuv420p, aac stereo 48kHz verified",
+    "workflow YAML parsed; exact branch push only; reruns blocked"
+  ],
+  "visual_and_audio_review_after_real_render": "pending, outside mission",
+  "production_output_exists": false
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "shot": "01",
+    "method": "built-in image_gen; identity-preserving reference edits for shots 02 and 03",
+    "generation_file": "exec-19b1574b-2d11-4922-bf58-c8c0e0012c11.png",
+    "original": "ASSETS/shot-01-original.png",
+    "original_sha256": "2f9536c6fa4dd0ce272235755d21906938e5aa21bef305df249fb8d9e8f6dc50",
+    "reference_shot": null,
+    "normalization": "Pillow Lanczos center fit to 768x1344; no invented placeholder",
+    "visual_inspection": "accepted; exact animated continuity remains unverified"
+  },
+  {
+    "shot": "02",
+    "method": "built-in image_gen; identity-preserving reference edits for shots 02 and 03",
+    "generation_file": "exec-89e60a0c-724d-4f64-9c54-00038e312bf4.png",
+    "original": "ASSETS/shot-02-original.png",
+    "original_sha256": "ad94bbc5db788a6eb44994f1a11045ec3eefc4db2314691a1bc7908b20da34e1",
+    "reference_shot": "01",
+    "normalization": "Pillow Lanczos center fit to 768x1344; no invented placeholder",
+    "visual_inspection": "accepted; exact animated continuity remains unverified"
+  },
+  {
+    "shot": "03",
+    "method": "built-in image_gen; identity-preserving reference edits for shots 02 and 03",
+    "generation_file": "exec-f8fa3921-4d6a-468e-b419-492495febf3d.png",
+    "original": "ASSETS/shot-03-original.png",
+    "original_sha256": "d6bc15f1f6e88ee00978317b1657f24b7928912d5ec86679ccd37c7cad03031b",
+    "reference_shot": "02",
+    "normalization": "Pillow Lanczos center fit to 768x1344; no invented placeholder",
+    "visual_inspection": "accepted; exact animated continuity remains unverified"
+  }
+]

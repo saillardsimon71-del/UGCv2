@@ -1,0 +1,41 @@
+{
+  "title": "FRAISE COSMIQUE - GLASS FRUIT ASMR",
+  "workspace": "lucj76861",
+  "app": "pvs-ltx",
+  "function": "render_clip",
+  "existing_function_id": "fu-Bs1p74vExLZMqQv9n3CHZP",
+  "attempts_per_shot": 1,
+  "max_concurrent_gpu": 1,
+  "max_gpu_calls": 3,
+  "client_deadline_per_shot_s": 600,
+  "target_duration_s": 15,
+  "publish": false,
+  "shots": [
+    {
+      "id": "01",
+      "image": "ASSETS/shot-01-firstframe.png",
+      "image_sha256": "a3c815ceb0da9b6f1838d61181000beb3be4b3a54f69780ecc047467976b394e",
+      "payload": "PROMPTS/shot-01-payload.json"
+    },
+    {
+      "id": "02",
+      "image": "ASSETS/shot-02-firstframe.png",
+      "image_sha256": "4516129d092c691843c50fcdabc89640837c07bedb69547009f9d1fd5e6c6731",
+      "payload": "PROMPTS/shot-02-payload.json"
+    },
+    {
+      "id": "03",
+      "image": "ASSETS/shot-03-firstframe.png",
+      "image_sha256": "2e0676887c8755bd2228082ab35fbabe04b3dd9f997cbd0cc5299583efceb315",
+      "payload": "PROMPTS/shot-03-payload.json"
+    }
+  ],
+  "existing_models": {
+    "diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors": 21504034224,
+    "text_encoders/gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors": 15372969374,
+    "vae/ltx-2.5-video-vae-conv-bf16.safetensors": 1452269922,
+    "vae/ltx-2.5-audio-vae-bf16.safetensors": 364866540,
+    "latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors": 995778752
+  },
+  "audio_sha256": "776b79f41281d3edcf7c623abb7eff01fc5c5e4c47f3a9dcecf6134d647dcad4"
+}

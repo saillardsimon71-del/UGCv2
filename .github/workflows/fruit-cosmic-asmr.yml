@@ -1,0 +1,68 @@
+name: Fraise cosmique ASMR - production unique
+
+on:
+  push:
+    branches: [production/fruit-cosmic-asmr-20261029]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sqv-premium12-modal-gpu
+  cancel-in-progress: false
+
+jobs:
+  production:
+    if: github.event.head_commit.message == 'RUN_FRUIT_COSMIC_ASMR_20261029' && github.run_attempt == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUNBUFFERED: '1'
+      FILM: productions/FRUIT-COSMIC-ASMR-20261029
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/FRUIT-COSMIC-ASMR-20261029
+            productions/PORTFOLIO-PREMIUM-12-2026-10-27/PRODUCTION
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Vérifier les secrets sans afficher leur valeur
+        run: |
+          test -n "$MODAL_TOKEN_ID"
+          test -n "$MODAL_TOKEN_SECRET"
+      - name: Dépendances CPU existantes, aucun déploiement Modal
+        timeout-minutes: 5
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install --disable-pip-version-check 'modal==1.6.1' 'Pillow>=11,<13'
+      - name: Syntaxe, vrais assets et garde-fous, aucun calcul distant
+        run: |
+          python -m py_compile "$FILM/PRODUCTION/run_production.py"
+          python "$FILM/PRODUCTION/run_production.py" check
+          python -m unittest discover -s "$FILM/PRODUCTION" -p test_production.py
+      - name: Trois appels LTX existants, un essai par plan
+        timeout-minutes: 32
+        run: python "$FILM/PRODUCTION/run_production.py" render --confirm-spend oui
+      - name: Montage CPU 15 secondes et ASMR original synchronisé
+        timeout-minutes: 6
+        run: python "$FILM/PRODUCTION/run_production.py" assemble
+      - name: Annuler les appels incomplets en cas d'échec
+        if: always() && (failure() || cancelled())
+        timeout-minutes: 2
+        run: python "$FILM/PRODUCTION/run_production.py" cancel
+      - name: Conserver sources, prises réelles et export sans publication
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FRAISE-COSMIQUE-ASMR-${{ github.run_id }}
+          path: productions/FRUIT-COSMIC-ASMR-20261029/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 0
