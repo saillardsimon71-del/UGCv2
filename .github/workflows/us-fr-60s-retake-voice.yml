@@ -1,0 +1,85 @@
+name: US FR 60s | refine five overfast lines, preserve original rhythm (one GPU)
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_V3_RETAKE_60S.txt
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: ugcv2-fr60-v3-retake-five-only
+  cancel-in-progress: false
+jobs:
+  five_revised_lines:
+    if: github.event.head_commit.message == 'RUN_FR60_V3_FIVE_RETAKES_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 48
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      ONE_VOICE_RETAKE_GPU: 'YES'
+      ROOT: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      PY: productions/US-FR-V2V-REAL-20261029/REAL_60S/retake_overfast_blocks.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard and Python compilation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_V3_RETAKE_60S.txt)" = "ONLY_FIVE_V3_RETakes_ONE_L40S_NO_VIDEO_GPU"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$PY" deploy/modal_chatterbox_v3_fr_pilot.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then sudo apt-get update -qq && sudo apt-get install -y ffmpeg; fi
+          python -m pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'soundfile==0.13.1'
+      - name: Fetch exact verified 60s source video
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: ${{ env.ROOT }}
+      - name: Fetch original English cadence markers and transcript
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-ENGLISH-ALIGNMENT-40944640728
+          run-id: 40944640728
+          github-token: ${{ github.token }}
+          path: ${{ env.ROOT }}
+      - name: Reuse accepted V3 first two takes plus existing five sets
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-NATURAL-V3-VOICE-40945609860
+          run-id: 40945609860
+          github-token: ${{ github.token }}
+          path: ${{ env.ROOT }}
+      - name: One V3 session regenerates five longer lines, recomposes 60s French preview
+        timeout-minutes: 38
+        run: python "$PY"
+      - name: Preserve real 60s French video, separate audio and timings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-60S-V3-REFINED-${{ github.run_id }}
+          path: |
+            ${{ env.ROOT }}/fr_60s_visuals_preserved_dub_preview.mp4
+            ${{ env.ROOT }}/fr_voice_original_cadence_60s.wav
+            ${{ env.ROOT }}/fr_subtitles_60s.srt
+            ${{ env.ROOT }}/fr_voice_selected_timeline.json
+            ${{ env.ROOT }}/fr_voice_candidate_durations.json
+            ${{ env.ROOT }}/fr_voice_script_timed.json
+            ${{ env.ROOT }}/status.json
+            ${{ env.ROOT }}/*_unhurried.wav
+            ${{ env.ROOT }}/*_conversational.wav
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
