@@ -1,0 +1,86 @@
+name: US FR 60s | Verify true source, inspect faces, preserve screenshots (CPU ONLY)
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_SOURCE_SCAN_ONCE.txt
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: ugcv2-real-fr-60s-source-scan-cpu
+  cancel-in-progress: false
+jobs:
+  real_sixty_second_scene_scan:
+    if: github.event.head_commit.message == 'SCAN_REAL_60S_SOURCE_CPU_ONLY' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      OUT: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      SCRIPT: productions/US-FR-V2V-REAL-20261029/REAL_60S/source_and_scenes.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard zero-GPU scan and install lightweight CPU tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_SOURCE_SCAN_ONCE.txt)" = "ONLY_CUT_AND_SCAN_60S_NO_MODAL_GPU_20261029"
+          python -m py_compile "$SCRIPT"
+          command -v ffmpeg && command -v ffprobe
+          python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'opencv-python-headless==4.10.0.84'
+      - name: Retrieve verified full original source SHA from previous source audit
+        uses: actions/download-artifact@v4
+        with:
+          name: REAL-US-FR-SOURCE-PROBE-40898616414
+          run-id: 40898616414
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/SOURCE_PROBE
+      - name: Download unchanged source via existing imported bridge and extract exactly 00:42-01:42
+        timeout-minutes: 10
+        run: python "$SCRIPT" source
+      - name: Sample real frames, estimate cuts and face/screen sections
+        timeout-minutes: 6
+        run: python "$SCRIPT" scenes
+      - name: Upload reviewable source preview and actual storyboard contact sheet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/source_window_60s.mp4
+            ${{ env.OUT }}/contact_60s_real_frames.jpg
+            ${{ env.OUT }}/source_provenance.json
+            ${{ env.OUT }}/scene_analysis.json
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: warn
+      - name: Update issue with evidence and next step
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os,json
+          from pathlib import Path
+          root=Path(os.environ["OUT"])
+          info=json.loads((root/"scene_analysis.json").read_text()) if (root/"scene_analysis.json").is_file() else {}
+          text=("### 60-second full-scene tutorial test: CPU-only source validation\n\n"
+                "Workflow: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+
+                "/actions/runs/"+os.environ["GITHUB_RUN_ID"]+"\n"
+                "Job result: "+os.environ["JOB_STATUS"]+"\n"
+                "Verified 60-second source available: "+str((root/"source_window_60s.mp4").is_file())+"\n"
+                "Real storyboard available: "+str((root/"contact_60s_real_frames.jpg").is_file())+"\n"
+                "Potential cut count: "+str(len(info.get("candidate_shot_cuts_source_s",[])))+"\n"
+                "No V2V GPU spent. Screen diagrams preserved; scene review required before presenter rendering.")
+          Path("real_60s_issue.md").write_text(text)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file real_60s_issue.md
