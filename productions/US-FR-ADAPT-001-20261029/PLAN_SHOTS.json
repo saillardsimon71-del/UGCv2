@@ -1,0 +1,157 @@
+{
+  "schema": "ugcv2.us-fr-adapt-pilot.v1",
+  "project_id": "US-FR-ADAPT-001-20261029",
+  "source_reference": {
+    "youtube_url": "https://www.youtube.com/watch?v=KSOxkhWs2Ic",
+    "channel": "The AI Advantage",
+    "title": "AI Automation: Complete Beginners Guide",
+    "transcript_used_for": "concept only",
+    "original_source_media_reused": false
+  },
+  "original_title_fr": "J'ai automatisé les demandes de devis d'un artisan avec l'IA (sans coder)",
+  "original_business_case": "Fausse entreprise Atelier Seine Plomberie de Rouen, fausse demande de réparation",
+  "audience": "fr-FR",
+  "format": "16:9",
+  "target_duration_s": 445,
+  "fps": 30,
+  "state": "PREPRODUCTION_ONLY",
+  "generations_requested": 0,
+  "models": {
+    "voice": "PENDING_VERIFIED_FR_VOICE",
+    "face": "PENDING_ORIGINAL_AVATAR_IMAGE",
+    "broll": "MAINLY_REAL_CAPTURE_AND_GRAPHICS",
+    "editing": "EXISTING_FFMPEG_NO_ENGINE_CHANGE"
+  },
+  "assets_required": [
+    "N8N_IMPORT_AND_REAL_EXECUTION_CAPTURE",
+    "FRENCH_VOICE_APPROVED_BY_HUMAN",
+    "BROLL_ORIGINAL",
+    "FINAL_HUMAN_QC"
+  ],
+  "shots": [
+    {
+      "id": "s01",
+      "start_s": 0,
+      "duration_s": 35,
+      "kind": "hook_avatar_broll",
+      "intent": "Créer intérêt, donner une promesse modeste",
+      "visual": "Avatar original facultatif + mock textuelle fictive. Pas de vidéo source américaine",
+      "script_ref": "script 01",
+      "audio": "voice_fr",
+      "source_type": "NEW_VIDEO",
+      "qc_note": "Présentateur et exemple 100% nouveaux",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s02",
+      "start_s": 35,
+      "duration_s": 45,
+      "kind": "fictional_request",
+      "intent": "Afficher la demande client fictive et son contexte",
+      "visual": "Carte graphique avec la demande de réparation fictive, badge EXEMPLE FICTIF",
+      "script_ref": "script 02",
+      "audio": "voice_fr",
+      "source_type": "NEW_GRAPHICS",
+      "qc_note": "Ne jamais exhiber de données réelles",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s03",
+      "start_s": 80,
+      "duration_s": 45,
+      "kind": "explain_workflow",
+      "intent": "Déclencheur / transformation / contrôle humain",
+      "visual": "Diagramme animé et capture du canevas n8n (session FR)",
+      "script_ref": "script 03",
+      "audio": "voice_fr",
+      "source_type": "N8N_CAPTURE",
+      "qc_note": "Véritable structure du projet",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s04",
+      "start_s": 125,
+      "duration_s": 40,
+      "kind": "real_n8n_trigger",
+      "intent": "Créer et tester entrée n8n",
+      "visual": "Captures n8n du vrai workflow importé, faux lead",
+      "script_ref": "script 04",
+      "audio": "voice_fr",
+      "source_type": "N8N_CAPTURE",
+      "qc_note": "Si impossibilité, marquer cette partie non tournée",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s05",
+      "start_s": 165,
+      "duration_s": 65,
+      "kind": "real_mistral_node",
+      "intent": "Configurer appel Mistral et prompt FR",
+      "visual": "n8n vrai nœud HTTP; secrets et headers masqués",
+      "script_ref": "script 05",
+      "audio": "voice_fr",
+      "source_type": "N8N_CAPTURE",
+      "qc_note": "Clé et données privées masquées",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s06",
+      "start_s": 230,
+      "duration_s": 55,
+      "kind": "real_llm_result",
+      "intent": "Résultat effectivement retourné par l'exécution",
+      "visual": "Capture de sortie Mistral réelle dans n8n; pas d'output inventé",
+      "script_ref": "script 06",
+      "audio": "voice_fr",
+      "source_type": "API_RESULT",
+      "qc_note": "Bloquant pour final si aucun vrai résultat",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s07",
+      "start_s": 285,
+      "duration_s": 55,
+      "kind": "human_approval",
+      "intent": "Montrer brouillon, pas d'envoi automatique",
+      "visual": "n8n nœud final, graphique validation humaine",
+      "script_ref": "script 07",
+      "audio": "voice_fr",
+      "source_type": "N8N_CAPTURE",
+      "qc_note": "Le workflow ne doit contacter personne",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s08",
+      "start_s": 340,
+      "duration_s": 60,
+      "kind": "other_french_cases",
+      "intent": "Décliner le concept + contrôles RGPD/couts",
+      "visual": "Cartes typographiques originales, pictos autorisés",
+      "script_ref": "script 08",
+      "audio": "voice_fr",
+      "source_type": "NEW_GRAPHICS",
+      "qc_note": "Exemples hypothétiques sans faux résultats",
+      "status": "PLANNED_UNSHOT"
+    },
+    {
+      "id": "s09",
+      "start_s": 400,
+      "duration_s": 45,
+      "kind": "recap_cta",
+      "intent": "Conclure, rendre reproductible",
+      "visual": "Avatar facultatif + captures résumées",
+      "script_ref": "script 09",
+      "audio": "voice_fr",
+      "source_type": "NEW_VIDEO",
+      "qc_note": "Ne promettre aucun résultat",
+      "status": "PLANNED_UNSHOT"
+    }
+  ],
+  "acceptance": {
+    "minimum_human_qc": 4,
+    "real_workflow_screen_required": true,
+    "source_video_footage_reused": false,
+    "customer_contact_permitted": false,
+    "publish_automatically": false
+  }
+}
