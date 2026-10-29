@@ -1,0 +1,52 @@
+name: US FR 60s | original English cadence and word timings (CPU only)
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_ENGLISH_ALIGNMENT.txt]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-original-60s-asr-cpu
+  cancel-in-progress: false
+jobs:
+  asr:
+    if: github.event.head_commit.message == 'ALIGN_REAL_60S_ENGLISH_CPU_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      OUT: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard and install CPU ASR; no Modal GPU
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_ENGLISH_ALIGNMENT.txt)" = "SOURCE_ENGLISH_WORD_ALIGNMENT_CPU_ONLY"
+          python -m py_compile productions/US-FR-V2V-REAL-20261029/REAL_60S/transcribe_timing.py
+          if ! command -v ffmpeg >/dev/null; then sudo apt-get update -qq && sudo apt-get install -y ffmpeg; fi
+          pip install -q 'faster-whisper==1.2.1' 'soundfile==0.13.1' 'numpy==1.26.4'
+      - name: Download exact 60s original established from SHA-verified imported video
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: ${{ env.OUT }}
+      - name: Timestamped English transcript and speech loudness every 100ms
+        timeout-minutes: 14
+        run: python productions/US-FR-V2V-REAL-20261029/REAL_60S/transcribe_timing.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: US-FR-60S-ENGLISH-ALIGNMENT-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/english_transcript_word_timings.json
+            ${{ env.OUT }}/english_transcript_readable.txt
+          retention-days: 14
+          if-no-files-found: warn
