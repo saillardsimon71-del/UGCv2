@@ -1,0 +1,143 @@
+{
+  "name": "DEMO FR — Devis artisan : analyse et brouillon (Mistral, AUCUN ENVOI)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-start",
+      "name": "01 - Départ manuel",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// EXEMPLE ENTIÈREMENT FICTIF. Aucune personne réelle.\nreturn [{json: {\n  entreprise: 'Atelier Seine Plomberie (fictif)',\n  ville: 'Rouen',\n  prenom: 'Camille (fictif)',\n  email: 'camille@example.com',\n  demande: 'Bonjour, de l eau coule sous mon évier depuis ce matin. Je suis disponible demain après-midi. Pouvez-vous intervenir et me dire ce qu il faut préparer ?',\n  canal: 'message de démonstration',\n  demo_only: true\n}}];"
+      },
+      "id": "fake-input",
+      "name": "02 - Demande fictive",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const d=$input.first().json;\nif (!d.demo_only || !String(d.email).endsWith('@example.com')) throw new Error('SECURITE: données de démonstration uniquement');\nconst prompt=[\n  'Tu prépares un BROUILLON, jamais une réponse envoyée automatiquement.',\n  'Cas: entreprise fictive de plomberie en France.',\n  'Identifie le type de demande et un niveau d urgence prudent (indicatif).',\n  'Rédige une réponse polie en français au client, 70 à 110 mots.',\n  'Ne promets jamais de tarif, délai, diagnostic certain, disponibilité ou rendez-vous.',\n  'Si une information manque, demande-la simplement.',\n  'Rends EXACTEMENT trois sections: CATEGORIE:, URGENCE:, BROUILLON: .',\n  'Entreprise: '+d.entreprise,\n  'Ville: '+d.ville,\n  'Message fictif: '+d.demande\n].join('\\\\n');\nreturn [{json:{...d,prompt,requires_human_approval:true}}];"
+      },
+      "id": "prepare-prompt",
+      "name": "03 - Préparer instruction FR",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.MISTRAL_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'mistral-small-latest', messages: [{role: 'system', content: 'Tu écris des brouillons prudents pour une entreprise française fictive. Tu ne dois jamais inventer un prix, un diagnostic certain ni un délai.'}, {role:'user',content:$json.prompt}], temperature:0.2, max_tokens:320 }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "mistral",
+      "name": "04 - Mistral API (clé privée requise)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const resp=$input.first().json;\nconst original=$('03 - Préparer instruction FR').first().json;\nconst message=resp.choices?.[0]?.message?.content;\nif (typeof message !== 'string' || !message.trim()) throw new Error('Aucun texte utilisable retourné par Mistral');\nreturn [{json:{\n  status:'BROUILLON_NON_ENVOYE',\n  source:'Mistral API (appel réel si exécution autorisée)',\n  demo_only:true,\n  entreprise:original.entreprise,\n  destinataire_test:original.email,\n  texte_original:original.demande,\n  analyse_et_brouillon:message,\n  validation_humaine_obligatoire:true,\n  autorise_envoi_automatique:false,\n  avertissement:'Avant usage réel : vérifier les données, consentements, accès et obligations RGPD.'\n}}];"
+      },
+      "id": "review",
+      "name": "05 - Brouillon à valider (FIN)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "01 - Départ manuel": {
+      "main": [
+        [
+          {
+            "node": "02 - Demande fictive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "02 - Demande fictive": {
+      "main": [
+        [
+          {
+            "node": "03 - Préparer instruction FR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03 - Préparer instruction FR": {
+      "main": [
+        [
+          {
+            "node": "04 - Mistral API (clé privée requise)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "04 - Mistral API (clé privée requise)": {
+      "main": [
+        [
+          {
+            "node": "05 - Brouillon à valider (FIN)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "us-fr-adapt-001-20261029",
+  "tags": [],
+  "meta": {
+    "description": "Template uniquement. Nécessite une clé Mistral dans l'environnement n8n autohébergé, non comprise. Aucune action d'envoi."
+  }
+}
