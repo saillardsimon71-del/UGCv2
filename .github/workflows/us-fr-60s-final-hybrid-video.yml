@@ -46,8 +46,8 @@ jobs:
       - name: Download corrected 60s real face replacement with pixel change proof
         uses: actions/download-artifact@v4
         with:
-          name: US-FR-60S-NEW-PRESENTER-40949764884
-          run-id: 40949764884
+          name: US-FR-60S-SELECTIVE-FACES-40955263301
+          run-id: 40955263301
           github-token: ${{ github.token }}
           path: productions/US-FR-V2V-REAL-20261029/REAL_60S/FACE_SWAP
       - name: Download exact one-minute final Chatterbox V3 French mix and original UI preview
