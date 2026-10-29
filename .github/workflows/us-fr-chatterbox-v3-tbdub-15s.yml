@@ -1,0 +1,118 @@
+name: US FR | Chatterbox V3 French natural voice + proven TBDub Student 15s
+on:
+  push:
+    branches: [production/us-fr-chatterbox-v3-tbdub-15s-20261029]
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/RUN_V3_TBDUB_15S_ONCE.txt
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+concurrency:
+  group: ugcv2-real-french-v3-15s-once
+  cancel-in-progress: false
+
+jobs:
+  voice_and_visual_dub:
+    if: github.event.head_commit.message == 'RUN_FR_V3_TBDUB_15S_ONE_TIME' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      CONFIRM_ONE_VOICE_GPU: 'YES'
+      CONFIRM_ONE_TBDUB_GPU: 'YES'
+      SCRIPT: productions/US-FR-V2V-REAL-20261029/test_chatterbox_v3_tbdub_15s.py
+      RESULT_DIR: productions/US-FR-V2V-REAL-20261029/CHATTERBOX_V3_TBDUB_15S
+    steps:
+      - name: Check out isolated voice and dubbing pilot only
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard one attempt and compile; never touch original V2V
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_V3_TBDUB_15S_ONCE.txt)" = "AUTHORIZE_V3_VOICE_ONE_L4_AND_TBDUB_ONE_L40S_15S"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$SCRIPT" deploy/modal_chatterbox_v3_fr_pilot.py deploy/modal_tbdub_fr_worker.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          command -v ffmpeg && command -v ffprobe
+      - name: Reuse actual LTX V2V 15s render from October 29 (zero V2V GPUs)
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-V2V-15S-40899629965
+          run-id: 40899629965
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/EXISTING_V2V_15S
+      - name: Verify original true 15s V2V visual source, CPU
+        timeout-minutes: 4
+        run: python "$SCRIPT" source
+      - name: Install Modal controller
+        run: python -m pip install --disable-pip-version-check 'modal==1.6.1'
+      - name: Render French voice A and B with Chatterbox Multilingual V3, preserve native pace
+        timeout-minutes: 43
+        run: python "$SCRIPT" voice
+      - name: Validate face and reuse cached TBDub Student, ONE 12-15s L40S render
+        timeout-minutes: 49
+        run: python "$SCRIPT" lipsync
+      - name: Produce and decode actual video, voice and side-by-side comparison
+        timeout-minutes: 7
+        run: python "$SCRIPT" finish
+      - name: Upload all produced voice variants, true video, comparison and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-CHATTERBOX-V3-TBDUB-15S-${{ github.run_id }}
+          path: |
+            ${{ env.RESULT_DIR }}/original_v2v_15s.mp4
+            ${{ env.RESULT_DIR }}/original_v2v_for_tbdub.mp4
+            ${{ env.RESULT_DIR }}/expressive_v3.wav
+            ${{ env.RESULT_DIR }}/conversational_v3.wav
+            ${{ env.RESULT_DIR }}/voice_french_v3_selected.wav
+            ${{ env.RESULT_DIR }}/tbdub_face_preflight_crop.mp4
+            ${{ env.RESULT_DIR }}/tbdub_v3_raw.mp4
+            ${{ env.RESULT_DIR }}/UGCv2_FR_ChatterboxV3_TBDub_15s_A_VERIFIER.mp4
+            ${{ env.RESULT_DIR }}/UGCv2_FR_ChatterboxV3_TBDub_AVANT_APRES.mp4
+            ${{ env.RESULT_DIR }}/*.jpg
+            ${{ env.RESULT_DIR }}/*.json
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
+      - name: Record exact result in GitHub issue 3
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os,json
+          root=Path(os.environ["RESULT_DIR"])
+          status=json.loads((root/"status.json").read_text()) if (root/"status.json").exists() else {}
+          voice=json.loads((root/"voice_candidates.json").read_text()) if (root/"voice_candidates.json").exists() else {}
+          final=(root/"UGCv2_FR_ChatterboxV3_TBDub_15s_A_VERIFIER.mp4").exists()
+          report=("### Chatterbox Multilingual V3 + TBDub Student French V2V (12-15s)\n\n"
+            "Run: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+"/actions/runs/"+
+            os.environ["GITHUB_RUN_ID"]+"\n\nStatus: **"+os.environ["RESULT"]+
+            "**; stage: **"+status.get("step","NOT_REACHED")+"**\n\n"
+            "Actual new MP4 exists: **"+str(final)+"**\n"
+            "Selected voice: "+str(voice.get("selected",{}).get("label","none"))+"\n"
+            "Voice time stretching: **none**\n"
+            "Files: "+", ".join(f.name for f in root.glob("*") if f.is_file())+
+            "\n\nUser must review French prosody, pace and facial realism. Source LTX V2V unchanged.")
+          Path("v3_issue.md").write_text(report)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file v3_issue.md
