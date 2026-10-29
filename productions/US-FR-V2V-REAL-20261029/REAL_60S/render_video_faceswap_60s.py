@@ -119,6 +119,32 @@ def inspect():
         "-f","null","-"],timeout=300)
     if not 59.8<float(probe(MUTED)["format"]["duration"])<60.2:
         raise RuntimeError("Face-swap track not 60 seconds")
+    # GitHub previously marked an unchanged video 'success'. Prove we actually
+    # altered a human face; compression noise alone is <2 grayscale values.
+    import cv2
+    import numpy as np
+    original_cap=cv2.VideoCapture(str(SOURCE))
+    swapped_cap=cv2.VideoCapture(str(MUTED))
+    changes=[]
+    for sec in (10.0,23.0,58.0):
+        for cap in (original_cap,swapped_cap):
+            cap.set(cv2.CAP_PROP_POS_MSEC,sec*1000)
+        good_a,src=original_cap.read()
+        good_b,dst=swapped_cap.read()
+        if not good_a or not good_b:
+            raise RuntimeError(f"Cannot inspect corrected face replacement at {sec}s")
+        # Presenter is near the frame center, x590–1150, y105–660.
+        diff=np.abs(src[105:660,590:1150].astype(np.int16)-
+                    dst[105:660,590:1150].astype(np.int16))
+        changes.append({"second":sec,"face_roi_mae":round(float(diff.mean()),3),
+                        "face_roi_pixels_over_20":round(float(np.mean(diff>20)),4)})
+    original_cap.release()
+    swapped_cap.release()
+    save("face_swap_pixel_evidence.json",{"metrics":changes,
+        "face_replacement_detected":
+            (changes[0]["face_roi_mae"]>4.2 and changes[-1]["face_roi_mae"]>4.2)})
+    if changes[0]["face_roi_mae"]<=4.2 or changes[-1]["face_roi_mae"]<=4.2:
+        raise RuntimeError("FaceFusion new 60s output is not visibly changed — discard the render")
     for mark in (2,10,23,30,46,58):
         sh(["ffmpeg","-y","-v","error","-ss",str(mark),"-i",str(MUTED),
             "-frames:v","1",str(OUT/f"face_{mark:02d}s.jpg")],timeout=180)
