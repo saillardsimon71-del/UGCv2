@@ -1,0 +1,84 @@
+name: Glass strawberry I2V - ONE clean cut (5s)
+
+on:
+  push:
+    branches: [production/fruit-cosmic-i2v-onecut-20261029]
+    paths:
+      - productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/I2V_START_ONCE.txt
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sqv-premium12-modal-gpu
+  cancel-in-progress: false
+
+jobs:
+  one_cut:
+    if: github.event.head_commit.message == 'RUN_FRUIT_COSMIC_I2V_ONECUT_20261029' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      PYTHONUNBUFFERED: '1'
+      SCRIPT: productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/i2v_onecut.py
+      FILM: productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/i2v-output
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/FRUIT-COSMIC-ASMR-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify single-run authorization and Modal secrets (no GPU)
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(tr -d '\r\n' < productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/I2V_START_ONCE.txt)" = 'I2V_ONECUT_GPU_AUTHORIZED_20261029'
+          test -n "${MODAL_TOKEN_ID:-}"
+          test -n "${MODAL_TOKEN_SECRET:-}"
+          python -m py_compile "$SCRIPT"
+      - name: Install pinned CPU dependencies and ffmpeg (no deploy)
+        timeout-minutes: 5
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffmpeg || ! command -v ffprobe; then
+            timeout 90s sudo apt-get install -y ffmpeg || { timeout 90s sudo apt-get update -qq; timeout 90s sudo apt-get install -y ffmpeg; }
+          fi
+          python -m pip install --disable-pip-version-check 'modal==1.6.1' 'Pillow==11.3.0' 'numpy==2.2.6'
+      - name: Generate opaque source from original verified PNG, validate I2V graph (CPU only)
+        timeout-minutes: 3
+        run: python "$SCRIPT" prepare
+      - name: Render exactly one silent 5-second I2V on existing L40S (no retry)
+        timeout-minutes: 12
+        run: python "$SCRIPT" render --confirm-spend oui
+      - name: Preserve original frame, result, actual metadata and cut contact sheet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FRUIT-COSMIC-I2V-ONECUT-${{ github.run_id }}
+          path: |
+            ${{ env.FILM }}/onecut-opaque-first-frame.png
+            ${{ env.FILM }}/onecut-raw-5s.mp4
+            ${{ env.FILM }}/result-contact-sheet.jpg
+            ${{ env.FILM }}/plan.json
+            ${{ env.FILM }}/render_receipt.json
+          if-no-files-found: error
+          retention-days: 60
+          compression-level: 0
+      - name: Report only observed technical result
+        if: always()
+        shell: bash
+        run: |
+          echo "## Single-cut I2V LTX-2.5 pilot" >> "$GITHUB_STEP_SUMMARY"
+          echo "One source frame, one prompt, one GPU attempt, no post-audio and no automatic publication." >> "$GITHUB_STEP_SUMMARY"
+          if test -s "$FILM/onecut-raw-5s.mp4"; then
+            echo "MP4 exists; review actual knife-through-fruit cut, two distinct halves, timing and galaxy reveal manually." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No MP4; inspect preflight/Modal error. Do not claim generation success." >> "$GITHUB_STEP_SUMMARY"
+          fi
