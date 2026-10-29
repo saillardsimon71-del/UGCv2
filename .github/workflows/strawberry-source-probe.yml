@@ -1,0 +1,44 @@
+name: STRAWBERRY | check real cutting footage (CPU only)
+
+on:
+  push:
+    branches: [production/glass-cut-motion-pilot-20261029]
+    paths:
+      - productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/PROBE_SOURCE_ONCE.txt
+permissions:
+  contents: read
+jobs:
+  probe:
+    if: github.event.head_commit.message == 'PROBE_STRAWBERRY_SOURCE_20261029'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure ffmpeg available
+        run: |
+          if ! command -v ffprobe; then timeout 90s sudo apt-get update -qq && timeout 90s sudo apt-get install -y ffmpeg; fi
+      - name: Download only actual Pexels CDN file
+        timeout-minutes: 5
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p source_probe
+          url='https://videos.pexels.com/video-files/4081319/4081319-uhd_3840_2160_24fps.mp4'
+          code=$(curl -L --compressed -sS -w '%{http_code}' -o source_probe/strawberry.mp4 --max-time 150 --max-filesize 170000000 "$url" || true)
+          echo "HTTP status: $code"
+          test "$code" = '200' || { echo "::error::CDN inaccessible: HTTP $code"; exit 1; }
+          file source_probe/strawberry.mp4
+          test "$(stat -c%s source_probe/strawberry.mp4)" -ge 100000
+          ffprobe -v error -show_entries format=duration,size:stream=codec_type,width,height,avg_frame_rate -of json source_probe/strawberry.mp4 > source_probe/PROBE.json
+          cat source_probe/PROBE.json
+          ffmpeg -v error -y -i source_probe/strawberry.mp4 -vf 'fps=1,scale=320:-1,tile=5x3' -frames:v 1 source_probe/contact.jpg
+          sha256sum source_probe/strawberry.mp4 | tee source_probe/SHA256.txt
+      - name: Save proof of real source without spending GPU
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strawberry-source-cdn-probe-${{ github.run_id }}
+          path: source_probe/
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 0
