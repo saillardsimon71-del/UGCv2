@@ -32,7 +32,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(tr -d '\r\n' < productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/START_ONCE.txt)" = "ONE_GPU_V2V_GLASSCUT_APPROVED_20261029_CPUFIX1" || { echo "::error::Wrong one-time marker"; exit 1; }
+          test "$(tr -d '\r\n' < productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/START_ONCE.txt)" = "ONE_GPU_V2V_GLASSCUT_APPROVED_20261029_CPUFIX2_CDN_9020974" || { echo "::error::Wrong one-time marker"; exit 1; }
           test -n "${MODAL_TOKEN_ID:-}" && test -n "${MODAL_TOKEN_SECRET:-}" || { echo "::error::Modal secrets absent; no GPU"; exit 1; }
           python -m py_compile "$PY"
       - name: Ensure ffmpeg and ffprobe are available (CPU only)
