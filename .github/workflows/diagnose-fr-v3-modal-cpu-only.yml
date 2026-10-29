@@ -1,0 +1,52 @@
+name: Diagnose current Chatterbox V3 Modal app (READ ONLY / 0 GPU)
+on:
+  push:
+    branches: [production/us-fr-chatterbox-v3-tbdub-15s-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/RUN_V3_CPU_DIAG.txt]
+permissions:
+  contents: read
+jobs:
+  read_logs:
+    if: github.event.head_commit.message == 'READ_V3_MODAL_LOGS_NO_GPU'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read-only Modal runtime diagnostics
+        shell: bash
+        run: |
+          set -eu
+          test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_V3_CPU_DIAG.txt)" = "READ_ONLY_MODAL_V3_APP_LOGS_NO_GPU"
+          pip install -q 'modal==1.6.1'
+          mkdir -p diagnostics
+          modal app list --env main --json > diagnostics/apps.json 2>&1 || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          try:
+            apps=json.loads(Path('diagnostics/apps.json').read_text())
+            hits=[a for a in apps if 'chatterbox-v3-french-ab' in str(a.get('description',''))]
+            Path('diagnostics/matched.txt').write_text(json.dumps(hits,indent=2))
+            if hits:
+              Path('diagnostics/app_id.txt').write_text(str(hits[0]['app_id']))
+          except Exception as e:
+            Path('diagnostics/matched.txt').write_text(str(e))
+          PY
+          if test -s diagnostics/app_id.txt; then
+            timeout 30 modal app logs "$(cat diagnostics/app_id.txt)" --env main --since 2h --tail 1500 --timestamps > diagnostics/runtime.txt 2>&1 || true
+          fi
+          grep -iE -C 3 'error|exception|download|building|failed|running|loading|model' diagnostics/runtime.txt | tail -50 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: V3-VOICE-DIAG-${{ github.run_id }}
+          path: diagnostics/
+          if-no-files-found: warn
