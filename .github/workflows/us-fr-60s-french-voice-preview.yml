@@ -1,0 +1,115 @@
+name: US FR 60s | natural-cadence French V3 narration + screen-preserving MP4
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FRENCH_V3_60S_ONCE.txt
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: ugcv2-fr60-natural-voice-one-gpu
+  cancel-in-progress: false
+
+jobs:
+  paced_fr_v3:
+    if: github.event.head_commit.message == 'RUN_FR_60S_V3_VOICE_SINGLE_GPU' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      CONFIRM_V3_SINGLE_GPU: 'YES'
+      ROOT: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      SCRIPT: productions/US-FR-V2V-REAL-20261029/REAL_60S/build_french_voice_and_preview.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check authorized one-time voice generation and dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FRENCH_V3_60S_ONCE.txt)" = "ONE_V3_FRENCH_60S_VOICE_GPU_NO_VIDEO_GPU"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$SCRIPT" deploy/modal_chatterbox_v3_fr_pilot.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          python -m pip install -q 'numpy==1.26.4' 'soundfile==0.13.1' 'modal==1.6.1'
+      - name: Download 60s true original screen source including diagrams and click motion
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: ${{ env.ROOT }}
+      - name: Download real original English word alignment and pauses
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-ENGLISH-ALIGNMENT-40944640728
+          run-id: 40944640728
+          github-token: ${{ github.token }}
+          path: ${{ env.ROOT }}
+      - name: Validate original source identity, scene and original speech timings, CPU
+        run: python "$SCRIPT" preflight
+      - name: One GPU session renders seven French timed blocks with two natural auditions each
+        timeout-minutes: 44
+        run: python "$SCRIPT" voice
+      - name: Select unhurried French takes within original slots, with NO sped-up speech
+        timeout-minutes: 4
+        run: python "$SCRIPT" mix
+      - name: Mux 1920x1080 unchanged screen pixels with new exactly one-minute French audio
+        timeout-minutes: 5
+        run: python "$SCRIPT" preview
+      - name: Save all natural French voice versions, original-timed mix and private MP4
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-60S-NATURAL-V3-VOICE-${{ github.run_id }}
+          path: |
+            ${{ env.ROOT }}/fr_voice_original_cadence_60s.wav
+            ${{ env.ROOT }}/fr_60s_visuals_preserved_dub_preview.mp4
+            ${{ env.ROOT }}/fr_subtitles_60s.srt
+            ${{ env.ROOT }}/fr_transcript_60s.txt
+            ${{ env.ROOT }}/*_unhurried.wav
+            ${{ env.ROOT }}/*_conversational.wav
+            ${{ env.ROOT }}/*.json
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
+      - name: Exact outcome and completed files in GitHub issue 3
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os,json
+          from pathlib import Path
+          p=Path(os.environ["ROOT"])
+          data=json.loads((p/"status.json").read_text()) if (p/"status.json").is_file() else {}
+          ready=(p/"fr_60s_visuals_preserved_dub_preview.mp4").is_file()
+          report=(
+            "### 60s mixed scenes — authentic English-aligned French Chatterbox V3\n\n"
+            "Run: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+
+            "/actions/runs/"+os.environ["GITHUB_RUN_ID"]+
+            "\nJob: **"+os.environ["RESULT"]+"**"
+            "\nStage: **"+str(data.get("stage","NOT_REACHED"))+"**"
+            "\nReal 60s French preview: **"+str(ready)+"**"
+            "\n7 original speech blocks: **no global pitch or speed change**"
+            "\nOriginal visual UI retained at full resolution; no change to LTX V2V."
+            "\nNext: presenter/PIP replacement in a separate GPU step, not part of this voice-only run."
+          )
+          Path("fr60_voice_issue.md").write_text(report)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file fr60_voice_issue.md
