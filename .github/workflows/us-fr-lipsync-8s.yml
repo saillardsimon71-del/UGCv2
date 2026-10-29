@@ -48,6 +48,9 @@ jobs:
           test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_LIPSYNC_8S_ONCE.txt)" = "ONE_EXISTING_V2V_EIGHT_SECOND_LIPSYNC_GPU_AUTHORIZED"
           test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
           python -m py_compile "$TEST" deploy/modal_lipsync_worker.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
           command -v ffmpeg && command -v ffprobe
       - name: Install lightweight controller only
         run: python -m pip install --disable-pip-version-check 'modal==1.6.1' 'requests>=2.31,<3' 'edge-tts>=7,<8'
