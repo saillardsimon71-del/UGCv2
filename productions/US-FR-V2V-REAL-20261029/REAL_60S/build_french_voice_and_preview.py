@@ -33,15 +33,15 @@ BLOCKS=[
  {"id":"02_always_on","start_s":6.04,"end_s":11.92,
   "fr_text":"une nouvelle automatisation qui fonctionne jour et nuit, et se déclenche dès que l'événement arrive."},
  {"id":"03_domino_trigger","start_s":12.12,"end_s":20.90,
-  "fr_text":"Voilà le premier concept à retenir : le déclencheur. Imaginez une rangée de dominos : le déclencheur, c'est le premier. C'est lui qui met tout en mouvement."},
+  "fr_text":"Le premier concept à comprendre, c'est le déclencheur. Imaginez une rangée de dominos. Le déclencheur, c'est le premier domino. En tombant, il met tous les autres en mouvement."},
  {"id":"04_drop_a_file","start_s":21.18,"end_s":30.86,
-  "fr_text":"Prenons un déclencheur très simple. Dès que je dépose un nouveau fichier dans un dossier de mon ordinateur, mon automatisation démarre toute seule."},
+  "fr_text":"Pour notre exemple, je choisis un de mes déclencheurs préférés, car il est vraiment universel. Chaque fois que je glisse un nouveau fichier dans un dossier de mon ordinateur, l'automatisation démarre aussitôt."},
  {"id":"05_dropbox_drive","start_s":31.18,"end_s":39.28,
-  "fr_text":"Moi, j'utilise Dropbox. Mais vous pouvez choisir Google Drive, ou l'une des milliers d'applications compatibles avec Zapier."},
+  "fr_text":"Dans mon cas, je prends Dropbox, parce que je l'utilise au quotidien. Mais Google Drive marcherait aussi, comme les cinq mille autres applications qui se connectent à Zapier."},
  {"id":"06_local_folders","start_s":39.38,"end_s":48.30,
-  "fr_text":"Dropbox est installé chez moi, donc j'ai tous mes dossiers sur l'ordinateur. J'ouvre AutoHub AI Advantage : j'y gère certaines automatisations."},
+  "fr_text":"Dropbox est installé sur mon ordinateur, alors tous mes dossiers sont là, en local. J'ouvre AutoHub AI Advantage : c'est dans ce dossier que je gère plusieurs de mes automatisations."},
  {"id":"07_youtube_folders","start_s":48.42,"end_s":59.62,
-  "fr_text":"Ici, je crée un dossier Test YouTube. Puis j'ajoute deux sous-dossiers. Le premier s'appelle Dépôt des e-mails, parce que c'est là qu'on va placer les messages."},
+  "fr_text":"Ici, je clique sur Nouveau dossier. Je vais l'appeler Test YouTube. C'est très simple : à l'intérieur, je crée deux sous-dossiers. Le premier s'appelle Zone de dépôt des e-mails, parce que c'est là qu'on va déposer tous les e-mails."},
 ]
 
 
