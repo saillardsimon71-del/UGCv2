@@ -18,8 +18,8 @@ from pathlib import Path
 import modal
 
 APP_NAME = "ugc-latentsync16-fr"
-CHECKPOINTS = Path("/models/checkpoints")
-HF_CACHE = "/models/hf"
+CHECKPOINTS = Path("/mnt/ugcv2_latentsync_fr/checkpoints")
+HF_CACHE = "/mnt/ugcv2_latentsync_fr/hf"
 LATENTSYNC_SHA = "a229c3948406bc2cf6eaf4873e662e70c6a04746"
 app = modal.App(APP_NAME)
 volume = modal.Volume.from_name("ugc-latentsync16-fr-models", create_if_missing=True)
@@ -35,7 +35,7 @@ image = (
         f"cd /opt/LatentSync && git checkout --detach {LATENTSYNC_SHA}",
         "python -m pip install --no-cache-dir -r /opt/LatentSync/requirements.txt",
     )
-    .env({"HF_HOME": HF_CACHE, "XDG_CACHE_HOME": "/models/cache"})
+    .env({"HF_HOME": HF_CACHE, "XDG_CACHE_HOME": "/mnt/ugcv2_latentsync_fr/cache"})
 )
 
 
@@ -55,7 +55,7 @@ def readiness() -> dict:
 
 @app.function(image=image, cpu=4, memory=16000, timeout=2400,
               min_containers=0, max_containers=1,
-              volumes={"/models": volume})
+              volumes={"/mnt/ugcv2_latentsync_fr": volume})
 def prepare() -> dict:
     """CPU-only checkpoint download. Never allocates a GPU."""
     from huggingface_hub import hf_hub_download, snapshot_download
@@ -86,7 +86,7 @@ def prepare() -> dict:
 
 @app.function(image=image, gpu="L40S", cpu=8, memory=32768, timeout=1800,
               min_containers=0, max_containers=1,
-              scaledown_window=2, volumes={"/models": volume})
+              scaledown_window=2, volumes={"/mnt/ugcv2_latentsync_fr": volume})
 def render_four_seconds(video_b64: str, audio_b64: str) -> dict:
     """One bounded 4-second native French lip-sync; accepts no arbitrary prompts."""
     if not readiness()["models_ok"]:
