@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p diagnostics
           modal app list --env main --json > diagnostics/modal_apps.json 2>&1 || true
-          modal app logs ugcv2-fr-latentsync-4s --env main --since 2h --tail 2000 --timestamps > diagnostics/modal_logs.txt 2>&1 || true
+          modal app logs ap-kv6BmtWG4thFNPciLNzc0X --env main --since 2h --tail 2000 --timestamps > diagnostics/modal_logs.txt 2>&1 || true
           grep -E -i -C 3 '(error|exception|traceback|failed|no module named|download)' diagnostics/modal_logs.txt | tail -100 || true
       - uses: actions/upload-artifact@v4
         if: always()
