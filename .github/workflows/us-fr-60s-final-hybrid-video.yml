@@ -1,0 +1,107 @@
+name: US FR 60s | real final hybrid tutorial (screens original, V3 French, TBDub faces)
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_HYBRID_FINAL_ONCE.txt]
+permissions:
+  contents: read
+  actions: read
+  issues: write
+concurrency:
+  group: ugcv2-real-fr60-final-tbdub-single-gpu
+  cancel-in-progress: false
+jobs:
+  final_video:
+    if: github.event.head_commit.message == 'RUN_REAL_FR60_TBDUB_HYBRID_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    env:
+      GH_TOKEN: ${{ github.token }}
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      ALLOW_ONE_LIPS_GPU: 'YES'
+      OUT: productions/US-FR-V2V-REAL-20261029/REAL_60S/HYBRID_FINAL
+      PY: productions/US-FR-V2V-REAL-20261029/REAL_60S/composite_hybrid_tbdub_60s.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: One-time authorization and real script syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_HYBRID_FINAL_ONCE.txt)" = "ONE_L40S_FOUR_FACE_SHOTS_TBDUB_PRESERVE_FULL_60S_SCREEN"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$PY" deploy/modal_tbdub_fr_worker.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          pip install -q 'modal==1.6.1'
+      - name: Download corrected 60s real face replacement with pixel change proof
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-NEW-PRESENTER-40949764884
+          run-id: 40949764884
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/FACE_SWAP
+      - name: Download exact one-minute final Chatterbox V3 French mix and original UI preview
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-V3-FINAL-VOICE-40948222718
+          run-id: 40948222718
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      - name: Prove true face change and exact source-timed French audio, isolate 4 face shots CPU
+        timeout-minutes: 8
+        run: python "$PY" preflight
+      - name: One L40S official TBDub Student GPU, process real visible face shots ONLY
+        timeout-minutes: 80
+        run: python "$PY" lips
+      - name: Composite lip-corrected faces and actual 1080p UI, render 60s French MP4
+        timeout-minutes: 18
+        run: python "$PY" assemble
+      - name: Preserve actual hybrid MP4, 60s comparison and source provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-REAL-60S-HYBRID-FINAL-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/UGCv2_FR_60s_TBDub_HYBRID_TEST.mp4
+            ${{ env.OUT }}/UGCv2_FR60_COMPARE_ORIGINAL_VS_HYBRID.mp4
+            ${{ env.OUT }}/tbdub_result.json
+            ${{ env.OUT }}/source_provenance.json
+            ${{ env.OUT }}/status.json
+            ${{ env.OUT }}/hybrid_at_*.jpg
+            ${{ env.OUT }}/cam_*_tbdub_french.mp4
+            ${{ env.OUT }}/cam_*_source_face.mp4
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
+      - name: Record result without falsely claiming subjective quality
+        if: always()
+        env:
+          RESULT: ${{ job.status }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os,json
+          from pathlib import Path
+          p=Path(os.environ["OUT"])
+          d=json.loads((p/"status.json").read_text()) if (p/"status.json").is_file() else {}
+          final=(p/"UGCv2_FR_60s_TBDub_HYBRID_TEST.mp4").is_file()
+          msg=("### Full real one-minute screen-preserved French dubbing\n\n"
+               "Run: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+
+               "/actions/runs/"+os.environ["GITHUB_RUN_ID"]+
+               "\nJob: **"+os.environ["RESULT"]+"**\nStage: **"+d.get("stage","NOT_REACHED")+
+               "**\nReal final 60-second MP4 exists: **"+str(final)+"**\n"
+               "The user must visually review mouth anatomy, tiny PIP lips and naturalness. "
+               "No claim of production-ready quality or right to publish.")
+          Path("fr60_hybrid_issue.md").write_text(msg)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file fr60_hybrid_issue.md
