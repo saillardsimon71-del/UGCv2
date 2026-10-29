@@ -4,13 +4,14 @@ on:
     branches: [production/us-fr-v2v-real-video-pilot-20261029]
     paths:
       - productions/US-FR-V2V-REAL-20261029/SOURCE_PROBE_ONCE.txt
+      - productions/US-FR-V2V-REAL-20261029/SOURCE_BRIDGE_START_ONCE.txt
 
 permissions:
   contents: read
 
 jobs:
   scan_source:
-    if: github.event.head_commit.message == 'RUN_REAL_US_FR_V2V_SOURCE_PROBE_ONCE'
+    if: github.event.head_commit.message == 'RUN_REAL_US_FR_V2V_SOURCE_PROBE_ONCE' || github.event.head_commit.message == 'RUN_US_FR_SOURCE_BRIDGE_ONCE'
     runs-on: ubuntu-latest
     timeout-minutes: 14
     steps:
