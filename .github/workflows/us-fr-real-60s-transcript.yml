@@ -1,0 +1,58 @@
+name: US FR 60s | Faithful original English word-timed transcription (CPU)
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_ASR_CPU_ONCE.txt]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-fr60-asr-cpu
+  cancel-in-progress: false
+jobs:
+  transcribe_real_source:
+    if: github.event.head_commit.message == 'TRANSCRIBE_REAL_SOURCE_60S_CPU_ONLY' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    env:
+      ROOT: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      SCRIPT: productions/US-FR-V2V-REAL-20261029/REAL_60S/transcribe_source.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: productions/US-FR-V2V-REAL-20261029/REAL_60S
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: CPU only install and gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_ASR_CPU_ONCE.txt)" = "AUTHORIZE_WHISPER_ASR_CPU_NO_MODAL_GPU"
+          python -m py_compile "$SCRIPT"
+          if ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
+          pip install --disable-pip-version-check 'faster-whisper==1.2.1'
+      - name: Retrieve verified 60-second original source (never re-download)
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: ${{ env.ROOT }}
+      - name: Transcribe original speech with word timestamps
+        timeout-minutes: 13
+        run: python "$SCRIPT"
+      - name: Upload source transcript and audible original guide
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-TRANSCRIPT-${{ github.run_id }}
+          path: |
+            ${{ env.ROOT }}/timed_english_transcript.json
+            ${{ env.ROOT }}/timed_english_transcript.txt
+            ${{ env.ROOT }}/original_english_60s.wav
+          if-no-files-found: warn
+          retention-days: 14
