@@ -98,3 +98,39 @@ def main(mode: str = "doctor"):
         print(doctor.remote())
     else:
         raise SystemExit("Modes : doctor (0 GPU). Les rendus passent par le studio ou le workflow benchmark.")
+
+
+@app.function(image=image, gpu=GPU, cpu=8, memory=32768, timeout=1800,
+              min_containers=0, max_containers=1, scaledown_window=2,
+              volumes={"/opt/facefusion/.assets/models": models_vol})
+def render_native_fr_lips(video_b64: str, french_audio_b64: str) -> dict:
+    """Existing FaceFusion processor: replace ONLY lip motion to match FR audio.
+
+    EDTalk 256 chosen instead of non-commercial Wav2Lip. The generated video
+    must be visually approved; no claim of correct lip-sync without inspection.
+    """
+    t0 = time.perf_counter()
+    with tempfile.TemporaryDirectory(prefix="ugc-fr-lips-") as tmp:
+        d = Path(tmp)
+        video = d / "v2v.mp4"
+        audio = d / "voice_fr.wav"
+        video.write_bytes(base64.b64decode(video_b64, validate=True))
+        audio.write_bytes(base64.b64decode(french_audio_b64, validate=True))
+        if not video.read_bytes()[4:8] == b"ftyp" or not audio.read_bytes()[:4] == b"RIFF":
+            raise RuntimeError("Expected authentic V2V MP4 and PCM French WAV")
+        output = d / "lips_fr.mp4"
+        cmd = ["python", "facefusion.py", "headless-run",
+               "--source-paths", str(audio), "--target-path", str(video),
+               "--output-path", str(output), "--processors", "lip_syncer",
+               "--lip-syncer-model", "edtalk_256", "--lip-syncer-weight", "0.75",
+               "--execution-providers", "cuda", "--output-video-encoder", "libx264",
+               "--output-video-quality", "90", "--output-audio-encoder", "aac"]
+        run = subprocess.run(cmd,cwd="/opt/facefusion",capture_output=True,text=True,timeout=1650)
+        if run.returncode or not output.is_file() or output.stat().st_size < 100000:
+            raise RuntimeError("FaceFusion lip_syncer failed: "+(run.stdout+run.stderr)[-2500:])
+        models_vol.commit()
+        return {"video_b64":base64.b64encode(output.read_bytes()).decode(),
+                "metadata":{"engine":"facefusion_edtalk_256","gpu":GPU,
+                            "lip_syncer_weight":0.75,
+                            "gpu_wall_seconds":round(time.perf_counter()-t0,2),
+                            "bytes":output.stat().st_size}}
