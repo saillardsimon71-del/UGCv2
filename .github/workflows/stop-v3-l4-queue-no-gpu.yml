@@ -26,5 +26,5 @@ jobs:
           set -euo pipefail
           test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_STOP_V3_L4_QUEUE_ONCE.txt)" = "STOP_ONLY_KNOWN_QUEUED_L4_APP_AP_NthDvuk6Xgsgv7TbCr3QyO"
           pip install -q 'modal==1.6.1'
-          modal app stop ap-NthDvuk6Xgsgv7TbCr3QyO --env main
+          modal app stop ap-NthDvuk6Xgsgv7TbCr3QyO --env main --yes
           modal app list --env main --json | grep -A 6 -B 2 'ugcv2-chatterbox-v3-french-ab' || true
