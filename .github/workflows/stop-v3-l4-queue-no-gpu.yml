@@ -1,0 +1,30 @@
+name: Stop queued V3 L4 Modal attempt before selecting available GPU
+on:
+  push:
+    branches: [production/us-fr-chatterbox-v3-tbdub-15s-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/RUN_STOP_V3_L4_QUEUE_ONCE.txt]
+permissions:
+  contents: read
+jobs:
+  stop_old_attempt:
+    if: github.event.head_commit.message == 'STOP_QUEUED_V3_L4_MODAL_NO_GPU'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Safely terminate only the known queued L4 ephemeral app
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_STOP_V3_L4_QUEUE_ONCE.txt)" = "STOP_ONLY_KNOWN_QUEUED_L4_APP_AP_NthDvuk6Xgsgv7TbCr3QyO"
+          pip install -q 'modal==1.6.1'
+          modal app stop ap-NthDvuk6Xgsgv7TbCr3QyO --env main
+          modal app list --env main --json | grep -A 6 -B 2 'ugcv2-chatterbox-v3-french-ab' || true
