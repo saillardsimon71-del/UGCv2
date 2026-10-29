@@ -1,0 +1,77 @@
+name: US FR 60s | FaceFusion selector one 4s with actual pixel change gate
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_EXPLICIT_FACE_4S.txt]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-fr60-one-face-selector-test
+  cancel-in-progress: false
+jobs:
+  face_pixel_gate:
+    if: github.event.head_commit.message == 'TEST_FR60_FACE_SELECTOR_ONE_REAL_4S' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 32
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      SINGLE_FACE4_GPU: 'YES'
+      OUT: productions/US-FR-V2V-REAL-20261029/REAL_60S/SELECT_ONE_4S
+      DRIVER: productions/US-FR-V2V-REAL-20261029/REAL_60S/test_face_selector_4s.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard only one GPU, Python compilation, CPU dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_EXPLICIT_FACE_4S.txt)" = "ONLY_4S_FACE_FUSION_SELECTOR_ONE_AND_PIXEL_GATE"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$DRIVER" deploy/modal_fr60_faceswap_selected.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-python-headless==4.10.0.84'
+      - name: Actual user-supplied 60s source
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      - name: Existing generated actor reference (not original video person)
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-NEW-PRESENTER-40946696551
+          run-id: 40946696551
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/FACE_SWAP
+      - name: Prepare actual source talking head sample, CPU
+        run: python "$DRIVER" prepare
+      - name: One A10G 4s FaceFusion pass with explicit selector one
+        timeout-minutes: 24
+        run: python "$DRIVER" render
+      - name: Fail if face ROI pixels unchanged as in previous false success
+        timeout-minutes: 3
+        run: python "$DRIVER" check
+      - name: Preserve actual MP4, before/after and ROI pixel proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-60S-EXPLICIT-SELECTOR-4S-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/*.mp4
+            ${{ env.OUT }}/*.jpg
+            ${{ env.OUT }}/*.json
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
