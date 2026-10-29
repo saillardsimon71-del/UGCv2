@@ -95,3 +95,80 @@ def render_french_v3_candidates(text: str) -> dict:
         "wall_seconds": round(time.perf_counter()-start, 2),
         "candidates": outputs,
     }
+
+
+@app.function(
+    image=image, gpu="L40S", cpu=6, memory=24000, timeout=2400,
+    min_containers=0, max_containers=1, scaledown_window=2,
+    volumes={str(VOICE_ROOT): voice_volume},
+)
+def render_original_paced_french_blocks(blocks: list[dict]) -> dict:
+    """One model load, seven independently paced phrases, two auditions each.
+
+    The existing English voice is never used as a speaker-cloning prompt.
+    Source English provides ONLY utterance timestamps, not the person's timbre.
+    Target block times are supplied by *actual* Whisper alignment, not guessed.
+    """
+    if len(blocks)!=7:
+        raise ValueError("Expected seven source-aligned speech blocks")
+    import torch
+    import torchaudio
+    from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+
+    os.environ["HF_HOME"] = str(VOICE_ROOT / "hf")
+    os.environ["XDG_CACHE_HOME"] = str(VOICE_ROOT / "cache")
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
+    start=time.perf_counter()
+    model=ChatterboxMultilingualTTS.from_pretrained(device="cuda",t3_model="v3")
+    result=[]
+    # Lower emotional exaggeration and stronger CFG than the previous very fast
+    # voice, with a second option to tune selection to original spoken intervals.
+    settings=[
+        {"tag":"unhurried","exaggeration":0.43,"cfg_weight":0.63,"temperature":0.77},
+        {"tag":"conversational","exaggeration":0.54,"cfg_weight":0.55,"temperature":0.80},
+    ]
+    with tempfile.TemporaryDirectory(prefix="fr-original-cadence-") as td:
+        for index,block in enumerate(blocks):
+            txt=block["fr_text"].strip()
+            if not 30<=len(txt)<=260:
+                raise ValueError(f"Block {index} length invalid")
+            target=float(block["end_s"])-float(block["start_s"])
+            if not 4.0<target<13.0:
+                raise ValueError(f"Block {index} source timing invalid")
+            candidates=[]
+            for take_no,sett in enumerate(settings):
+                torch.manual_seed(60100+index*10+take_no)
+                wav=model.generate(
+                    txt,language_id="fr",audio_prompt_path=None,
+                    exaggeration=sett["exaggeration"],
+                    cfg_weight=sett["cfg_weight"],temperature=sett["temperature"],
+                )
+                duration=float(wav.shape[-1]/model.sr)
+                if not 2.5<duration<22:
+                    raise RuntimeError(f"Chatterbox block {index} generated absurd duration: {duration}")
+                path=Path(td)/f"{index:02}_{sett['tag']}.wav"
+                torchaudio.save(str(path),wav.cpu(),model.sr)
+                buf=path.read_bytes()
+                candidates.append({
+                    "tag":sett["tag"],"duration_s":round(duration,3),
+                    "wav_b64":base64.b64encode(buf).decode(),
+                    "sha256":hashlib.sha256(buf).hexdigest(),
+                    "settings":sett,
+                })
+                print("V3_FR_BLOCK",index,sett["tag"],round(duration,3),
+                      "source_window",round(target,3),flush=True)
+            result.append({
+                "id":block["id"],"start_s":block["start_s"],
+                "end_s":block["end_s"],"original_window_s":target,
+                "fr_text":txt,"candidates":candidates,
+            })
+        voice_volume.commit()
+    return {
+        "engine":"Chatterbox Multilingual V3", "v3_explicit":True,
+        "model_revision":UPSTREAM_SHA,
+        "voice_identity":"built-in generic voice, not original-presenter cloning",
+        "original_timing_source":"faster-whisper word alignment 40944640728",
+        "gpu":"L40S",
+        "render_seconds":round(time.perf_counter()-start,2),
+        "blocks":result,
+    }
