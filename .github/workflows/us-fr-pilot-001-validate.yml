@@ -1,0 +1,41 @@
+name: US to FR | Pilot 001 preproduction QA (CPU only)
+
+on:
+  push:
+    branches: [production/us-fr-adapt-ai-automation-pilot-20261029]
+    paths:
+      - productions/US-FR-ADAPT-001-20261029/CPU_START_ONCE.txt
+
+permissions:
+  contents: read
+
+jobs:
+  validate_only:
+    if: github.event.head_commit.message == 'VALIDATE_US_FR_PILOT_001_CPU_ONLY'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            productions/US-FR-ADAPT-001-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify guard (never invoke Modal, video API or users)
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(tr -d '\r\n' < productions/US-FR-ADAPT-001-20261029/CPU_START_ONCE.txt)" = 'CPU_ONLY_NO_GPU_NO_EXTERNAL_API'
+      - name: Validate 9-shot FR editorial plan and isolated n8n demo JSON
+        run: python productions/US-FR-ADAPT-001-20261029/tests/validate_project.py
+      - name: Archive project as importable preproduction proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-PILOT-001-PREPROD-${{ github.run_id }}
+          path: productions/US-FR-ADAPT-001-20261029
+          retention-days: 60
+          compression-level: 0
+      - name: Statement of limits
+        run: |
+          echo "Validated script and n8n JSON structure only; no source footage, no true workflow run, no voice recording, no generated film and no GPU expense." >> "$GITHUB_STEP_SUMMARY"
