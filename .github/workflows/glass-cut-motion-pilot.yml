@@ -1,0 +1,85 @@
+name: GLASS CUT | single source-motion-guided V2V proof (5s)
+
+on:
+  push:
+    branches: [production/glass-cut-motion-pilot-20261029]
+    paths: ['productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/START_ONCE.txt']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ugcv2-glass-cut-one-shot-20261029
+  cancel-in-progress: false
+
+jobs:
+  single_proof:
+    if: github.event.head_commit.message == 'RUN_GLASS_CUT_V2V_ONCE_20261029' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    env:
+      PYTHONUNBUFFERED: '1'
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      EXPECTED_MODAL_WORKSPACE: lucj76861
+      PY: productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/single_cut_v2v.py
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: No GPU prerequisites, verify intent and installed ffmpeg
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/START_ONCE.txt)" = "ONE_GPU_V2V_GLASSCUT_APPROVED_20261029"
+          test -n "${MODAL_TOKEN_ID:-}" && test -n "${MODAL_TOKEN_SECRET:-}" || { echo "::error::Modal secrets absent; no GPU"; exit 1; }
+          command -v ffmpeg
+          command -v ffprobe
+          python -m py_compile "$PY"
+      - name: Install Modal CLI with fixed version
+        run: python -m pip install --disable-pip-version-check 'modal==1.6.1'
+      - name: Prepare real strawberry cutting reference, verify 121-frame guide (CPU only)
+        timeout-minutes: 7
+        run: python "$PY" prepare
+      - name: Save source and frame contact-sheet for audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GLASS-CUT-REAL-SOURCE-AND-GUIDE-${{ github.run_id }}
+          path: |
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/guide-*
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/pexels-original.mp4
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: ONE and only ONE GPU call, checkout V2V worker (no deploy)
+        timeout-minutes: 16
+        run: python "$PY" render --confirm-spend oui
+      - name: Add real CC0 glass crack only if available; make review contact sheet
+        if: success()
+        timeout-minutes: 4
+        run: python "$PY" finish
+      - name: Retain raw real result and reports even on errors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GLASS-CUT-ONE-V2V-5S-${{ github.run_id }}
+          path: |
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/v2v-raw-5s.mp4
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/glass-cut-with-real-cc0-sfx-5s.mp4
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/*report.json
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/*error.json
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/result-contact-sheet.jpg
+            productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/glass_breaking_cc0.wav
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Honest result status
+        if: always()
+        run: |
+          echo "### 5-second glass-cut motion-guided pilot" >> "$GITHUB_STEP_SUMMARY"
+          echo "Source: licensed real Pexels strawberry knife cut; ONE GPU attempt only. No retries, no publication." >> "$GITHUB_STEP_SUMMARY"
+          if test -s productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/output/v2v-raw-5s.mp4; then
+            echo "Real LTX V2V MP4 generated. Physical coherence NOT yet judged; inspect frame sheet and MP4." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No valid V2V MP4. Inspect source/preflight logs. Do not claim success." >> "$GITHUB_STEP_SUMMARY"
+          fi
