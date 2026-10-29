@@ -38,11 +38,11 @@ jobs:
           set -euo pipefail
           test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FACE_IDENTITY_ONCE.txt)" = "ONE_PRIVATE_60S_FACE_SWAP_GPU_PRESERVE_SCREEN"
           test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
-          python -m py_compile "$PY"
+          python -m py_compile "$PY" deploy/modal_fr60_faceswap_selected.py
           if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
             sudo apt-get update -qq && sudo apt-get install -y ffmpeg
           fi
-          python -m pip install -q 'modal==1.6.1'
+          python -m pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-python-headless==4.10.0.84'
       - name: Genuine user-supplied original 60s video, proof and scene analysis
         uses: actions/download-artifact@v4
         with:
