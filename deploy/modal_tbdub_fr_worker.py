@@ -336,3 +336,91 @@ def render_student_french_twelve_to_fifteen_seconds(video_b64: str, audio_b64: s
                 "log_tail": stdout[-2000:],
             },
         }
+
+
+@app.function(
+    image=image, gpu="L40S", cpu=8, memory=48000, timeout=5100,
+    min_containers=0, max_containers=1, scaledown_window=2,
+    volumes={str(MODEL_ROOT): model_vol},
+)
+def dub_real_visible_face_shots(shots: list[dict]) -> dict:
+    """One batched TBDub Student GPU call for identified full-frame face shots.
+
+    Full 60-second UI/diagrams are NEVER passed through generative models.
+    Input is a list of source-derived video clips and exactly time-aligned
+    French WAVs. Short (1.44s) shot may fail gracefully and is marked as such.
+    """
+    if len(shots) != 4 or not _exists_check()["all_present"]:
+        raise RuntimeError("Expected four genuine clips and cached TBDub V1.1 Student")
+    start=time.perf_counter()
+    result=[]
+    for i,shot in enumerate(shots):
+        name=str(shot.get("id",""))
+        if name not in ("cam_a","cam_b","cam_c_short","cam_d"):
+            raise RuntimeError(f"Unrecognized source-scene clip ID {name}")
+        with tempfile.TemporaryDirectory(prefix=f"tbdub-fr60-{i}-") as tmp:
+            folder=Path(tmp)
+            video,audio=_media_inputs(folder,shot["video_base64"],shot["audio_base64"])
+            output=folder/"result"
+            output.mkdir()
+            report=folder/"face_preflight.json"
+            command=[
+                "--video",str(video),"--audio",str(audio),
+                "--inference-mode","student","--num-student-steps","2",
+                "--sigma-shift","1.0","--motion-from-latents",
+                "--seed","42","--checkpoint-dir",str(MODEL_ROOT),
+                "--preprocess-report",str(report),
+                "--sample-name",name,
+                "--output-dir",str(output),
+            ]
+            print("TBDUB_60S_SHOT_BEGIN",name,flush=True)
+            began=time.perf_counter()
+            try:
+                stdout,stderr=_run_inference(command,timeout=1200,directory=folder)
+                finals=list(output.glob("*_tbdub.mp4"))
+                if len(finals)!=1 or finals[0].stat().st_size<50000:
+                    raise RuntimeError(f"No generated dubbed face MP4: {list(output.iterdir())}")
+                file=finals[0]
+                media=json.loads(subprocess.check_output(
+                    ["ffprobe","-v","error","-show_entries",
+                     "format=duration,size:stream=codec_type,width,height",
+                     "-of","json",str(file)],text=True,timeout=60))
+                rendered_seconds=float(media["format"]["duration"])
+                intended=float(shot["duration_s"])
+                if abs(rendered_seconds-intended)>0.60:
+                    raise RuntimeError(
+                        f"TBDub {name} wrong duration: {rendered_seconds} vs {intended}")
+                result.append({
+                    "id":name,"status":"real_tbdub_mp4",
+                    "video_base64":base64.b64encode(file.read_bytes()).decode(),
+                    "duration_s":rendered_seconds,
+                    "sha256":hashlib.sha256(file.read_bytes()).hexdigest(),
+                    "wall_seconds":round(time.perf_counter()-began,2),
+                    "source_start_s":shot["start_s"],
+                    "source_end_s":shot["end_s"],
+                    "media":media,
+                    "face_report":json.loads(report.read_text()) if report.is_file() else {},
+                    "log_tail":stdout[-1000:],
+                })
+                print("TBDUB_60S_SHOT_OK",name,round(rendered_seconds,2),flush=True)
+            except BaseException as exc:
+                if name!="cam_c_short":
+                    raise RuntimeError(f"Required TBDub face shot failed [{name}]: {exc}") from exc
+                # Official student might not support 1.44s. Never pretend to fix it:
+                # mark precisely which tiny segment remains only face-swapped.
+                result.append({
+                    "id":name,"status":"short_shot_unsynced",
+                    "source_start_s":shot["start_s"],
+                    "source_end_s":shot["end_s"],
+                    "error":str(exc)[-2200:],
+                    "wall_seconds":round(time.perf_counter()-began,2),
+                })
+                print("TBDUB_60S_SHORT_SHOT_SKIPPED",name,str(exc)[-260:],flush=True)
+    return {
+        "engine":"TBDub Student v1.1",
+        "source":"verified original 60s cut, per-clip face crop only",
+        "screens_changed":False,
+        "results":result,
+        "gpu_wall_seconds":round(time.perf_counter()-start,2),
+        "human_review_required":True,
+    }
