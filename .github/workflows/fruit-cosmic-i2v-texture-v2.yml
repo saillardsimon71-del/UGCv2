@@ -1,0 +1,91 @@
+name: Fruit Cosmic ASMR v2 | uninterrupted I2V + real audio
+
+on:
+  push:
+    branches: [production/fruit-cosmic-asmr-texture-continuity-v2-20261029]
+    paths:
+      - productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/I2V_TEXTURE_V2_START_ONCE.txt
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sqv-premium12-modal-gpu
+  cancel-in-progress: false
+
+jobs:
+  one_take:
+    if: github.event.head_commit.message == 'RUN_FRUIT_COSMIC_I2V_TEXTURE_V2_20261029' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      PYTHONUNBUFFERED: '1'
+      SCRIPT: productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/i2v_texture_v2.py
+      FILM: productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/i2v-v2-output
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/FRUIT-COSMIC-ASMR-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify unique launch and Modal credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(tr -d '\r\n' < productions/FRUIT-COSMIC-ASMR-20261029/EXPERIMENTS/I2V_TEXTURE_V2_START_ONCE.txt)" = 'ONE_GPU_GLASS_TEXTURE_V2_CONFIRMED_20261029'
+          test -n "${MODAL_TOKEN_ID:-}" && test -n "${MODAL_TOKEN_SECRET:-}"
+          python -m py_compile "$SCRIPT"
+      - name: Install exact pinned CPU dependencies and ffmpeg (no GPU)
+        timeout-minutes: 5
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffmpeg || ! command -v ffprobe; then
+            timeout 90s sudo apt-get install -y ffmpeg || { timeout 90s sudo apt-get update -qq; timeout 90s sudo apt-get install -y ffmpeg; }
+          fi
+          python -m pip install --disable-pip-version-check 'modal==1.6.1' 'Pillow==11.3.0' 'numpy==2.2.6'
+      - name: Verify textured first frame, I2V graph AND real licensed glass WAV (NO GPU)
+        timeout-minutes: 3
+        run: python "$SCRIPT" prepare
+      - name: One continuous 5-second shot, LTX-2.5 native audio (ONE GPU call only)
+        timeout-minutes: 12
+        run: python "$SCRIPT" render --confirm-spend oui
+      - name: Mix native LTX sound with real glass crack, check output (CPU only)
+        timeout-minutes: 3
+        run: python "$SCRIPT" mix-audio
+      - name: Archive first frame, native MP4, ASMR mix, audio rights, reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FRUIT-COSMIC-TEXTURE-CONTINUITY-V2-${{ github.run_id }}
+          path: |
+            ${{ env.FILM }}/onecut-textured-first-frame.png
+            ${{ env.FILM }}/glass-break-gravity-sound-cc-by-4.wav
+            ${{ env.FILM }}/onecut-raw-5s.mp4
+            ${{ env.FILM }}/onecut-asmr-mix-5s.mp4
+            ${{ env.FILM }}/result-contact-sheet.jpg
+            ${{ env.FILM }}/plan.json
+            ${{ env.FILM }}/render_receipt.json
+            ${{ env.FILM }}/audio_report.json
+          if-no-files-found: warn
+          retention-days: 60
+          compression-level: 0
+      - name: Technical success is not artistic success
+        if: always()
+        shell: bash
+        run: |
+          echo "## Fruit Cosmic Glass ASMR v2 - 1-shot I2V" >> "$GITHUB_STEP_SUMMARY"
+          echo "Native audio LTX and real CC BY 4.0 Gravity Sound glass recording. One call GPU max, no retries, no publication." >> "$GITHUB_STEP_SUMMARY"
+          if test -s "$FILM/onecut-asmr-mix-5s.mp4"; then
+            echo "Technically produced with ASMR mix. HUMAN REVIEW NEEDED for texture, continuity, crack sync and realistic knife contact." >> "$GITHUB_STEP_SUMMARY"
+          elif test -s "$FILM/onecut-raw-5s.mp4"; then
+            echo "RAW ONLY: sound mix unavailable, do not claim complete ASMR." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No MP4 produced. Inspect step logs and don't relaunch blindly." >> "$GITHUB_STEP_SUMMARY"
+          fi
