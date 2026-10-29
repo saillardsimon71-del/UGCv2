@@ -1,0 +1,41 @@
+name: Diagnose LatentSync Modal CPU preparation (no GPU)
+on:
+  push:
+    branches:
+      - production/us-fr-latentsync16-4s-20261029
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/RUN_LATENTSYNC_DIAGNOSTIC_ONCE.txt
+permissions:
+  contents: read
+jobs:
+  modal_logs:
+    if: github.event.head_commit.message == 'RUN_LATENTSYNC_CPU_DIAGNOSTIC_ONLY'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_LATENTSYNC_DIAGNOSTIC_ONCE.txt)" = "GET_MODAL_ERROR_LOGS_NO_GPU"
+          python -m pip install --disable-pip-version-check 'modal==1.6.1'
+      - name: Fetch last Modal build/runtime errors (read only)
+        shell: bash
+        run: |
+          mkdir -p diagnostics
+          modal app list --env main --json > diagnostics/modal_apps.json 2>&1 || true
+          modal app logs ugcv2-fr-latentsync-4s --env main --since 2h --tail 2000 --timestamps > diagnostics/modal_logs.txt 2>&1 || true
+          grep -E -i -C 3 '(error|exception|traceback|failed|no module named|download)' diagnostics/modal_logs.txt | tail -100 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: US-FR-LATENTSYNC-DIAGNOSTIC-${{ github.run_id }}
+          path: diagnostics/
+          if-no-files-found: warn
