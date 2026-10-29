@@ -35,7 +35,6 @@ image = (
         f"cd /opt/LatentSync && git checkout --detach {LATENTSYNC_SHA}",
         "python -m pip install --no-cache-dir -r /opt/LatentSync/requirements.txt",
     )
-    .env({"HF_HOME": HF_CACHE, "XDG_CACHE_HOME": "/mnt/ugcv2_latentsync_fr/cache"})
 )
 
 
@@ -58,6 +57,9 @@ def readiness() -> dict:
               volumes={"/mnt/ugcv2_latentsync_fr": volume})
 def prepare() -> dict:
     """CPU-only checkpoint download. Never allocates a GPU."""
+    # Do not create HF cache inside the *image* before the volume mounts.
+    os.environ["HF_HOME"] = HF_CACHE
+    os.environ["XDG_CACHE_HOME"] = "/mnt/ugcv2_latentsync_fr/cache"
     from huggingface_hub import hf_hub_download, snapshot_download
     started = time.perf_counter()
     CHECKPOINTS.mkdir(parents=True, exist_ok=True)
@@ -91,6 +93,8 @@ def render_four_seconds(video_b64: str, audio_b64: str) -> dict:
     """One bounded 4-second native French lip-sync; accepts no arbitrary prompts."""
     if not readiness()["models_ok"]:
         raise RuntimeError("CPU checkpoint preparation required")
+    os.environ["HF_HOME"] = HF_CACHE
+    os.environ["XDG_CACHE_HOME"] = "/mnt/ugcv2_latentsync_fr/cache"
     start = time.perf_counter()
     with tempfile.TemporaryDirectory(prefix="ugcv2-latentsync16-") as folder:
         d = Path(folder)
