@@ -1,0 +1,65 @@
+{
+  "schema": "ugcv2.visual.v1",
+  "source_url": "https://www.youtube.com/watch?v=KSOxkhWs2Ic",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "transition_s": 0.4,
+  "scenes": [
+    {
+      "id": "v01",
+      "template": "hook",
+      "camera": "push_in",
+      "duration_s": 8,
+      "eyebrow": "LE PROBLÈME",
+      "title": "Sept messages. Par où commencer ?",
+      "count": 7,
+      "messages": ["Une fuite sous l'évier", "Un robinet à remplacer", "Une demande de prix"],
+      "narration": "Sept messages après un chantier. Par où commencer ? Un assistant peut préparer le tri. Vous gardez la décision."
+    },
+    {
+      "id": "v02",
+      "template": "workflow",
+      "duration_s": 10,
+      "eyebrow": "LE MÉCANISME",
+      "title": "Une chaîne simple, quatre étapes",
+      "nodes": ["Demande", "Données", "Proposition IA", "Validation"],
+      "note": "Déclenchement manuel dans n8n. Proposition avec Mistral. Décision de l'artisan.",
+      "narration": "Une demande entre. Les données sont préparées. L'IA propose un brouillon, puis une personne vérifie. On commence avec un déclencheur manuel."
+    },
+    {
+      "id": "v03",
+      "template": "interface",
+      "duration_s": 13,
+      "eyebrow": "L'EXEMPLE FRANÇAIS",
+      "title": "Du message au brouillon",
+      "city": "Rouen",
+      "request": "Bonjour, l'eau coule sous mon évier depuis ce matin. Pouvez-vous intervenir ?",
+      "category": "Catégorie illustrative : fuite",
+      "draft": "Pouvez-vous préciser l'importance de la fuite ? L'artisan confirmera les possibilités d'intervention.",
+      "narration": "Notre entreprise fictive de Rouen reçoit une demande pour une fuite. Cette interface est une illustration, pas une exécution réelle. Le brouillon ne promet aucun rendez-vous."
+    },
+    {
+      "id": "v04",
+      "template": "chart",
+      "duration_s": 8,
+      "eyebrow": "LES CONTRÔLES",
+      "title": "Trois niveaux de vérification",
+      "unit": "PROGRESSION PÉDAGOGIQUE / PAS UNE MESURE DE PERFORMANCE",
+      "bars": [{"label": "1. Les données", "value": 1}, {"label": "2. Le besoin", "value": 2}, {"label": "3. La réponse", "value": 3}],
+      "note": "Les barres montrent l'ordre des contrôles, sans gain de temps ni résultat commercial revendiqué.",
+      "narration": "On contrôle les données, le besoin et le texte proposé. L'artisan doit confirmer le prix et le délai."
+    },
+    {
+      "id": "v05",
+      "template": "recap",
+      "camera": "pan",
+      "duration_s": 8,
+      "eyebrow": "VOUS GARDEZ LE CONTRÔLE",
+      "title": "L'IA prépare. Vous décidez.",
+      "items": ["Vérifier", "Corriger", "Valider"],
+      "note": "Un brouillon à approuver. Aucun message envoyé. Prochaine étape : tester le vrai workflow.",
+      "narration": "Vous pouvez vérifier, corriger ou refuser le brouillon. Aucun message n'est envoyé. Prochaine étape : tester le vrai workflow."
+    }
+  ]
+}

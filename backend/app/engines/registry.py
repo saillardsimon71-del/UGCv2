@@ -10,6 +10,7 @@ from .analysis import AnalysisEngine
 from .assembly import AssemblyEngine
 from .base import Engine
 from .mock import TestPlateEngine
+from .visual import VisualEngine
 from .modal_remote import SPECS, ModalEngine
 
 # Ordre de préférence par kind (production d'abord). Le routeur (recipes.py)
@@ -35,6 +36,8 @@ def get_engine(name: str) -> Engine:
         eng: Engine = AnalysisEngine()
     elif name in ("ffmpeg_assembly", "assembly"):
         eng = AssemblyEngine()
+    elif name == "cpu_visual":
+        eng = VisualEngine()
     elif name in SPECS:
         eng = ModalEngine(name)
         # Animate2/SCAIL2 servent deux kinds : l'instance garde son kind principal,
@@ -48,7 +51,7 @@ def get_engine(name: str) -> Engine:
 
 
 def all_engines() -> list[Engine]:
-    names = ["analysis", "ffmpeg_assembly"] + list(SPECS.keys()) + [f"mock_{k}" for k in PREFERENCE]
+    names = ["analysis", "ffmpeg_assembly", "cpu_visual"] + list(SPECS.keys()) + [f"mock_{k}" for k in PREFERENCE]
     return [get_engine(n) for n in names]
 
 
@@ -87,7 +90,8 @@ def system_report() -> dict[str, Any]:
         d.update({"available": ok, "unavailable_reason": reason})
         engines.append(d)
     blockers = []
-    real = [e for e in engines if e["available"] and not e["simulated"] and e["kind"] not in ("assembly", "analysis")]
+    real = [e for e in engines if e["available"] and not e["simulated"] and e["kind"] not in ("assembly", "analysis")
+            and e["name"] != "cpu_visual"]
     if not real:
         blockers.append("Aucun moteur IA réel disponible : activer Modal (docs/MODAL.md) pour les vrais rendus. "
                         "La chaîne studio (import, analyse, montage, QC, export) fonctionne en CPU.")

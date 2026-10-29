@@ -1,0 +1,96 @@
+{
+  "status": "pass",
+  "errors": [],
+  "media": {
+    "path": "PILOTE_VISUAL_ENGINE_FR.mp4",
+    "duration_s": 53.766,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "has_audio": true,
+    "audio_rate": 48000,
+    "audio_channels": 2,
+    "bitrate_kbps": 446,
+    "nb_frames": 1613
+  },
+  "decoded_frames": 1613,
+  "bad_frame_intervals": 0,
+  "black_starts_s": [],
+  "freeze_starts_s": [
+    11.033333,
+    12.0,
+    14.233333,
+    16.666667,
+    18.6,
+    19.833333,
+    22.233333,
+    22.966667,
+    24.033333,
+    27.166667,
+    31.733333,
+    36.233333,
+    39.366667,
+    44.0,
+    44.666667,
+    45.466667,
+    46.666667,
+    48.566667,
+    50.0,
+    50.6,
+    51.266667,
+    51.9,
+    52.5,
+    53.1
+  ],
+  "freeze_review": "Mostly static pedagogical panels can trigger this detector; review these intervals, not a decoding failure",
+  "voice_timing": [
+    {
+      "scene": "v01",
+      "voice_end_s": 10.093,
+      "next_transition_s": 10.1,
+      "fits": true
+    },
+    {
+      "scene": "v02",
+      "voice_end_s": 21.803,
+      "next_transition_s": 21.8333,
+      "fits": true
+    },
+    {
+      "scene": "v03",
+      "voice_end_s": 34.696,
+      "next_transition_s": 34.7,
+      "fits": true
+    },
+    {
+      "scene": "v04",
+      "voice_end_s": 42.853,
+      "next_transition_s": 42.8667,
+      "fits": true
+    },
+    {
+      "scene": "v05",
+      "voice_end_s": 53.315,
+      "next_transition_s": 53.766,
+      "fits": true
+    }
+  ],
+  "loudness": {
+    "integrated_lufs": -14.0,
+    "threshold_lufs": -24.4,
+    "true_peak_db": -1.5
+  },
+  "sha256": "a36cb0d2acdfff25b4245d22ee7375503940a099c8e13df3b61a74a14a889a7b",
+  "visual_inspection": {
+    "status": "agent_reviewed",
+    "scope": "17 frames in contact sheet plus 1080p hook/interface views; no text collision observed",
+    "full_realtime_watch": false
+  },
+  "voice_listening": {
+    "status": "not_performed",
+    "reason": "Audio input unavailable to this agent; human listening required"
+  },
+  "source_reuse": "Renderer accepts no source media; original generated geometric illustrations only"
+}

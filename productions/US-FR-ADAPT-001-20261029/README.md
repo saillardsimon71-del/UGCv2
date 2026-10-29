@@ -32,3 +32,14 @@
 
 ## Note coût
 n8n autohébergé n'est pas forcément « gratuit » en exploitation (hébergement et maintenance), et l'API de Mistral peut être facturée. Les appels Modal ne sont **pas autorisés** par ce dossier de préparation ; toute génération GPU demandera une décision séparée.
+
+## Pilote Visual Engine CPU
+
+Un extrait graphique original de 53,8 secondes est maintenant produit dans
+`VISUAL_OUTPUT/PILOTE_VISUAL_ENGINE_FR.mp4`. Il comporte une voix française locale,
+des schémas et des maquettes portant le badge ILLUSTRATION - DONNÉES FICTIVES.
+Ce pilote ne constitue pas une capture d'exécution n8n/Mistral ni le film complet.
+Le statut de préproduction de `PLAN_SHOTS.json` reste donc valable pour les
+captures réelles demandées dans ce plan.
+
+Code, reproduction, résultats des tests et limites : [VISUAL_REPORT.md](VISUAL_REPORT.md).

@@ -1,0 +1,63 @@
+1
+00:00:00,400 --> 00:00:03,272
+Sept messages après un chantier.
+
+2
+00:00:03,272 --> 00:00:04,887
+Par où commencer ?
+
+3
+00:00:04,887 --> 00:00:07,939
+Un assistant peut préparer le tri.
+
+4
+00:00:07,939 --> 00:00:10,093
+Vous gardez la décision.
+
+5
+00:00:10,500 --> 00:00:11,985
+Une demande entre.
+
+6
+00:00:11,985 --> 00:00:14,213
+Les données sont préparées.
+
+7
+00:00:14,213 --> 00:00:18,585
+L'IA propose un brouillon, puis une personne vérifie.
+
+8
+00:00:18,585 --> 00:00:21,803
+On commence avec un déclencheur manuel.
+
+9
+00:00:22,233 --> 00:00:27,161
+Notre entreprise fictive de Rouen reçoit une demande pour une fuite.
+
+10
+00:00:27,161 --> 00:00:31,725
+Cette interface est une illustration, pas une exécution réelle.
+
+11
+00:00:31,725 --> 00:00:34,696
+Le brouillon ne promet aucun rendez-vous.
+
+12
+00:00:35,100 --> 00:00:39,364
+On contrôle les données, le besoin et le texte proposé.
+
+13
+00:00:39,364 --> 00:00:42,853
+L'artisan doit confirmer le prix et le délai.
+
+14
+00:00:43,267 --> 00:00:47,723
+Vous pouvez vérifier, corriger ou refuser le brouillon.
+
+15
+00:00:47,723 --> 00:00:49,911
+Aucun message n'est envoyé.
+
+16
+00:00:49,911 --> 00:00:53,315
+Prochaine étape : tester le vrai workflow.
