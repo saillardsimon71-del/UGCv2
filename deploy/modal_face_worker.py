@@ -34,7 +34,7 @@ models_vol = modal.Volume.from_name("ugc-face-models", create_if_missing=True)
 
 image = (
     modal.Image.debian_slim(python_version="3.12")
-    .apt_install("git", "ffmpeg", "libgl1", "libglib2.0-0")
+    .apt_install("git", "curl", "ffmpeg", "libgl1", "libglib2.0-0")
     .run_commands(
         f"git clone --depth 1 --branch {FACEFUSION_REF} https://github.com/facefusion/facefusion /opt/facefusion",
         "cd /opt/facefusion && python install.py --onnxruntime cuda --skip-conda",
