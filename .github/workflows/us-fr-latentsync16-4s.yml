@@ -1,0 +1,109 @@
+name: US FR | 4s LatentSync v1.6 French lip-sync on existing V2V
+on:
+  push:
+    branches:
+      - production/us-fr-latentsync16-4s-20261029
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/RUN_LATENTSYNC16_4S_ONCE.txt
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+concurrency:
+  group: ugcv2-fr-latentsync16-4s
+  cancel-in-progress: false
+
+jobs:
+  lipsync_4s:
+    if: github.event.head_commit.message == 'RUN_LATENTSYNC16_FRENCH_FOUR_SECONDS_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      GITHUB_TOKEN: ${{ github.token }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      CONFIRM_SINGLE_GPU: 'YES'
+      SCRIPT: productions/US-FR-V2V-REAL-20261029/test_latentsync16_4s.py
+      OUTPUT: productions/US-FR-V2V-REAL-20261029/LATENTSYNC16_4S
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Single-attempt guard and offline validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_LATENTSYNC16_4S_ONCE.txt)" = "AUTHORIZE_ONE_4S_LATENTSYNC16_GPU_CALL_20261029"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$SCRIPT" deploy/modal_latentsync_fr_worker.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          command -v ffmpeg && command -v ffprobe
+      - name: Load exact previously generated real V2V 8s + French voice
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-LIPSYNC-8S-40904419711
+          run-id: 40904419711
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/EXISTING_V2V_8S
+      - name: Prepare 4s video at 25fps and corresponding 16khz French audio
+        timeout-minutes: 5
+        run: python "$SCRIPT" prepare
+      - name: Install pinned Modal client on controller CPU
+        run: python -m pip install --disable-pip-version-check 'modal==1.6.1'
+      - name: One CPU model preparation and one L40S 4-second LatentSync render
+        timeout-minutes: 57
+        run: python "$SCRIPT" render
+      - name: Final MP4, audio sync, 4-second side-by-side and decode QC
+        timeout-minutes: 6
+        run: python "$SCRIPT" finalize
+      - name: Preserve complete files and errors even if GPU/model fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-LATENTSYNC16-4S-${{ github.run_id }}
+          path: |
+            ${{ env.OUTPUT }}/v2v_original_4s.mp4
+            ${{ env.OUTPUT }}/fr_voice_4s_16k.wav
+            ${{ env.OUTPUT }}/latentsync16_raw.mp4
+            ${{ env.OUTPUT }}/fr_latentsync16_4s.mp4
+            ${{ env.OUTPUT }}/compare_original_vs_latentsync16.mp4
+            ${{ env.OUTPUT }}/*_contact.jpg
+            ${{ env.OUTPUT }}/*.json
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 0
+      - name: Record exact status in GitHub issue 3
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, pathlib
+          p=pathlib.Path(os.environ["OUTPUT"])
+          st={}
+          for name in ["render_status.json","model_preparation.json"]:
+              if (p/name).exists():
+                  st[name]=json.loads((p/name).read_text())
+          msg=("### LatentSync 1.6 — 4s real French V2V — GitHub run "+
+               os.environ["GITHUB_RUN_ID"]+"\n\n"+
+               "Workflow: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+
+               "/actions/runs/"+os.environ["GITHUB_RUN_ID"]+"\n\n"+
+               "Job status: **"+os.environ["RESULT"]+"**\n\n"+
+               "Files: "+", ".join(x.name for x in p.glob("*") if x.is_file())+
+               "\n\nState: `"+st.get("render_status.json",{}).get("status","NOT_REACHED")+"`\n\n"+
+               "No acceptance without human visual review of lips, identity and temporal stability.")
+          pathlib.Path("latentsync_issue.md").write_text(msg)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file latentsync_issue.md
