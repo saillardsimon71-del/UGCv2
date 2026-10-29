@@ -1,0 +1,82 @@
+name: US FR 60s | last phrase authentic pace, reuse six V3 voice blocks
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_V3_LAST_LINE_ONLY.txt]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-fr60-final-voice-one-phrase
+  cancel-in-progress: false
+jobs:
+  final_line:
+    if: github.event.head_commit.message == 'RUN_ONE_FINAL_FRENCH_V3_LINE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 42
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      ONE_LAST_FR_V3_GPU: 'YES'
+      OUT: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check one-GPU authorization, Python, ffmpeg
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_V3_LAST_LINE_ONLY.txt)" = "ONE_NEW_LAST_11S_VOICE_FRENCH_NO_VIDEO_GPU"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile deploy/modal_chatterbox_v3_fr_pilot.py productions/US-FR-V2V-REAL-20261029/REAL_60S/retake_final_folder_line.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          pip install -q 'numpy==1.26.4' 'soundfile==0.13.1' 'modal==1.6.1'
+      - name: Previous SHA-verified 60s source and layout
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: ${{ env.OUT }}
+      - name: Previous genuine ASR alignment
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-ENGLISH-ALIGNMENT-40944640728
+          run-id: 40944640728
+          github-token: ${{ github.token }}
+          path: ${{ env.OUT }}
+      - name: Previous six accepted V3 takes and all former candidate audio
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-V3-REFINED-40947229775
+          run-id: 40947229775
+          github-token: ${{ github.token }}
+          path: ${{ env.OUT }}
+      - name: One last-line V3 pass and full 60-second French soundtrack, no speed change
+        timeout-minutes: 34
+        run: python productions/US-FR-V2V-REAL-20261029/REAL_60S/retake_final_folder_line.py
+      - name: Preserve improved complete video, voice, timing proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-60S-V3-FINAL-VOICE-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/fr_60s_visuals_preserved_dub_preview.mp4
+            ${{ env.OUT }}/fr_voice_original_cadence_60s.wav
+            ${{ env.OUT }}/fr_voice_selected_timeline.json
+            ${{ env.OUT }}/fr_voice_script_timed.json
+            ${{ env.OUT }}/fr_voice_candidate_durations.json
+            ${{ env.OUT }}/fr_subtitles_60s.srt
+            ${{ env.OUT }}/status.json
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
