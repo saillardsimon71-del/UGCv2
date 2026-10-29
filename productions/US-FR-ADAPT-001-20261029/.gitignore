@@ -1,0 +1,7 @@
+VISUAL_OUTPUT/assembly/
+VISUAL_OUTPUT/scene_*.mp4
+VISUAL_OUTPUT/scene_*.log
+VISUAL_OUTPUT/voice_input.json
+VISUAL_OUTPUT/captions.log
+VISUAL_OUTPUT/silent_assembly.mp4
+VISUAL_OUTPUT/voice/*.wav

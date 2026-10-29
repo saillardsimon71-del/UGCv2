@@ -1,0 +1,4 @@
+# Add to the existing backend environment. yt-dlp is only for URL analysis.
+Pillow==12.2.0
+yt-dlp==2026.10.26
+jsonschema==4.26.0

@@ -1,0 +1,14 @@
+{
+  "status": "generated",
+  "files": [
+    "baeb86c497e2cac9b3dadc40e7bfb73a55e8a6a5459a16b3da94f5285d67bee0.wav",
+    "a078c84ca37d6d6170caff1c563d5a6a102143e2316b6c09fc521ba588626c0a.wav",
+    "66b3467efd5569341f592b5da736c3c6f491bdcfa16b1409a13aca71d5fa5d53.wav",
+    "d87d7dbcb28b56723faefcc28c8c9cec96327a456609a5d7fec7cf1f43134943.wav",
+    "75a69ee6f81956ab897139f529de13dfbd43b1a3891a5de5708da827d98af78e.wav"
+  ],
+  "rate": 0,
+  "provider": "System.Speech local",
+  "voice": "Microsoft Hortense Desktop",
+  "narration_sha256": "f6123e764de2041ebbd3ebb668f90534a0f8f9dd0ee144317f28fe3a7b6f3dd3"
+}

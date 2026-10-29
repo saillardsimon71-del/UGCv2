@@ -1,0 +1,198 @@
+{
+  "url": "https://www.youtube.com/watch?v=KSOxkhWs2Ic",
+  "status": "partial",
+  "source_media_reused": false,
+  "transcript": {
+    "status": "analyzed",
+    "segments": 255,
+    "concepts": [
+      "trigger",
+      "action",
+      "automation",
+      "dropbox",
+      "zapier",
+      "chatgpt"
+    ],
+    "method": "keyword evidence, no semantic LLM inference"
+  },
+  "rhythm": {
+    "status": "measured",
+    "cut_times_s": [
+      0.633967,
+      2.9029,
+      4.037367,
+      6.439767,
+      10.01,
+      11.344667,
+      12.846167,
+      14.647967,
+      16.683333,
+      18.7187,
+      19.552867,
+      22.188833,
+      25.759067,
+      26.860167,
+      28.795433,
+      31.264567,
+      36.069367,
+      37.470767,
+      40.3403,
+      42.675967,
+      47.614233,
+      53.987267,
+      56.222833,
+      57.057,
+      57.5575,
+      60.994267,
+      63.096367,
+      66.4664,
+      68.802067,
+      71.638233,
+      73.073,
+      77.9779,
+      81.2812,
+      108.3082,
+      111.945167,
+      113.0129,
+      115.982533,
+      157.524033,
+      159.7596,
+      174.5744,
+      175.808967,
+      179.345833,
+      181.2811,
+      192.2921,
+      194.827967,
+      199.732867,
+      201.768233,
+      201.968433,
+      205.238367,
+      209.042167,
+      210.1099,
+      215.782233,
+      217.383833,
+      219.752867,
+      241.241,
+      243.710133,
+      256.689767,
+      268.234633,
+      284.217267,
+      286.352733,
+      289.455833,
+      293.726767,
+      295.295,
+      297.1969,
+      323.089433,
+      324.857867,
+      342.075067,
+      343.576567,
+      345.511833,
+      347.4471,
+      348.181167,
+      349.315633,
+      350.483467,
+      355.0547,
+      368.6683,
+      372.705667,
+      398.664933,
+      403.836767,
+      425.158067,
+      428.394633,
+      430.463367,
+      432.9325,
+      436.402633,
+      440.6402,
+      450.516733,
+      456.5561
+    ],
+    "mean_shot_s": 5.465,
+    "median_shot_s": 2.536,
+    "method": "FFmpeg scene threshold 0.28 at 320px; misses subtle cuts"
+  },
+  "visual_types": {
+    "status": "heuristic",
+    "samples": [
+      {
+        "time_s": 29.72,
+        "type_inferred": "text_dense_interface_or_diagram",
+        "recognized_word_count": 27
+      },
+      {
+        "time_s": 89.15,
+        "type_inferred": "text_dense_interface_or_diagram",
+        "recognized_word_count": 31
+      },
+      {
+        "time_s": 148.58,
+        "type_inferred": "text_dense_interface_or_diagram",
+        "recognized_word_count": 30
+      },
+      {
+        "time_s": 208.01,
+        "type_inferred": "sparse_visual",
+        "recognized_word_count": 0
+      },
+      {
+        "time_s": 267.44,
+        "type_inferred": "text_dense_interface_or_diagram",
+        "recognized_word_count": 105
+      },
+      {
+        "time_s": 326.87,
+        "type_inferred": "text_dense_interface_or_diagram",
+        "recognized_word_count": 74
+      },
+      {
+        "time_s": 386.3,
+        "type_inferred": "text_dense_interface_or_diagram",
+        "recognized_word_count": 56
+      },
+      {
+        "time_s": 445.73,
+        "type_inferred": "sparse_visual",
+        "recognized_word_count": 0
+      }
+    ],
+    "method": "8 temporal samples, CPU OCR word density; no semantic vision model",
+    "limitations": "Cannot reliably distinguish UI/diagram or presenter/B-roll; cuts between samples may be missed"
+  },
+  "title": "AI Automation: Complete Beginners Guide",
+  "duration_s": 475,
+  "chapters": [
+    {
+      "start_time": 0,
+      "title": "Introduction to AI automation",
+      "end_time": 20
+    },
+    {
+      "start_time": 20,
+      "title": "Setting up Zapier",
+      "end_time": 54
+    },
+    {
+      "start_time": 54,
+      "title": "Defining the trigger event",
+      "end_time": 111
+    },
+    {
+      "start_time": 111,
+      "title": "Testing the trigger",
+      "end_time": 204
+    },
+    {
+      "start_time": 204,
+      "title": "Connecting ChatGPT",
+      "end_time": 344
+    },
+    {
+      "start_time": 344,
+      "title": "Saving the AI output",
+      "end_time": 430
+    },
+    {
+      "start_time": 430,
+      "title": "Publishing the automation",
+      "end_time": 475
+    }
+  ]
+}

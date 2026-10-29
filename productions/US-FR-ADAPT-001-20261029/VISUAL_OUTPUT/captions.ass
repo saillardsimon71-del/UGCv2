@@ -1,0 +1,29 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Subtitle,Segoe UI,34,&H00FFFFFF,&H000000FF,&H00251E10,&H00251E10,0,0,0,0,100,100,0,0,3,9,0.0,2,100,100,54,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.40,0:00:03.27,Subtitle,,0,0,0,,Sept messages après un chantier.
+Dialogue: 0,0:00:03.27,0:00:04.89,Subtitle,,0,0,0,,Par où commencer ?
+Dialogue: 0,0:00:04.89,0:00:07.94,Subtitle,,0,0,0,,Un assistant peut préparer le tri.
+Dialogue: 0,0:00:07.94,0:00:10.09,Subtitle,,0,0,0,,Vous gardez la décision.
+Dialogue: 0,0:00:10.50,0:00:11.99,Subtitle,,0,0,0,,Une demande entre.
+Dialogue: 0,0:00:11.99,0:00:14.21,Subtitle,,0,0,0,,Les données sont préparées.
+Dialogue: 0,0:00:14.21,0:00:18.59,Subtitle,,0,0,0,,L'IA propose un brouillon, puis une personne vérifie.
+Dialogue: 0,0:00:18.59,0:00:21.80,Subtitle,,0,0,0,,On commence avec un déclencheur manuel.
+Dialogue: 0,0:00:22.23,0:00:27.16,Subtitle,,0,0,0,,Notre entreprise fictive de Rouen reçoit une demande pour une fuite.
+Dialogue: 0,0:00:27.16,0:00:31.73,Subtitle,,0,0,0,,Cette interface est une illustration, pas une exécution réelle.
+Dialogue: 0,0:00:31.73,0:00:34.70,Subtitle,,0,0,0,,Le brouillon ne promet aucun rendez-vous.
+Dialogue: 0,0:00:35.10,0:00:39.36,Subtitle,,0,0,0,,On contrôle les données, le besoin et le texte proposé.
+Dialogue: 0,0:00:39.36,0:00:42.85,Subtitle,,0,0,0,,L'artisan doit confirmer le prix et le délai.
+Dialogue: 0,0:00:43.27,0:00:47.72,Subtitle,,0,0,0,,Vous pouvez vérifier, corriger ou refuser le brouillon.
+Dialogue: 0,0:00:47.72,0:00:49.91,Subtitle,,0,0,0,,Aucun message n'est envoyé.
+Dialogue: 0,0:00:49.91,0:00:53.31,Subtitle,,0,0,0,,Prochaine étape : tester le vrai workflow.

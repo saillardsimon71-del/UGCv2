@@ -1,0 +1,67 @@
+{
+  "render_wall_s": 84.98,
+  "duration_s": 53.7333,
+  "frames_expected": 1612,
+  "output_bytes": 3001319,
+  "gpu_seconds": 0,
+  "paid_api_calls": 0,
+  "external_generation_cost_usd": 0,
+  "electricity_cost": "not measured",
+  "voice": {
+    "status": "generated",
+    "files": [
+      "baeb86c497e2cac9b3dadc40e7bfb73a55e8a6a5459a16b3da94f5285d67bee0.wav",
+      "a078c84ca37d6d6170caff1c563d5a6a102143e2316b6c09fc521ba588626c0a.wav",
+      "66b3467efd5569341f592b5da736c3c6f491bdcfa16b1409a13aca71d5fa5d53.wav",
+      "d87d7dbcb28b56723faefcc28c8c9cec96327a456609a5d7fec7cf1f43134943.wav",
+      "75a69ee6f81956ab897139f529de13dfbd43b1a3891a5de5708da827d98af78e.wav"
+    ],
+    "rate": 0,
+    "provider": "System.Speech local",
+    "voice": "Microsoft Hortense Desktop",
+    "narration_sha256": "f6123e764de2041ebbd3ebb668f90534a0f8f9dd0ee144317f28fe3a7b6f3dd3"
+  },
+  "scenes": [
+    {
+      "id": "v01",
+      "start_s": 0.0,
+      "duration_s": 10.5,
+      "voice_start_s": 0.4,
+      "voice_duration_s": 9.693
+    },
+    {
+      "id": "v02",
+      "start_s": 10.1,
+      "duration_s": 12.133333333333333,
+      "voice_start_s": 0.4,
+      "voice_duration_s": 11.303
+    },
+    {
+      "id": "v03",
+      "start_s": 21.8333,
+      "duration_s": 13.266666666666667,
+      "voice_start_s": 0.4,
+      "voice_duration_s": 12.463
+    },
+    {
+      "id": "v04",
+      "start_s": 34.7,
+      "duration_s": 8.566666666666666,
+      "voice_start_s": 0.4,
+      "voice_duration_s": 7.753
+    },
+    {
+      "id": "v05",
+      "start_s": 42.8667,
+      "duration_s": 10.866666666666667,
+      "voice_start_s": 0.4,
+      "voice_duration_s": 10.048
+    }
+  ],
+  "source_media_reused": false,
+  "font_file": "segoeui.ttf",
+  "font_sha256": "ba32a222b23d727267cf1aba4e5296fe84ce99b9d910915103fc085d7931bc88",
+  "storyboard_sha256": "9d5ca6b654c7fc513c11646be3b48ec276451afa8179f35edd71ca52fcaf279d",
+  "python": "3.11.6",
+  "ffmpeg": "ffmpeg version 8.1.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers"
+}
