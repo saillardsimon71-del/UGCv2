@@ -41,7 +41,7 @@ BLOCKS=[
  {"id":"06_local_folders","start_s":39.38,"end_s":48.30,
   "fr_text":"Dropbox est installé sur mon ordinateur, alors tous mes dossiers sont là, en local. J'ouvre AutoHub AI Advantage : c'est dans ce dossier que je gère plusieurs de mes automatisations."},
  {"id":"07_youtube_folders","start_s":48.42,"end_s":59.62,
-  "fr_text":"Ici, je clique sur Nouveau dossier. Je vais l'appeler Test YouTube. C'est très simple : à l'intérieur, je crée deux sous-dossiers. Le premier s'appelle Zone de dépôt des e-mails, parce que c'est là qu'on va déposer tous les e-mails."},
+  "fr_text":"Ici, je clique sur Nouveau dossier. Je vais l'appeler Test YouTube. C'est très simple : à l'intérieur, je crée deux sous-dossiers. Le premier s'appelle Zone de dépôt des e-mails, et c'est dans ce dossier que je vais déposer les nouveaux e-mails pour lancer l'automatisation."},
 ]
 
 
