@@ -4,6 +4,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import urllib.request
 from pathlib import Path
 import cv2
 import numpy as np
@@ -18,13 +19,31 @@ def report(obj,name="source_report.json"):
 def prepare():
     OUT.mkdir(parents=True,exist_ok=True)
     source=OUT/"download.mp4"
-    cmd=[sys.executable,"-m","yt_dlp","--no-playlist","--no-warnings","--force-overwrites",
-         "-f","best[height<=480][ext=mp4]/best[height<=480]/best",
-         "--merge-output-format","mp4","-o",str(OUT/"download.%(ext)s"),URL]
+    bridge=Path("productions/US-FR-V2V-REAL-20261029/SOURCE_BRIDGE_URL.txt")
     try:
-        result=subprocess.run(cmd,capture_output=True,text=True,timeout=240)
-        if result.returncode:
-            raise RuntimeError("yt-dlp refused: "+(result.stderr+result.stdout)[-1600:])
+        if bridge.exists():
+            address=bridge.read_text(encoding="utf-8").strip()
+            if not address.startswith("https://storage.googleapis.com/vidiq-user-videos/"):
+                raise RuntimeError("Unexpected source bridge provider; blocked")
+            req=urllib.request.Request(address, headers={"User-Agent":"Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=45) as response, source.open("wb") as output:
+                total=0
+                while True:
+                    chunk=response.read(1024*1024)
+                    if not chunk:break
+                    total+=len(chunk)
+                    if total>300_000_000:raise RuntimeError("Source bridge exceeds 300 MB")
+                    output.write(chunk)
+            if total<200_000 or source.read_bytes()[4:8]!=b"ftyp":
+                raise RuntimeError("Bridge source not MP4")
+            print("Source obtained from existing video import, no YouTube scrape")
+        else:
+            cmd=[sys.executable,"-m","yt_dlp","--no-playlist","--no-warnings","--force-overwrites",
+                "-f","best[height<=480][ext=mp4]/best[height<=480]/best",
+                "--merge-output-format","mp4","-o",str(OUT/"download.%(ext)s"),URL]
+            result=subprocess.run(cmd,capture_output=True,text=True,timeout=240)
+            if result.returncode:
+                raise RuntimeError("yt-dlp refused: "+(result.stderr+result.stdout)[-1600:])
         files=sorted(OUT.glob("download.*"),key=lambda p:p.stat().st_size,reverse=True)
         if not files: raise RuntimeError("No accessible source")
         src=files[0]
