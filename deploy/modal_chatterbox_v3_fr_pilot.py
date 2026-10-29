@@ -130,7 +130,7 @@ def render_original_paced_french_blocks(blocks: list[dict]) -> dict:
     with tempfile.TemporaryDirectory(prefix="fr-original-cadence-") as td:
         for index,block in enumerate(blocks):
             txt=block["fr_text"].strip()
-            if not 30<=len(txt)<=260:
+            if not 30<=len(txt)<=310:
                 raise ValueError(f"Block {index} length invalid")
             target=float(block["end_s"])-float(block["start_s"])
             if not 4.0<target<13.0:
