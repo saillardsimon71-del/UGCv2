@@ -33,7 +33,12 @@ jobs:
           set -euo pipefail
           test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_SOURCE_SCAN_ONCE.txt)" = "ONLY_CUT_AND_SCAN_60S_NO_MODAL_GPU_20261029"
           python -m py_compile "$SCRIPT"
-          command -v ffmpeg && command -v ffprobe
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
+          command -v ffmpeg
+          command -v ffprobe
           python -m pip install --disable-pip-version-check 'numpy==1.26.4' 'opencv-python-headless==4.10.0.84'
       - name: Retrieve verified full original source SHA from previous source audit
         uses: actions/download-artifact@v4
