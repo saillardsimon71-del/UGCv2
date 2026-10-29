@@ -1,0 +1,80 @@
+name: US FR 60s | Replace ONLY four presenter shots, preserve screen UI
+on:
+  push:
+    branches: [production/us-fr-60s-mixed-scenes-20261029]
+    paths: [productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FOUR_FACES_ONCE.txt]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-fr60-selective-face-four-once
+  cancel-in-progress: false
+jobs:
+  selective_face_identity:
+    if: github.event.head_commit.message == 'RUN_FR60_ONLY_FOUR_ACTUAL_FACES_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      ALLOW_FOUR_FACE_GPU: 'YES'
+      PY: productions/US-FR-V2V-REAL-20261029/REAL_60S/render_selected_faces_60s.py
+      OUT: productions/US-FR-V2V-REAL-20261029/REAL_60S/FACE_SWAP_SELECTIVE
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            productions/US-FR-V2V-REAL-20261029
+            deploy
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check one-time authorization, prerequisites and syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FOUR_FACES_ONCE.txt)" = "AUTHORIZE_ONLY_FOUR_VISIBLE_FACES_GPU_NO_SCREENS"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$PY"
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
+          python -m pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-python-headless==4.10.0.84'
+      - name: Retrieve real original minute with diagrams and screens
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-SOURCE-SCAN-40942927735
+          run-id: 40942927735
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT
+      - name: Reuse generated, previously proven artificial presenter reference
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-60S-NEW-PRESENTER-40946696551
+          run-id: 40946696551
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/REAL_60S/FACE_SWAP
+      - name: Extract only original four face-camera clips, no screen generation
+        timeout-minutes: 6
+        run: python "$PY" prepare
+      - name: FaceFusion selector-one in four selected shots only (A10G, existing app)
+        timeout-minutes: 63
+        run: python "$PY" render
+      - name: Check each face ROI truly changed and restore exact original 60s screen shots
+        timeout-minutes: 13
+        run: python "$PY" assemble
+      - name: Save actual 60s video and proof even if any stage failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-60S-SELECTIVE-FACES-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/faceswapped_video_no_audio_60s.mp4
+            ${{ env.OUT }}/face_at_*.jpg
+            ${{ env.OUT }}/*.json
+            ${{ env.OUT }}/*_newactor.mp4
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
