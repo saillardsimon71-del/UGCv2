@@ -34,7 +34,7 @@ image = (
 
 
 @app.function(
-    image=image, gpu="L4", cpu=4, memory=16384, timeout=1800,
+    image=image, gpu="L40S", cpu=4, memory=16384, timeout=1800,
     min_containers=0, max_containers=1, scaledown_window=2,
     volumes={str(VOICE_ROOT): voice_volume},
 )
