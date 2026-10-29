@@ -31,7 +31,9 @@ jobs:
         run: |
           mkdir -p diagnostics
           modal app list --env main --json > diagnostics/modal_apps.json 2>&1 || true
-          modal app logs ap-kv6BmtWG4thFNPciLNzc0X --env main --since 2h --tail 2000 --timestamps > diagnostics/modal_logs.txt 2>&1 || true
+          APP_ID=$(python -c 'import json; a=json.load(open("diagnostics/modal_apps.json")); print(next((x["app_id"] for x in a if x.get("description")=="ugcv2-fr-latentsync-4s"), ""))')
+          echo "APP_ID=$APP_ID" > diagnostics/info.txt
+          if test -n "$APP_ID"; then modal app logs "$APP_ID" --env main --since 2h --tail 2500 --timestamps > diagnostics/modal_logs.txt 2>&1 || true; fi
           grep -E -i -C 3 '(error|exception|traceback|failed|no module named|download)' diagnostics/modal_logs.txt | tail -100 || true
       - uses: actions/upload-artifact@v4
         if: always()
