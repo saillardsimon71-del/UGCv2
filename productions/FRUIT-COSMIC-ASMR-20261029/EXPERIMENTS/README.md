@@ -1,5 +1,14 @@
 # Test unique — fraise de verre découpée (5 secondes)
 
+## Exécution réelle du 29 octobre — diagnostic
+
+- [Run #40857680365](https://github.com/saillardsimon71-del/UGCv2/actions/runs/40857680365) : échec du précontrôle runner avant GPU (FFmpeg absent). Corrigé par installation préalable.
+- [Run #40857883879](https://github.com/saillardsimon71-del/UGCv2/actions/runs/40857883879) : précontrôle et FFmpeg OK ; **échec HTTP 403 sur le téléchargement Pexels direct** pendant la préparation de la source. Aucune génération Modal n'a eu lieu.
+- Le workflow est volontairement **fail-closed** : aucun rendu ne démarre sans vidéo guide réelle contrôlée. Une nouvelle exécution avec le même fichier marker n'est pas lancée automatiquement.
+- **Blocage actuel : source de découpe filmée directement téléchargeable et utilisable**. Éviter les tentatives GPU à partir de prompts seuls ; l'expérience initiale a déjà montré leurs limites. On peut remplacer la source par un fichier vidéo autorisé fourni dans le dépôt puis modifier explicitement la recette et le marqueur de lancement.
+- **Résultat : PAS DE MP4 de test. ZÉRO appel GPU pour ces deux runs.** Ne pas annoncer de réussite audiovisuelle.
+
+
 **Hypothèse à trancher :** LTX-2.5 peut-il conserver un véritable geste de couteau sur une fraise, tout en changeant la matière et en faisant apparaître l'intérieur cosmique ?
 
 ## Pourquoi ce chemin change réellement le test
