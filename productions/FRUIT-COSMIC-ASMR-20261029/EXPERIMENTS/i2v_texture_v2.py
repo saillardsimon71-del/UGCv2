@@ -197,7 +197,7 @@ def mix_audio():
     if not raw.exists():
         raise RuntimeError("No rendered video: no audio mix.")
     receipt = json.loads((OUT / "render_receipt.json").read_text())
-    if receipt.get("status") != "real_i2v_native_audio_technical_pass_visual_review_required":
+    if receipt.get("status") != "real_i2v_technical_pass_visual_review_required":
         raise RuntimeError("Video not technically verified.")
     plan = json.loads((OUT / "plan.json").read_text())
     if hashlib.sha256(GLASS_WAV.read_bytes()).hexdigest() != plan["foley_sha256"]:
