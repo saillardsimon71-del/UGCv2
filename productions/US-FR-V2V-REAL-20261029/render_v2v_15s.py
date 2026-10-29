@@ -12,6 +12,8 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+# GitHub Actions invokes this script by path, so the repo root is not automatically on sys.path.
+sys.path.insert(0, str(Path.cwd()))
 
 BASE=Path("productions/US-FR-V2V-REAL-20261029")
 OUT=BASE/"OUTPUT"
