@@ -67,7 +67,7 @@ def face_swap_explicit_one(video_b64:str,ref_face_b64:str)->dict:
                 "face_selector_order":"large-small",
                 "engine":"FaceFusion 3.5.1 face_swapper only plus face_enhancer",
                 "gpu":"A10G",
-                "duration_expected_s":4,
+                "duration_expected_s":None,
                 "bytes":len(result),
                 "sha256":hashlib.sha256(result).hexdigest(),
                 "wall_seconds":round(time.perf_counter()-started,2),
