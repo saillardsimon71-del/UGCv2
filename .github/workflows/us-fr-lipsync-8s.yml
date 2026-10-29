@@ -1,0 +1,121 @@
+name: US FR | 8s native-looking lipsync on existing V2V (NO V2V rerender)
+on:
+  push:
+    branches:
+      - production/us-fr-lipsync-8s-20261029
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/RUN_LIPSYNC_8S_ONCE.txt
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+concurrency:
+  group: sqv-ugc-lipsync-eight-seconds
+  cancel-in-progress: false
+
+jobs:
+  test_real_lips:
+    # The marker is the single execution authorization. Manual dispatch does
+    # not spend on GPU: it exits at this guard.
+    if: github.event_name == 'push' && github.event.head_commit.message == 'RUN_US_FR_LIPSYNC_8S_ONE_TIME' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      CONFIRM_ONE_LIPSYNC_GPU: 'YES'
+      TEST: productions/US-FR-V2V-REAL-20261029/lipsync_8s_test.py
+      OUT: productions/US-FR-V2V-REAL-20261029/LIPSYNC_8S
+    steps:
+      - name: Checkout exactly existing workers and isolated test
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Security preflight / no V2V or avatar redevelopment
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_LIPSYNC_8S_ONCE.txt)" = "ONE_EXISTING_V2V_EIGHT_SECOND_LIPSYNC_GPU_AUTHORIZED"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$TEST" deploy/modal_lipsync_worker.py
+          command -v ffmpeg && command -v ffprobe
+      - name: Install lightweight controller only
+        run: python -m pip install --disable-pip-version-check 'modal==1.6.1' 'requests>=2.31,<3' 'edge-tts>=7,<8'
+      - name: Download existing authentic 15s V2V output (GitHub artifact, not V2V GPU)
+        timeout-minutes: 6
+        run: python "$TEST" prepare
+      - name: Create French voice A/B (CPU)
+        timeout-minutes: 5
+        run: python "$TEST" voice
+      - name: Inspect already-installed lip models then one lip-sync GPU only if ready
+        timeout-minutes: 29
+        run: python "$TEST" lipsync
+      - name: Verify resulting streams / extract visual comparison
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p "$OUT"
+          if test -f "$OUT/fr_lipsync_8s.mp4"; then
+            ffmpeg -y -v error -i "$OUT/fr_lipsync_8s.mp4" -vf "fps=1,scale=336:192,tile=4x2" -frames:v 1 "$OUT/lipsync_contact.jpg" || true
+          fi
+          if test -f "$OUT/baseline_french_8s.mp4"; then
+            ffmpeg -y -v error -i "$OUT/baseline_french_8s.mp4" -vf "fps=1,scale=336:192,tile=4x2" -frames:v 1 "$OUT/baseline_contact.jpg" || true
+          fi
+      - name: Store baseline, voice candidates, model diagnosis and video if produced
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-LIPSYNC-8S-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/baseline_french_8s.mp4
+            ${{ env.OUT }}/baseline_audio.wav
+            ${{ env.OUT }}/french_candidate.mp3
+            ${{ env.OUT }}/french_candidate_raw.wav
+            ${{ env.OUT }}/final_french_voice.wav
+            ${{ env.OUT }}/fr_lipsync_8s.mp4
+            ${{ env.OUT }}/source_provenance.json
+            ${{ env.OUT }}/baseline.json
+            ${{ env.OUT }}/voice_comparison.json
+            ${{ env.OUT }}/model_doctor.json
+            ${{ env.OUT }}/render_status.json
+            ${{ env.OUT }}/baseline_contact.jpg
+            ${{ env.OUT }}/lipsync_contact.jpg
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
+      - name: Send actual outcome to GitHub issue 3
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ["OUT"])
+          st={}
+          for f in ["source_provenance.json","model_doctor.json","render_status.json","voice_comparison.json"]:
+              if (p/f).exists():
+                  st[f]=json.loads((p/f).read_text())
+          msg=("### V2V → FR lipsync 8 s — run "+os.environ["GITHUB_RUN_ID"]+"\n\n"+
+               "Workflow: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+
+               "/actions/runs/"+os.environ["GITHUB_RUN_ID"]+"\n\n"+
+               "Job result: "+os.environ["JOB_STATUS"]+"\n\n"+
+               "Files actually present: "+", ".join(x.name for x in p.iterdir() if x.is_file())+
+               "\n\nModel/result: `"+str(st.get("render_status.json",{"status":"STEP_FAILED_OR_NOT_REACHED"}).get("status"))+
+               "`\n\nVoice selection: `"+
+               str(st.get("voice_comparison.json",{}).get("selection","NOT_GENERATED"))+
+               "`\n\nNo claims of visually verified lip-sync until human review.")
+          pathlib.Path("issue_report.md").write_text(msg)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file issue_report.md
