@@ -84,14 +84,13 @@ def run():
     if not (OUT/"source_and_identity_provenance.json").is_file():
         raise RuntimeError("CPU validation needed")
     import modal
-    from deploy import modal_face_worker as worker
+    from deploy import modal_fr60_faceswap_selected as worker
     save("status.json",{"stage":"FACEFUSION_ONE_GPU_STARTED","source":"true 60s","engine":"face_swapper"})
     try:
         with worker.app.run(name="ugc-60s-face-identity-pilot",environment_name="main"):
-            result=worker.render_faceswap.remote(
+            result=worker.face_swap_explicit_one.remote(
                 base64.b64encode(SOURCE.read_bytes()).decode(),
                 base64.b64encode(FACE.read_bytes()).decode(),
-                {"swapper":"inswapper_128_fp16","enhancer":"gfpgan_1.4"},
             )
         RAW.write_bytes(base64.b64decode(result["video_b64"],validate=True))
         save("face_swap_metadata.json",result["metadata"])
