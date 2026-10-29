@@ -1,0 +1,107 @@
+name: US FR | TBDub Student V1.1 real French 4s V2V
+on:
+  push:
+    branches: [production/us-fr-tbdub-student-4s-20261029]
+    paths:
+      - productions/US-FR-V2V-REAL-20261029/RUN_OFFICIAL_TBDUB_4S_ONCE.txt
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+concurrency:
+  group: ugcv2-fr-tbdub-student-4s-only
+  cancel-in-progress: false
+
+jobs:
+  real_tbdub_4s:
+    if: github.event.head_commit.message == 'RUN_US_FR_TBDUB_STUDENT_4S_ONE_GPU' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      TBDUB_GPU_ALLOW_ONCE: 'YES'
+      DRIVER: productions/US-FR-V2V-REAL-20261029/run_tbdub_4s.py
+      OUT: productions/US-FR-V2V-REAL-20261029/TBDUB_4S_OUTPUT
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/US-FR-V2V-REAL-20261029
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate one attempt, Modal secrets and Python
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/US-FR-V2V-REAL-20261029/RUN_OFFICIAL_TBDUB_4S_ONCE.txt)" = "ONE_OFFICIAL_TBDUB_STUDENT_FRENCH_4S_GPU_AUTHORIZED"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$DRIVER" deploy/modal_tbdub_fr_worker.py
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          command -v ffmpeg && command -v ffprobe
+      - name: Retrieve authentic V2V + French speech, no LTX
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-LIPSYNC-8S-40904419711
+          run-id: 40904419711
+          github-token: ${{ github.token }}
+          path: productions/US-FR-V2V-REAL-20261029/EXISTING_V2V_8S
+      - name: Extract matching four-second V2V and French speech on CPU
+        timeout-minutes: 5
+        run: python "$DRIVER" source
+      - name: Install pinned Modal client
+        run: python -m pip install --disable-pip-version-check 'modal==1.6.1'
+      - name: Official TBDub face preflight, CPU Student checkpoints, one L40S 4s pass
+        timeout-minutes: 94
+        run: python "$DRIVER" run
+      - name: Verify and mux actual MP4 + comparison
+        timeout-minutes: 7
+        run: python "$DRIVER" finish
+      - name: Preserve all available real videos, face crop and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-TBDUB-STUDENT-4S-${{ github.run_id }}
+          path: |
+            ${{ env.OUT }}/v2v_original_4s.mp4
+            ${{ env.OUT }}/voix_fr_4s.wav
+            ${{ env.OUT }}/tbdub_detected_face_crop_4s.mp4
+            ${{ env.OUT }}/tbdub_student_generated_4s.mp4
+            ${{ env.OUT }}/UGCv2_TBDUB_FR_4s_A_VERIFIER.mp4
+            ${{ env.OUT }}/UGCv2_TBDUB_FR_4s_AVANT_APRES.mp4
+            ${{ env.OUT }}/*_contact.jpg
+            ${{ env.OUT }}/*.json
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 0
+      - name: Post exact outcome in issue 3
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ job.status }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,os
+          p=Path(os.environ["OUT"])
+          info=json.loads((p/"status.json").read_text()) if (p/"status.json").is_file() else {}
+          has_video=(p/"UGCv2_TBDUB_FR_4s_A_VERIFIER.mp4").is_file()
+          msg=("### TBDub Student v1.1, 4-second real V2V dubbing\n\n"
+              "Run: https://github.com/"+os.environ["GITHUB_REPOSITORY"]+
+              "/actions/runs/"+os.environ["GITHUB_RUN_ID"]+
+              "\n\nJob: "+os.environ["RESULT"]+
+              "\nStage: "+info.get("stage","NOT_REACHED")+
+              "\nReal final MP4 produced: "+str(has_video)+
+              "\nFiles: "+", ".join(f.name for f in p.glob("*") if f.is_file())+
+              "\n\nLip anatomy and synchronisation still require human review.")
+          Path("tbdub_issue.md").write_text(msg)
+          PY
+          gh issue comment 3 --repo "$GITHUB_REPOSITORY" --body-file tbdub_issue.md
