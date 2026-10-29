@@ -132,39 +132,43 @@ def lipsync():
     save("model_doctor.json",state)
     model=("latentsync16" if state.get("latentsync16_ready") else
            "musetalk15" if state.get("musetalk15_ready") else None)
+    if os.getenv("CONFIRM_ONE_LIPSYNC_GPU")!="YES":
+        raise RuntimeError("One-GPU-call authorization missing")
+    video_b64=base64.b64encode(vid.read_bytes()).decode()
+    audio_b64=base64.b64encode(wav.read_bytes()).decode()
     if model is None:
-        save("render_status.json",{"status":"BLOCKED_MODEL_WEIGHTS_NOT_READY",
-            "gpu_calls":0,"model_doctor":state,
-            "next":"Prepare existing lip-sync model weights before GPU rendering"})
-        print("LIPSYNC_BLOCKED: weights missing, no image build or GPU",flush=True)
-        return
-    with worker.app.run(name="ugcv2-fr-lipsync-eight-second-test",environment_name="main"):
-        if os.getenv("CONFIRM_ONE_LIPSYNC_GPU")!="YES":
-            raise RuntimeError("One-GPU-call authorization missing")
-        result=worker.render_lipsync.remote(
-            base64.b64encode(vid.read_bytes()).decode(),
-            base64.b64encode(wav.read_bytes()).decode(),
-            {"model":model,"steps":20,"guidance_scale":1.5}
-        )
-        candidate=ROOT/"fr_lipsync_8s.mp4"
-        candidate.write_bytes(base64.b64decode(result["video_b64"],validate=True))
-        info=inspect(candidate)
-        if not any(s["codec_type"]=="video" for s in info["streams"]):
-            raise RuntimeError("Lip-syncer returned no video stream")
-        if not 7.7<float(info["format"]["duration"])<8.4:
-            raise RuntimeError("Lip-syncer returned inconsistent duration")
-        # Do not trust the engine's audio mux; explicitly mux the exact lip driving voice.
-        tmp=ROOT/"lipsync_muxed.mp4"
-        sh("ffmpeg","-y","-v","error","-i",str(candidate),
-           "-i",str(wav),"-map","0:v:0","-map","1:a:0",
-           "-c:v","copy","-c:a","aac","-b:a","192k","-t","8",
-           "-movflags","+faststart",str(tmp))
-        tmp.replace(candidate)
-        sh("ffmpeg","-v","error","-xerror","-i",str(candidate),"-f","null","-",timeout=180)
-        save("render_status.json",{"status":"TECHNICALLY_RENDERED_VISUAL_REVIEW_REQUIRED",
-             "model":model,"metadata":result.get("metadata",{}),"video":str(candidate),
-             "quality_claim":"None. Human review of lips/face/natural voice required."})
-        print("LIPSYNC_VIDEO_RENDERED",model,flush=True)
+        # Instead of downloading 14GB of LatentSync/MuseTalk checkpoints,
+        # reuse FaceFusion's built-in lip_syncer (EDTalk 256, Apache-2.0).
+        from deploy import modal_face_worker as face
+        model="facefusion_edtalk_256"
+        save("render_status.json",{"status":"STARTING_FACEFUSION_ONE_GPU_ATTEMPT",
+            "model":model,"prior_model_doctor":state})
+        with face.app.run(name="ugcv2-fr-edtalk-eight-second-test",environment_name="main"):
+            result=face.render_native_fr_lips.remote(video_b64,audio_b64)
+    else:
+        save("render_status.json",{"status":"STARTING_LATENTSYNC_OR_MUSETALK_ONE_GPU_ATTEMPT","model":model})
+        with worker.app.run(name="ugcv2-fr-lipsync-eight-second-test",environment_name="main"):
+            result=worker.render_lipsync.remote(video_b64,audio_b64,
+                {"model":model,"steps":20,"guidance_scale":1.5})
+    candidate=ROOT/"fr_lipsync_8s.mp4"
+    candidate.write_bytes(base64.b64decode(result["video_b64"],validate=True))
+    info=inspect(candidate)
+    if not any(s["codec_type"]=="video" for s in info["streams"]):
+        raise RuntimeError("Lip-syncer returned no video stream")
+    if not 7.7<float(info["format"]["duration"])<8.4:
+        raise RuntimeError("Lip-syncer returned inconsistent duration")
+    # Do not trust the engine's audio mux; explicitly mux the exact lip driving voice.
+    tmp=ROOT/"lipsync_muxed.mp4"
+    sh("ffmpeg","-y","-v","error","-i",str(candidate),
+       "-i",str(wav),"-map","0:v:0","-map","1:a:0",
+       "-c:v","copy","-c:a","aac","-b:a","192k","-t","8",
+       "-movflags","+faststart",str(tmp))
+    tmp.replace(candidate)
+    sh("ffmpeg","-v","error","-xerror","-i",str(candidate),"-f","null","-",timeout=180)
+    save("render_status.json",{"status":"TECHNICALLY_RENDERED_VISUAL_REVIEW_REQUIRED",
+         "model":model,"metadata":result.get("metadata",{}),"video":str(candidate),
+         "quality_claim":"None. Human review of lips/face/natural voice required."})
+    print("LIPSYNC_VIDEO_RENDERED",model,flush=True)
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("phase",choices=["prepare","voice","lipsync"])
