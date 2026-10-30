@@ -1,0 +1,79 @@
+name: FR60 | approved new actor LTX + TBDub complete minute
+on:
+  push:
+    branches: [production/fr60-new-presenter-60s-20261030]
+    paths:
+      - productions/FR60-PRESENTER-PROOF-20261030/RUN_NEW_ACTOR_FR60_ONCE.txt
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-new-identity-60s-one-off
+  cancel-in-progress: false
+jobs:
+  real_fr60:
+    if: github.event.head_commit.message == 'RUN_NEW_ACTOR_FR60_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      ALLOW_FR60_NEW_ACTOR_GPU: 'YES'
+      PY: productions/FR60-PRESENTER-PROOF-20261030/render_full_60s.py
+      BASE: productions/FR60-PRESENTER-PROOF-20261030
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/FR60-PRESENTER-PROOF-20261030
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: One-shot guard, workspace and correct tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat "$BASE/RUN_NEW_ACTOR_FR60_ONCE.txt")" = 'FIVE_DISTINCT_12S_LTX_AND_TBDUB_KEEP_VALIDATED_60S_FRENCH_AUDIO'
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$PY"
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          sudo apt-get install -y fonts-dejavu-core
+          python -m pip install -q 'modal==1.6.1'
+      - name: Restore exactly validated French hybrid source from successful run
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-HYBRID-FINAL-40957764927
+          run-id: 40957764927
+          github-token: ${{ github.token }}
+          path: ${{ env.BASE }}/FULL60_INPUT
+      - name: Verify source/actor reference and split five exact French audio segments (CPU)
+        timeout-minutes: 4
+        run: python "$PY" prepare
+      - name: Generate five DISTINCT natural 12-second LTX actor+set videos, no looping
+        timeout-minutes: 100
+        run: python "$PY" animate
+      - name: Synchronize each 12-second master using established TBDub Student v1.1
+        timeout-minutes: 45
+        run: python "$PY" dub
+      - name: Full-rectangle PiP replacements, title overlay and preserve exact 60s narration
+        timeout-minutes: 20
+        run: python "$PY" assemble
+      - name: Save final verified MP4, audit, contact frames and receipts (even on failure)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FR60-NEW-PRESENTER-COMPLETE-${{ github.run_id }}
+          path: |
+            ${{ env.BASE }}/FULL60_RUN/UGCv2_FR60_NOUVEL_ACTEUR_COMPLET_TEST.mp4
+            ${{ env.BASE }}/FULL60_RUN/final_status.json
+            ${{ env.BASE }}/FULL60_RUN/prepared.json
+            ${{ env.BASE }}/FULL60_RUN/animations.json
+            ${{ env.BASE }}/FULL60_RUN/dubbed.json
+            ${{ env.BASE }}/FULL60_RUN/check_*.jpg
+          retention-days: 14
+          compression-level: 0
+          if-no-files-found: warn
