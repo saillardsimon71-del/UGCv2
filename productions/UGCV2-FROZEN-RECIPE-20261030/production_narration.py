@@ -35,16 +35,16 @@ def transcribe(audio, cache, language=None, strict=True):
     output = []
     uncertain_words = 0
     for seg in segments:
-        words = [{'text': w.word.strip(), 'start_s': w.start, 'end_s': w.end,
-                  'probability': w.probability} for w in (seg.words or []) if w.word.strip()]
+        words = [{'text': w.word.strip(), 'start_s': float(w.start), 'end_s': float(w.end),
+                  'probability': float(w.probability)} for w in (seg.words or []) if w.word.strip()]
         uncertain_words += sum(w['end_s'] <= w['start_s'] for w in words)
         if strict and (not words or uncertain_words):
             raise Refused('ASR_ALIGNMENT_UNCERTAIN: missing/zero-length words')
-        output.append({'text': seg.text.strip(), 'start_s': seg.start, 'end_s': seg.end,
-                       'words': words, 'avg_logprob': seg.avg_logprob})
+        output.append({'text': seg.text.strip(), 'start_s': float(seg.start), 'end_s': float(seg.end),
+                       'words': words, 'avg_logprob': float(seg.avg_logprob)})
     if not output:
         raise Refused('ASR_EMPTY: no intelligible narration')
-    return {'language': info.language, 'language_probability': info.language_probability,
+    return {'language': info.language, 'language_probability': float(info.language_probability),
             'segments': output, 'model': ASR_MODEL, 'revision': ASR_REVISION,
             'alignment_qualified': uncertain_words == 0, 'zero_length_word_count': uncertain_words}
 

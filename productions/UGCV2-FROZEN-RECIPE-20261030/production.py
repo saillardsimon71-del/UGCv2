@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -306,7 +307,10 @@ def main():
         report.update(result)
         exit_code = 0
     except Exception as exc:
-        report.update(status='BLOCKED_NO_DELIVERABLE', blocker_code=str(exc).split(':', 1)[0],
+        code = str(exc).split(':', 1)[0]
+        if not re.fullmatch(r'[A-Z][A-Z0-9_]{2,79}', code):
+            code = 'INTERNAL_ERROR'
+        report.update(status='BLOCKED_NO_DELIVERABLE', blocker_code=code,
                       diagnostic=str(exc), exception_type=type(exc).__name__)
         report['new_gpu_calls'] = len(state.data['calls']) if state else 0
     finally:

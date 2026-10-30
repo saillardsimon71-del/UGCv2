@@ -82,6 +82,24 @@ class ImportTests(unittest.TestCase):
 
 
 class NarrationTests(unittest.TestCase):
+    def test_asr_receipt_uses_native_json_values(self):
+        import json
+        import numpy as np
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        from production_narration import transcribe
+        word = SimpleNamespace(word='Bonjour', start=np.float64(0), end=np.float64(0), probability=np.float32(.9))
+        segment = SimpleNamespace(text='Bonjour', start=np.float64(0), end=np.float64(1),
+                                  words=[word], avg_logprob=np.float32(-.1))
+        model = SimpleNamespace(transcribe=lambda *a, **k: (iter([segment]),
+                                SimpleNamespace(language='fr', language_probability=np.float32(.99))))
+        modules = {'faster_whisper': SimpleNamespace(WhisperModel=lambda *a, **k: model),
+                   'huggingface_hub': SimpleNamespace(snapshot_download=lambda *a, **k: 'cached')}
+        with patch.dict('sys.modules', modules):
+            result = transcribe('audio.wav', 'cache', 'fr', strict=False)
+        self.assertFalse(result['alignment_qualified'])
+        self.assertEqual(json.loads(json.dumps(result))['zero_length_word_count'], 1)
+
     def test_voice_mix_keeps_complete_phrase_when_longer_than_source(self):
         import subprocess
         from production_narration import compose_narrated_source
