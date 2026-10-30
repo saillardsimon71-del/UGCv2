@@ -68,8 +68,38 @@ class ImportTests(unittest.TestCase):
             with self.subTest(url=url), self.assertRaises(Refused):
                 youtube_id(url)
 
+    def test_safe_interior_speech_boundary_does_not_reject_later_words(self):
+        from test_autopilot import ApprovedTakeTests
+        ApprovedTakeTests.setUpClass()
+        try:
+            test = ApprovedTakeTests()
+            manifest = test.manifest()
+            manifest['speech_boundary_frames'] = [20]
+            from studio import preflight
+            self.assertEqual(preflight(manifest, test.root)['frames'], 100)
+        finally:
+            ApprovedTakeTests.tearDownClass()
+
 
 class NarrationTests(unittest.TestCase):
+    def test_voice_mix_keeps_complete_phrase_when_longer_than_source(self):
+        import subprocess
+        from production_narration import compose_narrated_source
+        from studio import probe, track
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source, voice = root / 'source.mp4', root / 'voice.wav'
+            subprocess.run(['ffmpeg', '-v', 'error', '-f', 'lavfi', '-i',
+                            'color=red:s=160x90:r=25:d=2', '-c:v', 'libx264', str(source)], check=True)
+            subprocess.run(['ffmpeg', '-v', 'error', '-f', 'lavfi', '-i',
+                            'sine=frequency=440:sample_rate=48000:duration=3', str(voice)], check=True)
+            result = compose_narrated_source(source, [{'start_s': 0, 'end_s': 2,
+                'audio_duration_s': 3, 'audio_path': str(voice)}], root / 'source-fr.mp4', root / 'mix')
+            self.assertEqual(result['audio_speed'], 1)
+            meta = probe(root / 'source-fr.mp4')
+            self.assertGreaterEqual(float(track(meta, 'audio')['duration']), 3.12 - .02)
+            self.assertGreaterEqual(float(meta['format']['duration']), 3.12)
+
     def test_complete_transcript_including_edges(self):
         from production_narration import verify_transcript
         words = [{'text': 'Bonjour', 'start_s': .1, 'end_s': .4},

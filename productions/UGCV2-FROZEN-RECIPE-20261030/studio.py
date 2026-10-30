@@ -56,7 +56,7 @@ def verified(root,item,label):
     if sha256(p)!=digest:raise Refused('REFUSED: '+label+' differs from approved bytes: '+str(p))
     return p
 
-def check_word_boundaries(words,first,last,fps):
+def check_word_boundaries(words,first,last,fps,*,enforce_duration=True):
     """Boundaries cannot begin or end in the middle of a spoken word."""
     if words is None:raise Refused('word_timing required, including for screen-only projects')
     if not isinstance(words,list) or not words:
@@ -74,7 +74,7 @@ def check_word_boundaries(words,first,last,fps):
         for boundary in (first/fps,last/fps):
             if start+0.5/fps < boundary < end-0.5/fps:
                 raise Refused(f'Boundary {boundary:.3f}s slices word {word["text"]!r} at {start:.3f}–{end:.3f}s')
-    if words[-1]['end_s'] > last/fps + 0.5/fps:
+    if enforce_duration and words[-1]['end_s'] > last/fps + 0.5/fps:
         raise Refused('Transcript extends beyond complete source duration')
 
 def preflight(manifest,root):
@@ -136,7 +136,7 @@ def preflight(manifest,root):
     if 'speech_boundary_frames' in manifest:
         for frame in manifest['speech_boundary_frames']:
             if type(frame) is not int or frame<0 or frame>expected_frames:raise Refused('Invalid speech boundary frame')
-            check_word_boundaries(manifest['word_timing'],frame,frame,fps)
+            check_word_boundaries(manifest['word_timing'],frame,frame,fps,enforce_duration=False)
     return {'source':source,'source_sha256':sha256(source),'fps':fps,'frames':expected_frames,
             'size':[width,height],'tracks':len(m['streams']),'approved_take_count':len(takes),
             'actor_shots':actor_count,'source_audio_codec':a.get('codec_name'),

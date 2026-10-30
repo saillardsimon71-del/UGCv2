@@ -1,4 +1,10 @@
-# UGCv2 — recette Work figée (étape 1, sans GPU)
+# UGCv2 - recette Work figée et exécution privée
+
+Etat actuel : [lancement, reprise, preuves et limites](RUNBOOK.md).
+Le profil de référence reconstruit le passage approuvé depuis GitHub Actions.
+La production de nouvelles vidéos reste bloquée, elle n'est pas déclarée prête.
+
+## Historique des composants initiaux
 
 Objectif : **ne plus perdre la bonne vidéo** par régénération accidentelle. Cette première étape stabilise les références; elle ne prétend pas encore produire une nouvelle vidéo YouTube.
 

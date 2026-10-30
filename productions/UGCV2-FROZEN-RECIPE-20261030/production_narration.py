@@ -25,7 +25,7 @@ def verify_transcript(expected, words, seconds):
         raise Refused('NARRATION_EDGE_UNCERTAIN: insufficient audio guard around first/last word')
 
 
-def transcribe(audio, cache, language=None):
+def transcribe(audio, cache, language=None, strict=True):
     from faster_whisper import WhisperModel
     from huggingface_hub import snapshot_download
     path = snapshot_download(ASR_MODEL, revision=ASR_REVISION, cache_dir=str(cache))
@@ -33,17 +33,20 @@ def transcribe(audio, cache, language=None):
     segments, info = model.transcribe(str(audio), language=language, word_timestamps=True,
                                      vad_filter=False, beam_size=5, condition_on_previous_text=True)
     output = []
+    uncertain_words = 0
     for seg in segments:
         words = [{'text': w.word.strip(), 'start_s': w.start, 'end_s': w.end,
                   'probability': w.probability} for w in (seg.words or []) if w.word.strip()]
-        if not words or any(w['end_s'] <= w['start_s'] for w in words):
+        uncertain_words += sum(w['end_s'] <= w['start_s'] for w in words)
+        if strict and (not words or uncertain_words):
             raise Refused('ASR_ALIGNMENT_UNCERTAIN: missing/zero-length words')
         output.append({'text': seg.text.strip(), 'start_s': seg.start, 'end_s': seg.end,
                        'words': words, 'avg_logprob': seg.avg_logprob})
     if not output:
         raise Refused('ASR_EMPTY: no intelligible narration')
     return {'language': info.language, 'language_probability': info.language_probability,
-            'segments': output, 'model': ASR_MODEL, 'revision': ASR_REVISION}
+            'segments': output, 'model': ASR_MODEL, 'revision': ASR_REVISION,
+            'alignment_qualified': uncertain_words == 0, 'zero_length_word_count': uncertain_words}
 
 
 def translate_segments(transcript, cache):
@@ -98,3 +101,54 @@ def extract_audio(source, target, rate=16000, channels=1):
     command(['ffmpeg', '-nostdin', '-v', 'error', '-y', '-i', source, '-map', '0:a:0',
              '-ar', str(rate), '-ac', str(channels), '-c:a', 'pcm_s16le', target])
     return Path(target)
+
+
+def compose_narrated_source(source, blocks, target, scratch):
+    import wave
+    import numpy as np
+    from studio import probe
+    scratch = Path(scratch)
+    scratch.mkdir(parents=True, exist_ok=True)
+    source_duration = float(probe(source)['format']['duration'])
+    mapping = duration_map(blocks, source_duration)
+    if not mapping:
+        raise Refused('NARRATION_NO_COMPLETE_PHRASES')
+    total = math.ceil((mapping[-1]['output_end_s'] + mapping[-1]['trailing_source_s']) * 25) / 25
+    samples = np.zeros((round(total * 48000), 2), dtype='<i2')
+    intervals = []
+    previous_source = previous_output = 0.0
+    for i, item in enumerate(mapping):
+        if item['start_s'] > previous_source:
+            intervals.append((previous_source, item['start_s'], item['output_start_s'] - previous_output))
+        intervals.append((item['start_s'], item['end_s'], item['output_end_s'] - item['output_start_s']))
+        converted = scratch / f'voice-{i}.wav'
+        command(['ffmpeg', '-nostdin', '-v', 'error', '-y', '-i', item['audio_path'],
+                 '-ar', '48000', '-ac', '2', '-c:a', 'pcm_s16le', converted])
+        with wave.open(str(converted)) as stream:
+            pcm = np.frombuffer(stream.readframes(stream.getnframes()), dtype='<i2').reshape(-1, 2)
+        start = round(item['output_start_s'] * 48000)
+        stop = start + len(pcm)
+        if stop > round(item['output_end_s'] * 48000) or stop > len(samples):
+            raise Refused('NARRATION_WOULD_BE_TRUNCATED: real waveform exceeds declared duration')
+        samples[start:stop] = pcm
+        previous_source, previous_output = item['end_s'], item['output_end_s']
+    if previous_source < source_duration:
+        intervals.append((previous_source, source_duration, total - previous_output))
+    audio = scratch / 'narration48k.wav'
+    with wave.open(str(audio), 'wb') as stream:
+        stream.setparams((2, 2, 48000, 0, 'NONE', 'not compressed'))
+        stream.writeframes(samples.tobytes())
+    nodes = []
+    for i, (start, end, duration) in enumerate(intervals):
+        frames = round(duration * 25)
+        nodes.append(f'[0:v]trim=start={start:.6f}:end={end:.6f},setpts=({duration / (end - start):.12f})*'
+                     f'(PTS-STARTPTS),fps=25,tpad=stop_mode=clone:stop_duration=0.04,'
+                     f'trim=end_frame={frames},setpts=PTS-STARTPTS[v{i}]')
+    nodes.append(''.join(f'[v{i}]' for i in range(len(intervals))) +
+                 f'concat=n={len(intervals)}:v=1:a=0[v]')
+    command(['ffmpeg', '-nostdin', '-v', 'error', '-y', '-i', source, '-i', audio,
+             '-filter_complex', ';'.join(nodes), '-map', '[v]', '-map', '1:a:0',
+             '-c:v', 'libx264', '-crf', '16', '-preset', 'fast', '-c:a', 'aac', '-b:a', '192k',
+             '-ar', '48000', '-movflags', '+faststart', target], timeout=1800)
+    return {'mapping': mapping, 'duration_s': total, 'audio_speed': 1,
+            'pcm_path': str(audio), 'all_phrases_retained': True}

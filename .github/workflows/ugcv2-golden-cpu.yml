@@ -32,6 +32,11 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/UGCV2-FROZEN-RECIPE-20261030
+            productions/FR60-CONTINUITY-8S-20261030
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -50,7 +55,7 @@ jobs:
             productions/UGCV2-FROZEN-RECIPE-20261030/assets.py \
             productions/UGCV2-FROZEN-RECIPE-20261030/studio.py \
             productions/UGCV2-FROZEN-RECIPE-20261030/planner.py
-      - name: Ten deterministic synthetic media regression tests
+      - name: CPU regression tests on synthetic media
         working-directory: productions/UGCV2-FROZEN-RECIPE-20261030
         run: |
           pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-python-headless==4.11.0.86'
@@ -78,6 +83,11 @@ jobs:
       REQUESTED_RUN_ID: ${{ inputs.run_id }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/UGCV2-FROZEN-RECIPE-20261030
+            productions/FR60-CONTINUITY-8S-20261030
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
