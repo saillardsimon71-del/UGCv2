@@ -1,0 +1,579 @@
+{
+  "schema": "ugcv2.reference-evidence/v1",
+  "reference_run_id": 40957764927,
+  "reference_commit": "406e8d6fd27ba6fdd9c120b92ee2cb6154d09176",
+  "mp4_sha256": "346b8a25aa0722094f57e51aef3d41a97e1966f7ad1d04c4517c8fbbe5b7297d",
+  "receipts": {
+    "reference/status.json": {
+      "sha256": "1dd535fb50bfafa87a722b4c146d09553509e66ee9bb9d566e5d9e672241202f",
+      "data": {
+        "stage": "ACTUAL_60S_FR_HYBRID_MP4_GENERATED_HUMAN_REVIEW_REQUIRED",
+        "final": "UGCv2_FR_60s_TBDub_HYBRID_TEST.mp4",
+        "comparison": "UGCv2_FR60_COMPARE_ORIGINAL_VS_HYBRID.mp4",
+        "duration_s": 60.0,
+        "width": 1920,
+        "height": 1080,
+        "final_sha256": "346b8a25aa0722094f57e51aef3d41a97e1966f7ad1d04c4517c8fbbe5b7297d",
+        "lip_synced_fullscreen_shots": [
+          "cam_a",
+          "cam_b",
+          "cam_c_short",
+          "cam_d"
+        ],
+        "short_shot_lipsync_status": "real_tbdub_mp4",
+        "pip_lipsync": "not selectively rendered — check visual side-by-side",
+        "french_voice": "same 60s original-aligned Chatterbox V3 audio",
+        "screen_diagrams_and_original_ui": "not regenerated",
+        "rights": "Private technical study only; republishing third party video needs permission",
+        "quality": "human review mandatory"
+      }
+    },
+    "reference/source_provenance.json": {
+      "sha256": "2cc39fbf8cd2a404d4e796667b81c32f80724e96ed6e1dfd88bf63ef0d883605",
+      "data": {
+        "verified_full_source": 40942927735,
+        "verified_face_swap_artifact_sha256": "d96874ef5ec66efc34c2db83b56804fc7b70adba15fd0b021ca6ad740babe926",
+        "original_paced_french_voice_sha256": "f6423ee2de8340ecbf5fc2609a2b29dae1525d336e678310be39e7c4f06506cf",
+        "original_source_cuts": [
+          {
+            "id": "cam_a",
+            "start_s": 5.76,
+            "end_s": 12.0
+          },
+          {
+            "id": "cam_b",
+            "start_s": 21.12,
+            "end_s": 26.88
+          },
+          {
+            "id": "cam_c_short",
+            "start_s": 29.76,
+            "end_s": 31.2
+          },
+          {
+            "id": "cam_d",
+            "start_s": 56.56,
+            "end_s": 60.0
+          }
+        ],
+        "number_of_targeted_face_shots": 4,
+        "all_other_screen_frames_untouched_by_generators": true,
+        "original_V2V_engine_changed": false,
+        "lip_sync_engine": "TBDub Student v1.1",
+        "publication_permitted": false
+      }
+    },
+    "faces/status.json": {
+      "sha256": "33323537493d8a2261c578423414e2e87162941f65bbc6597ac88c458ad04e56",
+      "data": {
+        "stage": "AUTHENTIC_60S_FACE_SWAP_MP4_CREATED_VISUAL_REVIEW_REQUIRED",
+        "video_sha256": "d96874ef5ec66efc34c2db83b56804fc7b70adba15fd0b021ca6ad740babe926",
+        "video_duration_s": 60.0,
+        "full_frame_faces_proven_changed": true,
+        "number_of_shots": 4,
+        "screen_visuals": "preserved original",
+        "PIP_presenter": "unmodified — additional selective work needed",
+        "face_visual_quality": "HUMAN_REVIEW_REQUIRED",
+        "new_actor": "selected original full-screen presenter shots",
+        "source_unchanged": true
+      }
+    },
+    "faces/source_provenance.json": {
+      "sha256": "7ef13760041c03192c975fbd39085832c2a03d8c9a4fdea8556aed62ac65e3dd",
+      "data": {
+        "original_60s_run": 40942927735,
+        "actor_reference_run": 40899629965,
+        "face_selector_4s_proof_run": 40948918285,
+        "source_sha256": "69b4186f155e0a9b7fc38727602c8f2be141a9ff82138d79512dab41d263599b",
+        "actor_sha256": "604b6c7453e5fe33bc412d74e58f8b929a2b504bf40c84add844b7de463a0b65",
+        "selected_shots": [
+          [
+            "cam_a",
+            5.76,
+            12.0
+          ],
+          [
+            "cam_b",
+            21.12,
+            26.88
+          ],
+          [
+            "cam_c_short",
+            29.76,
+            31.2
+          ],
+          [
+            "cam_d",
+            56.56,
+            60.0
+          ]
+        ],
+        "screen_clip_pixels_policy": "preserve original source",
+        "PIP_actor": "not replaced in this first selective pilot",
+        "gpu_calls_started": 0,
+        "not_for_publication": true
+      }
+    },
+    "faces/pixel_evidence.json": {
+      "sha256": "452185425cd01a1b8c2db6f256aac9bb718d497b4c6f8c519a87125ecab158c4",
+      "data": {
+        "all_four_faces_changed": true,
+        "shots": {
+          "cam_a": [
+            {
+              "relative_second": 1.37,
+              "roi_mae": 5.553,
+              "pixels_gt20": 0.06053
+            },
+            {
+              "relative_second": 3.43,
+              "roi_mae": 5.295,
+              "pixels_gt20": 0.05866
+            },
+            {
+              "relative_second": 4.99,
+              "roi_mae": 5.191,
+              "pixels_gt20": 0.05748
+            }
+          ],
+          "cam_b": [
+            {
+              "relative_second": 1.27,
+              "roi_mae": 6.377,
+              "pixels_gt20": 0.09114
+            },
+            {
+              "relative_second": 3.17,
+              "roi_mae": 6.231,
+              "pixels_gt20": 0.08408
+            },
+            {
+              "relative_second": 4.61,
+              "roi_mae": 5.391,
+              "pixels_gt20": 0.06052
+            }
+          ],
+          "cam_c_short": [
+            {
+              "relative_second": 0.32,
+              "roi_mae": 5.927,
+              "pixels_gt20": 0.07198
+            },
+            {
+              "relative_second": 0.79,
+              "roi_mae": 5.683,
+              "pixels_gt20": 0.06121
+            },
+            {
+              "relative_second": 1.15,
+              "roi_mae": 5.52,
+              "pixels_gt20": 0.05635
+            }
+          ],
+          "cam_d": [
+            {
+              "relative_second": 0.76,
+              "roi_mae": 5.096,
+              "pixels_gt20": 0.05628
+            },
+            {
+              "relative_second": 1.89,
+              "roi_mae": 5.595,
+              "pixels_gt20": 0.05969
+            },
+            {
+              "relative_second": 2.75,
+              "roi_mae": 5.333,
+              "pixels_gt20": 0.05334
+            }
+          ]
+        }
+      }
+    },
+    "voice/status.json": {
+      "sha256": "b8d3751893b015501fa181029117e46dc3f07f6b9cb4db3064c6bb24274adae3",
+      "data": {
+        "stage": "REAL_60S_FR_VOICE_AND_ORIGINAL_VISUALS_READY",
+        "preview": "productions/US-FR-V2V-REAL-20261029/REAL_60S/OUTPUT/fr_60s_visuals_preserved_dub_preview.mp4",
+        "voice_sha256": "f6423ee2de8340ecbf5fc2609a2b29dae1525d336e678310be39e7c4f06506cf",
+        "preview_sha256": "703171044a79ff1751477543e03d774879e38d48e03e927c2f58725b33d9516b",
+        "duration": 60.0,
+        "resolution": "1920x1080",
+        "visuals": "source frames preserved, original presenter not yet replaced",
+        "next_stage": "selectively replace presenter and PIP, TBDub only when mouth visible",
+        "publish": false,
+        "rights": "private technical experiment only"
+      }
+    },
+    "voice/fr_voice_selected_timeline.json": {
+      "sha256": "7e4fb42a067839dffdc6549ece19f6ba506fb813eac58e02d6bc23e5ae43cfa7",
+      "data": {
+        "duration_s": 60,
+        "selected": [
+          {
+            "id": "01_power",
+            "start_s": 0.0,
+            "end_s": 6.04,
+            "source_speech_window_s": 6.04,
+            "natural_fr_speech_duration_s": 5.48,
+            "end_pause_s": 0.56,
+            "take": "conversational",
+            "file": "01_power_conversational.wav",
+            "fr_text": "Ce qu'on peut faire avec Zapier, c'est vraiment puissant. Regardez : je clique ici sur Créer un Zap, et je lance...",
+            "audio_sha256": "b1b22110ea7b846c719d3c306c67cec9cf55ae3438db0af64dc91a4046d36b24"
+          },
+          {
+            "id": "02_always_on",
+            "start_s": 6.04,
+            "end_s": 11.92,
+            "source_speech_window_s": 5.88,
+            "natural_fr_speech_duration_s": 4.76,
+            "end_pause_s": 1.12,
+            "take": "unhurried",
+            "file": "02_always_on_unhurried.wav",
+            "fr_text": "une nouvelle automatisation qui fonctionne jour et nuit, et se déclenche dès que l'événement arrive.",
+            "audio_sha256": "e78d0387dd18520b953ea01bd3af50f0815b33853fc3cd431606fbdb1cd37e5b"
+          },
+          {
+            "id": "03_domino_trigger",
+            "start_s": 12.12,
+            "end_s": 20.9,
+            "source_speech_window_s": 8.78,
+            "natural_fr_speech_duration_s": 8.08,
+            "end_pause_s": 0.7,
+            "take": "unhurried",
+            "file": "03_domino_trigger_unhurried.wav",
+            "fr_text": "Le premier concept à comprendre, c'est le déclencheur. Imaginez une rangée de dominos. Le déclencheur, c'est le premier domino. En tombant, il met tous les autres en mouvement.",
+            "audio_sha256": "67595e8731b0ba8cb5259859d0b2ab1185934038362ab0e76d42fcd761f5c978"
+          },
+          {
+            "id": "04_drop_a_file",
+            "start_s": 21.18,
+            "end_s": 30.86,
+            "source_speech_window_s": 9.68,
+            "natural_fr_speech_duration_s": 9.08,
+            "end_pause_s": 0.6,
+            "take": "unhurried",
+            "file": "04_drop_a_file_unhurried.wav",
+            "fr_text": "Pour notre exemple, je choisis un de mes déclencheurs préférés, car il est vraiment universel. Chaque fois que je glisse un nouveau fichier dans un dossier de mon ordinateur, l'automatisation démarre aussitôt.",
+            "audio_sha256": "1c33bfa860fec7bf01d20ebb8fbd543f5d44ee0778ee2b308e3c62e981eda3f2"
+          },
+          {
+            "id": "05_dropbox_drive",
+            "start_s": 31.18,
+            "end_s": 39.28,
+            "source_speech_window_s": 8.1,
+            "natural_fr_speech_duration_s": 7.6,
+            "end_pause_s": 0.5,
+            "take": "unhurried",
+            "file": "05_dropbox_drive_unhurried.wav",
+            "fr_text": "Dans mon cas, je prends Dropbox, parce que je l'utilise au quotidien. Mais Google Drive marcherait aussi, comme les cinq mille autres applications qui se connectent à Zapier.",
+            "audio_sha256": "52c98759cb0742028d3e590bca6075573c78db6c9e61efa42d9d5e582c8e6354"
+          },
+          {
+            "id": "06_local_folders",
+            "start_s": 39.38,
+            "end_s": 48.3,
+            "source_speech_window_s": 8.92,
+            "natural_fr_speech_duration_s": 8.04,
+            "end_pause_s": 0.88,
+            "take": "unhurried",
+            "file": "06_local_folders_unhurried.wav",
+            "fr_text": "Dropbox est installé sur mon ordinateur, alors tous mes dossiers sont là, en local. J'ouvre AutoHub AI Advantage : c'est dans ce dossier que je gère plusieurs de mes automatisations.",
+            "audio_sha256": "e37281da59a9cec5848ede2c30ad1ae0e699fc9e094225d26ac89d67002e7998"
+          },
+          {
+            "id": "07_youtube_folders",
+            "start_s": 48.42,
+            "end_s": 59.62,
+            "source_speech_window_s": 11.2,
+            "natural_fr_speech_duration_s": 9.92,
+            "end_pause_s": 1.28,
+            "take": "unhurried",
+            "file": "07_youtube_folders_unhurried.wav",
+            "fr_text": "Ici, je clique sur Nouveau dossier. Je vais l'appeler Test YouTube. C'est très simple : à l'intérieur, je crée deux sous-dossiers. Le premier s'appelle Zone de dépôt des e-mails, et c'est dans ce dossier que je vais déposer les nouveaux e-mails pour lancer l'automatisation.",
+            "audio_sha256": "40965f72b59b51131d179d820cbfd32093319cdfbd89013b95d5a2d8a592a38d"
+          }
+        ],
+        "voice_engine": "Chatterbox Multilingual V3",
+        "all_blocks_no_time_stretch": true,
+        "english_original_speech_cadence_source_run": 40944640728,
+        "human_listening_review_required": true
+      }
+    },
+    "voice/fr_voice_candidate_durations.json": {
+      "sha256": "847f68a00c477519f574c6109b3ca8a4701af403021b618115b87c700c484ec9",
+      "data": {
+        "engine": "Chatterbox Multilingual V3",
+        "v3_explicit": true,
+        "model_revision": "5de7a54aa4e5e2baadb0182dde554908b48b85c2",
+        "voice_identity": "built-in generic voice, not original-presenter cloning",
+        "blocks": [
+          {
+            "id": "01_power",
+            "start_s": 0.0,
+            "end_s": 6.04,
+            "original_window_s": 6.04,
+            "fr_text": "Ce qu'on peut faire avec Zapier, c'est vraiment puissant. Regardez : je clique ici sur Créer un Zap, et je lance...",
+            "candidates": [
+              {
+                "tag": "unhurried",
+                "duration_s": 4.84,
+                "sha256": "ce5d6f3cbf24b5f96f5dbe167b82b7569ed24600dfd71e7d9e2eb98ecc8cadc8",
+                "settings": {
+                  "tag": "unhurried",
+                  "exaggeration": 0.43,
+                  "cfg_weight": 0.63,
+                  "temperature": 0.77
+                },
+                "file": "01_power_unhurried.wav"
+              },
+              {
+                "tag": "conversational",
+                "duration_s": 5.48,
+                "sha256": "b1b22110ea7b846c719d3c306c67cec9cf55ae3438db0af64dc91a4046d36b24",
+                "settings": {
+                  "tag": "conversational",
+                  "exaggeration": 0.54,
+                  "cfg_weight": 0.55,
+                  "temperature": 0.8
+                },
+                "file": "01_power_conversational.wav"
+              }
+            ]
+          },
+          {
+            "id": "02_always_on",
+            "start_s": 6.04,
+            "end_s": 11.92,
+            "original_window_s": 5.88,
+            "fr_text": "une nouvelle automatisation qui fonctionne jour et nuit, et se déclenche dès que l'événement arrive.",
+            "candidates": [
+              {
+                "tag": "unhurried",
+                "duration_s": 4.76,
+                "sha256": "e78d0387dd18520b953ea01bd3af50f0815b33853fc3cd431606fbdb1cd37e5b",
+                "settings": {
+                  "tag": "unhurried",
+                  "exaggeration": 0.43,
+                  "cfg_weight": 0.63,
+                  "temperature": 0.77
+                },
+                "file": "02_always_on_unhurried.wav"
+              },
+              {
+                "tag": "conversational",
+                "duration_s": 4.52,
+                "sha256": "8b2d1450cce7c5009458a09db8195c74382665756f7616f63c290ffe295fa20d",
+                "settings": {
+                  "tag": "conversational",
+                  "exaggeration": 0.54,
+                  "cfg_weight": 0.55,
+                  "temperature": 0.8
+                },
+                "file": "02_always_on_conversational.wav"
+              }
+            ]
+          },
+          {
+            "id": "03_domino_trigger",
+            "start_s": 12.12,
+            "end_s": 20.9,
+            "original_window_s": 8.78,
+            "fr_text": "Le premier concept à comprendre, c'est le déclencheur. Imaginez une rangée de dominos. Le déclencheur, c'est le premier domino. En tombant, il met tous les autres en mouvement.",
+            "candidates": [
+              {
+                "tag": "unhurried",
+                "duration_s": 8.08,
+                "sha256": "67595e8731b0ba8cb5259859d0b2ab1185934038362ab0e76d42fcd761f5c978",
+                "settings": {
+                  "tag": "unhurried",
+                  "exaggeration": 0.43,
+                  "cfg_weight": 0.63,
+                  "temperature": 0.77
+                },
+                "file": "03_domino_trigger_unhurried.wav"
+              },
+              {
+                "tag": "conversational",
+                "duration_s": 7.6,
+                "sha256": "da44cf72aeac388e51b57b2f4069d14ddaed7de44c9c92ed2afbde71ba3cbfce",
+                "settings": {
+                  "tag": "conversational",
+                  "exaggeration": 0.54,
+                  "cfg_weight": 0.55,
+                  "temperature": 0.8
+                },
+                "file": "03_domino_trigger_conversational.wav"
+              }
+            ]
+          },
+          {
+            "id": "04_drop_a_file",
+            "start_s": 21.18,
+            "end_s": 30.86,
+            "original_window_s": 9.68,
+            "fr_text": "Pour notre exemple, je choisis un de mes déclencheurs préférés, car il est vraiment universel. Chaque fois que je glisse un nouveau fichier dans un dossier de mon ordinateur, l'automatisation démarre aussitôt.",
+            "candidates": [
+              {
+                "tag": "unhurried",
+                "duration_s": 9.08,
+                "sha256": "1c33bfa860fec7bf01d20ebb8fbd543f5d44ee0778ee2b308e3c62e981eda3f2",
+                "settings": {
+                  "tag": "unhurried",
+                  "exaggeration": 0.43,
+                  "cfg_weight": 0.63,
+                  "temperature": 0.77
+                },
+                "file": "04_drop_a_file_unhurried.wav"
+              },
+              {
+                "tag": "conversational",
+                "duration_s": 8.56,
+                "sha256": "8f1583fd4f616f12ba359d55642f8d9bf9ffc634bf3985beb92a98ede7caef91",
+                "settings": {
+                  "tag": "conversational",
+                  "exaggeration": 0.54,
+                  "cfg_weight": 0.55,
+                  "temperature": 0.8
+                },
+                "file": "04_drop_a_file_conversational.wav"
+              }
+            ]
+          },
+          {
+            "id": "05_dropbox_drive",
+            "start_s": 31.18,
+            "end_s": 39.28,
+            "original_window_s": 8.100000000000001,
+            "fr_text": "Dans mon cas, je prends Dropbox, parce que je l'utilise au quotidien. Mais Google Drive marcherait aussi, comme les cinq mille autres applications qui se connectent à Zapier.",
+            "candidates": [
+              {
+                "tag": "unhurried",
+                "duration_s": 7.6,
+                "sha256": "52c98759cb0742028d3e590bca6075573c78db6c9e61efa42d9d5e582c8e6354",
+                "settings": {
+                  "tag": "unhurried",
+                  "exaggeration": 0.43,
+                  "cfg_weight": 0.63,
+                  "temperature": 0.77
+                },
+                "file": "05_dropbox_drive_unhurried.wav"
+              },
+              {
+                "tag": "conversational",
+                "duration_s": 6.88,
+                "sha256": "b5a344721f54e1dad4dba42fb67db05aeba8c1ff65eaa43f569c3dd8e7c0ac77",
+                "settings": {
+                  "tag": "conversational",
+                  "exaggeration": 0.54,
+                  "cfg_weight": 0.55,
+                  "temperature": 0.8
+                },
+                "file": "05_dropbox_drive_conversational.wav"
+              }
+            ]
+          },
+          {
+            "id": "06_local_folders",
+            "start_s": 39.38,
+            "end_s": 48.3,
+            "original_window_s": 8.919999999999995,
+            "fr_text": "Dropbox est installé sur mon ordinateur, alors tous mes dossiers sont là, en local. J'ouvre AutoHub AI Advantage : c'est dans ce dossier que je gère plusieurs de mes automatisations.",
+            "candidates": [
+              {
+                "tag": "unhurried",
+                "duration_s": 8.04,
+                "sha256": "e37281da59a9cec5848ede2c30ad1ae0e699fc9e094225d26ac89d67002e7998",
+                "settings": {
+                  "tag": "unhurried",
+                  "exaggeration": 0.43,
+                  "cfg_weight": 0.63,
+                  "temperature": 0.77
+                },
+                "file": "06_local_folders_unhurried.wav"
+              },
+              {
+                "tag": "conversational",
+                "duration_s": 7.96,
+                "sha256": "7a2b1e86820961e89ea63d418380329b98bac7c4db03779b7881523737560959",
+                "settings": {
+                  "tag": "conversational",
+                  "exaggeration": 0.54,
+                  "cfg_weight": 0.55,
+                  "temperature": 0.8
+                },
+                "file": "06_local_folders_conversational.wav"
+              }
+            ]
+          },
+          {
+            "id": "07_youtube_folders",
+            "start_s": 48.42,
+            "end_s": 59.62,
+            "original_window_s": 11.199999999999996,
+            "fr_text": "Ici, je clique sur Nouveau dossier. Je vais l'appeler Test YouTube. C'est très simple : à l'intérieur, je crée deux sous-dossiers. Le premier s'appelle Zone de dépôt des e-mails, et c'est dans ce dossier que je vais déposer les nouveaux e-mails pour lancer l'automatisation.",
+            "candidates": [
+              {
+                "tag": "unhurried",
+                "duration_s": 9.92,
+                "sha256": "40965f72b59b51131d179d820cbfd32093319cdfbd89013b95d5a2d8a592a38d",
+                "settings": {
+                  "tag": "unhurried",
+                  "exaggeration": 0.43,
+                  "cfg_weight": 0.63,
+                  "temperature": 0.77
+                },
+                "file": "07_youtube_folders_unhurried.wav"
+              },
+              {
+                "tag": "conversational",
+                "duration_s": 9.92,
+                "sha256": "20477d5a6c73b341f9ff84c32e70ff89f0da30baf4cc172424cef8f4c3075e87",
+                "settings": {
+                  "tag": "conversational",
+                  "exaggeration": 0.54,
+                  "cfg_weight": 0.55,
+                  "temperature": 0.8
+                },
+                "file": "07_youtube_folders_conversational.wav"
+              }
+            ]
+          }
+        ],
+        "gpu": "L40S",
+        "gpu_seconds": 105.3,
+        "status": "AUDIO_GENERATED_NOT_YET_QUALITY_REVIEWED",
+        "revision": "last five phrases revised to match original talking cadence",
+        "original_successful_7_block_run": 40945609860,
+        "new_gpu_calls": 1,
+        "voice_timbre": "same Chatterbox Multilingual V3 builtin model",
+        "no_time_stretch": true,
+        "reused_accepted_first_six_blocks": true,
+        "source_refined_voice_run": 40947229775,
+        "last_block_revision": "natural French detail follows original Dropbox folder action"
+      }
+    },
+    "source/source_provenance.json": {
+      "sha256": "82eb6a9bdecd1acc782723e195eb196297d57422484ceb6e3b8efe0f5ddeb686",
+      "data": {
+        "source_url": "https://www.youtube.com/watch?v=KSOxkhWs2Ic",
+        "source_sha256": "134ae940a57dce109db9b1c7d7774ed63182b75078f705ee1348f2a25f40a9c5",
+        "previous_source_probe_run": 40898616414,
+        "original_provider": "user supplied existing vidiq import",
+        "source_duration_s": 475.498231,
+        "window_start_s": 42.0,
+        "window_end_s": 102.0,
+        "duration_s": 60.0,
+        "fps": 25,
+        "original_resolution": [
+          1920,
+          1080
+        ],
+        "source_window_sha256": "69b4186f155e0a9b7fc38727602c8f2be141a9ff82138d79512dab41d263599b",
+        "rights": "private technical study only; publication or reuse requires rights",
+        "gpu_allocated": false
+      }
+    }
+  }
+}

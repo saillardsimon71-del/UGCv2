@@ -1,0 +1,119 @@
+{
+  "schema": "ugcv2.source-performance/v1",
+  "motion_source": "original_video",
+  "fps": 25,
+  "reference": {
+    "run_id": 40957764927,
+    "commit": "406e8d6fd27ba6fdd9c120b92ee2cb6154d09176",
+    "mp4_sha256": "346b8a25aa0722094f57e51aef3d41a97e1966f7ad1d04c4517c8fbbe5b7297d",
+    "source_window_s": [
+      42,
+      102
+    ]
+  },
+  "workers": {
+    "deploy/modal_face_worker.py": "0aac109b795798025f3fecc33657f4b46e68104f3e6649eb02db49027913676b",
+    "deploy/modal_fr60_faceswap_selected.py": "bff9007b918ab1b405756220b061c90ad0e0e4e8ab85580877a582d64bf54559",
+    "deploy/modal_tbdub_fr_worker.py": "efad832a47e661851cea0b449079ea37ce4d8c67518912e44ef5e6318e9c52e9",
+    "deploy/modal_chatterbox_v3_fr_pilot.py": "15b04eb1227bf2a3d8daa49b430f85eb5ebcd12e8705753028cd2b58da743d0f"
+  },
+  "models": {
+    "facefusion": {
+      "version": "3.5.1",
+      "selector": "one",
+      "order": "large-small",
+      "swapper": "inswapper_128_fp16",
+      "enhancer": "gfpgan_1.4",
+      "output_quality": 90
+    },
+    "voice": {
+      "upstream": "5de7a54aa4e5e2baadb0182dde554908b48b85c2",
+      "t3_model": "v3",
+      "language_id": "fr",
+      "audio_prompt_path": null,
+      "settings": [
+        {
+          "tag": "unhurried",
+          "exaggeration": 0.43,
+          "cfg_weight": 0.63,
+          "temperature": 0.77
+        },
+        {
+          "tag": "conversational",
+          "exaggeration": 0.54,
+          "cfg_weight": 0.55,
+          "temperature": 0.8
+        }
+      ],
+      "seed_formula": "60100 + block_index_in_call*10 + take_index",
+      "speaker_lock_qualified": false,
+      "weights_revision_pinned": false
+    },
+    "lips": {
+      "upstream": "19e18e4ba8e2a19e6716cb38110ee2de1dae9bb3",
+      "student_sha256": "4e86900f9744b3650bfe58451ae89b3afba758233a3edf5947516268c1ea11e6",
+      "student_steps": 2,
+      "sigma_shift": 1.0,
+      "motion_from_latents": true,
+      "seed": 42
+    },
+    "matte": {
+      "library": "mediapipe==0.10.21",
+      "model_selection": 1,
+      "input_size": [
+        480,
+        270
+      ],
+      "alpha_low": 0.22,
+      "alpha_range": 0.52,
+      "gaussian_kernel": 7,
+      "coverage_range": [
+        0.02,
+        0.9
+      ],
+      "origin": "existing pilot_pip_scene_consistency.py, 0adb17b6d065d583f4466af7b079a391c5cc2199"
+    }
+  },
+  "avatar": {
+    "path": "productions/FR60-PRESENTER-PROOF-20261030/ASSETS/presenter-studio.png",
+    "sha256": "bd5ce8b0b67fd7cae6f197fc4608e7dff8b78882c162aba54c9e177d6e37bea3"
+  },
+  "background": {
+    "path": "productions/UGCV2-FROZEN-RECIPE-20261030/assets/default-background.jpg",
+    "sha256": "4b6793bde61cafacc5c818ced002e24c633477356d547c65e3c90dd9e2165014",
+    "page": "https://www.pexels.com/photo/modern-workplace-with-computer-and-notepad-6177557/",
+    "author": "Cup of Couple",
+    "license": "https://www.pexels.com/license/",
+    "download_url": "https://images.pexels.com/photos/6177557/pexels-photo-6177557.jpeg",
+    "selection": "clean neutral home office, no person, no caption, fixed center cover, no recoloring"
+  },
+  "timing": {
+    "audio_speed": 1,
+    "picture_speed": 1,
+    "voice_min_fill": 0.62,
+    "voice_tail_guard_s": 0.08,
+    "fade_samples_48k": 420,
+    "no_loop": true,
+    "no_freeze": true,
+    "no_global_stretch": true
+  },
+  "export": {
+    "video": "libx264",
+    "crf": 18,
+    "preset": "fast",
+    "pixel_format": "yuv420p",
+    "audio": "aac",
+    "audio_bitrate": "192k",
+    "audio_rate": 48000
+  },
+  "qualifications": {
+    "identity": false,
+    "background": false,
+    "scene_layout": false,
+    "speaker": false,
+    "phonetic_lipsync": false
+  },
+  "gpu_default_budget_seconds": 0,
+  "workspace": "lucj76861",
+  "private_volume": "ugcv2-production-private"
+}

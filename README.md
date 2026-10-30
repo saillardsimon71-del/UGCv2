@@ -1,5 +1,10 @@
 # Studio UGC v2 — studio audiovisuel IA professionnel
 
+Audit et recette issue de la vidéo source : [audit factuel](docs/SOURCE_PERFORMANCE_AUDIT.md),
+[commande de production et état réel](docs/SOURCE_PRODUCTION.md).
+`python production.py --youtube "URL" --avatar default --voice default` conserve
+son analyse et bloque avant GPU tant que les qualifications essentielles manquent.
+
 **On commande une vidéo, pas un pipeline.** Vous décrivez le résultat voulu,
 vous fournissez vos sources (vidéo filmée, photos, voix, texte), le studio
 choisit la méthode, génère plan par plan, vous gardez les meilleures prises,

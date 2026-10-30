@@ -1,0 +1,51 @@
+{
+  "schema": "ugcv2.single-gpu-proof-plan/v1",
+  "execution_enabled": false,
+  "status": "PREPARED_NOT_RUN",
+  "source_window_relative_s": [
+    7.6,
+    11.6
+  ],
+  "original_youtube_window_s": [
+    49.6,
+    53.6
+  ],
+  "source_sha256": "b1e7a3dc1f116afedd7b7ea58354fd6f5b9b9371a035aa99ef4014975fc1ed52",
+  "voice_sha256": "fd8b89cd036c29eba0ef41187f3024647cebdaba76dd67b029d909ed3487238e",
+  "avatar_sha256": "bd5ce8b0b67fd7cae6f197fc4608e7dff8b78882c162aba54c9e177d6e37bea3",
+  "private_inputs_prefix": "source-proof-inputs/source-performance-v1",
+  "duration_s": 4,
+  "frames": 100,
+  "steps": [
+    "FaceFusion existing selector-one on original video",
+    "CPU matte and fixed background",
+    "TBDub Student existing settings with exact French audio"
+  ],
+  "new_voice_calls": 0,
+  "ltx_calls": 0,
+  "max_attempts_per_model": 1,
+  "max_face_calls": 1,
+  "max_lips_calls": 1,
+  "max_reserved_gpu_seconds": 3000,
+  "timeouts_s": {
+    "FaceFusion_A10G": 1800,
+    "TBDub_L40S": 1200
+  },
+  "gpu_rate_snapshot_usd_per_second": {
+    "A10": 0.000306,
+    "L40S": 0.000542
+  },
+  "gpu_compute_at_full_timeouts_usd": 1.2012,
+  "rate_source": "https://modal.com/pricing",
+  "rate_checked": "2026-10-30",
+  "budget_note": "Time reservations capped; GPU-only estimate excludes startup/CPU/RAM/egress/GitHub. No account spending limit changed. No guarantee of a total invoice cap. Execution disabled.",
+  "acceptance": [
+    "identity matches recurring portrait incl hair/headwear or explicit failure",
+    "head pose and gestures match source frame timing",
+    "no source decor leak on hair/hands/micro",
+    "phonetic lipsync continuous playback compared against reference",
+    "all 100 frames retained; audio neither stretched nor truncated"
+  ],
+  "stop_on_any_failure": true,
+  "no_automatic_retry": true
+}

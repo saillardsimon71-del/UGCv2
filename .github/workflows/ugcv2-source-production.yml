@@ -1,0 +1,122 @@
+name: UGCv2 source performance - CPU and resumable analysis
+on:
+  push:
+    branches: [stabilization/source-performance-recipe-20261030]
+    paths:
+      - production.py
+      - deploy/modal_source_lips.py
+      - productions/UGCV2-FROZEN-RECIPE-20261030/**
+      - .github/workflows/ugcv2-source-production.yml
+  pull_request:
+    paths:
+      - production.py
+      - deploy/modal_source_lips.py
+      - productions/UGCV2-FROZEN-RECIPE-20261030/**
+      - .github/workflows/ugcv2-source-production.yml
+  workflow_dispatch:
+    inputs:
+      youtube_url:
+        description: Authorized YouTube URL, empty runs CPU tests only
+        type: string
+        default: ''
+      run_id:
+        description: Stable ID to resume the same private analysis
+        type: string
+        default: source-analysis-v1
+permissions:
+  contents: read
+  actions: read
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/UGCV2-FROZEN-RECIPE-20261030
+            productions/FR60-CONTINUITY-8S-20261030
+            productions/FR60-PRESENTER-PROOF-20261030/ASSETS
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          pip install -q 'pytest==9.1.1' 'numpy==1.26.4' 'opencv-contrib-python==4.11.0.86' 'mediapipe==0.10.21' 'modal==1.6.1'
+      - name: Existing checkpoint and new source-performance tests
+        run: |
+          python -m pytest productions/UGCV2-FROZEN-RECIPE-20261030 -q
+          python -m py_compile production.py deploy/modal_source_lips.py
+      - name: Read immutable reference from existing private Modal volume, no GPU
+        if: github.event_name != 'pull_request'
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          python - <<'PY'
+          import os,sys
+          from pathlib import Path
+          sys.path.insert(0, 'productions/UGCV2-FROZEN-RECIPE-20261030')
+          from production_state import PrivateVolume
+          ok = PrivateVolume().pull('reference/source-performance-346b8a25/reference', Path(os.environ['RUNNER_TEMP'])/'reference')
+          if not ok:
+              raise SystemExit('Private immutable reference missing')
+          PY
+      - name: Verify reference SHA and one four-second background composite, no GPU
+        if: github.event_name != 'pull_request'
+        run: |
+          python productions/UGCV2-FROZEN-RECIPE-20261030/source_cpu_proof.py \
+            --reference-dir "$RUNNER_TEMP/reference" --output "$RUNNER_TEMP/private-proof" \
+            --report "$RUNNER_TEMP/metadata/source-cpu-proof.json"
+      - name: Metadata only, no source video, voice or diagnostic frames
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-performance-cpu-report-${{ github.run_id }}
+          path: ${{ runner.temp }}/metadata/*.json
+          if-no-files-found: warn
+          retention-days: 30
+  analyze:
+    if: github.event_name == 'workflow_dispatch' && inputs.youtube_url != ''
+    needs: cpu
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    concurrency:
+      group: ugcv2-source-private-analysis
+      cancel-in-progress: false
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      SOURCE_URL: ${{ inputs.youtube_url }}
+      RUN_KEY: ${{ inputs.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/UGCV2-FROZEN-RECIPE-20261030
+            productions/FR60-PRESENTER-PROOF-20261030/ASSETS
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install existing pinned analysis stack, no worker deployment
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libgl1 libglib2.0-0
+          pip install -q 'torch==2.8.0' --index-url https://download.pytorch.org/whl/cpu
+          pip install -q -r productions/UGCV2-FROZEN-RECIPE-20261030/requirements-production.txt
+      - name: Resume private CPU analysis, GPU budget zero
+        run: |
+          python production.py --youtube "$SOURCE_URL" --avatar default --voice default \
+            --run-id "$RUN_KEY" --work-root "$RUNNER_TEMP/production" --private-remote \
+            --cpu-only --max-gpu-seconds 0 --public-report-dir "$RUNNER_TEMP/metadata"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-analysis-report-${{ github.run_id }}
+          path: ${{ runner.temp }}/metadata/source-report.json
+          if-no-files-found: warn
+          retention-days: 30
