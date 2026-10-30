@@ -1,0 +1,64 @@
+name: US FR60 | All PiP new actor and new studio CPU pilot
+on:
+  push:
+    branches: [fix/fr60-pip-identity-new-set-20261030]
+    paths:
+      - 'productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FR60_NEW_SET_CPU_PILOT.txt'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-fr60-newset-pip-cpu-one
+  cancel-in-progress: false
+jobs:
+  cpu_preview:
+    if: github.event.head_commit.message == 'RUN_FR60_NEW_SET_CPU_PILOT' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      BASE: productions/US-FR-V2V-REAL-20261029/REAL_60S
+      PY: productions/US-FR-V2V-REAL-20261029/REAL_60S/pilot_pip_scene_consistency.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            productions/US-FR-V2V-REAL-20261029/REAL_60S/pilot_pip_scene_consistency.py
+            productions/US-FR-V2V-REAL-20261029/REAL_60S/RUN_FR60_NEW_SET_CPU_PILOT.txt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prove explicit one-shot authorization, compile script
+        run: |
+          set -euo pipefail
+          test "$(cat "$BASE/RUN_FR60_NEW_SET_CPU_PILOT.txt")" = 'ONE_CPU_ONLY_PRESERVE_VALIDATED_FRENCH_AUDIO_AND_UI'
+          python -m py_compile "$PY"
+          python -m pip install -q 'numpy==1.26.4' 'mediapipe==0.10.21'
+      - name: Download 60s successful final and actor footage (no GPU)
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-HYBRID-FINAL-40957764927
+          run-id: 40957764927
+          github-token: ${{ github.token }}
+          path: ${{ env.BASE }}/SCENE_INPUT
+      - name: Retrieve one licensed photographic office background (no AI generation)
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 2 --max-time 120 'https://images.pexels.com/photos/12700377/pexels-photo-12700377.jpeg' -o "$BASE/SCENE_INPUT/office_photo_12700377.jpeg"
+          test $(wc -c < "$BASE/SCENE_INPUT/office_photo_12700377.jpeg") -gt 100000
+      - name: Real identity-consistent PiP and set composite, complete French 60s
+        timeout-minutes: 38
+        run: python "$PY"
+      - name: Preserve true MP4 and audit evidence even if render fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: US-FR-60S-PIP-NEW-SET-CPU-${{ github.run_id }}
+          path: |
+            ${{ env.BASE }}/PIP_NEW_SET_CPU/UGCv2_FR60_NEW_FACE_ALL_PIP_NEW_SET_PILOT.mp4
+            ${{ env.BASE }}/PIP_NEW_SET_CPU/pilot_status.json
+            ${{ env.BASE }}/PIP_NEW_SET_CPU/new_set_at_*.jpg
+            ${{ env.BASE }}/PIP_NEW_SET_CPU/office_set_background.jpg
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 0
