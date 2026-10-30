@@ -9,16 +9,120 @@ from pathlib import Path
 import numpy as np
 
 from production_input import youtube_id
-from production_narration import extract_audio, transcribe, translate_segments, verify_transcript
+from production_narration import extract_audio, tokens, transcribe, translate_segments, verify_transcript
 from production_quality import technical_video
-from production_state import PrivateVolume, save_json
+from production_state import PrivateVolume, fingerprint, save_json
 from production_workers import (ROOT, RECIPE_PATH, animate, continuation_anchor, frozen_recipe,
                                 frozen_text_sha, model_call, synchronize)
-from studio import Refused, command, probe, resolve_media, sha256, track
+from studio import Refused, check_word_boundaries, command, probe, resolve_media, sha256, track
 
 BASE = Path(__file__).resolve().parent
 PROFILE_PATH = BASE / 'diagnostic_profile.json'
 PROFILE = json.loads(PROFILE_PATH.read_text(encoding='utf-8'))
+RESUME_LOCK_PATH = BASE / 'human_voice_approval_lock.json'
+RESUME_LOCK = json.loads(RESUME_LOCK_PATH.read_text(encoding='utf-8'))
+
+
+def load_human_voice_approval(root, volume):
+    if root.name != RESUME_LOCK['run_id']:
+        return None
+    folder = root / 'human-approval'
+    file = folder / 'voice-human-approval.json'
+    if not file.is_file():
+        if volume is None or not volume.pull(RESUME_LOCK['approval_prefix'], folder):
+            raise Refused('EXPLICIT_VOICE_APPROVAL_MISSING')
+    if sha256(file) != RESUME_LOCK['approval_sha256']:
+        raise Refused('EXPLICIT_VOICE_APPROVAL_CHANGED')
+    return json.loads(file.read_text(encoding='utf-8'))
+
+
+def check_human_approved_narration(root, text, approval):
+    if (not isinstance(approval, dict) or approval.get('schema') != 'ugcv2.human-voice-approval/v1'
+            or approval.get('run_id') != root.name or root.name != PROFILE['mission_run_id']
+            or approval.get('authority') != 'explicit_user_validation_in_current_chat'
+            or approval.get('scope') != 'exact_voice_only_not_video_or_general_asr'
+            or approval.get('human_confirmed_whole_utterance') is not True
+            or approval.get('voice_regeneration_allowed') is not False
+            or approval.get('expected_text') != text):
+        raise Refused('EXACT_HUMAN_VOICE_APPROVAL_REQUIRED')
+    for name, field in [('new-voice-native.wav', 'native_wav_sha256'),
+                        ('new-voice48k-whole.wav', 'whole_pcm_sha256'),
+                        ('new-voice-4s.wav', 'padded_wav_sha256'),
+                        ('new-speech16k.wav', 'speech16k_sha256'),
+                        ('new-alignment.json', 'asr_sha256')]:
+        if sha256(root / name) != approval.get(field):
+            raise Refused('APPROVED_VOICE_FILE_CHANGED: ' + name)
+    transcript = json.loads((root / 'new-alignment.json').read_text(encoding='utf-8'))
+    if transcript != approval.get('asr_result'):
+        raise Refused('APPROVED_ASR_RECORD_CHANGED')
+    samples = []
+    for name in ('new-voice48k-whole.wav', 'new-voice-4s.wav'):
+        with wave.open(str(root / name)) as stream:
+            if (stream.getframerate(), stream.getnchannels(), stream.getsampwidth()) != (48000, 2, 2):
+                raise Refused('VOICE_PCM_FORMAT_REQUIRED')
+            samples.append(np.frombuffer(stream.readframes(stream.getnframes()), dtype='<i2').reshape(-1, 2))
+    whole, padded = samples
+    first, last = 3840, 3840 + len(whole)
+    if len(padded) != 192000 or not 0 < len(whole) <= 182400:
+        raise Refused('VOICE_DURATION_CHANGED')
+    if first < 960 or len(padded) - last < 1920 or np.any(padded[:first]) or np.any(padded[last:]):
+        raise Refused('VOICE_EDGE_GUARD_MISSING')
+    if not np.array_equal(padded[first:last], whole):
+        raise Refused('VOICE_SAMPLES_CHANGED')
+    words = [w for segment in transcript['segments'] for w in segment['words']]
+    check_word_boundaries(words, 0, 100, 25)
+    asr_error = None
+    try:
+        verify_transcript(text, words, 4)
+    except Refused as exc:
+        asr_error = str(exc)
+    return {'human_approved_exact_voice': True, 'expected_text': text,
+            'native_wav_sha256': approval['native_wav_sha256'],
+            'all_words_recognized': tokens(text) == tokens(' '.join(w['text'] for w in words)),
+            'asr_check_error': asr_error, 'asr_contradiction': transcript,
+            'first_and_last_word_retained': True, 'phrase_validation': 'explicit_whole_wav_human_approval',
+            'leading_guard_samples': first, 'trailing_guard_samples': len(padded) - last,
+            'all_utterance_samples_preserved': True, 'voice_speed_changed': False}
+
+
+def authorize_voice_resume(root, config, max_gpu_seconds, approval):
+    base = RESUME_LOCK['base_configuration']
+    expected_fields = {key: value for key, value in base.items() if key != 'code'}
+    actual_fields = {key: value for key, value in config.items()
+                     if key not in ('code', 'human_voice_approval_lock_sha256')}
+    if (root.name != RESUME_LOCK['run_id'] or max_gpu_seconds != RESUME_LOCK['max_gpu_seconds']
+            or actual_fields != expected_fields
+            or config.get('human_voice_approval_lock_sha256') != sha256(RESUME_LOCK_PATH)
+            or set(config['code']) != set(base['code'])):
+        raise Refused('UNAUTHORIZED_RESUME_CONFIGURATION_CHANGE')
+    for name, digest in config['code'].items():
+        if name not in RESUME_LOCK['allowed_changed_code'] and digest != base['code'][name]:
+            raise Refused('UNAUTHORIZED_RESUME_CODE_CHANGE: ' + name)
+    text = json.loads((root / 'new-script.json').read_text(encoding='utf-8'))['fr_text']
+    check_human_approved_narration(root, text, approval)
+    state_path = root / 'state.json'
+    data = json.loads(state_path.read_text(encoding='utf-8'))
+    target = fingerprint({'config': config, 'max_gpu_seconds': max_gpu_seconds})
+    if data['configuration'] == target:
+        return
+    if (data['configuration'] != approval.get('original_configuration')
+            or sha256(state_path) != approval.get('original_state_sha256')
+            or data['max_gpu_seconds'] != max_gpu_seconds
+            or set(data['calls']) != {'new4s/v3/1'}
+            or data['calls']['new4s/v3/1']['status'] != 'SAVED'):
+        raise Refused('UNAUTHORIZED_RESUME_STATE_CHANGED')
+    for stage in data['stages'].values():
+        for name, digest in stage['files'].items():
+            if sha256(resolve_media(root, name)) != digest:
+                raise Refused('RESUME_INTERMEDIATE_CHANGED: ' + name)
+    shutil.copyfile(state_path, root / 'state-before-human-approval.json')
+    if (root / 'report.json').exists():
+        shutil.copyfile(root / 'report.json', root / 'report-before-human-approval.json')
+    data['configuration_history'] = [{'from': data['configuration'], 'to': target,
+                                     'reason': 'explicit_exact_wav_human_approval',
+                                     'approval_sha256': RESUME_LOCK['approval_sha256']}]
+    data['configuration'] = target
+    save_json(state_path, data)
 
 
 def pad_utterance(source, target):
@@ -85,7 +189,7 @@ def validate_context(state, url):
         raise Refused('REFERENCE_VOICE_WORKER_CHANGED')
 
 
-def run_diagnostic(state, catalog, url, model_cache, run_stage):
+def run_diagnostic(state, catalog, url, model_cache, run_stage, human_approval=None):
     validate_context(state, url)
     inputs = state.root / 'source-input'
     if not (inputs / 'input-manifest.json').is_file():
@@ -123,7 +227,10 @@ def run_diagnostic(state, catalog, url, model_cache, run_stage):
             raise Refused('NEW_VOICE_CHECKSUM_MISMATCH')
         state.data['calls']['new4s/v3/1']['status'] = 'SAVED'
         return result['metadata']
-    run_stage(state, 'diagnostic_voice', {'text': text, 'profile': sha256(PROFILE_PATH)},
+    voice_inputs = {'text': text, 'profile': sha256(PROFILE_PATH)}
+    if human_approval is not None and not state.cached('diagnostic_voice', voice_inputs):
+        raise Refused('APPROVED_VOICE_CACHE_REQUIRED_NO_CHATTERBOX_REGENERATION')
+    run_stage(state, 'diagnostic_voice', voice_inputs,
               [utterance, voice_receipt], voice)
     audio = state.root / 'new-voice-4s.wav'
     speech = state.root / 'new-speech16k.wav'
@@ -139,13 +246,25 @@ def run_diagnostic(state, catalog, url, model_cache, run_stage):
               [pcm, audio, speech, state.root / 'audio-preparation.json'], prepare_audio)
     alignment = state.root / 'new-alignment.json'
     def check_narration():
+        if human_approval is not None:
+            return check_human_approved_narration(state.root, text, human_approval)
         transcript = transcribe(audio, model_cache, 'fr')
         save_json(alignment, transcript)
         words = [w for seg in transcript['segments'] for w in seg['words']]
         verify_transcript(text, words, 4)
         return {'all_words_recognized': True, 'first_and_last_word_retained': True}
-    run_stage(state, 'diagnostic_words', {'audio': sha256(audio), 'text': text},
-              [alignment], check_narration)
+    word_inputs = {'audio': sha256(audio), 'text': text}
+    word_outputs = [alignment]
+    if human_approval is not None:
+        word_inputs['human_approval_sha256'] = RESUME_LOCK['approval_sha256']
+        def checked_with_receipt():
+            result = check_narration()
+            save_json(state.root / 'voice-validation.json', result)
+            return result
+        word_outputs.append(state.root / 'voice-validation.json')
+        run_stage(state, 'diagnostic_words', word_inputs, word_outputs, checked_with_receipt)
+    else:
+        run_stage(state, 'diagnostic_words', word_inputs, word_outputs, check_narration)
     previous_raw = catalog / 'FR60-CONTINUITY-8S-20261030/CACHE/trial-1-before-raw.mp4'
     previous = catalog / 'FR60-CONTINUITY-8S-20261030/CACHE/trial-1-before.mp4'
     anchor = state.root / 'continuation-anchor.png'
@@ -204,6 +323,12 @@ def run_diagnostic(state, catalog, url, model_cache, run_stage):
                 raw.parent / 'graph.json', raw.parent / 'ltx.json', raw.parent / 'tbdub.json',
                 manifest, reference_voice, state.root / 'state.json', *[inputs / p for p in files]]
     copies = [('recipe.json', RECIPE_PATH), ('diagnostic_profile.json', PROFILE_PATH)]
+    if human_approval is not None:
+        exported += [state.root / 'human-approval/voice-human-approval.json',
+                     state.root / 'voice-validation.json', state.root / 'state-before-human-approval.json']
+        if (state.root / 'report-before-human-approval.json').exists():
+            exported.append(state.root / 'report-before-human-approval.json')
+        copies.append(('human_voice_approval_lock.json', RESUME_LOCK_PATH))
     for name, original in copies:
         shutil.copyfile(original, state.root / name)
         exported.append(state.root / name)
@@ -216,4 +341,5 @@ def run_diagnostic(state, catalog, url, model_cache, run_stage):
             'new_gpu_calls': len(state.data['calls']), 'perceptual_validation': PROFILE['perceptual_validation'],
             'diagnostic_sha256': sha256(output), 'diagnostic_files': diagnostic_files,
             'technical_checks': technical, 'github_run_id': os.getenv('GITHUB_RUN_ID'),
-            'github_sha': os.getenv('GITHUB_SHA'), 'original_master_regenerated': False}
+            'github_sha': os.getenv('GITHUB_SHA'), 'original_master_regenerated': False,
+            'human_voice_approved': human_approval is not None, 'voice_regenerated': False}

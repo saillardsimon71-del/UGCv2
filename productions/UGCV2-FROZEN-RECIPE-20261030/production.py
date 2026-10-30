@@ -238,7 +238,8 @@ def public_report(report):
         'new_gpu_calls', 'model_compute_cost_usd', 'cost_scope', 'audio_integrity', 'checks',
         'rhythm', 'limits', 'output_sha256', 'blocker_code', 'publish_allowed',
         'call_counts', 'perceptual_validation', 'diagnostic_sha256', 'technical_checks',
-        'github_run_id', 'github_sha', 'original_master_regenerated')}
+        'github_run_id', 'github_sha', 'original_master_regenerated', 'human_voice_approved',
+        'voice_regenerated')}
 
 
 def fetch_deliverable(root, output):
@@ -302,6 +303,12 @@ def main():
                   'profile_sha256': sha256(BASE / 'production_profile.json'), 'code': code}
         if args.profile == 'work-diagnostic-4s-v1':
             config['diagnostic_profile_sha256'] = sha256(BASE / 'diagnostic_profile.json')
+            from production_diagnostic import (RESUME_LOCK_PATH, authorize_voice_resume,
+                                               load_human_voice_approval)
+            config['human_voice_approval_lock_sha256'] = sha256(RESUME_LOCK_PATH)
+            human_approval = load_human_voice_approval(root, volume)
+            if human_approval is not None:
+                authorize_voice_resume(root, config, args.max_gpu_seconds, human_approval)
         state = RunState(root, config, args.max_gpu_seconds,
                          (lambda p: volume.push('runs/' + run_id, p)) if volume else None)
         cache = args.work_root / 'cpu-model-cache'
@@ -313,7 +320,7 @@ def main():
             if args.profile == 'work-diagnostic-4s-v1':
                 validated_catalog(catalog)
                 from production_diagnostic import run_diagnostic
-                result = run_diagnostic(state, catalog, args.url, cache, run_stage)
+                result = run_diagnostic(state, catalog, args.url, cache, run_stage, human_approval)
             else:
                 result = reference_run(state, catalog, args.url, cache, args.verify_workers)
         else:
