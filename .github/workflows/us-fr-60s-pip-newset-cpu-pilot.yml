@@ -47,8 +47,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --location --retry 2 --max-time 120 'https://images.pexels.com/photos/12700377/pexels-photo-12700377.jpeg' -o "$BASE/SCENE_INPUT/office_photo_12700377.jpeg"
-          test $(wc -c < "$BASE/SCENE_INPUT/office_photo_12700377.jpeg") -gt 100000
+          curl --fail --location --retry 2 --max-time 120 'https://images.pexels.com/photos/13075329/pexels-photo-13075329.jpeg' -o "$BASE/SCENE_INPUT/office_photo_13075329.jpeg"
+          test $(wc -c < "$BASE/SCENE_INPUT/office_photo_13075329.jpeg") -gt 100000
       - name: Real identity-consistent PiP and set composite, complete French 60s
         timeout-minutes: 38
         run: python "$PY"
