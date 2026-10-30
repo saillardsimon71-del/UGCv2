@@ -3,7 +3,7 @@ on:
   push:
     branches: [test/source-performance-4s-proof-20261030]
     paths:
-      - productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER.txt
+      - productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER_V2.txt
 permissions:
   contents: read
 concurrency:
@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   encrypt:
-    if: github.event.head_commit.message == 'RUN_ENCRYPTED_SOURCE_PROOF_TRANSFER_ONCE' && github.run_attempt == 1
+    if: github.event.head_commit.message == 'RUN_ENCRYPTED_SOURCE_PROOF_TRANSFER_V2_ONCE' && github.run_attempt == 1
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
@@ -23,7 +23,7 @@ jobs:
           sparse-checkout: |
             productions/UGCV2-FROZEN-RECIPE-20261030/production_state.py
             productions/UGCV2-FROZEN-RECIPE-20261030/studio.py
-            productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER.txt
+            productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER_V2.txt
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -35,7 +35,7 @@ jobs:
           RUNNER_TEMP_PATH: ${{ runner.temp }}
         run: |
           set -euo pipefail
-          test "$(cat productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER.txt)" = "ENCRYPT_MP4_FOR_DRIVE_41081121485"
+          test "$(cat productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER_V2.txt)" = "ENCRYPT_MP4_FOR_DRIVE_41081121485_V2"
           python - <<'PY'
           from pathlib import Path
           import os,sys,hashlib
