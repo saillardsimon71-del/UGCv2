@@ -1,4 +1,5 @@
 import base64
+import hashlib
 import json
 import sys
 import time
@@ -13,12 +14,19 @@ RECIPE_SHA = '2682d1012de4b90042725837faf0bd1af6580ad29637e7eb49ed4f7f409aa006'
 sys.path.insert(0, str(ROOT))
 
 
+def frozen_text_sha(path):
+    # Approved receipts were recorded on Windows. Git checks the same source
+    # out with LF on Linux; normalize only line endings, never source content.
+    data = Path(path).read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n')
+    return hashlib.sha256(data).hexdigest()
+
+
 def frozen_recipe():
-    if sha256(RECIPE_PATH) != RECIPE_SHA:
+    if frozen_text_sha(RECIPE_PATH) != RECIPE_SHA:
         raise Refused('RECIPE_DRIFT: approved prompt or parameters changed')
     recipe = json.loads(RECIPE_PATH.read_text(encoding='utf-8'))
     for file, wanted in recipe['worker_files_sha256'].items():
-        if sha256(ROOT / file) != wanted:
+        if frozen_text_sha(ROOT / file) != wanted:
             raise Refused('RECIPE_DRIFT: frozen worker changed: ' + file)
     return recipe
 

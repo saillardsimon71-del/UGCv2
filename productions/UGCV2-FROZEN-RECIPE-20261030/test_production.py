@@ -120,6 +120,15 @@ class RhythmTests(unittest.TestCase):
 
 
 class ContinuationTests(unittest.TestCase):
+    def test_recipe_lock_accepts_linux_line_endings(self):
+        from production_workers import RECIPE_PATH, frozen_recipe
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as td:
+            recipe = Path(td) / 'recipe.json'
+            recipe.write_bytes(RECIPE_PATH.read_bytes().replace(b'\r\n', b'\n'))
+            with patch('production_workers.RECIPE_PATH', recipe):
+                self.assertEqual(frozen_recipe()['ltx_seed'], 2026103017)
+
     def test_native_frame_mapping_and_frozen_recipe(self):
         from production_workers import frozen_recipe, continuation_anchor
         from unittest.mock import patch
