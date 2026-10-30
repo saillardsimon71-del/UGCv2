@@ -32,6 +32,9 @@ jobs:
           set -euo pipefail
           test "$(cat "$BASE/RUN_FR60_NEW_SET_CPU_PILOT.txt")" = 'ONE_CPU_ONLY_PRESERVE_VALIDATED_FRENCH_AUDIO_AND_UI'
           python -m py_compile "$PY"
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
           python -m pip install -q 'numpy==1.26.4' 'mediapipe==0.10.21'
       - name: Download 60s successful final and actor footage (no GPU)
         uses: actions/download-artifact@v4
