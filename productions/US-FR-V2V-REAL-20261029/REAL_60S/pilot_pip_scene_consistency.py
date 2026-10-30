@@ -23,10 +23,10 @@ OUT=ROOT/"PIP_NEW_SET_CPU"
 OUT.mkdir(parents=True,exist_ok=True)
 SOURCE=INPUT/"UGCv2_FR_60s_TBDub_HYBRID_TEST.mp4"
 ACTOR=INPUT/"cam_a_tbdub_french.mp4"
-PHOTO=INPUT/"office_photo_12700377.jpeg"
+PHOTO=INPUT/"office_photo_13075329.jpeg"
 FPS=25
 SIZE=(1920,1080)
-PIP=(1228,0,692,380)
+PIP=(1228,0,692,442)
 FULL=[(5.76,12.0),(21.12,26.88),(29.76,31.20),(56.56,60.0)]
 INSET=[(0.88,5.76),(31.96,56.56)]
 
@@ -120,7 +120,7 @@ def pip_loop(background):
             if not ok:break
             if frame.shape[:2]!=(1080,1920):frame=cv2.resize(frame,SIZE)
             foreground,cov=actor_on_set(frame,background,segmenter)
-            resized=cv2.resize(foreground,(PIP[2],PIP[3]),interpolation=cv2.INTER_AREA)
+            resized=cover(foreground,PIP[2],PIP[3])
             frames.append(resized);coverage.append(cov)
     reader.release()
     if len(frames)<110:raise RuntimeError("Artificial presenter source unexpectedly short")
@@ -200,7 +200,7 @@ def run():
         "duration":float(vmeta["format"]["duration"]),"fps":FPS,
         "sha256":digest(dest),"original_60s_sha256":digest(SOURCE),
         "reused_validated_artifact_run":40957764927,
-        "new_photo_url":"https://www.pexels.com/photo/the-interior-of-a-home-office-12700377/",
+        "new_photo_url":"https://www.pexels.com/photo/minimalist-interior-of-a-house-13075329/",
         "source_preserved":"French original aligned voice and demo/screen pixels outside PiP",
         "full_presenter_segments":FULL,"original_pip_replaced_in":INSET,
         "pip_original_face_visibility":"Expected absent in designated inset rectangles",
