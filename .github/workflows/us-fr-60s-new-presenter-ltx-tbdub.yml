@@ -22,6 +22,7 @@ jobs:
       ALLOW_FR60_NEW_ACTOR_GPU: 'YES'
       PY: productions/FR60-PRESENTER-PROOF-20261030/render_full_60s.py
       BASE: productions/FR60-PRESENTER-PROOF-20261030
+      PYTHONPATH: .
     steps:
       - uses: actions/checkout@v4
         with:
