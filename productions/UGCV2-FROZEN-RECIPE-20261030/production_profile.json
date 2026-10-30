@@ -1,0 +1,24 @@
+{
+  "schema": "ugcv2.production-profile/v1",
+  "id": "work-locked-v1",
+  "recipe": "productions/FR60-CONTINUITY-8S-20261030/recipe.json",
+  "seed": 2026103017,
+  "segment_frames": 100,
+  "fps": 25,
+  "native_fps": 24,
+  "native_frames": 97,
+  "continuation_native_frame_for_100_retained_frames": 95,
+  "maximum_attempts_per_segment": 2,
+  "maximum_new_segments_per_diagnostic_run": 1,
+  "gpu_seconds_reservation_limit": 1800,
+  "ltx_call_timeout_s": 900,
+  "tbdub_call_timeout_s": 600,
+  "new_take_delivery_qualified": false,
+  "blocking_qualifications": [
+    "phonetic lipsync and identity verifier calibrated against approved and rejected clips",
+    "automatic title mattes and arbitrary PiP rectangles",
+    "same speaker across independently generated Chatterbox phrases"
+  ],
+  "private_volume": "ugcv2-production-private",
+  "workspace": "lucj76861"
+}

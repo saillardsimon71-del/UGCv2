@@ -1,0 +1,34 @@
+{
+  "schema": "ugcv2.exact-voice-resume-lock/v1",
+  "run_id": "work-new4s-20261030-once",
+  "approval_prefix": "approvals/work-new4s-20261030-once",
+  "approval_sha256": "f18e35edbe877829048a0f9d9dc58696f355d2560a46e73feca61eb115cab3b6",
+  "base_configuration": {
+    "youtube_id": "KSOxkhWs2Ic",
+    "profile": "work-diagnostic-4s-v1",
+    "profile_sha256": "074faf15b6cc7013f1b18adcf80c1d6e893a891b1b9981fff26a15158bd5ffe0",
+    "code": {
+      "assets.py": "3d4941a4817b41e1625b7379651050de11d56509ee9a0e32c9cdb08eb4103ff3",
+      "diagnostic_voice.py": "9a242470daf004aad7978984199eb07f17c12ef96adb68b084d1ed24fdbd27d0",
+      "golden.py": "b202c8b21b9862c3cd078ce916a51d88c6e3f80c448cea694a52dcea40c9f914",
+      "planner.py": "deb27293294ceefe3d51a3f168be675fee0093d12d54553c6f02fbd8bd0323cf",
+      "production.py": "26597626462a060dc91451c6499d021d2207814463d5c466b1e22f882170fa07",
+      "production_diagnostic.py": "7874ab9618881b0775e5e77892f6c4713302c02e2063c09054bea9cae60dcf4d",
+      "production_input.py": "79cadd5a27a6f40cd64bad6d2e96395adb80b133cb1d5a2002b59cd624391be7",
+      "production_narration.py": "71ef774c9f97b529870970f7cb40c5e5355f24f1f3f0ad0ebf6fb46fb3925ead",
+      "production_quality.py": "ddb7cc798d25d50b9180229d4e460b3528732f6b9a7d5f4ed1184153a1d92f36",
+      "production_rhythm.py": "126848854bd754e53e1a360512eaac71bc5f63ec3465b49fdcbc0d437a2b4107",
+      "production_state.py": "bb6878331a59bf63aafe863c0cf8d319aea722315399363bf3ccfe501b637af4",
+      "production_vision.py": "1d706b772b42c6b61cc15f207917354caa2fe6b020d6bbd3b857740fb44e768c",
+      "production_workers.py": "5108e54b1a334bcbedc968db52a6d84757beac420dc2a463e62a4e27f0700217",
+      "seed_catalog.py": "fb182cbe34d58cf00d2ef6cf9a961f9e4fcada6f3e6c0455f44a7bbf25cf7cc0",
+      "studio.py": "2765913608db71be188bbfaa2db4837bb045ecfec9b7d08ddf976574276d823d"
+    },
+    "diagnostic_profile_sha256": "e7811503387eabc40fbee4b980325a084c17ad3ebff55183f69770f921d02fdd"
+  },
+  "allowed_changed_code": [
+    "production.py",
+    "production_diagnostic.py"
+  ],
+  "max_gpu_seconds": 2400
+}
