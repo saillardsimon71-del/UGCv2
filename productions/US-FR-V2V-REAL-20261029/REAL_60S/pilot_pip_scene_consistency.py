@@ -73,7 +73,9 @@ def mask_for(image,segmenter):
     raw=s.segmentation_mask
     if not np.isfinite(raw).all():raise RuntimeError("Non-finite human alpha")
     coverage=float(np.mean(raw>.5))
-    if coverage<.02 or coverage>.90:raise RuntimeError(f"Unreliable human segmentation: {coverage:.3f}")
+    # A transition frame may contain no actor; keep the approved frame rather than pretending the mask exists.
+    if coverage<.02:return np.zeros((h,w),np.float32),coverage
+    if coverage>.90:raise RuntimeError(f"Unreliable human segmentation: {coverage:.3f}")
     matte=np.clip((raw-.22)/.52,0,1)
     matte=cv2.GaussianBlur(matte,(7,7),0)
     return cv2.resize(matte,(w,h),interpolation=cv2.INTER_LINEAR).astype(np.float32),coverage
@@ -102,6 +104,7 @@ def outfit_distinction(person,alpha):
 
 def actor_on_set(frame,bg,segmenter):
     alpha,coverage=mask_for(frame,segmenter)
+    if coverage<.02:return frame.copy(),0.0
     actor=outfit_distinction(frame,alpha)
     composite=(actor.astype(np.float32)*alpha[:,:,None]+
                bg.astype(np.float32)*(1-alpha[:,:,None])).clip(0,255).astype(np.uint8)
