@@ -1,0 +1,30 @@
+{
+  "status": "PARTIAL_NOT_READY_FOR_ARBITRARY_NEW_VIDEO",
+  "production_ready": false,
+  "tested_commit": "590d7eb",
+  "github_dispatch_run": "https://github.com/saillardsimon71-del/UGCv2/actions/runs/41045084299",
+  "profile": "work-reference-v1",
+  "private_run_id": "work-reference-github-v3",
+  "duration_s": 6.52,
+  "frames": 163,
+  "output_sha256": "6f163320596b94855f9803d61dfce377cf6124c02a7c33dba5bfb2106f9f94da",
+  "approved_movie_psnr_db": 42.016466820205125,
+  "zero_offset_audio_correlation": 0.999899525719392,
+  "new_gpu_calls": 0,
+  "specific_cpu_tests_passed": 25,
+  "existing_repository_tests_passed": 16,
+  "ltx_cached_weights_present": 5,
+  "tbdub_cpu_preflight_frames_with_face": 100,
+  "public_artifact": "metadata JSON only, 924-byte archive",
+  "private_media_location": "Modal ugcv2-production-private, workspace lucj76861",
+  "source_asr_and_output_asr_identical": false,
+  "reference_audio_proof": "All retained PCM samples compared at zero offset; only approved near-zero silence removed",
+  "new_content_asr_policy": "Uncertain or zero-length word alignment blocks generation",
+  "not_demonstrated": [
+    "new URL to new French narration and generated avatar through the complete chain",
+    "qualified automatic lip sync and identity verification",
+    "arbitrary PiP and title classification and replacement",
+    "speaker consistency across new phrases",
+    "perceptual verdict driving individual take retries"
+  ]
+}

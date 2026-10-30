@@ -1,4 +1,4 @@
-name: UGCv2 frozen Work recipe | no GPU quality gates
+name: UGCv2 | Production privee et tests CPU
 on:
   push:
     branches: [stabilization/work-golden-locked-20261030]
@@ -67,7 +67,7 @@ jobs:
             'NO real human quality certification' 'NO actor generation' \
             'NO dubbing / YouTube downloading' 'NO GPU costs'
   private_production:
-    if: (github.event_name == 'workflow_dispatch' && inputs.profile != 'cpu-tests') || (github.event_name == 'push' && github.event.head_commit.message == 'RUN_PRIVATE_APPROVED_REFERENCE_ONCE')
+    if: github.event_name == 'workflow_dispatch' && inputs.profile != 'cpu-tests'
     needs: frozen_recipe
     runs-on: ubuntu-latest
     timeout-minutes: 45
