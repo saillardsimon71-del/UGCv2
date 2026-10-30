@@ -1,0 +1,30 @@
+{
+  "schema": "ugcv2.source-cpu-proof/v1",
+  "reference_sha256": "346b8a25aa0722094f57e51aef3d41a97e1966f7ad1d04c4517c8fbbe5b7297d",
+  "reference_frames": 1500,
+  "reference_shot_hashes_checked": 4,
+  "diagnostic_frames": 100,
+  "diagnostic_duration_s": 4,
+  "foreground_mae_inside_opaque_mask": 1.9614205360412598,
+  "background_mean_change": 134.87949462890626,
+  "matte": {
+    "frames": 100,
+    "coverage_min": 0.3378935185185185,
+    "coverage_max": 0.3678520447530864,
+    "model": "mediapipe_selfie_segmentation_landscape",
+    "person_pixels_from_video": true,
+    "hair_hands_desk_qualified": false
+  },
+  "background_sha256": "4b6793bde61cafacc5c818ced002e24c633477356d547c65e3c90dd9e2165014",
+  "output_sha256": "76732be63f42fef79539b6dc1d8d59578f57363c0981a8c023577f59473d423b",
+  "alpha_sha256": "0a6b148ca40b41fe71be07fb7054f964e1c8736413d1577fffada776b0c0c072",
+  "full_decode": true,
+  "gpu_calls": 0,
+  "new_60s_render": false,
+  "new_identity_render": false,
+  "new_lipsync_render": false,
+  "naturalness_or_identity_certified": false,
+  "scope": "CPU composition on four existing seconds; not a production qualification",
+  "github_run_id": 41075574083,
+  "github_commit": "edd64328cb749033544e1de9786ab0e29eee1204"
+}

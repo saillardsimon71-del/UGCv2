@@ -8,14 +8,14 @@ Objectif : industrialiser la chaîne du run 40957764927 sans recréer les gestes
 depuis une photographie. Python 3.11, FFmpeg, FaceFusion 3.5.1, Chatterbox V3,
 TBDub Student v1.1. Aucun nouveau moteur vidéo, déploiement ou secret.
 
-- [ ] Audit : empreintes des artefacts, provenance des modèles et paramètres,
+- [x] Audit : empreintes des artefacts, provenance des modèles et paramètres,
   limites exactes de sélection des plans, reprises vocales, différences avec I2V.
-- [ ] Recette et orchestration : point d'entrée racine, neuf étapes explicites,
+- [x] Recette et orchestration : point d'entrée racine, neuf étapes explicites,
   conservation de chaque intermédiaire, checkpoints privés Modal, budgets nuls
   par défaut, reprise par plan et refus des appels payants de résultat incertain.
-- [ ] CPU : analyse automatique réutilisée, composition de masques et PiP,
+- [x] CPU : analyse automatique réutilisée, composition de masques et PiP,
   placement des voix à vitesse naturelle, contrôle des images et de l'audio.
-- [ ] Validation : tests de corruption, reprise après erreur, source modifiée,
+- [x] Validation : tests de corruption, reprise après erreur, source modifiée,
   débordement vocal, plan manquant, PiP, protections avant dépense. Test court CPU
   sur les fichiers existants, CI GitHub, revue indépendante et PR non fusionnée.
 
@@ -33,3 +33,11 @@ La validation perceptuelle automatique, le détourage des objets/occlusions,
 le décor récurrent sans présentateur et la stabilité du timbre sont des
 qualifications à établir, jamais des booléens à inventer. La commande doit
 conserver son analyse et retourner un rapport bloqué avant GPU si elles manquent.
+
+Validation réelle : 76 tests locaux, 4 sous-tests ; quatre workflows GitHub
+réussis (SOURCE_STATUS.json). Référence archivée et relue depuis Modal ; reprise
+de l'analyse française dans un nouveau dossier sans recalcul. Défauts de budget
+global et de vérification Student relevés par revue indépendante, tests RED puis
+GREEN et corrections conservés. Les workers historiques sont inchangés.
+La couverture automatique arbitraire des titres/PiP, la stabilité du speaker,
+les validateurs perceptuels et l'export final autonome restent non réalisés.

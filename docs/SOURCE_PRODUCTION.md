@@ -113,6 +113,14 @@ limitée. Les PR exécutent les tests synthétiques sans accéder aux secrets.
 Une exécution manuelle peut ensuite analyser une URL avec budgetGPU0 et reprise
 privée ; aucune supervision d'agent n'est nécessaire pour cette analyse.
 
+Résultat constaté : [bilan machine](SOURCE_STATUS.json),
+[preuve CPU GitHub](SOURCE_CI_CPU_RESULT.json),
+[run réussi 41075574083](https://github.com/saillardsimon71-del/UGCv2/actions/runs/41075574083).
+76 tests locaux et 4 sous-tests ont réussi ; le job source sur GitHub en a
+exécuté 60 et 4 sous-tests. Les contrôles existants de studio et du frontend ont
+également réussi. Une reprise depuis Modal dans un nouveau dossier a retrouvé
+exactement le même journal, sans recalcul des étapes terminées.
+
 ## Preuve GPU éventuelle, préparée et non lancée
 
 Un seul cas : 4s plein écran source, caméra fixe, visage visible, audio français
@@ -122,8 +130,16 @@ Réutiliser le résultat de chaque étape réussie. Comparer avant/après sur id
 pose/gestes, contours cheveux/mains/micro et alignement phonétique.
 
 Plafond de calcul proposé : une session FaceFusion et une session TBDub,
-réservations maximales cumulées3000s, zéro répétition. Aucun plafond monétaire
-fiable n'a encore été établi sur les tarifs du compte ; cette preuve est donc
-**non autorisée à l'exécution dans cette recette**. Aucun flag ne la lance en
+réservations maximales cumulées de 3000s, zéro répétition. Aucun plafond monétaire
+du compte n'a été modifié. Aux [tarifs Modal](https://modal.com/pricing) consultés
+le 30 octobre 2026, ces durées représentent 1,2012USD de GPU seul ; démarrage,
+CPU, RAM, stockage, réseau et GitHub sont exclus de ce calcul. Il ne garantit
+pas un plafond de facture total. Cette preuve reste
+**désactivée dans cette recette**. Aucun flag ne la lance en
 contournant les qualifications. Un test GPU ne résoudrait d'ailleurs pas à lui
 seul la segmentation universelle ni le contrôle qualité automatique.
+
+Les deux entrées réelles de 4s (vidéo source et audio FR validé) sont préparées
+dans le volume privé. Leurs SHA et le protocole exact sont conservés dans
+[SOURCE_GPU_PROOF_PLAN.json](SOURCE_GPU_PROOF_PLAN.json). Aucun calcul GPU de ce
+protocole n'a été exécuté.

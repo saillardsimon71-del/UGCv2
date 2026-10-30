@@ -1,0 +1,89 @@
+{
+  "schema": "ugcv2.source-operational-status/v1",
+  "review_date": "2026-10-30",
+  "branch": "stabilization/source-performance-recipe-20261030",
+  "implementation_commit": "edd64328cb749033544e1de9786ab0e29eee1204",
+  "pull_request": "https://github.com/saillardsimon71-del/UGCv2/pull/8",
+  "merged": false,
+  "autonomous_end_to_end": false,
+  "local_tests": {
+    "passed": 76,
+    "subtests_passed": 4,
+    "warnings": 1,
+    "command": "python -m pytest productions/UGCV2-FROZEN-RECIPE-20261030 tests -q"
+  },
+  "github_checks": [
+    {
+      "run_id": 41075574083,
+      "scope": "60 source/frozen tests, 4 subtests, real 4s CPU composite, private Modal reference read",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 41075673373,
+      "scope": "existing frozen CPU workflow",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 41075673391,
+      "scope": "source CPU tests on pull request",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 41075673397,
+      "scope": "existing backend tests and frontend build",
+      "conclusion": "success"
+    }
+  ],
+  "real_local_analysis": {
+    "input": "4s French excerpt of approved hybrid",
+    "local_source_import": true,
+    "every_frame_face_analysis": true,
+    "real_french_asr": true,
+    "fr_text_passthrough": true,
+    "en_to_fr_translation_executed": false,
+    "youtube_network_download_executed": false,
+    "completed_phases": [
+      "import",
+      "analyze",
+      "adapt"
+    ],
+    "repeat_recomputed_stages": 0,
+    "private_modal_restore_in_new_work_root": true,
+    "original_and_restored_state_sha256": "998fe27bd837e4526a52f5ee5bf530b992770b37913ecac640104ad69cb7066d"
+  },
+  "default_command": {
+    "tested": true,
+    "exit_code": 2,
+    "status": "BLOCKED",
+    "blocker": "QUALIFICATION_REQUIRED",
+    "new_gpu_calls": 0,
+    "final_mp4_created": false
+  },
+  "reference_archive": {
+    "volume": "ugcv2-production-private",
+    "prefix": "reference/source-performance-346b8a25",
+    "source_voice_faces_hybrid_saved": true,
+    "hybrid_readback_sha256": "346b8a25aa0722094f57e51aef3d41a97e1966f7ad1d04c4517c8fbbe5b7297d"
+  },
+  "all_new_gpu_calls_this_mission": 0,
+  "new_60s_videos_this_mission": 0,
+  "historical_workers_modified": false,
+  "secrets_modified": false,
+  "workers_deployed": false,
+  "single_gpu_proof": {
+    "status": "prepared_not_run",
+    "plan": "docs/SOURCE_GPU_PROOF_PLAN.json",
+    "private_inputs_prepared": true,
+    "reserved_seconds_limit": 3000
+  },
+  "remaining_essential_blockers": [
+    "Automatic trusted scene/PiP/title timeline is not implemented for arbitrary videos.",
+    "Default avatar complete identity replacement is not qualified, especially hair/headwear/body.",
+    "Person matte does not guarantee hair/hands/microphone/desk and moving-camera coverage.",
+    "V3 builtin voice is not an approved stable speaker lock and all checkpoint revisions are not pinned.",
+    "Generic new voice/FaceFusion/TBDub chain is implemented as adapters but not executed end to end.",
+    "Identity and phonetic/naturalness verifiers are not implemented/calibrated.",
+    "Final autonomous MP4 export is deliberately not implemented before those quality gates.",
+    "Uncertain remote GPU calls require reconciliation rather than automatic blind retries."
+  ]
+}
