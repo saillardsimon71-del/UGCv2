@@ -2,6 +2,20 @@
 
 ## Nouveau diagnostic 4s, strictement privé et non validé
 
+Reprise réussie après validation humaine explicite de la voix :
+https://github.com/saillardsimon71-del/UGCv2/actions/runs/41060493650
+Même identifiant `work-new4s-20261030-once`, zéro nouvel appel Chatterbox,
+un LTX et un TBDub. MP4 de 4s / 100 images disponible uniquement comme diagnostic
+privé. La validation de la voix n'est pas une validation de la vidéo.
+
+Le reçu privé épinglé lie le texte attendu, le SHA-256 du WAV exact et le résultat
+ASR contradictoire. Le changement de configuration est autorisé uniquement pour
+deux fichiers d'orchestration, avec conservation du journal précédent et contrôle
+des empreintes de chaque intermédiaire. Aucun autre modèle, profil ou budget ne
+peut changer à cette occasion. La voix doit exister dans le cache : pas de nouveau
+Chatterbox. Les échantillons de début/fin et la durée restent contrôlés; le contrôle
+ASR global reste strict pour toute prise sans cette approbation exacte.
+
 Le profil `work-diagnostic-4s-v1` raccorde une clause inutilisée de la source
 autorisée à la traduction CPU, à une seule voix V3 (conditionnement par défaut et
 réglages de référence), puis à un unique LTX et un unique TBDub. Il continue le
@@ -26,11 +40,11 @@ publié par Actions. Les contrôles perceptifs demeurent non qualifiés, même s
 décodage, le visage détecté et l'intégrité audio passent. Les WAV de référence et
 de la nouvelle prise sont conservés pour une comparaison à l'écoute.
 
-Résultat du dispatch unique 41048730461 : arrêt `NARRATION_TEXT_MISMATCH`
+Historique du premier dispatch 41048730461 : arrêt `NARRATION_TEXT_MISMATCH`
 avant tout appel LTX/TBDub. La nouvelle voix complète est conservée (1,84 s),
 mais l'ASR ne confirme pas tous les mots attendus. Ce contrôle seul ne distingue
 pas une prononciation TTS incorrecte d'une erreur ASR. Aucun autre modèle relancé.
-Il n'existe donc pas de nouveau MP4 présentateur pour cette exécution.
+Il n'existait pas de nouveau MP4 présentateur pour cette première exécution.
 
 Récupérer les fichiers existants du run bloqué, comme diagnostic privé :
 
