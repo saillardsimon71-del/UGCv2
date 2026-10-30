@@ -53,15 +53,15 @@ jobs:
           umask 077
           mkdir -p "$RUNNER_TEMP/cipher"
           cat > "$RUNNER_TEMP/key-public.pem" <<'PEM'
------BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQEAo+FzoMtcjccegva5t9UT
-rqaBkz74UhxA4aV98anGC7JXzAnEGw5xkfM86A29Wcx7r24gxzEtTNbtH4ZAoRTg
-cEJZJcHUy53mU6ASbLLmNwE6iq3ZscAMWo+2FTrLviyZsVc/dhdlhgj0ixAGV/JN
-CbN8NmjciBHMyon4oe7Hol27Wl6Y47lfhVtmCZsP+k/TIW5hoh1YNrxhMfG5KHNT
-78ApqdgsW6bzNIVHUUEvfI7saIrK65MepF9DDvB5cWQz3isrrlFk057h2IwHuTDb
-bUifIckZat6RvLe9V/i53Aln58oKc0f9Sepgnb8Q5/JpXPy6NYtodOsFPyPDHkKI
-IQIDAQAB
------END PUBLIC KEY-----
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQEAo+FzoMtcjccegva5t9UT
+          rqaBkz74UhxA4aV98anGC7JXzAnEGw5xkfM86A29Wcx7r24gxzEtTNbtH4ZAoRTg
+          cEJZJcHUy53mU6ASbLLmNwE6iq3ZscAMWo+2FTrLviyZsVc/dhdlhgj0ixAGV/JN
+          CbN8NmjciBHMyon4oe7Hol27Wl6Y47lfhVtmCZsP+k/TIW5hoh1YNrxhMfG5KHNT
+          78ApqdgsW6bzNIVHUUEvfI7saIrK65MepF9DDvB5cWQz3isrrlFk057h2IwHuTDb
+          bUifIckZat6RvLe9V/i53Aln58oKc0f9Sepgnb8Q5/JpXPy6NYtodOsFPyPDHkKI
+          IQIDAQAB
+          -----END PUBLIC KEY-----
           PEM
           openssl rand 32 > "$RUNNER_TEMP/aes.key"
           openssl pkeyutl -encrypt -pubin -inkey "$RUNNER_TEMP/key-public.pem" -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -in "$RUNNER_TEMP/aes.key" -out "$RUNNER_TEMP/cipher/key-wrapped.bin"
