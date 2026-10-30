@@ -1,0 +1,54 @@
+name: UGCv2 | source-motion 4s face+background+lips private proof
+on:
+  push:
+    branches: [test/source-performance-4s-proof-20261030]
+    paths:
+      - productions/UGCV2-FROZEN-RECIPE-20261030/RUN_SOURCE_PROOF_ONCE.txt
+permissions:
+  contents: read
+concurrency:
+  group: ugcv2-source-performance-one-gpu-proof-20261030
+  cancel-in-progress: false
+jobs:
+  source_proof:
+    if: github.event.head_commit.message == 'RUN_SOURCE_PERFORMANCE_PROOF_ONCE_20261030' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      PYTHONPATH: .:productions/UGCV2-FROZEN-RECIPE-20261030
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            docs/SOURCE_GPU_PROOF_PLAN.json
+            productions/FR60-PRESENTER-PROOF-20261030/ASSETS
+            productions/FR60-CONTINUITY-8S-20261030/recipe.json
+            productions/UGCV2-FROZEN-RECIPE-20261030
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fail closed before any GPU if environment or code is invalid
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat productions/UGCV2-FROZEN-RECIPE-20261030/RUN_SOURCE_PROOF_ONCE.txt)" = "FOUR_SECONDS_FACEFUSION_CPU_BACKGROUND_TBDUB_ONCE"
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile productions/UGCV2-FROZEN-RECIPE-20261030/source_gpu_proof_once.py
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libgl1 libglib2.0-0
+          python -m pip install --disable-pip-version-check -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-contrib-python==4.11.0.86' 'mediapipe==0.10.21'
+      - name: Existing source-guided FaceFusion, fixed Pexels background and TBDub, only 4s
+        timeout-minutes: 77
+        run: |
+          python -u productions/UGCV2-FROZEN-RECIPE-20261030/source_gpu_proof_once.py run
+      - name: Never publish private media as GitHub artifacts
+        if: always()
+        shell: bash
+        run: |
+          echo "Private source, approved voice and four-second result remain in Modal workspace lucj76861."
+          echo "Path: ugcv2-production-private/source-proof-results/source-performance-4s-once-20261030"
+          echo "No automatic approval, no retry, no automatic merge."
