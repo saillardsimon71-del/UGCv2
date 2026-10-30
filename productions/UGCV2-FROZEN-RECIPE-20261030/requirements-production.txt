@@ -1,0 +1,10 @@
+modal==1.6.1
+numpy==1.26.4
+opencv-contrib-python==4.11.0.86
+mediapipe==0.10.21
+faster-whisper==1.2.1
+soundfile==0.13.1
+transformers==4.51.3
+sentencepiece==0.2.1
+sacremoses==0.1.1
+yt-dlp==2026.10.26

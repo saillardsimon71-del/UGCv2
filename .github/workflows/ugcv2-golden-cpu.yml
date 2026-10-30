@@ -10,6 +10,20 @@ on:
       - 'productions/UGCV2-FROZEN-RECIPE-20261030/**'
       - '.github/workflows/ugcv2-golden-cpu.yml'
   workflow_dispatch:
+    inputs:
+      profile:
+        description: Production profile (new content remains blocked until perceptual QA is qualified)
+        type: choice
+        options: [cpu-tests, work-reference-v1, work-locked-v1]
+        default: cpu-tests
+      youtube_url:
+        description: YouTube URL (reference profile reuses the private approved 49.60-57.60s window only)
+        type: string
+        default: https://www.youtube.com/watch?v=KSOxkhWs2Ic
+      run_id:
+        description: Existing run id to resume, or empty for a new run
+        type: string
+        default: ''
 permissions:
   contents: read
 jobs:
@@ -38,10 +52,55 @@ jobs:
             productions/UGCV2-FROZEN-RECIPE-20261030/planner.py
       - name: Ten deterministic synthetic media regression tests
         working-directory: productions/UGCV2-FROZEN-RECIPE-20261030
-        run: python -m unittest -v test_autopilot.py
+        run: |
+          pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-python-headless==4.11.0.86'
+          python -m unittest discover -v
       - name: Declare scope correctly
         shell: bash
         run: |
           printf '%s\n' 'PASS = synthetic media planning and composition only' \
             'NO real human quality certification' 'NO actor generation' \
             'NO dubbing / YouTube downloading' 'NO GPU costs'
+  private_production:
+    if: (github.event_name == 'workflow_dispatch' && inputs.profile != 'cpu-tests') || (github.event_name == 'push' && github.event.head_commit.message == 'RUN_PRIVATE_APPROVED_REFERENCE_ONCE')
+    needs: frozen_recipe
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    concurrency:
+      group: ugcv2-autopilot-private
+      cancel-in-progress: false
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      HF_HUB_DISABLE_XET: '1'
+      PRODUCTION_PROFILE: ${{ inputs.profile || 'work-reference-v1' }}
+      SOURCE_URL: ${{ inputs.youtube_url || 'https://www.youtube.com/watch?v=KSOxkhWs2Ic' }}
+      REQUESTED_RUN_ID: ${{ inputs.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned CPU analysis tools and Modal client (no model deployment)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libgl1 libglib2.0-0
+          pip install -q 'torch==2.8.0' --index-url https://download.pytorch.org/whl/cpu
+          pip install -q -r productions/UGCV2-FROZEN-RECIPE-20261030/requirements-production.txt
+      - name: Execute or resume private production
+        shell: bash
+        run: |
+          set -euo pipefail
+          RUN_KEY="${REQUESTED_RUN_ID:-production-${GITHUB_RUN_ID}}"
+          python productions/UGCV2-FROZEN-RECIPE-20261030/production.py run \
+            --url "$SOURCE_URL" --profile "$PRODUCTION_PROFILE" --run-id "$RUN_KEY" \
+            --work-root "$RUNNER_TEMP/ugcv2-private" --private-remote \
+            --verify-workers --public-report-dir "$RUNNER_TEMP/public-report"
+      - name: Metadata-only report (no private video, audio, transcript or master)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: UGCv2-production-report-${{ github.run_id }}
+          path: ${{ runner.temp }}/public-report/production-report.json
+          retention-days: 14
+          if-no-files-found: warn
