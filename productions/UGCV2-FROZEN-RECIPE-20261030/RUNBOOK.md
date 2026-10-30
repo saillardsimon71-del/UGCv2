@@ -26,6 +26,18 @@ publié par Actions. Les contrôles perceptifs demeurent non qualifiés, même s
 décodage, le visage détecté et l'intégrité audio passent. Les WAV de référence et
 de la nouvelle prise sont conservés pour une comparaison à l'écoute.
 
+Résultat du dispatch unique 41048730461 : arrêt `NARRATION_TEXT_MISMATCH`
+avant tout appel LTX/TBDub. La nouvelle voix complète est conservée (1,84 s),
+mais l'ASR ne confirme pas tous les mots attendus. Ce contrôle seul ne distingue
+pas une prononciation TTS incorrecte d'une erreur ASR. Aucun autre modèle relancé.
+Il n'existe donc pas de nouveau MP4 présentateur pour cette exécution.
+
+Récupérer les fichiers existants du run bloqué, comme diagnostic privé :
+
+```bash
+modal volume get ugcv2-production-private /runs/work-new4s-20261030-once ./diagnostic-echec
+```
+
 Branche : `stabilization/work-golden-locked-20261030`, PR #7, sans fusion.
 Ce n'est pas encore un moteur qualifié pour une nouvelle URL quelconque.
 
