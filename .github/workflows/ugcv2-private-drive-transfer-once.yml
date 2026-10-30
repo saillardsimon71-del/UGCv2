@@ -1,0 +1,77 @@
+name: UGCv2 encrypted private-to-Drive handoff (single use)
+on:
+  push:
+    branches: [test/source-performance-4s-proof-20261030]
+    paths:
+      - productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER.txt
+permissions:
+  contents: read
+concurrency:
+  group: ugcv2-private-drive-handoff-41081121485
+  cancel-in-progress: false
+jobs:
+  encrypt:
+    if: github.event.head_commit.message == 'RUN_ENCRYPTED_SOURCE_PROOF_TRANSFER_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            productions/UGCV2-FROZEN-RECIPE-20261030/production_state.py
+            productions/UGCV2-FROZEN-RECIPE-20261030/studio.py
+            productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER.txt
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Modal client without GPU
+        run: python -m pip install --disable-pip-version-check -q 'modal==1.6.1'
+      - name: Fetch exact MP4 from private Modal, verify SHA, encrypt BEFORE artifact upload
+        shell: bash
+        env:
+          RUNNER_TEMP_PATH: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          test "$(cat productions/UGCV2-FROZEN-RECIPE-20261030/RUN_ENCRYPTED_DRIVE_TRANSFER.txt)" = "ENCRYPT_MP4_FOR_DRIVE_41081121485"
+          python - <<'PY'
+          from pathlib import Path
+          import os,sys,hashlib
+          sys.path.insert(0, 'productions/UGCV2-FROZEN-RECIPE-20261030')
+          from production_state import PrivateVolume
+          base=Path(os.environ['RUNNER_TEMP_PATH'])/'input'
+          ok=PrivateVolume().pull('source-proof-results/source-performance-4s-once-20261030',base)
+          if not ok:raise SystemExit('Private source proof missing')
+          p=base/'UGCv2_SOURCE_PERFORMANCE_4s_PRIVATE_DIAGNOSTIC.mp4'
+          h=hashlib.sha256(p.read_bytes()).hexdigest()
+          if h!='cd31de8d7ecd9f5a8bf407753cde3cf5166d90b1bb47e55fc55e1aeb673a3e46':
+              raise SystemExit('Approved technical MP4 source hash mismatch: not transferring')
+          print('Verified private diagnostic bytes:',p.stat().st_size)
+          PY
+          umask 077
+          mkdir -p "$RUNNER_TEMP/cipher"
+          cat > "$RUNNER_TEMP/key-public.pem" <<'PEM'
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQEAo+FzoMtcjccegva5t9UT
+rqaBkz74UhxA4aV98anGC7JXzAnEGw5xkfM86A29Wcx7r24gxzEtTNbtH4ZAoRTg
+cEJZJcHUy53mU6ASbLLmNwE6iq3ZscAMWo+2FTrLviyZsVc/dhdlhgj0ixAGV/JN
+CbN8NmjciBHMyon4oe7Hol27Wl6Y47lfhVtmCZsP+k/TIW5hoh1YNrxhMfG5KHNT
+78ApqdgsW6bzNIVHUUEvfI7saIrK65MepF9DDvB5cWQz3isrrlFk057h2IwHuTDb
+bUifIckZat6RvLe9V/i53Aln58oKc0f9Sepgnb8Q5/JpXPy6NYtodOsFPyPDHkKI
+IQIDAQAB
+-----END PUBLIC KEY-----
+          PEM
+          openssl rand 32 > "$RUNNER_TEMP/aes.key"
+          openssl pkeyutl -encrypt -pubin -inkey "$RUNNER_TEMP/key-public.pem" -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -in "$RUNNER_TEMP/aes.key" -out "$RUNNER_TEMP/cipher/key-wrapped.bin"
+          openssl enc -aes-256-cbc -pbkdf2 -salt -in "$RUNNER_TEMP/input/UGCv2_SOURCE_PERFORMANCE_4s_PRIVATE_DIAGNOSTIC.mp4" -out "$RUNNER_TEMP/cipher/video-encrypted.bin" -pass file:"$RUNNER_TEMP/aes.key"
+          rm -rf "$RUNNER_TEMP/aes.key" "$RUNNER_TEMP/input"
+          echo 'Encrypted only; no raw MP4 or private key is stored in this artifact.'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: UGCv2-ENCRYPTED-DRIVE-HANDOFF-41081121485
+          path: ${{ runner.temp }}/cipher/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
