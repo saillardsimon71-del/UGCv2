@@ -33,6 +33,7 @@ jobs:
           ffprobe -version | head -n 1
           python -m py_compile \
             productions/UGCV2-FROZEN-RECIPE-20261030/golden.py \
+            productions/UGCV2-FROZEN-RECIPE-20261030/assets.py \
             productions/UGCV2-FROZEN-RECIPE-20261030/studio.py \
             productions/UGCV2-FROZEN-RECIPE-20261030/planner.py
       - name: Ten deterministic synthetic media regression tests
