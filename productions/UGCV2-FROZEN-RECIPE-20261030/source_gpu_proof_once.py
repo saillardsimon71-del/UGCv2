@@ -33,10 +33,12 @@ PLAN_PATH=ROOT/'docs/SOURCE_GPU_PROOF_PLAN.json'
 INPUT_PREFIX='source-proof-inputs/source-performance-v1'
 RUN_ID='source-performance-4s-once-20261030'
 OUTPUT_PREFIX='source-proof-results/'+RUN_ID
-EXPECTED_PLAN_SHA='8c5ebc4b0f0f2f6befd5dfbe894c1cc1902398ba'
+EXPECTED_PLAN_GIT_BLOB='8c5ebc4b0f0f2f6befd5dfbe894c1cc1902398ba'
 
 def check_plan():
-    if sha256(PLAN_PATH)!=EXPECTED_PLAN_SHA:
+    data=PLAN_PATH.read_bytes()
+    git_blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+    if git_blob!=EXPECTED_PLAN_GIT_BLOB:
         raise Refused('Proof manifest changed since user authorized bounded test')
     plan=json.loads(PLAN_PATH.read_text(encoding='utf-8'))
     recipe=verify_recipe()
@@ -149,7 +151,7 @@ def run():
         existed=vol.pull(OUTPUT_PREFIX,target)
         target.mkdir(parents=True,exist_ok=True)
         source,voice=source_inputs(vol,root/'prepared',plan)
-        config={'proof_plan_sha256':EXPECTED_PLAN_SHA,'source_sha256':sha256(source),
+        config={'proof_plan_git_blob':EXPECTED_PLAN_GIT_BLOB,'source_sha256':sha256(source),
                 'voice_sha256':sha256(voice),'recipe_sha256':sha256(BASE/'source_recipe.json'),
                 'run_id':RUN_ID,'identity_calls':1,'tbdub_calls':1,'ltx_calls':0,'chatterbox_calls':0}
         state=RunState(target,config,max_gpu_seconds=3000,
