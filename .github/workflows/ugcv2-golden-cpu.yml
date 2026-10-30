@@ -58,7 +58,7 @@ jobs:
       - name: CPU regression tests on synthetic media
         working-directory: productions/UGCV2-FROZEN-RECIPE-20261030
         run: |
-          pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-python-headless==4.11.0.86'
+          pip install -q 'modal==1.6.1' 'numpy==1.26.4' 'opencv-python-headless==4.11.0.86' 'pytest==9.1.1'
           python -m unittest discover -v
       - name: Declare scope correctly
         shell: bash

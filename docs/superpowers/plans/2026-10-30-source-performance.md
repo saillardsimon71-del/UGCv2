@@ -1,0 +1,35 @@
+# Stabilisation de la performance source
+
+Exécution directe autorisée par la mission utilisateur. Branche isolée
+`stabilization/source-performance-recipe-20261030`, basée sur `ab4544d` pour
+réutiliser les checkpoints existants. La recette LTX antérieure reste intacte.
+
+Objectif : industrialiser la chaîne du run 40957764927 sans recréer les gestes
+depuis une photographie. Python 3.11, FFmpeg, FaceFusion 3.5.1, Chatterbox V3,
+TBDub Student v1.1. Aucun nouveau moteur vidéo, déploiement ou secret.
+
+- [ ] Audit : empreintes des artefacts, provenance des modèles et paramètres,
+  limites exactes de sélection des plans, reprises vocales, différences avec I2V.
+- [ ] Recette et orchestration : point d'entrée racine, neuf étapes explicites,
+  conservation de chaque intermédiaire, checkpoints privés Modal, budgets nuls
+  par défaut, reprise par plan et refus des appels payants de résultat incertain.
+- [ ] CPU : analyse automatique réutilisée, composition de masques et PiP,
+  placement des voix à vitesse naturelle, contrôle des images et de l'audio.
+- [ ] Validation : tests de corruption, reprise après erreur, source modifiée,
+  débordement vocal, plan manquant, PiP, protections avant dépense. Test court CPU
+  sur les fichiers existants, CI GitHub, revue indépendante et PR non fusionnée.
+
+Interfaces : `production.py --youtube URL --avatar default --voice default`;
+recette `productions/UGCV2-FROZEN-RECIPE-20261030/source_recipe.json`;
+implémentation `source_production.py`, `source_media.py` dans ce même dossier.
+`RunState`, `RunLock`, `PrivateVolume`, `model_call`, ASR et traduction existants
+sont réutilisés. Les moteurs fonctionnels restent inchangés.
+
+Risques à tester : modification silencieuse de source; retrait d'une étape
+terminée après crash; duplication d'un appel distant; mots tronqués par une
+fenêtre trop courte; présence source dans les titres et les petites PiP.
+
+La validation perceptuelle automatique, le détourage des objets/occlusions,
+le décor récurrent sans présentateur et la stabilité du timbre sont des
+qualifications à établir, jamais des booléens à inventer. La commande doit
+conserver son analyse et retourner un rapport bloqué avant GPU si elles manquent.
