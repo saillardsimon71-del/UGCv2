@@ -46,3 +46,52 @@ Le script refuse les changements de SHA, les durées incorrectes et les pistes m
 **Ne pas publier les sources ni la vidéo de référence dans un dépôt public.** Ce test reprend une vidéo YouTube tierce dont l'autorisation de republication n'est pas établie.
 
 La stabilité technique de ce replay n'est **pas** une preuve que les nouveaux plans générés seront naturels ; cette seconde partie devra être qualifiée séparément.
+
+
+## Étape 2 — orchestrateur sans agent et sans GPU (PR #7)
+
+Le nouveau module `planner.py` fabrique des demandes de plans de quatre secondes maximum à partir d'une **vidéo à images/s fixes**, de la liste de scènes (écran / plan caméra / PiP), et d'un alignement **mot par mot**. Les frontières sont prises entre deux mots, jamais à une durée arbitraire. Il produit des plans **PENDING**, et ne lance ni LTX ni TBDub.
+
+Exemple de lancement, avec des fichiers vidéo et JSON locaux qui ne sont **pas** publiés :
+
+```bash
+python productions/UGCV2-FROZEN-RECIPE-20261030/planner.py \
+  --source /private/source.mp4 \
+  --words /private/words.json \
+  --scenes /private/scenes.json \
+  --output /private/plan.json
+```
+
+`studio.py` assemble seulement les vraies prises **APPROVED** référencées par chemin relatif + SHA-256 dans le manifeste. Il **refuse** toute prise manquante, modifiée, trop courte, non approuvée ou toute timeline discontinue. Il vérifie par décodage que la narration source est restée strictement identique.
+
+```bash
+python productions/UGCV2-FROZEN-RECIPE-20261030/studio.py check \
+  --manifest /private/plan_approuve.json --media-root /private
+python productions/UGCV2-FROZEN-RECIPE-20261030/studio.py assemble \
+  --manifest /private/plan_approuve.json --media-root /private \
+  --output /private/sortie.mp4
+```
+
+**Contrat :** le manifeste déclare `schema: ugcv2.approved-timeline/v1`,
+`allow_regeneration: false`, `source: {path, sha256}`,
+`word_timing: [{text,start_s,end_s}]`, une couverture en images `shots:
+[{start_frame,end_frame,mode,take,take_offset_frame,rectangle?}]`, et `takes:
+{id: {path,sha256,status: APPROVED}}`. Les médias restent hors du dépôt.
+Les titres compliqués ou non vérifiés sont **bloqués** et non recouverts de
+manière hasardeuse.
+
+`test_autopilot.py` utilise des **vidéos synthétiques** pour dix tests réels,
+dont le rendu, l'intégrité audio, les raccords, les prises non autorisées,
+l'absence de fichiers et les coupures au milieu d'un mot. Les tests sont lancés
+sur GitHub Actions par `.github/workflows/ugcv2-golden-cpu.yml`.
+
+### Restant avant le vrai « URL YouTube → MP4 autonome »
+
+L'import YouTube autorisé, la détection automatique des scènes, la transcription
+et l'adaptation française alignée, la production 4s LTX/TBDub, l'ancrage effectif
+sur l'image de fin approuvée et **un contrôle perceptif du lipsync/naturel**
+restent à implémenter/qualifier. Ce changement n'a pas produit un nouvel acteur
+ni démontré que les prochains plans générés seront de bonne qualité.
+
+La règle acquise : **aucun nouveau master ne remplace silencieusement un master
+approuvé, même avec le même seed et les mêmes réglages.**
