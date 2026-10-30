@@ -1,0 +1,42 @@
+name: UGCv2 frozen Work recipe | no GPU quality gates
+on:
+  push:
+    branches: [stabilization/work-golden-locked-20261030]
+    paths:
+      - 'productions/UGCV2-FROZEN-RECIPE-20261030/**'
+      - '.github/workflows/ugcv2-golden-cpu.yml'
+  pull_request:
+    paths:
+      - 'productions/UGCV2-FROZEN-RECIPE-20261030/**'
+      - '.github/workflows/ugcv2-golden-cpu.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frozen_recipe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify FFmpeg and Python are available (NO Modal, NO GPU)
+        shell: bash
+        run: |
+          set -euo pipefail
+          ffmpeg -version | head -n 1
+          ffprobe -version | head -n 1
+          python -m py_compile \
+            productions/UGCV2-FROZEN-RECIPE-20261030/golden.py \
+            productions/UGCV2-FROZEN-RECIPE-20261030/studio.py \
+            productions/UGCV2-FROZEN-RECIPE-20261030/planner.py
+      - name: Ten deterministic synthetic media regression tests
+        working-directory: productions/UGCV2-FROZEN-RECIPE-20261030
+        run: python -m unittest -v test_autopilot.py
+      - name: Declare scope correctly
+        shell: bash
+        run: |
+          printf '%s\n' 'PASS = synthetic media planning and composition only' \
+            'NO real human quality certification' 'NO actor generation' \
+            'NO dubbing / YouTube downloading' 'NO GPU costs'
