@@ -1,0 +1,44 @@
+{
+  "lossless_screen_regions": [
+    {
+      "region": "crop=1428:1080:0:0",
+      "frames": 100,
+      "all_original_pixel_hashes_equal": true
+    },
+    {
+      "region": "crop=492:636:1428:444",
+      "frames": 100,
+      "all_original_pixel_hashes_equal": true
+    }
+  ],
+  "encoded_screen": {
+    "frames": 100,
+    "psnr_db": 52.264348039995724,
+    "max_frame_mse": 1.4710944890975952,
+    "boundary_margin_px": 2
+  },
+  "audio": {
+    "A": {
+      "expected_samples": 192000,
+      "decoded_aac_samples": 192512,
+      "zero_offset_correlation": 0.9998630543942465,
+      "input_pcm_sha256": "ba275704a99e442a5c386a3d72d9da3dd6c48f75a2a79705c83b34f4304133e4",
+      "audio_retiming": false
+    },
+    "B": {
+      "expected_samples": 192000,
+      "decoded_aac_samples": 192512,
+      "zero_offset_correlation": 0.9998570083687615,
+      "input_pcm_sha256": "c1166d0336c276a28cbec18967de77391af8b150e4ac5ef2fba85a73f678fe61",
+      "audio_retiming": false
+    }
+  },
+  "pip_coverage": {
+    "frames": 100,
+    "entire_rectangle_matches_generated_actor": true
+  },
+  "identity_evidence": {
+    "A_and_B_share_exact_animation_master": true,
+    "interpretation": "Shared provenance and full rectangle replacement; identity quality requires visual review"
+  }
+}

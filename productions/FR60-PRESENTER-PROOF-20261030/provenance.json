@@ -1,0 +1,23 @@
+{
+  "reference_commit": "406e8d6fd27ba6fdd9c120b92ee2cb6154d09176",
+  "reference_run": 40957764927,
+  "reference_sha256": "346b8a25aa0722094f57e51aef3d41a97e1966f7ad1d04c4517c8fbbe5b7297d",
+  "presenter_reference_sha256": "bd5ce8b0b67fd7cae6f197fc4608e7dff8b78882c162aba54c9e177d6e37bea3",
+  "duration_per_test_s": 4.0,
+  "source_start_s": {
+    "A": 7.6,
+    "B": 42.0
+  },
+  "source_original_youtube_offset_s": 42,
+  "audio_source": "decoded accepted hybrid AAC, no new voice synthesis or retiming",
+  "pip_rectangle_xywh": [
+    1428,
+    0,
+    492,
+    444
+  ],
+  "identity_method": "one fictional photographic identity, one shared I2V master",
+  "source_presenter_video_used_for_generation": false,
+  "segmentation_used_for_background": false,
+  "full_minute_rendered": false
+}

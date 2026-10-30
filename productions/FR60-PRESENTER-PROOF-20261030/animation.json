@@ -1,0 +1,60 @@
+{
+  "status": "rendered_unreviewed",
+  "prompt": "A locked-off documentary tutorial camera shows the exact same fictional bald clean-shaven dark-skinned middle-aged man in the reference photograph, wearing the same blue shirt with a small lavalier microphone, in the exact same bright home office. He speaks naturally to the camera throughout, with small realistic mouth movements, subtle breathing and restrained head movements, one natural blink. Calm engaged tutorial delivery. His eyes remain open and directed into the lens. His head, shoulders, clothing, face shape, skin tone and age remain unchanged. The background, light, lens and camera framing stay perfectly stable. One continuous realistic shot, natural skin texture, clean clear mouth and eyes.",
+  "sha256": "8ed4ba8dd5822dfd33bd366699f87a75e7bc59a81fe60da2c833894f8fc47c1b",
+  "metadata": {
+    "width": 1344,
+    "height": 768,
+    "video_codec": "h264",
+    "pix_fmt": "yuv420p",
+    "audio_codec": null,
+    "has_audio": false,
+    "duration_sec": 4.042,
+    "bytes": 1472045,
+    "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+    "gpu": "L40S",
+    "app": "pvs-ltx",
+    "trace_id": "fr60-new-presenter-proof-20261030",
+    "seed": 2026103017,
+    "steps": 8,
+    "width_requested": 1344,
+    "height_requested": 768,
+    "frames": 97,
+    "fps": 24,
+    "duration_requested": 4.042,
+    "aspect_ratio": "16:9",
+    "audio_mode": "silent",
+    "continuity_mode": "image",
+    "source_video": null,
+    "source_noise_sigma": null,
+    "image_strength": 1.0,
+    "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+    "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+    "video_cfg": 1.0,
+    "comfy_startup_seconds": 20.053,
+    "comfy_reused": false,
+    "generation_seconds": 121.373,
+    "phases": [
+      {
+        "phase": "COMFY_READY",
+        "seconds": 20.053,
+        "detail": "reused=False"
+      },
+      {
+        "phase": "GRAPH_BUILT",
+        "seconds": 0.006,
+        "detail": "30 nodes"
+      },
+      {
+        "phase": "RENDERED",
+        "seconds": 101.165,
+        "detail": "fr60-new-presenter-proof-20261030_00001_.mp4"
+      },
+      {
+        "phase": "PROBED",
+        "seconds": 0.146,
+        "detail": ""
+      }
+    ]
+  }
+}
