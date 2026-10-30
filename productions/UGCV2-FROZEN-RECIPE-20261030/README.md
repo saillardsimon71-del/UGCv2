@@ -95,3 +95,26 @@ ni démontré que les prochains plans générés seront de bonne qualité.
 
 La règle acquise : **aucun nouveau master ne remplace silencieusement un master
 approuvé, même avec le même seed et les mêmes réglages.**
+
+
+## Étape 3 — importer localement les VRAIS masters Work, sans publication
+
+`assets.py` a été exécuté **avec les deux fichiers privés fournis dans la conversation** :
+le ZIP `UGCv2_recette_et_sources_courtes.zip` et le MP4 corrigé de 6,52 s.
+Les sept fichiers ont été extraits dans un dossier privé, puis chacun
+recontrôlé par SHA-256, sans GPU ni nouvel encodage.
+
+```bash
+python productions/UGCV2-FROZEN-RECIPE-20261030/assets.py \
+  --work-zip UGCv2_recette_et_sources_courtes.zip \
+  --approved-mp4 UGCv2_RACCORD_RYTHME_V2_6p52s.mp4 \
+  --private-target ./private-ugcv2-catalog
+```
+
+Ce dossier ne doit **pas** être commité, déplacé dans un artifact GitHub public,
+ni récréé en régénérant approximativement la vidéo. Il contient un `catalog.json`,
+la vidéo approuvée et les vrais fichiers LTX/TBDub intermédiaires disponibles.
+
+Limite vérifiée : le premier master natif LTX du test initial manque toujours au
+ZIP fourni ; c'est indiqué explicitement dans le catalogue. Le MP4 approuvé
+de 6,52s contient toutefois le passage effectivement retenu.
