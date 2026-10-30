@@ -1,0 +1,28 @@
+{
+  "trial": 1,
+  "source_range_s": [
+    7.6,
+    15.6
+  ],
+  "new_take_regions_frames": {
+    "full": 10,
+    "title": 56,
+    "pip": 33,
+    "domino": 1
+  },
+  "title": "native animated lettering isolated on new actor and 72% white veil",
+  "files": [
+    {
+      "name": "UGCv2_RACCORD_8s_titre_PiP.mp4",
+      "sha256": "54cd82d57512445ad2ea4c09dc8938abad4a85a05c93c0eb483ec08587c4bc98"
+    },
+    {
+      "name": "UGCv2_RACCORD_8s_acteur_sans_titre.mp4",
+      "sha256": "552be822771d569adf6f3129fad4c3588d8ee7b2da085a2ed6adcb9629d64984"
+    },
+    {
+      "name": "UGCv2_AVANT_APRES_TBDub_4s.mp4",
+      "sha256": "217fefa32f884bef9ae973155933ccd24d889a5c83d80cef37340139ec7cf26c"
+    }
+  ]
+}

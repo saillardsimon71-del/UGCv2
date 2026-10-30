@@ -1,0 +1,1835 @@
+{
+  "status": "CPU_FACE_PREFLIGHT_PASSED",
+  "face_report": {
+    "backend": "mediapipe_full_range_sparse_v2",
+    "version": "0.10.21",
+    "delegate": "CPU",
+    "model_path": "/__modal/volumes/vo-RMtvEAqsyW1MKaRWHi4Yj4/face_landmarker.task",
+    "detector_model_path": "/usr/local/lib/python3.10/site-packages/mediapipe/modules/face_detection/face_detection_full_range_sparse.tflite",
+    "source_fps": 25.0,
+    "frames": 100,
+    "frame_diagnostics": [
+      {
+        "frame": 0,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9503031373023987,
+        "detection_box": [
+          723,
+          203,
+          455,
+          455
+        ]
+      },
+      {
+        "frame": 1,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9619834423065186,
+        "detection_box": [
+          728,
+          205,
+          448,
+          448
+        ]
+      },
+      {
+        "frame": 2,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9425905346870422,
+        "detection_box": [
+          725,
+          202,
+          448,
+          448
+        ]
+      },
+      {
+        "frame": 3,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.912117600440979,
+        "detection_box": [
+          725,
+          193,
+          444,
+          444
+        ]
+      },
+      {
+        "frame": 4,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8622085452079773,
+        "detection_box": [
+          724,
+          189,
+          443,
+          443
+        ]
+      },
+      {
+        "frame": 5,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8987017273902893,
+        "detection_box": [
+          724,
+          182,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 6,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.926483154296875,
+        "detection_box": [
+          723,
+          175,
+          440,
+          440
+        ]
+      },
+      {
+        "frame": 7,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9614168405532837,
+        "detection_box": [
+          719,
+          171,
+          439,
+          439
+        ]
+      },
+      {
+        "frame": 8,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.935897171497345,
+        "detection_box": [
+          717,
+          165,
+          431,
+          431
+        ]
+      },
+      {
+        "frame": 9,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9247198104858398,
+        "detection_box": [
+          713,
+          160,
+          432,
+          432
+        ]
+      },
+      {
+        "frame": 10,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9264457821846008,
+        "detection_box": [
+          710,
+          159,
+          432,
+          432
+        ]
+      },
+      {
+        "frame": 11,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9065908193588257,
+        "detection_box": [
+          708,
+          156,
+          428,
+          428
+        ]
+      },
+      {
+        "frame": 12,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9039679169654846,
+        "detection_box": [
+          709,
+          156,
+          428,
+          428
+        ]
+      },
+      {
+        "frame": 13,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9083999991416931,
+        "detection_box": [
+          705,
+          156,
+          421,
+          421
+        ]
+      },
+      {
+        "frame": 14,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9522864818572998,
+        "detection_box": [
+          700,
+          148,
+          430,
+          430
+        ]
+      },
+      {
+        "frame": 15,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8939228057861328,
+        "detection_box": [
+          700,
+          153,
+          426,
+          426
+        ]
+      },
+      {
+        "frame": 16,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9078752994537354,
+        "detection_box": [
+          690,
+          147,
+          436,
+          436
+        ]
+      },
+      {
+        "frame": 17,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9044346809387207,
+        "detection_box": [
+          687,
+          140,
+          442,
+          442
+        ]
+      },
+      {
+        "frame": 18,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.908715009689331,
+        "detection_box": [
+          683,
+          135,
+          452,
+          452
+        ]
+      },
+      {
+        "frame": 19,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9194390773773193,
+        "detection_box": [
+          685,
+          135,
+          449,
+          449
+        ]
+      },
+      {
+        "frame": 20,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9127902388572693,
+        "detection_box": [
+          685,
+          131,
+          448,
+          448
+        ]
+      },
+      {
+        "frame": 21,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.897813081741333,
+        "detection_box": [
+          686,
+          132,
+          444,
+          444
+        ]
+      },
+      {
+        "frame": 22,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9070106744766235,
+        "detection_box": [
+          687,
+          133,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 23,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9295059442520142,
+        "detection_box": [
+          692,
+          136,
+          437,
+          437
+        ]
+      },
+      {
+        "frame": 24,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9152777194976807,
+        "detection_box": [
+          694,
+          144,
+          429,
+          429
+        ]
+      },
+      {
+        "frame": 25,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9177353978157043,
+        "detection_box": [
+          686,
+          143,
+          440,
+          440
+        ]
+      },
+      {
+        "frame": 26,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8717918395996094,
+        "detection_box": [
+          683,
+          144,
+          450,
+          450
+        ]
+      },
+      {
+        "frame": 27,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9034576416015625,
+        "detection_box": [
+          690,
+          153,
+          439,
+          439
+        ]
+      },
+      {
+        "frame": 28,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9130889177322388,
+        "detection_box": [
+          688,
+          162,
+          446,
+          446
+        ]
+      },
+      {
+        "frame": 29,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9295641183853149,
+        "detection_box": [
+          694,
+          163,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 30,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9463951587677002,
+        "detection_box": [
+          690,
+          170,
+          448,
+          448
+        ]
+      },
+      {
+        "frame": 31,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9498426914215088,
+        "detection_box": [
+          691,
+          165,
+          454,
+          454
+        ]
+      },
+      {
+        "frame": 32,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9496436715126038,
+        "detection_box": [
+          685,
+          167,
+          469,
+          469
+        ]
+      },
+      {
+        "frame": 33,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9230021238327026,
+        "detection_box": [
+          693,
+          182,
+          442,
+          442
+        ]
+      },
+      {
+        "frame": 34,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9211911559104919,
+        "detection_box": [
+          696,
+          185,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 35,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9184861183166504,
+        "detection_box": [
+          699,
+          187,
+          438,
+          438
+        ]
+      },
+      {
+        "frame": 36,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9090856909751892,
+        "detection_box": [
+          700,
+          188,
+          435,
+          435
+        ]
+      },
+      {
+        "frame": 37,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9142416715621948,
+        "detection_box": [
+          701,
+          189,
+          434,
+          434
+        ]
+      },
+      {
+        "frame": 38,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9357990026473999,
+        "detection_box": [
+          695,
+          184,
+          440,
+          440
+        ]
+      },
+      {
+        "frame": 39,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9496675133705139,
+        "detection_box": [
+          689,
+          174,
+          459,
+          459
+        ]
+      },
+      {
+        "frame": 40,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9466689825057983,
+        "detection_box": [
+          690,
+          174,
+          452,
+          452
+        ]
+      },
+      {
+        "frame": 41,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.943157434463501,
+        "detection_box": [
+          686,
+          168,
+          451,
+          451
+        ]
+      },
+      {
+        "frame": 42,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9362778663635254,
+        "detection_box": [
+          683,
+          164,
+          455,
+          455
+        ]
+      },
+      {
+        "frame": 43,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9070010781288147,
+        "detection_box": [
+          682,
+          163,
+          452,
+          452
+        ]
+      },
+      {
+        "frame": 44,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8797126412391663,
+        "detection_box": [
+          681,
+          162,
+          451,
+          451
+        ]
+      },
+      {
+        "frame": 45,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8924002647399902,
+        "detection_box": [
+          685,
+          156,
+          443,
+          443
+        ]
+      },
+      {
+        "frame": 46,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8651050329208374,
+        "detection_box": [
+          681,
+          150,
+          448,
+          448
+        ]
+      },
+      {
+        "frame": 47,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8797286152839661,
+        "detection_box": [
+          681,
+          151,
+          444,
+          444
+        ]
+      },
+      {
+        "frame": 48,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9161154627799988,
+        "detection_box": [
+          683,
+          153,
+          438,
+          438
+        ]
+      },
+      {
+        "frame": 49,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9119328856468201,
+        "detection_box": [
+          680,
+          152,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 50,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9238402247428894,
+        "detection_box": [
+          678,
+          151,
+          443,
+          443
+        ]
+      },
+      {
+        "frame": 51,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8870576620101929,
+        "detection_box": [
+          680,
+          160,
+          438,
+          438
+        ]
+      },
+      {
+        "frame": 52,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9032926559448242,
+        "detection_box": [
+          679,
+          161,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 53,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9071887135505676,
+        "detection_box": [
+          679,
+          166,
+          446,
+          446
+        ]
+      },
+      {
+        "frame": 54,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9325036406517029,
+        "detection_box": [
+          678,
+          164,
+          446,
+          446
+        ]
+      },
+      {
+        "frame": 55,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9553245306015015,
+        "detection_box": [
+          678,
+          168,
+          442,
+          442
+        ]
+      },
+      {
+        "frame": 56,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9684646129608154,
+        "detection_box": [
+          673,
+          167,
+          453,
+          453
+        ]
+      },
+      {
+        "frame": 57,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9676410555839539,
+        "detection_box": [
+          667,
+          165,
+          461,
+          461
+        ]
+      },
+      {
+        "frame": 58,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9683056473731995,
+        "detection_box": [
+          671,
+          175,
+          453,
+          453
+        ]
+      },
+      {
+        "frame": 59,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9490476250648499,
+        "detection_box": [
+          667,
+          176,
+          458,
+          458
+        ]
+      },
+      {
+        "frame": 60,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9400516152381897,
+        "detection_box": [
+          665,
+          176,
+          462,
+          462
+        ]
+      },
+      {
+        "frame": 61,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9392573833465576,
+        "detection_box": [
+          667,
+          177,
+          457,
+          457
+        ]
+      },
+      {
+        "frame": 62,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9400030374526978,
+        "detection_box": [
+          667,
+          177,
+          457,
+          457
+        ]
+      },
+      {
+        "frame": 63,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9343796372413635,
+        "detection_box": [
+          669,
+          181,
+          452,
+          452
+        ]
+      },
+      {
+        "frame": 64,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9689448475837708,
+        "detection_box": [
+          669,
+          176,
+          450,
+          450
+        ]
+      },
+      {
+        "frame": 65,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9661781787872314,
+        "detection_box": [
+          663,
+          166,
+          456,
+          456
+        ]
+      },
+      {
+        "frame": 66,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9671730399131775,
+        "detection_box": [
+          667,
+          166,
+          448,
+          448
+        ]
+      },
+      {
+        "frame": 67,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9614870548248291,
+        "detection_box": [
+          665,
+          167,
+          450,
+          450
+        ]
+      },
+      {
+        "frame": 68,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9524084329605103,
+        "detection_box": [
+          666,
+          166,
+          446,
+          446
+        ]
+      },
+      {
+        "frame": 69,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9478433728218079,
+        "detection_box": [
+          669,
+          163,
+          442,
+          442
+        ]
+      },
+      {
+        "frame": 70,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9237560033798218,
+        "detection_box": [
+          655,
+          149,
+          454,
+          454
+        ]
+      },
+      {
+        "frame": 71,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.918320894241333,
+        "detection_box": [
+          661,
+          159,
+          446,
+          446
+        ]
+      },
+      {
+        "frame": 72,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9273436665534973,
+        "detection_box": [
+          665,
+          164,
+          440,
+          440
+        ]
+      },
+      {
+        "frame": 73,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.929358184337616,
+        "detection_box": [
+          664,
+          164,
+          440,
+          440
+        ]
+      },
+      {
+        "frame": 74,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9350042939186096,
+        "detection_box": [
+          666,
+          171,
+          434,
+          434
+        ]
+      },
+      {
+        "frame": 75,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9449034333229065,
+        "detection_box": [
+          670,
+          174,
+          431,
+          431
+        ]
+      },
+      {
+        "frame": 76,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9413134455680847,
+        "detection_box": [
+          669,
+          173,
+          432,
+          431
+        ]
+      },
+      {
+        "frame": 77,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9432914853096008,
+        "detection_box": [
+          667,
+          174,
+          433,
+          433
+        ]
+      },
+      {
+        "frame": 78,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9471163153648376,
+        "detection_box": [
+          669,
+          174,
+          431,
+          431
+        ]
+      },
+      {
+        "frame": 79,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9500971436500549,
+        "detection_box": [
+          668,
+          171,
+          436,
+          436
+        ]
+      },
+      {
+        "frame": 80,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.953536868095398,
+        "detection_box": [
+          670,
+          172,
+          434,
+          434
+        ]
+      },
+      {
+        "frame": 81,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9548934102058411,
+        "detection_box": [
+          676,
+          172,
+          428,
+          428
+        ]
+      },
+      {
+        "frame": 82,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9567047357559204,
+        "detection_box": [
+          674,
+          168,
+          435,
+          435
+        ]
+      },
+      {
+        "frame": 83,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9553591012954712,
+        "detection_box": [
+          673,
+          166,
+          437,
+          437
+        ]
+      },
+      {
+        "frame": 84,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9602174162864685,
+        "detection_box": [
+          673,
+          170,
+          435,
+          435
+        ]
+      },
+      {
+        "frame": 85,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9673493504524231,
+        "detection_box": [
+          673,
+          176,
+          435,
+          435
+        ]
+      },
+      {
+        "frame": 86,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9685298800468445,
+        "detection_box": [
+          675,
+          184,
+          438,
+          438
+        ]
+      },
+      {
+        "frame": 87,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9681648015975952,
+        "detection_box": [
+          675,
+          185,
+          437,
+          437
+        ]
+      },
+      {
+        "frame": 88,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9098629355430603,
+        "detection_box": [
+          671,
+          186,
+          447,
+          447
+        ]
+      },
+      {
+        "frame": 89,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.946307897567749,
+        "detection_box": [
+          672,
+          193,
+          446,
+          446
+        ]
+      },
+      {
+        "frame": 90,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9634868502616882,
+        "detection_box": [
+          681,
+          211,
+          435,
+          435
+        ]
+      },
+      {
+        "frame": 91,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9608961343765259,
+        "detection_box": [
+          678,
+          214,
+          439,
+          439
+        ]
+      },
+      {
+        "frame": 92,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9548317193984985,
+        "detection_box": [
+          678,
+          216,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 93,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.928184986114502,
+        "detection_box": [
+          672,
+          211,
+          456,
+          456
+        ]
+      },
+      {
+        "frame": 94,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9325965642929077,
+        "detection_box": [
+          675,
+          214,
+          450,
+          450
+        ]
+      },
+      {
+        "frame": 95,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9525183439254761,
+        "detection_box": [
+          677,
+          214,
+          447,
+          447
+        ]
+      },
+      {
+        "frame": 96,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.9277984499931335,
+        "detection_box": [
+          683,
+          212,
+          441,
+          441
+        ]
+      },
+      {
+        "frame": 97,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.941885769367218,
+        "detection_box": [
+          686,
+          215,
+          432,
+          432
+        ]
+      },
+      {
+        "frame": 98,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8925265669822693,
+        "detection_box": [
+          680,
+          199,
+          453,
+          453
+        ]
+      },
+      {
+        "frame": 99,
+        "detected_faces": 1,
+        "landmark_faces": 1,
+        "detector_score": 0.8424842357635498,
+        "detection_box": [
+          679,
+          194,
+          446,
+          446
+        ]
+      }
+    ],
+    "confidence_thresholds": {
+      "detection": 0.5,
+      "presence": 0.5,
+      "tracking": 0.5
+    },
+    "detection_seconds": 1.0269226350000054,
+    "detected_frames": 100,
+    "landmark_seconds": 1.9291481949999962,
+    "landmark_frames": 100,
+    "missing_frames": [],
+    "success": true,
+    "interpolated_frames": [],
+    "crop_mode": 1,
+    "bboxes": [
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ],
+      [
+        582,
+        47,
+        1270,
+        735
+      ]
+    ],
+    "landmark_count": 478,
+    "preprocessing_seconds": 10.509640797000003,
+    "worker_wall_seconds": 8.35667918,
+    "execution": "isolated_cpu_subprocess"
+  },
+  "log_tail": "[MediaPipe] detected=100/100, landmarks=100/100, interpolated=0, crop_mode=1\n[TBDub] preprocessing complete: frames=100, crop_mode=1, first_bbox=[582, 47, 1270, 735]\n[TBDub] crop preview saved to /tmp/tbdub-fr-preflight-p8hgumzw/preflight/UGCv2_V2V_4s_crop.mp4\n",
+  "gpu_calls": 0
+}

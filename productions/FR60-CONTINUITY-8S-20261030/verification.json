@@ -1,0 +1,79 @@
+{
+  "reference_A_unchanged": true,
+  "reference_B_unchanged": true,
+  "files": [
+    {
+      "filename": "UGCv2_RACCORD_8s_titre_PiP.mp4",
+      "sha256": "54cd82d57512445ad2ea4c09dc8938abad4a85a05c93c0eb483ec08587c4bc98",
+      "duration_s": 8,
+      "frames": 200,
+      "first_100_frames_exactly_match_A": true,
+      "audio_zero_offset_correlation": 0.999920693804249,
+      "full_decode": "passed"
+    },
+    {
+      "filename": "UGCv2_RACCORD_8s_acteur_sans_titre.mp4",
+      "sha256": "552be822771d569adf6f3129fad4c3588d8ee7b2da085a2ed6adcb9629d64984",
+      "duration_s": 8,
+      "frames": 200,
+      "first_100_frames_exactly_match_A": true,
+      "audio_zero_offset_correlation": 0.999920693804249,
+      "full_decode": "passed"
+    }
+  ],
+  "background_new_take": {
+    "scale": 0.9999139916208116,
+    "translation_px": [
+      0.023060673419072225,
+      0.10843275139079311
+    ],
+    "inliers": 1413
+  },
+  "background_at_seam_before_TBDub": {
+    "scale": 0.9999929991723494,
+    "translation_px": [
+      0.021160732185101193,
+      -0.04975425950513022
+    ],
+    "inliers": 1411
+  },
+  "background_at_seam_after_TBDub": {
+    "scale": 0.9999789652201476,
+    "translation_px": [
+      0.04142467232449832,
+      -0.021302862178701063
+    ],
+    "inliers": 1456
+  },
+  "face_detection_at_seam": {
+    "reference_last": {
+      "frame": 99,
+      "detected_faces": 1,
+      "landmark_faces": 1,
+      "detector_score": 0.9587345719337463,
+      "detection_box": [
+        724,
+        202,
+        457,
+        457
+      ]
+    },
+    "new_first": {
+      "frame": 0,
+      "detected_faces": 1,
+      "landmark_faces": 1,
+      "detector_score": 0.9503031373023987,
+      "detection_box": [
+        723,
+        203,
+        455,
+        455
+      ]
+    }
+  },
+  "new_generation_counts": {
+    "ltx": 1,
+    "tbdub": 1
+  },
+  "perceptual_review": "separate visual comparison; these checks do not certify human likeness or phonetic lip sync"
+}

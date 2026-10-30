@@ -1,0 +1,60 @@
+{
+  "status": "rendered",
+  "seed": 2026103017,
+  "raw_sha256": "fc6460af2dfa82e5433442b215a0c611c0bbf33fa50eacb12ba9c0e911fb3084",
+  "metadata": {
+    "width": 1344,
+    "height": 768,
+    "video_codec": "h264",
+    "pix_fmt": "yuv420p",
+    "audio_codec": null,
+    "has_audio": false,
+    "duration_sec": 4.042,
+    "bytes": 955449,
+    "engine": "LTX-2.5 Distilled (ComfyUI, 2 passes)",
+    "gpu": "L40S",
+    "app": "pvs-ltx",
+    "trace_id": "fr60-continuity-4s-trial-1-20261030",
+    "seed": 2026103017,
+    "steps": 8,
+    "width_requested": 1344,
+    "height_requested": 768,
+    "frames": 97,
+    "fps": 24,
+    "duration_requested": 4.042,
+    "aspect_ratio": "16:9",
+    "audio_mode": "silent",
+    "continuity_mode": "image",
+    "source_video": null,
+    "source_noise_sigma": null,
+    "image_strength": 1.0,
+    "model_revision": "49b093a39c19169a8a81721dcc541e07e945232f",
+    "comfyui_revision": "d49e888586dd8ae012c0667b33466b815fee07f7",
+    "video_cfg": 1.0,
+    "comfy_startup_seconds": 18.051,
+    "comfy_reused": false,
+    "generation_seconds": 127.278,
+    "phases": [
+      {
+        "phase": "COMFY_READY",
+        "seconds": 18.051,
+        "detail": "reused=False"
+      },
+      {
+        "phase": "GRAPH_BUILT",
+        "seconds": 0.003,
+        "detail": "30 nodes"
+      },
+      {
+        "phase": "RENDERED",
+        "seconds": 109.077,
+        "detail": "fr60-continuity-4s-trial-1-20261030_00001_.mp4"
+      },
+      {
+        "phase": "PROBED",
+        "seconds": 0.143,
+        "detail": ""
+      }
+    ]
+  }
+}

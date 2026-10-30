@@ -1,0 +1,12 @@
+{
+  "python": "3.11.6",
+  "modal": "1.6.1",
+  "opencv": "4.13.0",
+  "numpy": "2.4.6",
+  "ffmpeg": "ffmpeg version 8.1.1-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+  "cached_models_only": true,
+  "model_download_functions_called": false,
+  "ltx_new_calls": 1,
+  "tbdub_new_calls": 1,
+  "applications_stopped": true
+}
