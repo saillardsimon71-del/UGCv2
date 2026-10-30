@@ -84,16 +84,16 @@ def animate(state, take_id, anchor, attempt=1):
                                                        uploaded_image='anchor.png'))
     result = model_call(state, stage, worker, worker.render_clip, (payload,), 900)
     metadata = result['metadata']
+    raw.write_bytes(base64.b64decode(result['video_base64'], validate=True))
+    save_json(folder / 'ltx.json', metadata)
     if (metadata.get('seed') != recipe['ltx_seed'] or metadata.get('frames') != 97
             or metadata.get('model_revision') != recipe['ltx_reference_metadata']['model_revision']
             or metadata.get('comfyui_revision') != recipe['ltx_reference_metadata']['comfyui_revision']
             or metadata.get('continuity_mode') != 'image'):
         raise Refused('LTX_RESULT_RECIPE_DRIFT')
-    raw.write_bytes(base64.b64decode(result['video_base64'], validate=True))
     command(['ffmpeg', '-nostdin', '-v', 'error', '-y', '-i', raw,
              '-vf', recipe['normalization'], '-t', '4', '-an', '-c:v', 'libx264',
              '-crf', '16', '-preset', 'fast', normalized])
-    save_json(folder / 'ltx.json', metadata)
     state.data['calls'][stage]['status'] = 'SAVED'
     state.complete(stage, inputs, [raw, normalized, folder / 'ltx.json', folder / 'graph.json'])
     return raw, normalized
@@ -125,9 +125,9 @@ def synchronize(state, take_id, before, audio, attempt=1):
     result = model_call(state, stage, worker, worker.render_student_four_seconds,
                         (video64, audio64), 600)
     output.write_bytes(base64.b64decode(result['video_base64'], validate=True))
+    save_json(folder / 'tbdub.json', result['metadata'])
     if sha256(output) != result['metadata']['video_sha256']:
         raise Refused('TBDUB_RESULT_CHECKSUM_MISMATCH')
-    save_json(folder / 'tbdub.json', result['metadata'])
     state.data['calls'][stage]['status'] = 'SAVED'
     state.complete(stage, inputs, [output, folder / 'tbdub.json'])
     return output

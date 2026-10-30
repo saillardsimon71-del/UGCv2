@@ -14,7 +14,7 @@ on:
       profile:
         description: Production profile (new content remains blocked until perceptual QA is qualified)
         type: choice
-        options: [cpu-tests, work-reference-v1, work-locked-v1]
+        options: [cpu-tests, work-reference-v1, work-locked-v1, work-diagnostic-4s-v1]
         default: cpu-tests
       youtube_url:
         description: YouTube URL (reference profile reuses the private approved 49.60-57.60s window only)
@@ -102,10 +102,15 @@ jobs:
         run: |
           set -euo pipefail
           RUN_KEY="${REQUESTED_RUN_ID:-production-${GITHUB_RUN_ID}}"
+          GPU_BUDGET=1800
+          if [ "$PRODUCTION_PROFILE" = 'work-diagnostic-4s-v1' ]; then
+            RUN_KEY="${REQUESTED_RUN_ID:-work-new4s-20261030-once}"
+            GPU_BUDGET=2400
+          fi
           python productions/UGCV2-FROZEN-RECIPE-20261030/production.py run \
             --url "$SOURCE_URL" --profile "$PRODUCTION_PROFILE" --run-id "$RUN_KEY" \
             --work-root "$RUNNER_TEMP/ugcv2-private" --private-remote \
-            --verify-workers --public-report-dir "$RUNNER_TEMP/public-report"
+            --max-gpu-seconds "$GPU_BUDGET" --verify-workers --public-report-dir "$RUNNER_TEMP/public-report"
       - name: Metadata-only report (no private video, audio, transcript or master)
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,0 +1,25 @@
+{
+  "id": "work-diagnostic-4s-v1",
+  "mission_run_id": "work-new4s-20261030-once",
+  "input_prefix": "catalog/new-four-seconds-v1",
+  "input_manifest_sha256": "e05f37f6e4f1b5fc0ca82a789b698930d5f806a291b69f8843a0f975c46651b1",
+  "youtube_id": "KSOxkhWs2Ic",
+  "ltx_calls": 1,
+  "tbdub_calls": 1,
+  "voice_calls": 1,
+  "max_gpu_seconds": 2400,
+  "duration_s": 4,
+  "voice": {
+    "engine": "Chatterbox Multilingual V3",
+    "upstream_sha": "5de7a54aa4e5e2baadb0182dde554908b48b85c2",
+    "checkpoint_snapshot": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+    "reference_worker_sha256_crlf": "cdc384b0ea2e55afb1dca03428684641ab009c2ec5ae4516e80cee714fae2511",
+    "conditioning": "same built-in default voice as approved worker, no source-person cloning",
+    "seed": 60100,
+    "exaggeration": 0.43,
+    "cfg_weight": 0.63,
+    "temperature": 0.77
+  },
+  "publish_allowed": false,
+  "perceptual_validation": "UNQUALIFIED_HUMAN_REVIEW_REQUIRED"
+}

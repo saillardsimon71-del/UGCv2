@@ -236,7 +236,9 @@ def public_report(report):
     return {k: v for k, v in report.items() if k in (
         'status', 'run_id', 'duration_s', 'new_url_production_ready', 'reference_window_only',
         'new_gpu_calls', 'model_compute_cost_usd', 'cost_scope', 'audio_integrity', 'checks',
-        'rhythm', 'limits', 'output_sha256', 'blocker_code')}
+        'rhythm', 'limits', 'output_sha256', 'blocker_code', 'publish_allowed',
+        'call_counts', 'perceptual_validation', 'diagnostic_sha256', 'technical_checks',
+        'github_run_id', 'github_sha', 'original_master_regenerated')}
 
 
 def fetch_deliverable(root, output):
@@ -253,9 +255,9 @@ def fetch_deliverable(root, output):
 
 def main():
     parser = argparse.ArgumentParser(description='UGCv2 frozen recipe, private resume and blocking quality gates')
-    parser.add_argument('command', choices=['run', 'fetch'])
+    parser.add_argument('command', choices=['run', 'fetch', 'fetch-diagnostic'])
     parser.add_argument('--url')
-    parser.add_argument('--profile', choices=['work-locked-v1', 'work-reference-v1'], default='work-locked-v1')
+    parser.add_argument('--profile', choices=['work-locked-v1', 'work-reference-v1', 'work-diagnostic-4s-v1'], default='work-locked-v1')
     parser.add_argument('--run-id', required=True)
     parser.add_argument('--work-root', type=Path, default=REPOSITORY / 'data/production')
     parser.add_argument('--catalog', type=Path)
@@ -269,13 +271,18 @@ def main():
         parser.error('--max-gpu-seconds must be between 0 and 3600 for this qualification branch')
     run_id = safe_id(args.run_id)
     root = args.work_root.resolve() / run_id
-    volume = PrivateVolume() if args.private_remote or args.command == 'fetch' else None
-    if args.command == 'fetch':
+    volume = PrivateVolume() if args.private_remote or args.command.startswith('fetch') else None
+    if args.command.startswith('fetch'):
         if not args.output:
             parser.error('fetch requires --output')
         volume.pull('runs/' + run_id, root)
-        fetch_deliverable(root, args.output)
-        print('Private result retrieved: ' + str(args.output))
+        if args.command == 'fetch-diagnostic':
+            from production_diagnostic import fetch_diagnostic
+            fetch_diagnostic(root, args.output)
+            print('Private UNVALIDATED diagnostic retrieved: ' + str(args.output))
+        else:
+            fetch_deliverable(root, args.output)
+            print('Private result retrieved: ' + str(args.output))
         return 0
     if not args.url:
         parser.error('run requires --url')
@@ -293,15 +300,22 @@ def main():
         code = {p.name: sha256(p) for p in BASE.glob('*.py') if not p.name.startswith('test_')}
         config = {'youtube_id': youtube_id(args.url), 'profile': args.profile,
                   'profile_sha256': sha256(BASE / 'production_profile.json'), 'code': code}
+        if args.profile == 'work-diagnostic-4s-v1':
+            config['diagnostic_profile_sha256'] = sha256(BASE / 'diagnostic_profile.json')
         state = RunState(root, config, args.max_gpu_seconds,
                          (lambda p: volume.push('runs/' + run_id, p)) if volume else None)
         cache = args.work_root / 'cpu-model-cache'
-        if args.profile == 'work-reference-v1':
+        if args.profile in ('work-reference-v1', 'work-diagnostic-4s-v1'):
             catalog = args.catalog or args.work_root / 'catalog'
             if not (catalog / 'production-catalog.json').is_file():
                 if not volume or not volume.pull('catalog/work-v1', catalog):
                     raise Refused('PRIVATE_CATALOG_MISSING: bootstrap the actual approved Work files once')
-            result = reference_run(state, catalog, args.url, cache, args.verify_workers)
+            if args.profile == 'work-diagnostic-4s-v1':
+                validated_catalog(catalog)
+                from production_diagnostic import run_diagnostic
+                result = run_diagnostic(state, catalog, args.url, cache, run_stage)
+            else:
+                result = reference_run(state, catalog, args.url, cache, args.verify_workers)
         else:
             result = new_source_run(state, args.url, cache)
         report.update(result)

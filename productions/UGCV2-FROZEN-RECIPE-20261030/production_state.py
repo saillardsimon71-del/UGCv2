@@ -67,6 +67,11 @@ class RunState:
     def reserve(self, call_key, seconds):
         if call_key in self.data['calls']:
             raise Refused(call_key + ': already reserved; resume the saved call, never resubmit blindly')
+        group = call_key.split('/')[-2] if '/' in call_key else call_key
+        limit = self.data.get('call_limits', {}).get(group)
+        count = sum(key.split('/')[-2] == group for key in self.data['calls'] if '/' in key)
+        if limit is not None and count >= limit:
+            raise Refused('GPU_CALL_LIMIT_REACHED: ' + group)
         spent = sum(c['reserved_seconds'] for c in self.data['calls'].values())
         if seconds <= 0 or spent + seconds > self.data['max_gpu_seconds']:
             raise Refused('GPU budget exhausted before submission')

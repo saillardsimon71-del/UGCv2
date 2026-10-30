@@ -1,5 +1,31 @@
 # Lancement et limites
 
+## Nouveau diagnostic 4s, strictement privé et non validé
+
+Le profil `work-diagnostic-4s-v1` raccorde une clause inutilisée de la source
+autorisée à la traduction CPU, à une seule voix V3 (conditionnement par défaut et
+réglages de référence), puis à un unique LTX et un unique TBDub. Il continue le
+dernier master natif conservé. Tous les mots et échantillons de la nouvelle voix
+doivent tenir naturellement dans 4s; sinon arrêt avant LTX, sans accélération.
+
+```bash
+gh workflow run ugcv2-golden-cpu.yml --repo saillardsimon71-del/UGCv2 --ref stabilization/work-golden-locked-20261030 -f profile=work-diagnostic-4s-v1 -f run_id=work-new4s-20261030-once
+python productions/UGCV2-FROZEN-RECIPE-20261030/production.py fetch-diagnostic --run-id work-new4s-20261030-once --output ./diagnostic-prive
+```
+
+L'identifiant de cette mission est fixe : changer d'identifiant ne réinitialise
+pas les limites. Le journal réserve au maximum un appel par moteur, sans retry.
+Un seul candidat voix est produit. Les poids voix sont ceux déjà en cache,
+snapshot épinglé, avec téléchargement de modèles désactivé. Les workers existants
+ne sont pas modifiés ni redéployés.
+
+La commande de récupération normale refuse le statut
+`DIAGNOSTIC_PRIVATE_UNVALIDATED`. Seule `fetch-diagnostic` récupère ce résultat
+pour examen humain, avec `publish_allowed: false`. Aucun fichier média n'est
+publié par Actions. Les contrôles perceptifs demeurent non qualifiés, même si le
+décodage, le visage détecté et l'intégrité audio passent. Les WAV de référence et
+de la nouvelle prise sont conservés pour une comparaison à l'écoute.
+
 Branche : `stabilization/work-golden-locked-20261030`, PR #7, sans fusion.
 Ce n'est pas encore un moteur qualifié pour une nouvelle URL quelconque.
 
