@@ -1,0 +1,84 @@
+name: FR20 | validated 4s recipe + full 20s French continuity test
+on:
+  push:
+    branches: [test/fr60-20s-continuity-github-20261030]
+    paths:
+      - productions/FR60-20S-GITHUB-20261030/RUN_FR20_ONCE.txt
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ugcv2-fr20-work-recipe-github-one-run
+  cancel-in-progress: false
+jobs:
+  fr20:
+    if: github.event.head_commit.message == 'RUN_FR20_VALIDATED_4S_RECIPE_ONCE' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 125
+    env:
+      GH_TOKEN: ${{ github.token }}
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      STUDIO_MODAL_WORKSPACE: lucj76861
+      ALLOW_FR20_GPU: 'YES'
+      PYTHONPATH: .
+      BASE: productions/FR60-20S-GITHUB-20261030
+      PY: productions/FR60-20S-GITHUB-20261030/render_20s.py
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            deploy
+            productions/FR60-PRESENTER-PROOF-20261030
+            productions/FR60-CONTINUITY-8S-20261030
+            productions/FR60-RHYTHM-FIX-20261030
+            productions/FR60-20S-GITHUB-20261030
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check one-shot instructions and Python syntax, no model changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat "$BASE/RUN_FR20_ONCE.txt")" = 'FR20_FOUR_4S_LTX_TBDUB_WORK_RECIPE_PRESERVE_FRENCH_AND_RHYTHM'
+          test -n "$MODAL_TOKEN_ID" && test -n "$MODAL_TOKEN_SECRET"
+          python -m py_compile "$PY"
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+          fi
+          sudo apt-get install -y fonts-dejavu-core
+          python -m pip install -q 'modal==1.6.1'
+      - name: Download immutable reference 60s hybrid source and original French narration
+        uses: actions/download-artifact@v4
+        with:
+          name: US-FR-REAL-60S-HYBRID-FINAL-40957764927
+          run-id: 40957764927
+          github-token: ${{ github.token }}
+          path: ${{ env.BASE }}/INPUT
+      - name: CPU verification of reference identity, Work recipe, audio and 1.48s silence
+        timeout-minutes: 6
+        run: python "$PY" prepare
+      - name: Four separate 4s LTX animations; anchor Work-proven frame, same exact seed
+        timeout-minutes: 55
+        run: python "$PY" animate
+      - name: Four separate 4s TBDub Student official synchronizations, no 12s
+        timeout-minutes: 55
+        run: python "$PY" dub
+      - name: Compose source-preserved timeline, title and PiP, rhythm correction and full decode
+        timeout-minutes: 20
+        run: python "$PY" assemble
+      - name: Export REAL 20s MP4 and per-step evidence, including partial receipts on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: UGCv2-FR20-CONTINUITY-${{ github.run_id }}
+          path: |
+            ${{ env.BASE }}/RESULT/UGCv2_FR20_CONTINUITE_TEST_GITHUB.mp4
+            ${{ env.BASE }}/RESULT/plan.json
+            ${{ env.BASE }}/RESULT/ltx_receipts.json
+            ${{ env.BASE }}/RESULT/tbdub_receipts.json
+            ${{ env.BASE }}/RESULT/final_verification.json
+            ${{ env.BASE }}/RESULT/review_*.jpg
+          retention-days: 14
+          compression-level: 0
+          if-no-files-found: warn
